@@ -1,0 +1,40 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /submit_homework/
+Forbidden (Origin checking failed - http://localhost:3000 does not match any trusted origins.): /submit_homework/
+"POST /submit_homework/ HTTP/1.1" 403 2569
+"POST /submit_homework/ HTTP/1.1" 403 2569
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+"POST /submit_homework/ HTTP/1.1" 200 46
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /submit_homework/ HTTP/1.1" 200 56
+"POST /submit_homework/ HTTP/1.1" 200 56
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

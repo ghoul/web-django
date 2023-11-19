@@ -1,0 +1,27 @@
+Successful Status Codes (2xx):
+200 OK: The request was successful. This is the standard response for successful HTTP requests.
+
+201 Created: The request has been fulfilled, resulting in the creation of a new resource.
+
+204 No Content: The server successfully processed the request, but there is no content to send in the response. This is often used for DELETE operations.
+
+Redirection Status Codes (3xx):
+301 Moved Permanently: The requested resource has been permanently moved to another location, and the client should update its URL to the new location.
+
+302 Found (or Moved Temporarily): The requested resource resides temporarily under a different URL. The client should continue to use the original URL.
+
+Client Error Status Codes (4xx):
+400 Bad Request: The server could not understand the request due to invalid syntax.
+
+401 Unauthorized: The client must first authenticate itself to get the requested response.
+
+403 Forbidden: The client does not have the necessary permissions to access the requested resource.
+
+404 Not Found: The server cannot find the requested resource.
+
+Server Error Status Codes (5xx):
+500 Internal Server Error: A generic error message returned when an unexpected condition was encountered on the server.
+
+502 Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.
+
+503 Service Unavailable: The server is not ready to handle the request. Common causes include a server that is down for maintenance or is overloaded.

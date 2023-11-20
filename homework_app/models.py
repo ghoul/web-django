@@ -15,15 +15,16 @@ class QuestionAnswerPair(models.Model):
     image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
     points = models.IntegerField()
 
-class Class(models.Model):
-    title = models.CharField(max_length=100)
-
 class School(models.Model):
     title = models.CharField(max_length=100) 
 
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
     role = models.IntegerField()
+
+class Class(models.Model):
+    title = models.CharField(max_length=100)
+    teacher = models.ForeignKey(CustomUser, related_name='classs', on_delete=models.CASCADE)
 
 class Assignment(models.Model):
     classs = models.ForeignKey(Class, related_name='assignment', on_delete=models.CASCADE)

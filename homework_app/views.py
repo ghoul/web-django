@@ -46,7 +46,7 @@ def signup_user(request):
             return JsonResponse({'error': 'Email is already taken.'}, status=400)
 
         # Create a new user
-        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, password=password, role=role)
+        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, username=email, password=password, role=role)
 
         # Generate JWT token
         payload = {
@@ -119,14 +119,33 @@ def handle_homework(request):
         return JsonResponse({'success' : False,'error': 'Invalid request method'})
 
 #TODO:
+@csrf_exempt
 def handle_homework_id(request, pk):
     if request.method=="POST":
         return 
-
+@csrf_exempt
 def handle_classes(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.filter(email=email)
     if request.method=="POST":
-        title = request.POST.get("title")
-        classs = Class.object.create(title=title)
+        #if(role=="2" or role=="3"):
+        data = json.loads(request.body.decode('utf-8'))
+        title = data.get("title")
+        classs = Class(title=title, teacher=teacher)
+        classs.save()
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
     elif request.method == 'GET':
         try:
@@ -137,22 +156,8 @@ def handle_classes(request):
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
-
-def handle_classes(request):
-    if request.method=="POST":
-        title = request.POST.get("title")
-        classs = Class.object.create(title=title)
-        return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
-    elif request.method == 'GET':
-        try:
-            classes = Class.objects.all().values('id', 'title')
-            classes_list = list(classes)
-            return JsonResponse(classes_list, safe=False, status=200)
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-    else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)      
-
+  
+@csrf_exempt
 def handle_classes_id(request, pk):
     token = request.headers.get('Authorization')   
     if not token:
@@ -196,7 +201,7 @@ def handle_classes_id(request, pk):
         return HttpResponse(status=204)
 
     elif request.method == 'PUT':
-        if(role==2 or role==3):
+        if(role=="1" or role=="2" or role=="3"): #TODO: ISIMT 1
             try:
                 classs = Class.objects.get(pk=pk)
             except Class.DoesNotExist:
@@ -223,15 +228,18 @@ def handle_classes_id(request, pk):
             return JsonResponse({'success': False, 'error': 'Unauthorized access to update classs'}, status=403)   
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)            
-
-def handle_students(request,cid):
+@csrf_exempt
+def handle_students_class(request,sid,cid):
+    #TOOD: isfiltruot pagal klases id is studentclass lenteles
     if request.method == 'GET':
-        students_in_class = CustomUser.objects.filter(studentclass__classs_id=cid)
+        students_in_class = CustomUser.objects.filter(studentclass__classs__id=cid)
         students_data = [
             {'name': student.first_name, 'surname': student.last_name}
             for student in students_in_class
         ]
         return JsonResponse({'students': students_data})
+    if request.method == 'DELETE':
+        student_class = StudentClass.delete(student_id=sid, class_id=cid)  #TODO:patikritn  
         
 
 # def get_cat_id(request,type):

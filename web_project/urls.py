@@ -37,6 +37,9 @@ urlpatterns = [
     path('handle_classes/', views.handle_classes, name='handle_classes'),
     path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
 
+    path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
+
+
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),
 

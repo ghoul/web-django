@@ -4,7 +4,7 @@ from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
-from homework_app.models import Homework,QuestionAnswerPair
+from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, HomeworkResult, School, Assignment
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import logging
 import re
@@ -13,7 +13,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework_simplejwt.tokens import Token
 from rest_framework import serializers
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from .models import CustomUser
 import jwt 
 from django.conf import settings
 
@@ -35,32 +36,31 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 def signup_user(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        username = data['username']
+        name = data['name']
+        surname = data['surname']
         password = data['password']
         email = data['email']
+        role = data['role']
 
-        # Check if the username is already taken
-        if User.objects.filter(username=username).exists():
-            return JsonResponse({'error': 'Username is already taken.'}, status=400)
-
-        if User.objects.filter(email=email).exists():
+        if CustomUser.objects.filter(email=email).exists():
             return JsonResponse({'error': 'Email is already taken.'}, status=400)
 
         # Create a new user
-        user = User.objects.create_user(username=username, email=email, password=password)
+        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, password=password, role=role)
 
         # Generate JWT token
         payload = {
-            'username': user.username,
+            'name': user.first_name,
+            'surname': user.last_name,
             'email': user.email,
-            # Add other user-related data if needed
+            'role' : user.role
         }
         token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
 
         # Log the user in
         login(request, user)
 
-        return JsonResponse({'success': True, 'user': username, 'token': token, 'admin': user.is_staff}, status=200)
+        return JsonResponse({'success': True, 'user': name, 'token': token, 'role': user.role}, status=200)
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
@@ -68,21 +68,22 @@ def signup_user(request):
 def login_user(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        username = data['username']
+        email = data['email']
         password = data['password']
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         
         if user is not None:
             payload = {
-            'username': user.username,
+            'name': user.first_name,
+            'surname': user.last_name,
             'email': user.email,
-            'admin': user.is_staff
+            'role' : user.role
             #"exp": datetime.utcnow() + timedelta(hours=1)
         } 
             token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
             login(request, user)
-            return JsonResponse({'success': True, 'token': token, 'admin': user.is_staff}, status=200)
+            return JsonResponse({'success': True, 'token': token, 'role': user.role}, status=200)
         else:
             return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
     else:
@@ -93,7 +94,7 @@ def home(request):
     return HttpResponse("Hello, Django!")
 
 @csrf_exempt
-def handle_homework_submission(request):
+def handle_homework(request):
     if request.method == 'POST':
         homework_name = request.POST.get('homeworkName')
         
@@ -117,6 +118,121 @@ def handle_homework_submission(request):
     else:
         return JsonResponse({'success' : False,'error': 'Invalid request method'})
 
+#TODO:
+def handle_homework_id(request, pk):
+    if request.method=="POST":
+        return 
+
+def handle_classes(request):
+    if request.method=="POST":
+        title = request.POST.get("title")
+        classs = Class.object.create(title=title)
+        return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
+    elif request.method == 'GET':
+        try:
+            classes = Class.objects.all().values('id', 'title')
+            classes_list = list(classes)
+            return JsonResponse(classes_list, safe=False, status=200)
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+    else:
+        return JsonResponse({'error': 'Method not allowed.'}, status=405)
+
+def handle_classes(request):
+    if request.method=="POST":
+        title = request.POST.get("title")
+        classs = Class.object.create(title=title)
+        return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
+    elif request.method == 'GET':
+        try:
+            classes = Class.objects.all().values('id', 'title')
+            classes_list = list(classes)
+            return JsonResponse(classes_list, safe=False, status=200)
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+    else:
+        return JsonResponse({'error': 'Method not allowed.'}, status=405)      
+
+def handle_classes_id(request, pk):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+
+    if request.method == 'GET':
+        try:
+            classs = Class.objects.get(pk=pk)
+        except Class.DoesNotExist:
+            return HttpResponseNotFound("Class not found")
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+
+        data = {
+            'title': classs.title
+        }
+        return JsonResponse(data, status=200)
+
+    elif request.method == 'DELETE':
+        if(role==2 or role==3):
+            try:
+                classs = Class.objects.get(pk=pk)
+            except Class.DoesNotExist:
+                return HttpResponseNotFound("Class not found")
+            except json.JSONDecodeError:
+                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+        else:
+            return JsonResponse({'success': False, 'error': 'Unauthorized access to delete classs'}, status=403)         
+
+        classs.delete()
+        return HttpResponse(status=204)
+
+    elif request.method == 'PUT':
+        if(role==2 or role==3):
+            try:
+                classs = Class.objects.get(pk=pk)
+            except Class.DoesNotExist:
+                return HttpResponseNotFound("Class not found")
+
+            try:
+                data = json.loads(request.body.decode('utf-8'))
+            except json.JSONDecodeError:
+                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+
+            new_title = data.get("title")
+
+            if not new_title:
+                return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
+
+            classs.title = new_title
+
+            try:
+                classs.save()
+                return JsonResponse({'success': True, "id" : classs.pk}, status=200)
+            except Exception as e:
+                return JsonResponse({'success': False, 'error': str(e)}, status=500)
+        else:
+            return JsonResponse({'success': False, 'error': 'Unauthorized access to update classs'}, status=403)   
+    else:
+        return JsonResponse({'error': 'Method not allowed.'}, status=405)            
+
+def handle_students(request,cid):
+    if request.method == 'GET':
+        students_in_class = CustomUser.objects.filter(studentclass__classs_id=cid)
+        students_data = [
+            {'name': student.first_name, 'surname': student.last_name}
+            for student in students_in_class
+        ]
+        return JsonResponse({'students': students_data})
+        
 
 # def get_cat_id(request,type):
 #     category=Category.objects.get(type=type)

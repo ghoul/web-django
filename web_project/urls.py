@@ -31,7 +31,11 @@ urlpatterns = [
     path('login/',views.login_user, name='login_user'),
     path('signup/',views.signup_user, name='signup_user'),
 
-    path('submit_homework/', views.handle_homework_submission, name='submit_homework'),
+    path('handle_homework/', views.handle_homework, name='handle_homework'),
+    path('handle_homework/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
+
+    path('handle_classes/', views.handle_classes, name='handle_classes'),
+    path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
 
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),

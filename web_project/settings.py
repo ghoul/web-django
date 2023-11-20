@@ -163,6 +163,8 @@ LOGGING = {
 
 # AUTH_USER_MODEL = 'yoyo_app.UserProfile'
 
+AUTH_USER_MODEL = 'homework_app.CustomUser'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

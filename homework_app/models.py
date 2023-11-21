@@ -4,16 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
-class Homework(models.Model):
-    name = models.CharField(max_length=255)
-    date = models.DateField()
-
-class QuestionAnswerPair(models.Model):
-    homework = models.ForeignKey(Homework, related_name='pairs', on_delete=models.CASCADE)
-    question = models.CharField(max_length=255)
-    answer = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
-    points = models.IntegerField()
 
 class School(models.Model):
     title = models.CharField(max_length=100) 
@@ -21,6 +11,18 @@ class School(models.Model):
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
     role = models.IntegerField()
+
+class Homework(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    teacher = models.ForeignKey(CustomUser, related_name='homework', on_delete=models.CASCADE)
+
+class QuestionAnswerPair(models.Model):
+    homework = models.ForeignKey(Homework, related_name='pairs', on_delete=models.CASCADE)
+    question = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
+    points = models.IntegerField()
 
 class Class(models.Model):
     title = models.CharField(max_length=100)
@@ -36,12 +38,20 @@ class StudentClass(models.Model):
     student = models.ForeignKey(CustomUser,related_name='student', on_delete=models.CASCADE)
     classs = models.ForeignKey(Class,related_name='classs', on_delete=models.CASCADE)
 
+class StudentTeacher(models.Model):
+    student = models.ForeignKey(CustomUser,related_name='student_t', on_delete=models.CASCADE)  
+    teacher = models.ForeignKey(CustomUser,related_name='teacher_s', on_delete=models.CASCADE)
+
 class HomeworkResult(models.Model):
     student = models.ForeignKey(CustomUser, related_name='results', on_delete=models.CASCADE)
     homework = models.ForeignKey(Homework, related_name='homework', on_delete=models.CASCADE)
     date = models.DateTimeField()
     points = models.IntegerField()
     time = models.TimeField()
+
+class StudentTeacherConfirm(models.Model):
+    student = models.ForeignKey(CustomUser,related_name='student_c', on_delete=models.CASCADE)  
+    teacher = models.ForeignKey(CustomUser,related_name='teacher_c', on_delete=models.CASCADE)    
 
 # class Category(models.Model):
 #     type = models.CharField(max_length=20)

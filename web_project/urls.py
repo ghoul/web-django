@@ -32,13 +32,16 @@ urlpatterns = [
     path('signup/',views.signup_user, name='signup_user'),
 
     path('handle_homework/', views.handle_homework, name='handle_homework'),
-    path('handle_homework/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
+    path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
 
     path('handle_classes/', views.handle_classes, name='handle_classes'),
     path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
 
     path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
 
+    path('handle_teacher_class/<int:cid>/', views.handle_teacher_class, name='handle_teacher_class'),
+    path('get_classes_by_teacher/', views.get_classes_by_teacher, name='get_classes_by_teacher'),
+    path('handle_assign_homework/', views.handle_assign_homework, name='handle_assign_homework'),
 
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),

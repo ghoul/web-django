@@ -4,7 +4,7 @@ from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
-from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, HomeworkResult, School, Assignment
+from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, School, Assignment,StudentTeacher,StudentTeacherConfirm
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import logging
 import re
@@ -17,6 +17,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import CustomUser
 import jwt 
 from django.conf import settings
+from django.db.models import Q
+from datetime import date, time
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +44,7 @@ def signup_user(request):
         email = data['email']
         role = data['role']
 
-        if CustomUser.objects.filter(email=email).exists():
+        if CustomUser.objects.get(email=email).exists():
             return JsonResponse({'error': 'Email is already taken.'}, status=400)
 
         # Create a new user
@@ -92,6 +94,141 @@ def login_user(request):
 
 def home(request):
     return HttpResponse("Hello, Django!")
+@csrf_exempt
+def get_assignment_statistics(request,pk):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+    assignment = Assignment.objects.get(pk=pk)
+    assingment_title = assignment.homework.title
+    print("title: " + str(assingment_title))
+    #pagal assignment rast klase ir mokinius visus
+    #tada tikrint kiekviena ar jau atliko ta assignment pagal AssignemtResult ir is ten paimt info 
+    if request.method == 'GET':
+        classs = assignment.classs
+        students_in_class = classs.classs.all()
+        results = AssignmentResult.objects.filter(assignment=assignment)
+        students_data = []
+
+        for student in students_in_class:
+        # Filter AssignmentResult for the current student and assignment
+            student_results = results.filter(student=student.student)
+
+            # Initialize empty values for date, time, points
+            date = ''
+            time = ''
+            points = ''
+            status = 'bad'
+
+            # If there are results for this student, extract the date, time, and sum of points
+            #TODO: status medium jei ne visus klausimus atasake
+            if student_results.exists():
+                status = 'good'
+                # Extracting the date and time from the first result (assuming all results have the same date and time for a student)
+                date = student_results.first().date.strftime('%Y-%m-%d')  # Format the date as needed
+                time = student_results.first().time.strftime('%H:%M:%S')  # Format the time as needed
+
+                # Calculate total points for the student
+                points = student_results.first().points
+
+            students_data.append({
+                'id': student.student.pk,
+                'name': student.student.first_name,
+                'surname': student.student.last_name,
+                'date': date,
+                'time': time,
+                'points': points,
+                'status': status,  # Add status logic if needed
+            })
+        print("return")
+        return JsonResponse({'students': students_data, 'title': assingment_title}) 
+
+
+@csrf_exempt
+def handle_assignments_teacher(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+
+    if request.method == 'GET':
+        today = date.today()  
+        active_assignments = Assignment.objects.filter(
+        classs__teacher=teacher,  # Filter by teacher ID
+        from_date__lte=today,  # From date less than or equal to today
+        to_date__gte=today,  # To date greater than or equal to today
+    )
+
+    #TODO:paskaiciuot statusa pagal tai kiek mokiniu jau atliko testa
+        assignment_data = [
+                {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
+                for hw in active_assignments
+            ]
+        return JsonResponse({'data': assignment_data}) 
+
+    elif request.method == 'DELETE':
+        data = json.loads(request.body)
+        id = data['id']
+        assignment = Assignment.objects.get(pk=id)
+        assignment.delete()
+        return JsonResponse({'success': True}) 
+
+            
+
+@csrf_exempt
+def handle_assignments_teacher_finished(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+
+    if request.method == 'GET':
+        today = date.today()  
+        active_assignments = Assignment.objects.filter(
+        classs__teacher=teacher,  # Filter by teacher ID
+        to_date__lte=today,
+    )
+
+    #TODO:paskaiciuot statusa pagal tai kiek mokiniu jau atliko testa
+        assignment_data = [
+                {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
+                for hw in active_assignments
+            ]
+        return JsonResponse({'data': assignment_data}) 
 
 @csrf_exempt
 def handle_homework(request):
@@ -119,7 +256,9 @@ def handle_homework(request):
             ]
         return JsonResponse({'homework': homework_data}) 
     elif request.method == 'POST':
-        homework_name = request.POST.get('homeworkName')
+        data = json.loads(request.body)
+        homework_name = data['homeworkName']
+        # homework_name = request.POST.get('homeworkName')
         date = datetime.now().date()
 
         # Create a new homework object
@@ -166,29 +305,43 @@ def handle_homework_id(request, pk):
 
         # Update homework fields based on the request data
         print("hw name: " + str(homework.title))
-        homework_name = request.POST.get('homeworkName')
+
+        data = json.loads(request.body)
+        homework_name = data['homeworkName']
+        # homework_name = request.POST.get('homeworkName')
         if homework_name:
             homework.title = homework_name
+            print("homework_name: " + str(homework_name))
             homework.save()
         else:
             return JsonResponse({'message': 'Homework name is required'}, status=400)
 
-        # Update or create question-answer pairs based on the request data
-        for i in range(len(request.POST.getlist('pairs[0][question]'))):
-            question = request.POST.getlist(f'pairs[{i}][question]')[0]
-            answer = request.POST.getlist(f'pairs[{i}][answer]')[0]
-            image = request.FILES.getlist(f'pairs[{i}][image]')[0] if request.FILES.getlist(f'pairs[{i}][image]') else None
-            points = request.POST.getlist(f'pairs[{i}][points]')[0]
+        received_pairs = data.get('pairs', [])
+        existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
+        
+        # Extract IDs from received pairs
+        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('id'))
+        
+        # Check and delete pairs that are missing from received data
+        for existing_pair in existing_pairs:
+            if existing_pair.id not in received_pair_ids:
+                existing_pair.delete()
 
-            # Check if the pair exists and update it, otherwise create a new one
+        for index, pair in enumerate(received_pairs):
+            question = pair.get('question')
+            answer = pair.get('answer')
+            image = pair.get('image')  # If image is included in the data
+            points = pair.get('points')
             try:
-                pair = QuestionAnswerPair.objects.get(homework=homework, id=i + 1)
+                print(index)
+                pair = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('id'))
                 pair.question = question
                 pair.answer = answer
                 pair.image = image
                 pair.points = points
                 pair.save()
             except QuestionAnswerPair.DoesNotExist:
+                print("naujas question")
                 pair = QuestionAnswerPair.objects.create(
                     homework=homework,
                     question=question,
@@ -207,7 +360,7 @@ def handle_homework_id(request, pk):
     elif request.method=="GET":
         try:
             homework = Homework.objects.get(pk=pk)
-            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('question', 'answer', 'points')           
+            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
             homework_data = {
                 'title': homework.title,
                 'pairs': list(pairs)
@@ -240,8 +393,21 @@ def handle_assign_homework(request):
         fromDate = data.get("fromDate")
         toDate = data.get("toDate")
 
+   
+
         classs = Class.objects.get(pk=classs_id)
         homework = Homework.objects.get(pk=homework_id)
+
+        # existing_assignment = Assignment.objects.filter(
+        #     classs=classs,
+        #     homework=homework,
+        #     Q(from_date__lte=datetime.strptime(toDate, '%Y-%m-%d').date()) &
+        #     Q(to_date__gte=datetime.strptime(fromDate, '%Y-%m-%d').date())
+        # )
+
+        # if existing_assignment.exists():
+        #     return JsonResponse({'success': False, 'message': 'Homework already assigned to this class'}, status=400)
+
         assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
         assignment.save()
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
@@ -279,6 +445,251 @@ def get_classes_by_teacher(request):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
+#mokytojo studentai, mokytojas patvirtina,atmeta studenta
+@csrf_exempt
+def handle_teacher_students(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+    if request.method=='GET':
+        students_of_teacher = StudentTeacher.objects.filter(teacher=teacher)
+        student_ids = students_of_teacher.values_list('student_id', flat=True)
+        students = CustomUser.objects.filter(id__in=student_ids).order_by('first_name', 'last_name')
+
+        students_data = [
+            {
+                'id': student.id,
+                'name': student.first_name,
+                'surname': student.last_name,
+            }
+            for student in students
+        ]
+
+        return JsonResponse({'students': students_data})
+    elif request.method == 'POST':
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        if not student_id:
+            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
+
+        student = CustomUser.objects.filter(pk=student_id).first()
+        if not student:
+            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
+
+        teacher_student, created = StudentTeacher.objects.get_or_create(student=student, teacher=teacher)
+        deleteConfirm = StudentTeacherConfirm.objects.get(student=student, teacher=teacher)
+        deleteConfirm.delete()
+        if created:
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'error': 'Relationship already exists'}, status=400)
+
+    elif request.method == 'DELETE':
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        if not student_id:
+            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
+
+        student = CustomUser.objects.filter(pk=student_id).first()
+        if not student:
+            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
+
+        teacher_student = StudentTeacherConfirm.objects.filter(student=student, teacher=teacher).first()
+        if not teacher_student:
+            return JsonResponse({'success': False, 'error': 'Relationship not found'}, status=404)
+
+        teacher_student.delete()
+        return JsonResponse({'success': True})
+
+    else:
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+#return teachers by school
+@csrf_exempt
+def handle_teachers(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    student = CustomUser.objects.get(email=email)
+    if not student:
+        return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
+    school = student.school
+    if request.method=='GET':
+        teachers = CustomUser.objects.filter(
+        role="2",  # Assuming "2" is the role for teachers
+        school=school
+        ).exclude(
+            teacher_s__student=student  # Exclude teachers connected via StudentTeacher
+        ).exclude(
+            teacher_c__student=student  # Exclude teachers connected via StudentTeacherConfirm
+        ).distinct()
+
+        teachers_data = [
+        {
+            'id': teacher.id,
+            'name': teacher.first_name,
+            'surname': teacher.last_name,
+        }
+        for teacher in teachers]
+
+        return JsonResponse({'success': True, 'teachers': teachers_data})
+
+    return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)   
+
+@csrf_exempt
+def get_not_confirmed_students(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+    if request.method=='GET':
+        students_of_teacher = StudentTeacherConfirm.objects.filter(teacher=teacher)
+        student_ids = students_of_teacher.values_list('student_id', flat=True)
+        students = CustomUser.objects.filter(id__in=student_ids)
+
+        students_data = [
+            {
+                'id': student.id,
+                'name': student.first_name,
+                'surname': student.last_name,
+            }
+            for student in students
+        ]
+
+        return JsonResponse({'students': students_data})
+#studento mokytojai, student pasirenka mokytoja, pasalina?(admin jau)
+@csrf_exempt
+def handle_student_teachers(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    student = CustomUser.objects.get(email=email)
+    if request.method=='GET':
+        teachers_of_student = StudentTeacher.objects.filter(student=student)
+        teacher_ids = teachers_of_student.values_list('teacher_id', flat=True)
+        teachers = CustomUser.objects.filter(id__in=teacher_ids)
+
+        teachers_data = [
+            {
+                'id': teacher.id,
+                'name': teacher.first_name,
+                'surname': teacher.last_name,
+            }
+            for teacher in teachers
+        ]
+
+        return JsonResponse({'teachers': teachers_data})
+    elif request.method == 'POST':
+        data = json.loads(request.body)
+        teacher_id = data['teacher_id']
+        if not teacher_id:
+            return JsonResponse({'success': False, 'error': 'teacher ID is required'}, status=400)
+
+        teacher = CustomUser.objects.get(pk=teacher_id)
+        if not teacher:
+            return JsonResponse({'success': False, 'error': 'teacher not found'}, status=404)
+
+        student_teacher, created = StudentTeacherConfirm.objects.get_or_create(teacher=teacher, student=student)
+        if created:
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'error': 'Relationship already exists'}, status=400)
+    elif request.method == 'DELETE':
+        data = json.loads(request.body)
+        teacher_id = data['teacher_id']
+        if not teacher_id:
+            return JsonResponse({'success': False, 'error': 'teacher ID is required'}, status=400)
+
+        teacher = CustomUser.objects.get(pk=teacher_id)
+        if not teacher:
+            return JsonResponse({'success': False, 'error': 'teacher not found'}, status=404)
+
+        student_teacher = StudentTeacherConfirm.objects.get(teacher=teacher, student=student)
+        student_teacher.delete()
+        return JsonResponse({'success': True})
+
+    else:
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+@csrf_exempt
+def get_not_confirmed_teachers(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    student = CustomUser.objects.get(email=email)
+    if request.method=='GET':
+        teachers_of_student = StudentTeacherConfirm.objects.filter(student=student)
+        teacher_ids = teachers_of_student.values_list('teacher_id', flat=True)
+        teachers = CustomUser.objects.filter(id__in=teacher_ids)
+
+        teachers_data = [
+            {
+                'id': teacher.id,
+                'name': teacher.first_name,
+                'surname': teacher.last_name,
+            }
+            for teacher in teachers
+        ]
+        return JsonResponse({'teachers': teachers_data})
+    else:
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
 
 @csrf_exempt
 def handle_classes(request):
@@ -296,7 +707,7 @@ def handle_classes(request):
     # Check if the user is an admin
     role = payload.get('role')
     email = payload.get('email')
-    teacher = CustomUser.objects.filter(email=email)
+    teacher = CustomUser.objects.get(email=email)
     if request.method=="POST":
         #if(role=="2" or role=="3"):
         data = json.loads(request.body.decode('utf-8'))
@@ -306,6 +717,7 @@ def handle_classes(request):
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
     elif request.method == 'GET':
         try:
+            #TODO: tik mokytojo klasės
             classes = Class.objects.all().values('id', 'title')
             classes_list = list(classes)
             return JsonResponse(classes_list, safe=False, status=200)
@@ -428,6 +840,43 @@ def handle_teacher_class(request, cid):
         studentclass.save()
         return  JsonResponse({'success': True})
                      
+@csrf_exempt
+def handle_students(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    teacher = CustomUser.objects.get(email=email)
+    if request.method == 'DELETE':
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        # student_id = request.POST.get('student_id')
+        if not student_id:
+            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
+
+        student = CustomUser.objects.filter(pk=student_id).first()
+        if not student:
+            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
+
+        teacher_student = StudentTeacher.objects.filter(student=student, teacher=teacher).first()
+        if not teacher_student:
+            return JsonResponse({'success': False, 'error': 'Relationship not found'}, status=404)
+
+        teacher_student.delete()
+        return JsonResponse({'success': True})
+
+    else:
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
 @csrf_exempt
 def handle_students_class(request,sid,cid):

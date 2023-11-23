@@ -42,9 +42,9 @@ class StudentTeacher(models.Model):
     student = models.ForeignKey(CustomUser,related_name='student_t', on_delete=models.CASCADE)  
     teacher = models.ForeignKey(CustomUser,related_name='teacher_s', on_delete=models.CASCADE)
 
-class HomeworkResult(models.Model):
+class AssignmentResult(models.Model):
     student = models.ForeignKey(CustomUser, related_name='results', on_delete=models.CASCADE)
-    homework = models.ForeignKey(Homework, related_name='homework', on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, related_name='assignment', on_delete=models.CASCADE)
     date = models.DateTimeField()
     points = models.IntegerField()
     time = models.TimeField()

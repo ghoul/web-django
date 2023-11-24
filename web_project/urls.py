@@ -51,6 +51,11 @@ urlpatterns = [
     path('get_assignment_statistics/<int:pk>/',views.get_assignment_statistics, name='get_assignment_statistics'),
     path('handle_assignments_teacher/',views.handle_assignments_teacher, name='handle_assignments_teacher'),
     path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
+    path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
+    path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
+    path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
+    path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
+    path('post_answer/',views.post_answer, name='post_answer'),
 
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),

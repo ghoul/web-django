@@ -1,10 +1,11 @@
+from ast import Assign
 from datetime import datetime
 import json
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
-from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, School, Assignment,StudentTeacher,StudentTeacherConfirm
+from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, School, Assignment,StudentTeacher,StudentTeacherConfirm,QuestionAnswerPairResult
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import logging
 import re
@@ -110,7 +111,7 @@ def get_assignment_statistics(request,pk):
     # Check if the user is an admin
     role = payload.get('role')
     email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
+    user = CustomUser.objects.get(email=email)
     assignment = Assignment.objects.get(pk=pk)
     assingment_title = assignment.homework.title
     print("title: " + str(assingment_title))
@@ -153,7 +154,7 @@ def get_assignment_statistics(request,pk):
                 'status': status,  # Add status logic if needed
             })
         print("return")
-        return JsonResponse({'students': students_data, 'title': assingment_title}) 
+        return JsonResponse({'students': students_data, 'title': assingment_title, 'id' : user.id}) 
 
 
 @csrf_exempt
@@ -229,6 +230,92 @@ def handle_assignments_teacher_finished(request):
                 for hw in active_assignments
             ]
         return JsonResponse({'data': assignment_data}) 
+
+@csrf_exempt
+def handle_assignments_student(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    student = CustomUser.objects.get(email=email)
+
+    if request.method == 'GET':
+        # Get classes associated with the student
+        student_classes = Class.objects.filter(classs__student=student)
+
+        # Get active assignments for each class
+        today = date.today()
+        active_assignments = Assignment.objects.filter(
+            classs__in=student_classes,  # Filter by classes associated with the student
+            from_date__lte=today,  # From date less than or equal to today
+            to_date__gte=today  # To date greater than or equal to today
+        )
+        assignment_data = [
+        {
+            'id': assignment.id,
+            'title': assignment.homework.title,
+            'fromDate': assignment.from_date,
+            'toDate': assignment.to_date,
+            'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        }
+        for assignment in active_assignments
+        ]
+
+        return JsonResponse({'data': assignment_data})
+
+            
+
+@csrf_exempt
+def handle_assignments_student_finished(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    # Check if the user is an admin
+    role = payload.get('role')
+    email = payload.get('email')
+    student = CustomUser.objects.get(email=email)
+
+    if request.method == 'GET':
+        # Get classes associated with the student
+        student_classes = Class.objects.filter(classs__student=student)
+
+        # Get active assignments for each class
+        today = date.today()
+        active_assignments = Assignment.objects.filter(
+            classs__in=student_classes,  # Filter by classes associated with the student
+            to_date__lte=today,
+        )
+        assignment_data = [
+        {
+            'id': assignment.id,
+            'title': assignment.homework.title,
+            'fromDate': assignment.from_date,
+            'toDate': assignment.to_date,
+            'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        }
+        for assignment in active_assignments
+        ]
+
+        return JsonResponse({'data': assignment_data})
+
 
 @csrf_exempt
 def handle_homework(request):
@@ -911,7 +998,84 @@ def handle_students_class(request,sid,cid):
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
        
-        
+@csrf_exempt
+def post_answer(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        assignment_id = data['assignment_id']
+        question_id = data['question_id']
+        answer = data['answer']
+        points = data['points']
+
+        question = QuestionAnswerPair.objects.get(pk=question_id)
+        assignment = Assignment.objects.get(pk=assignment_id)
+        student = CustomUser.objects.get(pk=student_id)
+
+
+        pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=answer, points=points)
+        return JsonResponse({'success': True, 'id': pairResult.pk})
+
+@csrf_exempt
+def handle_students_assignment_results(request,aid):
+    if request.method == 'GET':
+        assignment = Assignment.objects.get(pk=aid)
+        assignmentResults = AssignmentResult.objects.filter(assignment=assignment)
+
+        students_data = [
+            {'id' : result.pk, 'name': result.student.first_name, 'surname': result.student.last_name, 'date' : result.date, 'time': result.time, 'points':result.points}
+            for result in assignmentResults
+        ]
+      
+        return JsonResponse({'success': True, 'results': students_data}) 
+    #TODO: IS ZAIDIMO KREIPIASI I SITA PASIBAIGUS UZDUOTIM
+    elif request.method == 'POST':
+        assignment = Assignment.objects.get(pk=aid)
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        student = CustomUser.objects.get(pk=student_id)
+        date = data['date']
+        time = data['time']
+        points = data['points']
+
+        result = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, time=time, points=points)
+      
+        return JsonResponse({'success': True, 'result': result})       
+
+@csrf_exempt
+def get_one_student_answers(request,aid,sid):
+    if request.method == 'GET':
+        question_answer_pairs = QuestionAnswerPair.objects.filter(homework__assignment__id=aid)
+
+        # Retrieve QuestionAnswerPairResult objects for a given assignment and student
+        question_answer_results = QuestionAnswerPairResult.objects.filter(
+            assignment__id=aid, student__id=sid
+        )
+        title = Assignment.objects.get(pk=aid).homework.title
+        pairs_dict = {}
+        results_list = []
+
+        for pair in question_answer_pairs:
+            pairs_dict[pair.question] = {
+                'question': pair.question,
+                'answer': pair.answer
+            }
+
+        # Create a list of student answers aligned with their respective questions
+        for result in question_answer_results:
+            question_id = result.question.question
+            if question_id in pairs_dict:
+                question_answer = pairs_dict[question_id]
+                results_list.append({
+                    'question': question_answer['question'],
+                    'answer': question_answer['answer'],
+                    'student_answer': result.answer,
+                    'points' : result.points
+                })
+
+     
+        return JsonResponse({'success': True, 'results': results_list, 'title' : title})      
+
 
 # def get_cat_id(request,type):
 #     category=Category.objects.get(type=type)

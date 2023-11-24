@@ -17,13 +17,6 @@ class Homework(models.Model):
     date = models.DateField()
     teacher = models.ForeignKey(CustomUser, related_name='homework', on_delete=models.CASCADE)
 
-class QuestionAnswerPair(models.Model):
-    homework = models.ForeignKey(Homework, related_name='pairs', on_delete=models.CASCADE)
-    question = models.CharField(max_length=255)
-    answer = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
-    points = models.IntegerField()
-
 class Class(models.Model):
     title = models.CharField(max_length=100)
     teacher = models.ForeignKey(CustomUser, related_name='classs', on_delete=models.CASCADE)
@@ -34,6 +27,27 @@ class Assignment(models.Model):
     from_date = models.DateField()
     to_date = models.DateField()
 
+class QuestionAnswerPair(models.Model):
+    homework = models.ForeignKey(Homework, related_name='pairs', on_delete=models.CASCADE)
+    question = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
+    points = models.IntegerField()
+
+class QuestionAnswerPairResult(models.Model):
+    question = models.ForeignKey(QuestionAnswerPair, related_name='pairResult', on_delete=models.CASCADE)
+    student = models.ForeignKey(CustomUser, related_name='questionResult', on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, related_name='assignmentPair', on_delete=models.CASCADE)
+    answer = models.CharField(max_length=255)
+    points = models.IntegerField()
+   
+class AssignmentResult(models.Model):
+    student = models.ForeignKey(CustomUser, related_name='results', on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, related_name='assignment', on_delete=models.CASCADE)
+    date = models.DateTimeField()
+    points = models.IntegerField()
+    time = models.TimeField()
+
 class StudentClass(models.Model):
     student = models.ForeignKey(CustomUser,related_name='student', on_delete=models.CASCADE)
     classs = models.ForeignKey(Class,related_name='classs', on_delete=models.CASCADE)
@@ -41,13 +55,6 @@ class StudentClass(models.Model):
 class StudentTeacher(models.Model):
     student = models.ForeignKey(CustomUser,related_name='student_t', on_delete=models.CASCADE)  
     teacher = models.ForeignKey(CustomUser,related_name='teacher_s', on_delete=models.CASCADE)
-
-class AssignmentResult(models.Model):
-    student = models.ForeignKey(CustomUser, related_name='results', on_delete=models.CASCADE)
-    assignment = models.ForeignKey(Assignment, related_name='assignment', on_delete=models.CASCADE)
-    date = models.DateTimeField()
-    points = models.IntegerField()
-    time = models.TimeField()
 
 class StudentTeacherConfirm(models.Model):
     student = models.ForeignKey(CustomUser,related_name='student_c', on_delete=models.CASCADE)  

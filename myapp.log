@@ -11654,3 +11654,1311 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_classes/ HTTP/1.1" 500 84402
+"GET /handle_classes/ HTTP/1.1" 500 84402
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"GET /handle_homework/ HTTP/1.1" 500 84426
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"GET /handle_homework/ HTTP/1.1" 500 84426
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_classes/ HTTP/1.1" 500 84402
+"GET /handle_classes/ HTTP/1.1" 500 84402
+"OPTIONS /handle_teacher_students/ HTTP/1.1" 200 0
+"OPTIONS /handle_teacher_students/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_students/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_students/ HTTP/1.1" 200 0
+Internal Server Error: /handle_teacher_students/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 552, in handle_teacher_students
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_teacher_students/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 552, in handle_teacher_students
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_not_confirmed_students/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 665, in get_not_confirmed_students
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_not_confirmed_students/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 665, in get_not_confirmed_students
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_teacher_students/ HTTP/1.1" 500 20747
+"GET /handle_teacher_students/ HTTP/1.1" 500 20747
+"GET /get_not_confirmed_students/ HTTP/1.1" 500 20765
+"GET /get_not_confirmed_students/ HTTP/1.1" 500 20765
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_classes/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 797, in handle_classes
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_classes/ HTTP/1.1" 500 84402
+"GET /handle_classes/ HTTP/1.1" 500 84402
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"GET /handle_homework/ HTTP/1.1" 500 84426
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 176, in handle_assignments_teacher
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 84605
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 250, in handle_assignments_student
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+"GET /handle_assignments_student/ HTTP/1.1" 500 84561
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+Internal Server Error: /handle_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 623, in handle_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 623, in handle_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_not_confirmed_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 762, in get_not_confirmed_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_not_confirmed_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 762, in get_not_confirmed_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_student_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 698, in handle_student_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_student_teachers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 698, in handle_student_teachers
+    student = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 500 20765
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 500 20765
+"GET /handle_teachers/ HTTP/1.1" 500 20699
+"GET /handle_teachers/ HTTP/1.1" 500 20699
+"GET /handle_student_teachers/ HTTP/1.1" 500 20747
+"GET /handle_student_teachers/ HTTP/1.1" 500 20747
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84426
+"GET /handle_homework/ HTTP/1.1" 500 84426
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /handle_homework/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 336, in handle_homework
+    teacher = CustomUser.objects.get(email=email)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"GET /handle_homework/ HTTP/1.1" 500 84446
+"GET /handle_homework/ HTTP/1.1" 500 84446
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+"OPTIONS /signup/ HTTP/1.1" 200 0
+"OPTIONS /signup/ HTTP/1.1" 200 0
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84234
+"POST /signup/ HTTP/1.1" 500 84234
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84234
+"POST /signup/ HTTP/1.1" 500 84234
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 48, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84234
+"POST /signup/ HTTP/1.1" 500 84234
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84178
+"POST /signup/ HTTP/1.1" 500 84178
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84186
+"POST /signup/ HTTP/1.1" 500 84186
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 50, in signup_user
+    if CustomUser.objects.get(email=email).exists():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /signup/ HTTP/1.1" 500 84186
+"POST /signup/ HTTP/1.1" 500 84186
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /signup/ HTTP/1.1" 200 260
+"POST /signup/ HTTP/1.1" 200 260
+"GET /handle_homework/ HTTP/1.1" 200 16
+"GET /handle_homework/ HTTP/1.1" 200 16
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework/ HTTP/1.1" 200 81
+Not Found: /user_data
+Not Found: /user_data
+"GET /user_data HTTP/1.1" 404 6142
+"GET /user_data HTTP/1.1" 404 6142
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+Not Found: /user_data/
+Not Found: /user_data/
+"GET /user_data/ HTTP/1.1" 404 6145
+"GET /user_data/ HTTP/1.1" 404 6145
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /user_data/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 118, in user_data
+    'name': user.name,
+AttributeError: 'CustomUser' object has no attribute 'name'
+Internal Server Error: /user_data/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 118, in user_data
+    'name': user.name,
+AttributeError: 'CustomUser' object has no attribute 'name'
+"GET /user_data/ HTTP/1.1" 500 75621
+"GET /user_data/ HTTP/1.1" 500 75621
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+Internal Server Error: /user_data/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.user_data didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /user_data/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.user_data didn't return an HttpResponse object. It returned None instead.
+"PUT /user_data/ HTTP/1.1" 500 72033
+"PUT /user_data/ HTTP/1.1" 500 72033
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"GET /user_data/ HTTP/1.1" 200 93
+"PUT /user_data/ HTTP/1.1" 200 234
+"PUT /user_data/ HTTP/1.1" 200 234
+"PUT /user_data/ HTTP/1.1" 200 234
+"PUT /user_data/ HTTP/1.1" 200 234
+"PUT /user_data/ HTTP/1.1" 200 239
+"PUT /user_data/ HTTP/1.1" 200 239
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /change_password/ HTTP/1.1" 200 0
+"OPTIONS /change_password/ HTTP/1.1" 200 0
+"PUT /change_password/ HTTP/1.1" 200 26
+"PUT /change_password/ HTTP/1.1" 200 26
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"PUT /user_data/ HTTP/1.1" 200 239
+"PUT /user_data/ HTTP/1.1" 200 239
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"PUT /change_password/ HTTP/1.1" 200 26
+"PUT /change_password/ HTTP/1.1" 200 26
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+Bad Request: /change_password/
+Bad Request: /change_password/
+"PUT /change_password/ HTTP/1.1" 400 109
+"PUT /change_password/ HTTP/1.1" 400 109
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /change_password/ HTTP/1.1" 200 109
+"PUT /change_password/ HTTP/1.1" 200 109
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /change_password/ HTTP/1.1" 200 117
+"PUT /change_password/ HTTP/1.1" 200 117
+"PUT /change_password/ HTTP/1.1" 200 26
+"PUT /change_password/ HTTP/1.1" 200 26
+"PUT /change_password/ HTTP/1.1" 200 26
+"PUT /change_password/ HTTP/1.1" 200 26
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"GET /user_data/ HTTP/1.1" 200 97
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+"GET /handle_classes/ HTTP/1.1" 200 30
+"GET /handle_classes/ HTTP/1.1" 200 30
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework/ HTTP/1.1" 200 81
+"OPTIONS /handle_homework_id/25 HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/25 HTTP/1.1" 200 0
+"GET /handle_homework_id/25 HTTP/1.1" 301 0
+"GET /handle_homework_id/25 HTTP/1.1" 301 0
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"GET /handle_homework_id/25/ HTTP/1.1" 200 237
+"GET /handle_homework_id/25/ HTTP/1.1" 200 237
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework_id/25/ HTTP/1.1" 200 237
+"GET /handle_homework_id/25/ HTTP/1.1" 200 237
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_homework/ HTTP/1.1" 200 81
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12

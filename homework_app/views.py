@@ -45,9 +45,13 @@ def signup_user(request):
         email = data['email']
         role = data['role']
 
-        if CustomUser.objects.get(email=email).exists():
+        print(email)
+
+        existing_user = CustomUser.objects.filter(email=email).first()
+        if existing_user:
             return JsonResponse({'error': 'Email is already taken.'}, status=400)
 
+        print("po custom")
         # Create a new user
         user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, username=email, password=password, role=role)
 
@@ -73,7 +77,8 @@ def login_user(request):
         data = json.loads(request.body)
         email = data['email']
         password = data['password']
-
+        print(email)
+        print(password)
         user = authenticate(request, email=email, password=password)
         
         if user is not None:
@@ -91,6 +96,91 @@ def login_user(request):
             return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
+
+@csrf_exempt
+def user_data(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    email = payload.get('email')
+    user = CustomUser.objects.get(email=email)
+    if request.method == "GET":
+        user_data =[
+        {
+            'name': user.first_name,
+            'surname': user.last_name,
+            'email': user.email,
+        }
+        ]
+        return JsonResponse({'data': user_data})
+    elif request.method == "PUT":
+        data = json.loads(request.body)
+        new_name = data['name']
+        new_surname = data['surname']
+        new_email = data['email']
+
+        if not new_name or not new_surname or not new_email:
+            return JsonResponse({'success': False, 'error': 'Visi laukai privalomi'}, status=400)
+
+        user.first_name = new_name
+        user.last_name = new_surname
+        user.email = new_email
+
+        try:
+            user.save()
+            payload = {
+            'name': user.first_name,
+            'surname': user.last_name,
+            'email': user.email,
+            'role': user.role
+            }
+            token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')
+
+            return JsonResponse({'success': True, 'token': token, "id": user.pk}, status=200)
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+@csrf_exempt
+def change_password(request):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+    try:
+        # Verify and decode the token
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+    except jwt.InvalidTokenError:
+        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+
+    email = payload.get('email')
+    user = CustomUser.objects.get(email=email)
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        new_password = data['password']
+
+        if not new_password:
+            return JsonResponse({'success': False, 'error': 'Klaida! Visi laukai privalomi'}, status=400)
+
+
+        if not user.check_password(new_password):
+            user.set_password(new_password)
+        else:
+            return JsonResponse({'success': False, 'error': "Klaida! Naujas slaptažodis negali būti toks pats kaip senas slaptažodis"})    
+        
+        try:
+            user.save()
+            return JsonResponse({'success': True, "id": user.pk}, status=200)
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
 def home(request):

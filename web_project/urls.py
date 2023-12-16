@@ -57,6 +57,9 @@ urlpatterns = [
     path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     path('post_answer/',views.post_answer, name='post_answer'),
 
+    path('user_data/',views.user_data, name='user_data'),
+    path('change_password/',views.change_password, name='change_password'),
+
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),
 

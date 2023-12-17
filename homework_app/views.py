@@ -356,12 +356,25 @@ def handle_assignments_teacher_finished(request):
         to_date__lte=today,
     )
 
-        assignment_data = [
-                {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
-                for hw in active_assignments
-            ]
+        # assignment_data = [
+        #         {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
+        #         for hw in active_assignments
+        #     ]
+        assignment_data = []
 
+        for assignment in active_assignments:
+            status = get_assignment_status(assignment)
+            assignment_info = {
+                'id': assignment.pk,
+                'title': assignment.homework.title,
+                'fromDate': assignment.from_date,
+                'toDate': assignment.to_date,
+                'classs': assignment.classs.title,
+                'status': status
+            }
+            assignment_data.append(assignment_info)
         return JsonResponse({'data': assignment_data}) 
+
 
 
 

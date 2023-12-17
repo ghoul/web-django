@@ -185,6 +185,23 @@ def change_password(request):
 
 def home(request):
     return HttpResponse("Hello, Django!")
+
+
+def has_answered_all_questions(student, assignment):
+    assignment_questions_count = QuestionAnswerPair.objects.filter(homework=assignment.homework).count()
+    student_answers_count = QuestionAnswerPairResult.objects.filter(
+        question__homework=assignment.homework,
+        student=student,
+        assignment=assignment
+    ).count()
+    return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count
+
+def sort_students(student):
+    if student['points'] != '' and student['time'] != '':
+        return (-student['points'], student['time'])
+    else:
+        return (float('-inf'), float('-inf'))
+
 @csrf_exempt
 def get_assignment_statistics(request,pk):
     token = request.headers.get('Authorization')   
@@ -204,13 +221,13 @@ def get_assignment_statistics(request,pk):
     user = CustomUser.objects.get(email=email)
     assignment = Assignment.objects.get(pk=pk)
     assingment_title = assignment.homework.title
-    print("title: " + str(assingment_title))
     #pagal assignment rast klase ir mokinius visus
     #tada tikrint kiekviena ar jau atliko ta assignment pagal AssignemtResult ir is ten paimt info 
     if request.method == 'GET':
         classs = assignment.classs
         students_in_class = classs.classs.all()
         results = AssignmentResult.objects.filter(assignment=assignment)
+        
         students_data = []
 
         for student in students_in_class:
@@ -221,12 +238,14 @@ def get_assignment_statistics(request,pk):
             date = ''
             time = ''
             points = ''
-            status = 'bad'
+            status = 'Bad'
 
-            # If there are results for this student, extract the date, time, and sum of points
-            #TODO: status medium jei ne visus klausimus atasake
             if student_results.exists():
-                status = 'good'
+                answered_all, all_questions, student_result = has_answered_all_questions(student.student, assignment)
+                if answered_all:
+                    status = 'Good'
+                else: 
+                    status = 'Average'
                 # Extracting the date and time from the first result (assuming all results have the same date and time for a student)
                 date = student_results.first().date.strftime('%Y-%m-%d')  # Format the date as needed
                 time = student_results.first().time.strftime('%H:%M:%S')  # Format the time as needed
@@ -243,7 +262,8 @@ def get_assignment_statistics(request,pk):
                 'points': points,
                 'status': status,  # Add status logic if needed
             })
-        print("return")
+
+            students_data = sorted(students_data, key=sort_students)
         return JsonResponse({'students': students_data, 'title': assingment_title, 'id' : user.id}) 
 
 
@@ -269,15 +289,22 @@ def handle_assignments_teacher(request):
         today = date.today()  
         active_assignments = Assignment.objects.filter(
         classs__teacher=teacher,  # Filter by teacher ID
-        from_date__lte=today,  # From date less than or equal to today
+        # from_date__lte=today,  # From date less than or equal to today
         to_date__gte=today,  # To date greater than or equal to today
     )
+        assignment_data = []
 
-    #TODO:paskaiciuot statusa pagal tai kiek mokiniu jau atliko testa
-        assignment_data = [
-                {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
-                for hw in active_assignments
-            ]
+        for assignment in active_assignments:
+            status = get_assignment_status(assignment)
+            assignment_info = {
+                'id': assignment.pk,
+                'title': assignment.homework.title,
+                'fromDate': assignment.from_date,
+                'toDate': assignment.to_date,
+                'classs': assignment.classs.title,
+                'status': status
+            }
+            assignment_data.append(assignment_info)
         return JsonResponse({'data': assignment_data}) 
 
     elif request.method == 'DELETE':
@@ -287,7 +314,22 @@ def handle_assignments_teacher(request):
         assignment.delete()
         return JsonResponse({'success': True}) 
 
-            
+def get_completed_students_count(assignment):
+    assignment_results = AssignmentResult.objects.filter(assignment=assignment)
+    return assignment_results.values('student').distinct().count()
+
+def get_assignment_status(assignment):
+    completed_students_count = get_completed_students_count(assignment)
+    total_students_count = StudentClass.objects.filter(classs=assignment.classs).count()
+    if total_students_count == 0:
+        return 'Bad'
+    completion_percentage = (completed_students_count / total_students_count) * 100
+    if completion_percentage >= 75:
+        return 'Good'
+    elif completion_percentage >= 50:
+        return 'Average'
+    else:
+        return 'Bad'            
 
 @csrf_exempt
 def handle_assignments_teacher_finished(request):
@@ -314,12 +356,14 @@ def handle_assignments_teacher_finished(request):
         to_date__lte=today,
     )
 
-    #TODO:paskaiciuot statusa pagal tai kiek mokiniu jau atliko testa
         assignment_data = [
                 {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
                 for hw in active_assignments
             ]
+
         return JsonResponse({'data': assignment_data}) 
+
+
 
 @csrf_exempt
 def handle_assignments_student(request):
@@ -433,17 +477,16 @@ def handle_homework(request):
             ]
         return JsonResponse({'homework': homework_data}) 
     elif request.method == 'POST':
-        data = json.loads(request.body)
-        homework_name = data['homeworkName']
-        # homework_name = request.POST.get('homeworkName')
+        
+        #data = json.loads(request.body)
+        #homework_name = data['homeworkName']
+        homework_name = request.POST.get('homeworkName')
         date = datetime.now().date()
+        print("post homework: " + homework_name)
 
         # Create a new homework object
         homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
 
-        # Determine the number of pairs based on the 'pairs' prefix in the form data
-        # num_pairs = len([key for key in request.POST if key.startswith('pairs[')])
-        # num_pairs = int(num_pairs / 4)
         num_pairs = len(request.POST.getlist('pairs[0][question]'))
         print(num_pairs)
 
@@ -895,7 +938,8 @@ def handle_classes(request):
     elif request.method == 'GET':
         try:
             #TODO: tik mokytojo klasės
-            classes = Class.objects.all().values('id', 'title')
+            #classes = Class.objects.all().values('id', 'title')
+            classes = Class.objects.filter(teacher=teacher).values('id', 'title')
             classes_list = list(classes)
             return JsonResponse(classes_list, safe=False, status=200)
         except json.JSONDecodeError:
@@ -1135,6 +1179,8 @@ def handle_students_assignment_results(request,aid):
 @csrf_exempt
 def get_one_student_answers(request,aid,sid):
     if request.method == 'GET':
+        student = CustomUser.objects.get(pk=sid)
+        name = student.first_name + " " + student.last_name
         question_answer_pairs = QuestionAnswerPair.objects.filter(homework__assignment__id=aid)
 
         # Retrieve QuestionAnswerPairResult objects for a given assignment and student
@@ -1150,7 +1196,8 @@ def get_one_student_answers(request,aid,sid):
                 'question': pair.question,
                 'answer': pair.answer
             }
-
+        assignment = Assignment.objects.get(pk=aid)    
+        answered_all, all_questions, student_result = has_answered_all_questions(student, assignment)
         # Create a list of student answers aligned with their respective questions
         for result in question_answer_results:
             question_id = result.question.question
@@ -1164,7 +1211,7 @@ def get_one_student_answers(request,aid,sid):
                 })
 
      
-        return JsonResponse({'success': True, 'results': results_list, 'title' : title})      
+        return JsonResponse({'success': True, 'results': results_list, 'title' : title, 'name' : name, 'questions' : all_questions, 'answers' : student_result})      
 
 
 # def get_cat_id(request,type):

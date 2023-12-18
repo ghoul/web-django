@@ -11,6 +11,7 @@ class School(models.Model):
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
     role = models.IntegerField()
+    gender = models.IntegerField()
 
 class Homework(models.Model):
     title = models.CharField(max_length=255)

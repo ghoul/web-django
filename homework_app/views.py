@@ -44,23 +44,22 @@ def signup_user(request):
         password = data['password']
         email = data['email']
         role = data['role']
-
-        print(email)
+        gender = data['gender']
 
         existing_user = CustomUser.objects.filter(email=email).first()
         if existing_user:
             return JsonResponse({'error': 'Email is already taken.'}, status=400)
 
-        print("po custom")
         # Create a new user
-        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, username=email, password=password, role=role)
+        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, username=email, password=password, gender=gender,role=role)
 
         # Generate JWT token
         payload = {
             'name': user.first_name,
             'surname': user.last_name,
             'email': user.email,
-            'role' : user.role
+            'role' : user.role,
+            'gender' : user.gender
         }
         token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
 
@@ -86,7 +85,8 @@ def login_user(request):
             'name': user.first_name,
             'surname': user.last_name,
             'email': user.email,
-            'role' : user.role
+            'role' : user.role,
+            'gender' : user.gender
             #"exp": datetime.utcnow() + timedelta(hours=1)
         } 
             token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key

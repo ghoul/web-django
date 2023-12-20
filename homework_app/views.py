@@ -1144,24 +1144,50 @@ def handle_students_class(request,sid,cid):
             return HttpResponseNotFound("StudentClass not found")
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-       
+
+@csrf_exempt
+def get_questions(request,aid):
+     if request.method == 'GET':
+        homework_id = Assignment.objects.get(pk=aid).homework.pk
+        try:
+            homework = Homework.objects.get(pk=homework_id)
+            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
+            homework_data = {
+                'title': homework.title,
+                'pairs': list(pairs)
+            }
+            return JsonResponse({'success': True, 'homework': homework_data})
+        except Homework.DoesNotExist:
+            return JsonResponse({'message': 'Homework not found'}, status=404)
+
+
+
 @csrf_exempt
 def post_answer(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        student_id = data['student_id']
-        assignment_id = data['assignment_id']
-        question_id = data['question_id']
-        answer = data['answer']
-        points = data['points']
+        # data = json.loads(request.body)
+        # student_id = data['student_id']
+        # assignment_id = data['assignment_id']
+        # question_id = data['question_id']
+        # answer = data['answer']
+        # points = data['points']
+        assignment_id = request.POST.get('assignment_id', None)
+        question_id = request.POST.get('question_id', None)
+        player_answer = request.POST.get('answer', None)
+        student_id = request.POST.get('student_id', None)
+        points = request.POST.get('points', None)
 
-        question = QuestionAnswerPair.objects.get(pk=question_id)
-        assignment = Assignment.objects.get(pk=assignment_id)
-        student = CustomUser.objects.get(pk=student_id)
+        if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
+
+            question = QuestionAnswerPair.objects.get(pk=question_id)
+            assignment = Assignment.objects.get(pk=assignment_id)
+            student = CustomUser.objects.get(pk=student_id)
 
 
-        pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=answer, points=points)
-        return JsonResponse({'success': True, 'id': pairResult.pk})
+            pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+            return JsonResponse({'success': True, 'id': pairResult.pk})
+            
+        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
 
 @csrf_exempt
 def handle_students_assignment_results(request,aid):

@@ -15294,3 +15294,135 @@ Watching for file changes with StatReloader
 "GET /handle_assignments_student/ HTTP/1.1" 200 12
 "GET /handle_assignments_teacher/ HTTP/1.1" 200 294
 "GET /handle_assignments_teacher/ HTTP/1.1" 200 294
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+- Broken pipe from ('127.0.0.1', 50565)
+- Broken pipe from ('127.0.0.1', 50565)
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307

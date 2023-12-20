@@ -56,6 +56,7 @@ urlpatterns = [
     path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
     path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     path('post_answer/',views.post_answer, name='post_answer'),
+    path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
     path('user_data/',views.user_data, name='user_data'),
     path('change_password/',views.change_password, name='change_password'),

@@ -15426,3 +15426,567 @@ Watching for file changes with StatReloader
 "GET /get_questions/7 HTTP/1.1" 301 0
 "GET /get_questions/7/ HTTP/1.1" 200 307
 "GET /get_questions/7/ HTTP/1.1" 200 307
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7 HTTP/1.1" 301 0
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"GET /get_questions/7/ HTTP/1.1" 200 307
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+Internal Server Error: /post_summary/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1204, in post_summary
+    assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2546, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2541, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2525, in to_python
+    raise exceptions.ValidationError(
+django.core.exceptions.ValidationError: ['“10,46218” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format.']
+Internal Server Error: /post_summary/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1204, in post_summary
+    assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2546, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2541, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2525, in to_python
+    raise exceptions.ValidationError(
+django.core.exceptions.ValidationError: ['“10,46218” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format.']
+"POST /post_summary/ HTTP/1.1" 500 154545
+"POST /post_summary/ HTTP/1.1" 500 154545
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

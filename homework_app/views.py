@@ -1146,6 +1146,17 @@ def handle_students_class(request,sid,cid):
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
 
 @csrf_exempt
+def start_game(request,aid,sid):
+    unity_url = 'http://localhost:port/some-unity-endpoint'  # Replace port and endpoint with Unity's details
+    data_to_send = {'assignment_id': aid, 'student_id': sid}  # Data to send to Unity
+    response = request.post(unity_url, json=data_to_send)
+
+    if response.status_code == 200:
+        return HttpResponse('Request sent to Unity successfully.')
+    else:
+        return HttpResponse('Failed to send request to Unity.', status=response.status_code)
+
+@csrf_exempt
 def get_questions(request,aid):
      if request.method == 'GET':
         homework_id = Assignment.objects.get(pk=aid).homework.pk
@@ -1188,6 +1199,23 @@ def post_answer(request):
             return JsonResponse({'success': True, 'id': pairResult.pk})
             
         return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
+
+@csrf_exempt
+def post_summary(request):
+    assignment_id = request.POST.get('assignment_id', None)
+    time = request.POST.get('time', None) #TODO:float in seconds, convert to minutes or smth
+    student_id = request.POST.get('student_id', None)
+    points = request.POST.get('points', None)
+    date = datetime.now()
+
+    if assignment_id is not None and time is not None and student_id is not None and points is not None:
+        assignment = Assignment.objects.get(pk=assignment_id)
+        student = CustomUser.objects.get(pk=student_id)
+
+        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+        return JsonResponse({'success': True, 'id': assignmentResult.pk})
+        
+    return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
 
 @csrf_exempt
 def handle_students_assignment_results(request,aid):

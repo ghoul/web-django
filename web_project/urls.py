@@ -55,7 +55,10 @@ urlpatterns = [
     path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
     path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
     path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
+    
+    path('start_game/<int:aid>/<int:sid>/',views.start_game, name='start_game'),
     path('post_answer/',views.post_answer, name='post_answer'),
+    path('post_summary/',views.post_summary, name='post_summary'),
     path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
     path('user_data/',views.user_data, name='user_data'),

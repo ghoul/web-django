@@ -15990,3 +15990,579 @@ C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9/ HTTP/1.1" 200 137
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+- Broken pipe from ('127.0.0.1', 51291)
+- Broken pipe from ('127.0.0.1', 51291)
+- Broken pipe from ('127.0.0.1', 51284)
+- Broken pipe from ('127.0.0.1', 51284)
+"GET / HTTP/1.1" 200 14
+"GET / HTTP/1.1" 200 14
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6864
+"GET /favicon.ico HTTP/1.1" 404 6864
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 828
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 828
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 129
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 129
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 239
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 239
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 129
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 129
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 66
+"POST /login/ HTTP/1.1" 401 66
+"OPTIONS /signup/ HTTP/1.1" 200 0
+"OPTIONS /signup/ HTTP/1.1" 200 0
+"POST /signup/ HTTP/1.1" 200 263
+"POST /signup/ HTTP/1.1" 200 263
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"OPTIONS /start_game/ HTTP/1.1" 200 0
+"OPTIONS /start_game/ HTTP/1.1" 200 0
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 346
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /start_game/
+Internal Server Error: /start_game/
+"POST /start_game/ HTTP/1.1" 500 94
+"POST /start_game/ HTTP/1.1" 500 94
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /start_game/ HTTP/1.1" 200 40
+"POST /start_game/ HTTP/1.1" 200 40
+"POST /start_game/ HTTP/1.1" 200 40
+"POST /start_game/ HTTP/1.1" 200 40
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /start_game/ HTTP/1.1" 200 40
+"POST /start_game/ HTTP/1.1" 200 40
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /start_game/ HTTP/1.1" 200 40
+"POST /start_game/ HTTP/1.1" 200 40
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9 HTTP/1.1" 301 0
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"GET /get_questions/9/ HTTP/1.1" 200 139
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 26
+"POST /post_summary/ HTTP/1.1" 200 26
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+Not Found: /get_user_id/
+Not Found: /get_user_id/
+"POST /get_user_id/ HTTP/1.1" 404 6967
+"POST /get_user_id/ HTTP/1.1" 404 6967
+Not Found: /get_user_id/
+Not Found: /get_user_id/
+"POST /get_user_id/ HTTP/1.1" 404 6967
+"POST /get_user_id/ HTTP/1.1" 404 6967
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1155, in get_user_id
+    print("user: " + user_id)
+TypeError: can only concatenate str (not "int") to str
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1155, in get_user_id
+    print("user: " + user_id)
+TypeError: can only concatenate str (not "int") to str
+"POST /get_user_id/ HTTP/1.1" 500 75847
+"POST /get_user_id/ HTTP/1.1" 500 75847
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 9
+"POST /get_user_id/ HTTP/1.1" 200 9
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"GET /handle_assignments_student/ HTTP/1.1" 200 115
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /get_questions/8 HTTP/1.1" 301 0
+"GET /get_questions/8 HTTP/1.1" 301 0
+"GET /get_questions/8/ HTTP/1.1" 200 237
+"GET /get_questions/8/ HTTP/1.1" 200 237
+"POST /post_answer/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 27
+"GET /get_questions/8 HTTP/1.1" 301 0
+"GET /get_questions/8 HTTP/1.1" 301 0
+"GET /get_questions/8/ HTTP/1.1" 200 237
+"GET /get_questions/8/ HTTP/1.1" 200 237

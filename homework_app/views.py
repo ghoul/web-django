@@ -1,5 +1,7 @@
 from ast import Assign
+import subprocess
 from datetime import datetime
+import email
 import json
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
@@ -1146,15 +1148,52 @@ def handle_students_class(request,sid,cid):
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
 
 @csrf_exempt
-def start_game(request,aid,sid):
-    unity_url = 'http://localhost:port/some-unity-endpoint'  # Replace port and endpoint with Unity's details
-    data_to_send = {'assignment_id': aid, 'student_id': sid}  # Data to send to Unity
-    response = request.post(unity_url, json=data_to_send)
+def get_user_id(request):
+    data = json.loads(request.body)
+    user_email = data['user_email']
+    user_id = CustomUser.objects.get(email=user_email).pk
+    return JsonResponse({'user_id': user_id})
 
-    if response.status_code == 200:
-        return HttpResponse('Request sent to Unity successfully.')
-    else:
-        return HttpResponse('Failed to send request to Unity.', status=response.status_code)
+
+
+@csrf_exempt
+def start_game(request):
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        student_email = data['student_email']
+        aid = data['assignment_id']
+
+        sid = CustomUser.objects.get(email=student_email).pk
+
+        game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
+
+        # Command to start the game executable with parameters
+        command = [game_path, str(aid), str(sid)]
+
+        try:
+            # Execute the game using subprocess.Popen()
+            subprocess.Popen(command)
+
+            # Return success response
+            return JsonResponse({'message': 'Game started successfully'})
+        except Exception as e:
+            print(str(e))
+            # Return error response if execution fails
+            return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
+
+    # Return error response for non-POST requests
+    return JsonResponse({'message': 'Invalid request method'}, status=400)
+
+
+    # unity_url = 'http://localhost:port/some-unity-endpoint'  # Replace port and endpoint with Unity's details
+    # data_to_send = {'assignment_id': aid, 'student_id': sid}  # Data to send to Unity
+    # response = request.post(unity_url, json=data_to_send)
+
+    # if response.status_code == 200:
+    #     return HttpResponse('Request sent to Unity successfully.')
+    # else:
+    #     return HttpResponse('Failed to send request to Unity.', status=response.status_code)
 
 @csrf_exempt
 def get_questions(request,aid):

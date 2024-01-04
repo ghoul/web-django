@@ -22,6 +22,7 @@ import jwt
 from django.conf import settings
 from django.db.models import Q
 from datetime import date, time
+from django.contrib.auth.hashers import check_password
 
 logger = logging.getLogger(__name__)
 
@@ -78,11 +79,17 @@ def login_user(request):
         data = json.loads(request.body)
         email = data['email']
         password = data['password']
-        print(email)
-        print(password)
-        user = authenticate(request, email=email, password=password)
-        
-        if user is not None:
+        # print(email + str(1))
+        # print(password + str(1))
+
+       # user = authenticate(request, email=email, password=password)
+        try:
+            user = CustomUser.objects.get(email=email)
+        except user.DoesNotExist:
+            return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
+
+        if user and check_password(password, user.password):
+        #if user is not None:
             payload = {
             'name': user.first_name,
             'surname': user.last_name,
@@ -90,7 +97,7 @@ def login_user(request):
             'role' : user.role,
             'gender' : user.gender
             #"exp": datetime.utcnow() + timedelta(hours=1)
-        } 
+            } 
             token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
             login(request, user)
             return JsonResponse({'success': True, 'token': token, 'role': user.role}, status=200)
@@ -199,10 +206,14 @@ def has_answered_all_questions(student, assignment):
     return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count
 
 def sort_students(student):
-    if student['points'] != '' and student['time'] != '':
-        return (-student['points'], student['time'])
+    # if student['points'] != '' and student['time'] != '':
+    #     return (-student['points'], student['time'])
+    # else:
+    #     return (float('-inf'), float('-inf'))
+    if student['points'] == '' or student['time'] == '':
+        return (float('inf'), float('inf'))
     else:
-        return (float('-inf'), float('-inf'))
+        return (-int(student['points']) if student['points'] else 0, student['time'] if student['time'] else '99:99:99')
 
 @csrf_exempt
 def get_assignment_statistics(request,pk):
@@ -241,6 +252,9 @@ def get_assignment_statistics(request,pk):
             time = ''
             points = ''
             status = 'Bad'
+            gender = student.student.gender
+
+            print(gender)
 
             if student_results.exists():
                 answered_all, all_questions, student_result = has_answered_all_questions(student.student, assignment)
@@ -263,6 +277,7 @@ def get_assignment_statistics(request,pk):
                 'time': time,
                 'points': points,
                 'status': status,  # Add status logic if needed
+                'gender' : gender,
             })
 
             students_data = sorted(students_data, key=sort_students)

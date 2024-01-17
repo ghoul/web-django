@@ -17,12 +17,13 @@ from rest_framework_simplejwt.tokens import Token
 from rest_framework import serializers
 from rest_framework_simplejwt.views import TokenObtainPairView
 # from django.contrib.auth.models import User
-from .models import CustomUser
+from .models import CustomUser, Option
 import jwt 
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import Q, F, Exists,Subquery
 from datetime import date, time
 from django.contrib.auth.hashers import check_password
+from django.core.exceptions import ObjectDoesNotExist
 
 logger = logging.getLogger(__name__)
 
@@ -79,7 +80,7 @@ def login_user(request):
         data = json.loads(request.body)
         email = data['email']
         password = data['password']
-        # print(email + str(1))
+        print(email + str(1))
         # print(password + str(1))
 
        # user = authenticate(request, email=email, password=password)
@@ -419,11 +420,25 @@ def handle_assignments_student(request):
 
         # Get active assignments for each class
         today = date.today()
+        # active_assignments = Assignment.objects.filter(
+        #     classs__in=student_classes,  # Filter by classes associated with the student
+        #     from_date__lte=today,  # From date less than or equal to today
+        #     to_date__gte=today  # To date greater than or equal to today
+        # ).exclude(
+        #     Q(assignmentresult__student=student) & Q(assignmentresult__assignment_id=F('id'))
+        # )
+        finished_assignments = AssignmentResult.objects.filter(
+            student=student
+        ).values('assignment')
+
         active_assignments = Assignment.objects.filter(
             classs__in=student_classes,  # Filter by classes associated with the student
             from_date__lte=today,  # From date less than or equal to today
             to_date__gte=today  # To date greater than or equal to today
+        ).exclude(
+            id__in=Subquery(finished_assignments)
         )
+
         assignment_data = [
         {
             'id': assignment.id,
@@ -458,24 +473,81 @@ def handle_assignments_student_finished(request):
     student = CustomUser.objects.get(email=email)
 
     if request.method == 'GET':
+        print("gettt")
         # Get classes associated with the student
         student_classes = Class.objects.filter(classs__student=student)
 
-        # Get active assignments for each class
+        #  # Get finished assignments for each class
+        # finished_assignments = Assignment.objects.filter(
+        #     classs__in=student_classes,  # Filter by classes associated with the student
+        #     assignmentresult__student=student  # Filter by assignments finished by the student
+        # )
+        # print(finished_assignments)
+        # print("po1")
+
+        # # Get assignments in the past for each class
+        # today = date.today()
+        # past_assignments = Assignment.objects.filter(
+        #     classs__in=student_classes,  # Filter by classes associated with the student
+        #     to_date__lt=today  # To date less than today
+        # )
+
+        # print(past_assignments)
+        # print("po2")
+
+        # # Combine the two sets of assignments
+        # assignment_data = [
+        #     {
+        #         'id': assignment.id,
+        #         'title': assignment.homework.title,
+        #         'fromDate': assignment.from_date,
+        #         'toDate': assignment.to_date,
+        #         'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        #     }
+        #     for assignment in (finished_assignments | past_assignments).distinct()
+        # ]
+           # Get active assignments for each class
+
+        # today = date.today()
+        # past_assignments = Assignment.objects.filter(
+        #     classs__in=student_classes,  # Filter by classes associated with the student
+        #     to_date__lte=today,
+        # )
+
+        # # finished_assignments = AssignmentResult.objects.filter(
+        # #     student=student  # Filter by assignments finished by the student
+        # # )
+        # assignment_data = [
+        # {
+        #     'id': assignment.id,
+        #     'title': assignment.homework.title,
+        #     'fromDate': assignment.from_date,
+        #     'toDate': assignment.to_date,
+        #     'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        # }
+        # for assignment in (past_assignments)
+        # ]
+        finished_assignments = AssignmentResult.objects.filter(
+            student=student
+        ).values_list('assignment__id', flat=True)
+
+        # Get assignments in the past and finished assignments for the student
         today = date.today()
-        active_assignments = Assignment.objects.filter(
-            classs__in=student_classes,  # Filter by classes associated with the student
-            to_date__lte=today,
+        assignments = Assignment.objects.filter(
+            Q(classs__in=student_classes) &  # Filter by classes associated with the student
+            (Q(to_date__lt=today) | Q(id__in=finished_assignments))  # Past or finished assignments
         )
+        print(assignments.query)
+        # Construct the assignment_data
         assignment_data = [
-        {
-            'id': assignment.id,
-            'title': assignment.homework.title,
-            'fromDate': assignment.from_date,
-            'toDate': assignment.to_date,
-            'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
-        }
-        for assignment in active_assignments
+            {
+                'id': assignment.id,
+                'title': assignment.homework.title,
+                'fromDate': assignment.from_date,
+                'toDate': assignment.to_date,
+                'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+            }
+            for assignment in assignments
         ]
 
         return JsonResponse({'data': assignment_data})
@@ -508,36 +580,101 @@ def handle_homework(request):
         return JsonResponse({'homework': homework_data}) 
     elif request.method == 'POST':
         
-        #data = json.loads(request.body)
-        #homework_name = data['homeworkName']
+        # #data = json.loads(request.body)
+        # #homework_name = data['homeworkName']
+        # homework_name = request.POST.get('homeworkName')
+        # date = datetime.now().date()
+        # print("post homework: " + homework_name)
+
+        # # Create a new homework object
+        # homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
+
+        # num_pairs = len(request.POST.getlist('pairs[0][question]'))
+        # print(num_pairs)
+
+        # for i in range(num_pairs):
+        #     question = request.POST.get(f'pairs[{i}][question]')
+        #     answer = request.POST.get(f'pairs[{i}][answer]')
+        #     image = request.FILES.get(f'pairs[{i}][image]')
+        #     points = request.POST.get(f'pairs[{i}][points]')
+
+        #     # Create a question-answer pair object and associate it with the homework
+        #     pair = QuestionAnswerPair.objects.create(
+        #         homework=homework,
+        #         question=question,
+        #         answer=answer,
+        #         image=image,  # Handle image upload or storage logic here
+        #         points=points
+        #     )
+        
+        # return JsonResponse({'success': True, 'message': 'Operation successful!'})
         homework_name = request.POST.get('homeworkName')
         date = datetime.now().date()
-        print("post homework: " + homework_name)
 
         # Create a new homework object
         homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
 
-        num_pairs = len(request.POST.getlist('pairs[0][question]'))
-        print(num_pairs)
 
+        num_pairs = sum('question' in key for key in request.POST.keys())
+        print(num_pairs)
+       
         for i in range(num_pairs):
+            qtype = request.POST.get(f'pairs[{i}][qtype]')
+            print(qtype)
             question = request.POST.get(f'pairs[{i}][question]')
-            answer = request.POST.get(f'pairs[{i}][answer]')
             image = request.FILES.get(f'pairs[{i}][image]')
             points = request.POST.get(f'pairs[{i}][points]')
 
+            if qtype == 'select':
+                qtype=1
+            elif qtype == 'write':
+                qtype=2   
+
             # Create a question-answer pair object and associate it with the homework
-            pair = QuestionAnswerPair.objects.create(
+            qapair = QuestionAnswerPair.objects.create(
                 homework=homework,
+                qtype=qtype,
                 question=question,
-                answer=answer,
-                image=image,  # Handle image upload or storage logic here
+                image=image,
                 points=points
             )
-        
+       
+            if qtype == 1:  # Select question
+
+                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
+                print(num_options)
+                options = []
+                for option_i in range(num_options):
+                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
+                    option = Option.objects.create(text=option_text, question=qapair)
+                    options.append(option)
+                    #print(request.POST)
+
+
+                correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
+                try:
+                    if 0 <= correct_option_index < len(options):
+                        qapair.correct = options[correct_option_index]
+                        qapair.save()
+                except ObjectDoesNotExist:
+                    return JsonResponse({'success': False, 'error': 'Correct option not found'}, status=400)
+
+                # num_options = len(request.POST.getlist(f'pairs[${i}][options]'))
+                # for option_i in range(num_options):
+                #     options_data = request.POST.get(f'pairs[${i}][options][${option_i}]')
+                #     for option_text in options_data:
+                #         Option.objects.create(text=option_text, question=qapair)
+
+               
+
+            elif qtype == 2:
+                qapair.answer = request.POST.get(f'pairs[{i}][answer]')
+                qapair.save()        
+
         return JsonResponse({'success': True, 'message': 'Operation successful!'})
     else:
-        return JsonResponse({'success' : False,'error': 'Invalid request method'})
+        return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
 
 def calculate_question_count(homework_id):
     question_count = QuestionAnswerPair.objects.filter(homework_id=homework_id).count()

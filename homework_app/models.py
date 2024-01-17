@@ -1,8 +1,24 @@
+from operator import mod
 from django.db import models
 # from django.contrib.auth.models import AbstractUser
 # from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import BaseUserManager
+
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        # Your custom logic for creating a regular user
+        print("reg")
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        # Your custom logic for creating a superuser
+        extra_fields.setdefault('role', 3)
+        extra_fields.setdefault('school', 0)
+        extra_fields.setdefault('gender', 0)
+        print("super")
+
 
 
 class School(models.Model):
@@ -10,8 +26,9 @@ class School(models.Model):
 
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
-    role = models.IntegerField()
-    gender = models.IntegerField()
+    role = models.IntegerField() #1-mokinys 2-mokytojas 3-admin
+    gender = models.IntegerField() #1- vyras 2-moteris
+    objects = CustomUserManager()
 
 class Homework(models.Model):
     title = models.CharField(max_length=255)
@@ -30,10 +47,16 @@ class Assignment(models.Model):
 
 class QuestionAnswerPair(models.Model):
     homework = models.ForeignKey(Homework, related_name='pairs', on_delete=models.CASCADE)
+    qtype = models.IntegerField()  #1 - select #2 - write
     question = models.CharField(max_length=255)
-    answer = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255, null=True)
+    correct = models.ForeignKey('Option', related_name='qapair', null = True, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
     points = models.IntegerField()
+    
+class Option(models.Model):
+    text = models.CharField(max_length=255)
+    question = models.ForeignKey(QuestionAnswerPair, related_name='option', on_delete=models.CASCADE)
 
 class QuestionAnswerPairResult(models.Model):
     question = models.ForeignKey(QuestionAnswerPair, related_name='pairResult', on_delete=models.CASCADE)

@@ -157,11 +157,8 @@ LOGGING = {
     },
 }
 
-# AUTH_USER_MODEL = 'kuku.CustomUser'
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
-# AUTH_USER_MODEL = 'yoyo_app.UserProfile'
 
 AUTH_USER_MODEL = 'homework_app.CustomUser'
 

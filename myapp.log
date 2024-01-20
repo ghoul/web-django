@@ -22780,3 +22780,1443 @@ C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+Unauthorized: /handle_assignments_student/
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_student/
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"OPTIONS /handle_homework_id/25 HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/25 HTTP/1.1" 200 0
+"GET /handle_homework_id/25 HTTP/1.1" 301 0
+"GET /handle_homework_id/25 HTTP/1.1" 301 0
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"GET /handle_homework_id/25/ HTTP/1.1" 200 293
+"GET /handle_homework_id/25/ HTTP/1.1" 200 293
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 395
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"GET /handle_homework_id/55/ HTTP/1.1" 200 209
+"GET /handle_homework_id/55/ HTTP/1.1" 200 209
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"OPTIONS /handle_homework_id/53/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/53/ HTTP/1.1" 200 0
+"GET /handle_homework_id/53/ HTTP/1.1" 200 216
+"GET /handle_homework_id/53/ HTTP/1.1" 200 216
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /handle_homework/ HTTP/1.1" 200 1245
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 509
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 509
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 2
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 2
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 2
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 2
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info.id)
+AttributeError: 'dict' object has no attribute 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78655
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 307
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 795, in handle_assignment_id
+    print(question_info['id'])
+KeyError: 'id'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 78471
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+Not Found: /handle_test_answers/
+Not Found: /handle_test_answers/
+"POST /handle_test_answers/ HTTP/1.1" 404 7304
+"POST /handle_test_answers/ HTTP/1.1" 404 7304
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 810, in handle_test_answers
+    aid = request.assignmentId
+AttributeError: 'WSGIRequest' object has no attribute 'assignmentId'
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 810, in handle_test_answers
+    aid = request.assignmentId
+AttributeError: 'WSGIRequest' object has no attribute 'assignmentId'
+"POST /handle_test_answers/ HTTP/1.1" 500 76700
+"POST /handle_test_answers/ HTTP/1.1" 500 76700
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 815, in handle_test_answers
+    homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
+NameError: name 'teacher' is not defined
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 815, in handle_test_answers
+    homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
+NameError: name 'teacher' is not defined
+"POST /handle_test_answers/ HTTP/1.1" 500 77104
+"POST /handle_test_answers/ HTTP/1.1" 500 77104
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 811, in handle_test_answers
+    elapsed = request.POST.get('time')/1000
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 811, in handle_test_answers
+    elapsed = request.POST.get('time')/1000
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+"POST /handle_test_answers/ HTTP/1.1" 500 77230
+"POST /handle_test_answers/ HTTP/1.1" 500 77230
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 811, in handle_test_answers
+    elapsed = int(request.POST.get('time'))/1000
+ValueError: invalid literal for int() with base 10: '4103.399999976158'
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 811, in handle_test_answers
+    elapsed = int(request.POST.get('time'))/1000
+ValueError: invalid literal for int() with base 10: '4103.399999976158'
+"POST /handle_test_answers/ HTTP/1.1" 500 77242
+"POST /handle_test_answers/ HTTP/1.1" 500 77242
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 829, in handle_test_answers
+    question = questions.get(pk=qid)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 829, in handle_test_answers
+    question = questions.get(pk=qid)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+"POST /handle_test_answers/ HTTP/1.1" 500 84578
+"POST /handle_test_answers/ HTTP/1.1" 500 84578
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 831, in handle_test_answers
+    question = questions.get(pk=qid)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 831, in handle_test_answers
+    question = questions.get(pk=qid)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+"POST /handle_test_answers/ HTTP/1.1" 500 84601
+"POST /handle_test_answers/ HTTP/1.1" 500 84601
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 851, in handle_test_answers
+    assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=elapsed)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2546, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2541, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2515, in to_python
+    parsed = parse_time(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\utils\dateparse.py", line 95, in parse_time
+    return datetime.time.fromisoformat(value).replace(tzinfo=None)
+TypeError: fromisoformat: argument must be str
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 851, in handle_test_answers
+    assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=elapsed)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2546, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2541, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2515, in to_python
+    parsed = parse_time(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\utils\dateparse.py", line 95, in parse_time
+    return datetime.time.fromisoformat(value).replace(tzinfo=None)
+TypeError: fromisoformat: argument must be str
+"POST /handle_test_answers/ HTTP/1.1" 500 165277
+"POST /handle_test_answers/ HTTP/1.1" 500 165277
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 857, in handle_test_answers
+    formatted_time = datetime.time(hour=hours, minute=minutes, second=seconds)
+TypeError: unbound method datetime.time() needs an argument
+Internal Server Error: /handle_test_answers/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 857, in handle_test_answers
+    formatted_time = datetime.time(hour=hours, minute=minutes, second=seconds)
+TypeError: unbound method datetime.time() needs an argument
+"POST /handle_test_answers/ HTTP/1.1" 500 81892
+"POST /handle_test_answers/ HTTP/1.1" 500 81892
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 309
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 791, in handle_assignment_id
+    'correct' : question.correct.text,
+AttributeError: 'NoneType' object has no attribute 'text'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 791, in handle_assignment_id
+    'correct' : question.correct.text,
+AttributeError: 'NoneType' object has no attribute 'text'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 77968
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 77968
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 791, in handle_assignment_id
+    'correct' : question.correct.text,
+AttributeError: 'NoneType' object has no attribute 'text'
+Internal Server Error: /handle_assignment_id/11/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 791, in handle_assignment_id
+    'correct' : question.correct.text,
+AttributeError: 'NoneType' object has no attribute 'text'
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 77968
+"GET /handle_assignment_id/11/ HTTP/1.1" 500 77968
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 411
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

@@ -65,6 +65,9 @@ urlpatterns = [
     path('change_password/',views.change_password, name='change_password'),
     path('get_user_id/',views.get_user_id, name='get_user_id'),
 
+    path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
+    path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
+
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),
 

@@ -1,6 +1,6 @@
 from ast import Assign
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta
 import email
 import json
 from xml.etree.ElementTree import Comment
@@ -579,35 +579,7 @@ def handle_homework(request):
             ]
         return JsonResponse({'homework': homework_data}) 
     elif request.method == 'POST':
-        
-        # #data = json.loads(request.body)
-        # #homework_name = data['homeworkName']
-        # homework_name = request.POST.get('homeworkName')
-        # date = datetime.now().date()
-        # print("post homework: " + homework_name)
-
-        # # Create a new homework object
-        # homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
-
-        # num_pairs = len(request.POST.getlist('pairs[0][question]'))
-        # print(num_pairs)
-
-        # for i in range(num_pairs):
-        #     question = request.POST.get(f'pairs[{i}][question]')
-        #     answer = request.POST.get(f'pairs[{i}][answer]')
-        #     image = request.FILES.get(f'pairs[{i}][image]')
-        #     points = request.POST.get(f'pairs[{i}][points]')
-
-        #     # Create a question-answer pair object and associate it with the homework
-        #     pair = QuestionAnswerPair.objects.create(
-        #         homework=homework,
-        #         question=question,
-        #         answer=answer,
-        #         image=image,  # Handle image upload or storage logic here
-        #         points=points
-        #     )
-        
-        # return JsonResponse({'success': True, 'message': 'Operation successful!'})
+     
         homework_name = request.POST.get('homeworkName')
         date = datetime.now().date()
 
@@ -658,12 +630,6 @@ def handle_homework(request):
                         qapair.save()
                 except ObjectDoesNotExist:
                     return JsonResponse({'success': False, 'error': 'Correct option not found'}, status=400)
-
-                # num_options = len(request.POST.getlist(f'pairs[${i}][options]'))
-                # for option_i in range(num_options):
-                #     options_data = request.POST.get(f'pairs[${i}][options][${option_i}]')
-                #     for option_text in options_data:
-                #         Option.objects.create(text=option_text, question=qapair)
 
                
 
@@ -798,6 +764,105 @@ def handle_assign_homework(request):
         assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
         assignment.save()
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
+
+@csrf_exempt
+def handle_assignment_id(request,id):
+    token = request.headers.get('Authorization')   
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    if request.method == 'GET':
+        homework = Assignment.objects.get(pk=id).homework
+
+        homework_data = []
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+
+        for question in questions:
+            options=[]
+            correct = ''
+            if question.qtype==1:
+                options = Option.objects.filter(question=question).values('text')
+                options=list(options)
+                correct = question.correct.text
+           
+
+            question_info = {
+                'qid' : question.pk,
+                'question': question.question,
+                'type': question.qtype,
+                'options': options,
+                'answer' : question.answer,
+                'correct' : correct,
+                'points' : question.points
+            }
+            homework_data.append(question_info)
+
+   
+        questions_data = {
+                'title': homework.title,
+                'pairs': list(homework_data)
+            }
+        return JsonResponse({'questions': questions_data}) 
+
+    elif request.method == 'POST':
+        data = request.loads.json()
+
+@csrf_exempt
+def handle_test_answers(request):
+    if request.method == 'POST':
+        aid = request.POST.get('assignmentId')
+        elapsed = float(request.POST.get('time'))/1000
+        print(elapsed)
+        token = request.headers.get('Authorization')   
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+        email = payload.get('email')
+        student = CustomUser.objects.get(email=email)
+        print(aid)
+        date = datetime.now()
+        assignment = Assignment.objects.get(pk=aid)
+        homework=assignment.homework
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+
+        total_points = 0
+       
+       
+        for i, questionOG in enumerate(questions):
+            qid = request.POST.get(f'pairs[{i}][questionId]')
+            print(qid)
+            answer = request.POST.get(f'pairs[{i}][answer]')    
+            print(answer)
+            question = questions.get(pk=qid)
+            print(question)
+            qtype=question.qtype
+            answerOG = ''
+            if qtype == 1: #select
+                answerOG = question.correct.text
+            elif qtype == 2: #write
+                answerOG = question.answer
+
+            print(answerOG)    
+            points = question.points
+            get_points = 0
+
+            if answerOG == answer:
+                get_points=points
+
+            total_points+=get_points    
+
+            QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=answer, points=get_points)
+        
+        elapsed_timedelta = timedelta(seconds=elapsed)
+
+        # Extract hours, minutes, and seconds from the timedelta
+        hours, remainder = divmod(elapsed_timedelta.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+
+        # Create a string representation of the elapsed time
+        formatted_time = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
+
+        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=formatted_time)
+
+    return JsonResponse({'success': True, 'id': assignmentResult.pk})
+
+
 
 @csrf_exempt
 def get_classes_by_teacher(request):

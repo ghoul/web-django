@@ -58,11 +58,21 @@ class Option(models.Model):
     text = models.CharField(max_length=255)
     question = models.ForeignKey(QuestionAnswerPair, related_name='option', on_delete=models.CASCADE)
 
+class QuestionCorrectOption(models.Model):
+    option = models.ForeignKey(Option, related_name='optionq', on_delete=models.CASCADE)
+    question = models.ForeignKey(QuestionAnswerPair, related_name='questiono', on_delete=models.CASCADE)
+
+class QuestionSelectedOption(models.Model):
+    option = models.ForeignKey(Option, related_name='optionqselect', on_delete=models.CASCADE)
+    question = models.ForeignKey(QuestionAnswerPair, related_name='questionoselect', on_delete=models.CASCADE)
+    student = models.ForeignKey(CustomUser, related_name='questionselect', on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, related_name='questionselectass', on_delete=models.CASCADE)
+
 class QuestionAnswerPairResult(models.Model):
     question = models.ForeignKey(QuestionAnswerPair, related_name='pairResult', on_delete=models.CASCADE)
     student = models.ForeignKey(CustomUser, related_name='questionResult', on_delete=models.CASCADE)
     assignment = models.ForeignKey(Assignment, related_name='assignmentPair', on_delete=models.CASCADE)
-    answer = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255, null=True)
     points = models.IntegerField()
    
 class AssignmentResult(models.Model):

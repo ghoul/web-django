@@ -7,7 +7,7 @@ from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
-from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, School, Assignment,StudentTeacher,StudentTeacherConfirm,QuestionAnswerPairResult
+from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, QuestionCorrectOption,School, Assignment,StudentTeacher,StudentTeacherConfirm,QuestionAnswerPairResult
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import logging
 import re
@@ -17,7 +17,7 @@ from rest_framework_simplejwt.tokens import Token
 from rest_framework import serializers
 from rest_framework_simplejwt.views import TokenObtainPairView
 # from django.contrib.auth.models import User
-from .models import CustomUser, Option
+from .models import CustomUser, Option, QuestionSelectedOption
 import jwt 
 from django.conf import settings
 from django.db.models import Q, F, Exists,Subquery
@@ -601,7 +601,11 @@ def handle_homework(request):
                 qtype=1
             elif qtype == 'write':
                 qtype=2   
-
+            elif qtype == 'multiple':
+                qtype=3  
+            #multipleOptionIndex vieno klausimo
+            num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())
+            print(str(i) + " num mult: " + str(num_mult))
             # Create a question-answer pair object and associate it with the homework
             qapair = QuestionAnswerPair.objects.create(
                 homework=homework,
@@ -635,7 +639,27 @@ def handle_homework(request):
 
             elif qtype == 2:
                 qapair.answer = request.POST.get(f'pairs[{i}][answer]')
-                qapair.save()        
+                qapair.save()     
+
+            elif qtype == 3:  # multiple select question
+
+                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
+                print("multiple : " + str(num_options))
+                options = []
+                for option_i in range(num_options):
+                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
+                    option = Option.objects.create(text=option_text, question=qapair)
+                    options.append(option)
+                    #tikrint for multipleindexes ar nera i question option ir tada tikrint ar ia ta pati kuria rado 
+                    #ir jei ta pati, tai sukurt optioncorrect objekta
+                    for y in range(num_mult):
+                        
+                        correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
+                        print("correct: " + str(correct))
+                        print("optioni: " + str(option_i))
+                        if correct==option_i:
+                           QuestionCorrectOption.objects.create(question=qapair, option = option)
+                            
 
         return JsonResponse({'success': True, 'message': 'Operation successful!'})
     else:
@@ -711,16 +735,74 @@ def handle_homework_id(request, pk):
         return JsonResponse({'success': True})
 
     elif request.method=="GET":
-        try:
-            homework = Homework.objects.get(pk=pk)
-            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
-            homework_data = {
-                'title': homework.title,
-                'pairs': list(pairs)
+        # try:
+        #     # homework = Homework.objects.get(pk=pk)
+        #     # questions = get_homework_questions(homework)
+        #     homework = Homework.objects.get(pk=pk)
+        #     pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
+        #     homework_data = {
+        #         'title': homework.title,
+        #         'pairs': list(pairs)
+        #     }
+        #     return JsonResponse({'success': True, 'homework': homework_data})
+        # except Homework.DoesNotExist:
+        #     return JsonResponse({'message': 'Homework not found'}, status=404)
+        homework = Homework.objects.get(pk=pk)
+        questions = get_homework_questions(homework)
+    
+        return JsonResponse({'success': True, 'homework': questions}, safe=True)
+
+       
+
+def get_homework_questions(homework):
+        homework_data = []
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+
+        for question in questions:
+            options=[]
+            correct = ''
+            correctMultiple = []
+            if question.qtype==1 or question.qtype==3:
+                options = Option.objects.filter(question=question).values_list('text', flat=True)
+                options=list(options)
+
+            if question.qtype ==1:    
+                correct = question.correct.text
+            elif question.qtype == 3:
+                #surast visus teisingu indeksus ir sudet i array
+                correctOptions = QuestionCorrectOption.objects.filter(question=question).values_list('option__text', flat=True).distinct() #.values_list('option__id', flat=True)
+                #correctOptions = Option.objects.filter(id__in=correct_ids)
+                for index, obj in enumerate(options):
+                    print(f"Index: {index}, Option: {obj}")
+
+                for index, obj in enumerate(correctOptions):
+                    print(f"Index: {index}, correct: {obj}")    
+
+                indexes = [(index) for index, obj in enumerate(options) if obj in correctOptions]
+                print(indexes)
+                
+                correctMultiple = indexes
+
+
+            question_info = {
+                'qid' : question.pk,
+                'question': question.question,
+                'type': question.qtype,
+                'options': options,
+                'answer' : question.answer,
+                'correct' : correct,
+                'correctMultiple' : correctMultiple,
+                'points' : question.points
             }
-            return JsonResponse({'success': True, 'homework': homework_data})
-        except Homework.DoesNotExist:
-            return JsonResponse({'message': 'Homework not found'}, status=404)
+            homework_data.append(question_info)
+
+   
+        questions_data = {
+                'title': homework.title,
+                'pairs': list(homework_data)
+            }
+        print(questions_data)
+        return questions_data
 
 @csrf_exempt
 def handle_assign_homework(request):
@@ -751,16 +833,6 @@ def handle_assign_homework(request):
         classs = Class.objects.get(pk=classs_id)
         homework = Homework.objects.get(pk=homework_id)
 
-        # existing_assignment = Assignment.objects.filter(
-        #     classs=classs,
-        #     homework=homework,
-        #     Q(from_date__lte=datetime.strptime(toDate, '%Y-%m-%d').date()) &
-        #     Q(to_date__gte=datetime.strptime(fromDate, '%Y-%m-%d').date())
-        # )
-
-        # if existing_assignment.exists():
-        #     return JsonResponse({'success': False, 'message': 'Homework already assigned to this class'}, status=400)
-
         assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
         assignment.save()
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
@@ -771,35 +843,7 @@ def handle_assignment_id(request,id):
     payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
     if request.method == 'GET':
         homework = Assignment.objects.get(pk=id).homework
-
-        homework_data = []
-        questions = QuestionAnswerPair.objects.filter(homework=homework)
-
-        for question in questions:
-            options=[]
-            correct = ''
-            if question.qtype==1:
-                options = Option.objects.filter(question=question).values('text')
-                options=list(options)
-                correct = question.correct.text
-           
-
-            question_info = {
-                'qid' : question.pk,
-                'question': question.question,
-                'type': question.qtype,
-                'options': options,
-                'answer' : question.answer,
-                'correct' : correct,
-                'points' : question.points
-            }
-            homework_data.append(question_info)
-
-   
-        questions_data = {
-                'title': homework.title,
-                'pairs': list(homework_data)
-            }
+        questions_data = get_homework_questions(homework)
         return JsonResponse({'questions': questions_data}) 
 
     elif request.method == 'POST':
@@ -826,29 +870,82 @@ def handle_test_answers(request):
        
         for i, questionOG in enumerate(questions):
             qid = request.POST.get(f'pairs[{i}][questionId]')
-            print(qid)
+            # print(qid)
             answer = request.POST.get(f'pairs[{i}][answer]')    
-            print(answer)
+            # print("answer: " + str(answer))
             question = questions.get(pk=qid)
-            print(question)
+            # print(question)
             qtype=question.qtype
+            points = question.points
+            get_points = 0
             answerOG = ''
+            answersUser = []
             if qtype == 1: #select
                 answerOG = question.correct.text
             elif qtype == 2: #write
                 answerOG = question.answer
 
-            print(answerOG)    
-            points = question.points
-            get_points = 0
 
-            if answerOG == answer:
-                get_points=points
+            elif qtype ==3:
+                answer=''
+                options = Option.objects.filter(question=question)
+                options =list(options)
+                correctOptions = QuestionCorrectOption.objects.filter(question=question)
+                correctOptions=list(correctOptions)
 
-            total_points+=get_points    
+                originIndexes = []
+
+                for  j, option in enumerate(options):
+                    for y, correctOp in enumerate(correctOptions):
+                        if option==correctOp.option:
+                            originIndexes.append(j)
+
+                # print(originIndexes)
+                points /= len(originIndexes) if originIndexes else 1   
+                print("points: " + str(points))  
+
+                # print("i: " + str(i))
+                num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
+                # print(num_mult)
+
+                for y in range(num_mult):
+                    optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
+                    answersUser.append(optionIndex)
+                    option = options[optionIndex]
+
+                    saveSelected = QuestionSelectedOption.objects.create(assignment=assignment, student=student, question=question, option=option)   
+                print(answersUser)
+                print(originIndexes)
+                for optionIndex in answersUser:
+                    if optionIndex in originIndexes:
+                        print(optionIndex)
+                        get_points+=points
+                        print("getpoints: " + str(get_points))
+
+                #jei per daug pasirenka
+                if len(answersUser)>len(originIndexes):
+                    wrongC = len(answersUser)-len(originIndexes)
+                    minusPoints = question.points/len(options)
+                    for w in range(wrongC):
+                        get_points-=minusPoints 
+
+                #arba jei nei vieno teisingo nepasirinko: 0 automatiskai               
+
+                total_points+=get_points    
+
+
+          
+            
+
+            if qtype==1 or qtype==2:
+                if answerOG == answer:
+                    get_points=points
+
+                total_points+=get_points  
+
 
             QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=answer, points=get_points)
-        
+            get_points=0
         elapsed_timedelta = timedelta(seconds=elapsed)
 
         # Extract hours, minutes, and seconds from the timedelta
@@ -1515,9 +1612,14 @@ def get_one_student_answers(request,aid,sid):
         results_list = []
 
         for pair in question_answer_pairs:
+            answer = ''
+            if pair.qtype == 2:
+                answer=pair.answer
+            elif pair.qtype == 1:
+                answer=pair.correct.text 
             pairs_dict[pair.question] = {
                 'question': pair.question,
-                'answer': pair.answer
+                'answer': answer
             }
         assignment = Assignment.objects.get(pk=aid)    
         answered_all, all_questions, student_result = has_answered_all_questions(student, assignment)

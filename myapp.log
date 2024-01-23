@@ -26344,3 +26344,1727 @@ Watching for file changes with StatReloader
 "POST /handle_test_answers/ HTTP/1.1" 200 27
 "POST /handle_test_answers/ HTTP/1.1" 200 27
 "POST /handle_test_answers/ HTTP/1.1" 200 27
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_student/
+Unauthorized: /handle_assignments_student/
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 331, in get_class_statistics
+    student__in=student_class.student.all(),
+AttributeError: 'CustomUser' object has no attribute 'all'
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 331, in get_class_statistics
+    student__in=student_class.student.all(),
+AttributeError: 'CustomUser' object has no attribute 'all'
+"GET /get_class_statistics/ HTTP/1.1" 500 78194
+"GET /get_class_statistics/ HTTP/1.1" 500 78194
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 343, in get_class_statistics
+    return JsonResponse({'data': leaderboard_entries})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type LeaderboardEntry is not JSON serializable
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 343, in get_class_statistics
+    return JsonResponse({'data': leaderboard_entries})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type LeaderboardEntry is not JSON serializable
+"GET /get_class_statistics/ HTTP/1.1" 500 104555
+"GET /get_class_statistics/ HTTP/1.1" 500 104555
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+"GET /get_class_statistics/ HTTP/1.1" 200 114
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 55
+"GET /get_class_statistics/ HTTP/1.1" 500 55
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 69
+"GET /get_class_statistics/ HTTP/1.1" 500 69
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 69
+"GET /get_class_statistics/ HTTP/1.1" 500 69
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+"GET /get_class_statistics/ HTTP/1.1" 500 372
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+"GET /get_class_statistics/ HTTP/1.1" 200 254
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 248
+"GET /get_class_statistics/ HTTP/1.1" 200 307
+"GET /get_class_statistics/ HTTP/1.1" 200 307
+"GET /get_class_statistics/ HTTP/1.1" 200 307
+"GET /get_class_statistics/ HTTP/1.1" 200 307
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+"GET /get_class_statistics/ HTTP/1.1" 200 314
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 67
+"GET /get_class_statistics/ HTTP/1.1" 500 67
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_class_statistics/
+Internal Server Error: /get_class_statistics/
+"GET /get_class_statistics/ HTTP/1.1" 500 67
+"GET /get_class_statistics/ HTTP/1.1" 500 67
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+"GET /get_class_statistics/ HTTP/1.1" 200 317
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+"OPTIONS /handle_classes/ HTTP/1.1" 200 0
+"GET /handle_classes/ HTTP/1.1" 200 52
+"GET /handle_classes/ HTTP/1.1" 200 52
+"OPTIONS /handle_teacher_students/ HTTP/1.1" 200 0
+"OPTIONS /handle_teacher_students/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_students/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_students/ HTTP/1.1" 200 0
+"GET /handle_teacher_students/ HTTP/1.1" 200 147
+"GET /handle_teacher_students/ HTTP/1.1" 200 147
+"GET /get_not_confirmed_students/ HTTP/1.1" 200 82
+"GET /get_not_confirmed_students/ HTTP/1.1" 200 82
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_classes/ HTTP/1.1" 200 52
+"GET /handle_classes/ HTTP/1.1" 200 52
+"GET /handle_teacher_students/ HTTP/1.1" 200 147
+"GET /handle_teacher_students/ HTTP/1.1" 200 147
+"GET /get_not_confirmed_students/ HTTP/1.1" 200 82
+"GET /get_not_confirmed_students/ HTTP/1.1" 200 82
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.get_class_statistics didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.get_class_statistics didn't return an HttpResponse object. It returned None instead.
+"GET /get_class_statistics/ HTTP/1.1" 500 73412
+"GET /get_class_statistics/ HTTP/1.1" 500 73412
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 288
+"GET /handle_homework/ HTTP/1.1" 200 288
+"OPTIONS /handle_homework_id/60/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/60/ HTTP/1.1" 200 0
+"GET /handle_homework_id/60/ HTTP/1.1" 200 57
+"GET /handle_homework_id/60/ HTTP/1.1" 200 57
+"GET /handle_homework/ HTTP/1.1" 200 288
+"GET /handle_homework/ HTTP/1.1" 200 288
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /get_assignment_statistics/11/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/11/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 696
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/11/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 323
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 323
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 238
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 238
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 323
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 323
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 238
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 238
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignments_student/ HTTP/1.1" 200 138
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 587
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 597
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 597
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"OPTIONS /get_one_student_answers/11/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/11/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 9352
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 9352
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 597
+"GET /handle_assignment_id/11/ HTTP/1.1" 200 597
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 451
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 451
+"OPTIONS /get_assignment_statistics/11/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/11/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 718
+"GET /get_assignment_statistics/11/ HTTP/1.1" 200 718
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_one_student_answers/11/1/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1760, in get_one_student_answers
+    correct_choice = QuestionCorrectOption.objects.filter(question=pair).values('option__text', flat=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1306, in _values
+    clone = clone.annotate(**expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1600, in _annotate
+    self._validate_values_are_expressions(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1950, in _validate_values_are_expressions
+    raise TypeError(
+TypeError: QuerySet.annotate() received non-expression(s): True.
+Internal Server Error: /get_one_student_answers/11/1/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1760, in get_one_student_answers
+    correct_choice = QuestionCorrectOption.objects.filter(question=pair).values('option__text', flat=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1306, in _values
+    clone = clone.annotate(**expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1600, in _annotate
+    self._validate_values_are_expressions(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1950, in _validate_values_are_expressions
+    raise TypeError(
+TypeError: QuerySet.annotate() received non-expression(s): True.
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 500 101222
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 500 101222
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_one_student_answers/11/1/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1760, in get_one_student_answers
+    correct_choices = QuestionCorrectOption.objects.filter(question=pair).values('option__text', flat=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1306, in _values
+    clone = clone.annotate(**expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1600, in _annotate
+    self._validate_values_are_expressions(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1950, in _validate_values_are_expressions
+    raise TypeError(
+TypeError: QuerySet.annotate() received non-expression(s): True.
+Internal Server Error: /get_one_student_answers/11/1/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1760, in get_one_student_answers
+    correct_choices = QuestionCorrectOption.objects.filter(question=pair).values('option__text', flat=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1313, in values
+    clone = self._values(*fields, **expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1306, in _values
+    clone = clone.annotate(**expressions)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1600, in _annotate
+    self._validate_values_are_expressions(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1950, in _validate_values_are_expressions
+    raise TypeError(
+TypeError: QuerySet.annotate() received non-expression(s): True.
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 500 101379
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 500 101379
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 33299
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 33299
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 32057
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 31085
+"GET /get_one_student_answers/11/1/ HTTP/1.1" 200 31085
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 288
+"GET /handle_homework/ HTTP/1.1" 200 288
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_homework/ HTTP/1.1" 200 288
+"GET /handle_homework/ HTTP/1.1" 200 288
+"POST /handle_homework/ HTTP/1.1" 200 53
+"POST /handle_homework/ HTTP/1.1" 200 53
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 392
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_homework/ HTTP/1.1" 200 336
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 451
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 451
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"OPTIONS /handle_assignment_id/12/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/12/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 480
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 480
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 575
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 575
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 487
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 532
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 580
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 580
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 580
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 580
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 533
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415

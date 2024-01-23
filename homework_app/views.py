@@ -20,10 +20,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import CustomUser, Option, QuestionSelectedOption
 import jwt 
 from django.conf import settings
-from django.db.models import Q, F, Exists,Subquery
+from django.db.models import Q, F, Exists,Subquery,Sum
 from datetime import date, time
 from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.serializers.json import DjangoJSONEncoder
 
 logger = logging.getLogger(__name__)
 
@@ -283,6 +284,135 @@ def get_assignment_statistics(request,pk):
 
             students_data = sorted(students_data, key=sort_students)
         return JsonResponse({'students': students_data, 'title': assingment_title, 'id' : user.id}) 
+
+def get_current_school_year():
+    today = datetime.now().date()
+
+    # Calculate the start date for the school year
+    if today.month >= 9:  # If it's September or later in the current year
+        start_date = datetime(today.year, 9, 1).date()  # This year's September 1st
+    else:
+        start_date = datetime(today.year - 1, 9, 1).date()  # Last years ago September 1st
+
+    # Calculate the end date for the school year
+    if today.month >= 9:  # If it's September or later in the current year
+        end_date = datetime(today.year+1, 8, 31).date()  # Next year's August 31st
+    else:
+        end_date = datetime(today.year, 8, 31).date()  # This year's August 31st
+        print(start_date)
+        print(end_date)
+    return start_date, end_date
+
+class LeaderboardEntry:
+    def __init__(self, student, points, gender):
+        self.student = student
+        self.points = points
+        self.gender = gender
+
+class LeaderboardEntryEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, LeaderboardEntry):
+            return obj.__dict__
+        return super().default(obj)
+
+@csrf_exempt
+def get_class_statistics(request):
+    token = request.headers.get('Authorization')   
+   
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    email = payload.get('email')
+    role=payload.get('role')
+    user = CustomUser.objects.get(email=email)
+    if request.method == 'GET':
+        if role==1:
+            print("mokinio leaderboard")
+            try:
+                # Step 1: Get the class of the student who sent the request
+                student_class = StudentClass.objects.get(student=user)
+                classs = student_class.classs.title
+
+                # Step 2: Retrieve all the assignments for that class
+                assignments = Assignment.objects.filter(classs=student_class.classs)
+
+                # Step 4: Calculate points for each student in the class
+                leaderboard_entries = []
+                student_ids = StudentClass.objects.filter(classs=student_class.classs).values_list('student', flat=True)
+                students = CustomUser.objects.filter(pk__in=student_ids)
+
+                # Step 3: Filter assignment results based on the school year and class
+                start_date, end_date = get_current_school_year()
+                assignment_results = AssignmentResult.objects.filter(
+                    student__in=students,
+                    assignment__in=assignments,
+                    date__range=(start_date, end_date)
+                )
+
+                for student in students:
+                    points = assignment_results.filter(student=student).aggregate(Sum('points'))['points__sum'] or 0
+                    print(points)
+                    leaderboard_entries.append(LeaderboardEntry(f'{student.first_name} {student.last_name}', points, student.gender))
+
+                # Step 5: Create a leaderboard
+                leaderboard_entries.sort(key=lambda x: x.points, reverse=True)
+                print("success")
+
+                serialized_leaderboard_entries = json.dumps(leaderboard_entries, cls=LeaderboardEntryEncoder,ensure_ascii=False)
+
+                return JsonResponse({'data': serialized_leaderboard_entries, 'classs' : classs}, safe=False)
+            except StudentClass.DoesNotExist:
+                return JsonResponse({'error': 'Student class not found'}, status=404)
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=500)
+
+
+            # student_class = StudentClass.objects.get(student=user)
+
+            # # Step 2: Retrieve all the assignments for that class
+            # assignments = Assignment.objects.filter(classs=student_class.classs)
+
+            # # Step 3: Filter assignment results based on the school year
+            # start_date, end_date = get_current_school_year()
+            # assignment_results = AssignmentResult.objects.filter(
+            #     student=user,
+            #     assignment__in=assignments,
+            #     date__range=(start_date, end_date)
+            # )
+
+            # # Step 4: Calculate points for the given student in the class
+            # leaderboard_entries = []
+            # points = assignment_results.aggregate(Sum('points'))['points__sum'] or 0
+            # leaderboard_entries.append(LeaderboardEntry(f'{user.first_name} {user.last_name}', points, user.gender))
+
+            # # Step 5: Create a leaderboard
+            # leaderboard_entries.sort(key=lambda x: x.points, reverse=True)
+            # print("success")
+
+            # serialized_leaderboard_entries = json.dumps(leaderboard_entries, cls=LeaderboardEntryEncoder)
+
+            # return JsonResponse({'data': serialized_leaderboard_entries}, safe=False)
+
+
+        elif role==2:
+            print("mokytojo leaderboard")
+
+        
+
+    
+    #mokinys gali priklausyt vinai klasei is esmes, bet kartu ir pogrupiai buna mokykloj
+    #tai lyderiu lentelej turetu but pasirinkimas visu klasiu kuriom prikllauso jis
+    #reikia filtruot dar pagal metus kad senu irasu nepaimtu ir neskaiciuotu
+    #tarkim buvau 1a klasej - id 1, praeina metai - automatiskai pasikeicia i 2a id-1
+    #visi irasai assignments bus suije su ta pacia klase per visa laika
+    #reikia atskirt pagal assignment data gal kada atlikta ir skaiciuot
+    #NORS VIENA KLASE BUS TIESIOG
+    #siunciu token, ziuriu kokia data, lygint su rugsejo 1 vis, pagal studen atsirinkt assignments ir tada pagal data
+    #mokytojas pagal klase turi gaut visu
+    #mokinys pagal dalyka turi matyt savo leaderboard? - savo sukurtas klases visas mato
+    #ar viskas i viena dedasi is visu dalyku - is visu
+
+
+
+
 
 
 @csrf_exempt
@@ -841,10 +971,12 @@ def handle_assign_homework(request):
 def handle_assignment_id(request,id):
     token = request.headers.get('Authorization')   
     payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+    email=payload.get('email')
+    userId = CustomUser.objects.get(email=email).pk
     if request.method == 'GET':
         homework = Assignment.objects.get(pk=id).homework
         questions_data = get_homework_questions(homework)
-        return JsonResponse({'questions': questions_data}) 
+        return JsonResponse({'questions': questions_data, 'uid' : userId}) 
 
     elif request.method == 'POST':
         data = request.loads.json()
@@ -1602,14 +1734,21 @@ def get_one_student_answers(request,aid,sid):
         student = CustomUser.objects.get(pk=sid)
         name = student.first_name + " " + student.last_name
         question_answer_pairs = QuestionAnswerPair.objects.filter(homework__assignment__id=aid)
-
+        assignment = Assignment.objects.get(pk=aid)  
         # Retrieve QuestionAnswerPairResult objects for a given assignment and student
         question_answer_results = QuestionAnswerPairResult.objects.filter(
             assignment__id=aid, student__id=sid
         )
+
+        print(question_answer_results)
+
+        #jei klausimas multiple - atsakymu masyvas kitas, reikia tikrint tipa ir jei 3 - pasiimt studento atsakymus
+        # student_choice = QuestionSelectedOption.objects.filter(question=pair, student=student, assignment=assignment).values('option__text')
+
         title = Assignment.objects.get(pk=aid).homework.title
         pairs_dict = {}
         results_list = []
+        student_choices=[]
 
         for pair in question_answer_pairs:
             answer = ''
@@ -1617,24 +1756,71 @@ def get_one_student_answers(request,aid,sid):
                 answer=pair.answer
             elif pair.qtype == 1:
                 answer=pair.correct.text 
+            elif pair.qtype==3:             
+                correct_choices = QuestionCorrectOption.objects.filter(question=pair).values('option__text')
+                # correct_choices = Option.objects.filter(question=pair.questioncorrectoption.question).values_list('text', flat=True)
+                values_list = [item['option__text'] for item in correct_choices]
+                answer = list(values_list)
+                print("3")
+                print(answer)    
+
+
             pairs_dict[pair.question] = {
                 'question': pair.question,
                 'answer': answer
             }
-        assignment = Assignment.objects.get(pk=aid)    
+
+          
         answered_all, all_questions, student_result = has_answered_all_questions(student, assignment)
         # Create a list of student answers aligned with their respective questions
         for result in question_answer_results:
-            question_id = result.question.question
-            if question_id in pairs_dict:
-                question_answer = pairs_dict[question_id]
-                results_list.append({
-                    'question': question_answer['question'],
-                    'answer': question_answer['answer'],
-                    'student_answer': result.answer,
-                    'points' : result.points
-                })
+            question_pair=result.question
+            question_text = result.question.question
+            question_id=result.question.pk
+            question_type = result.question.qtype
+            question_points = result.question.points
+            if question_text in pairs_dict:
 
+                question_info = pairs_dict[question_text]
+                if question_type == 1:
+                    all_options = Option.objects.filter(question=question_pair).values_list('text', flat=True)
+                   
+                    results_list.append({
+                        'question': question_info['question'],
+                        'answer': question_info['answer'],
+                        'all_options': list(all_options),  # Include all options for the multiple-choice question
+                        'student_answer': result.answer,  # Include student's choices for multiple-choice questions
+                        'points': result.points,
+                        'qtype': question_type,
+                        'opoints' : question_points
+                    })
+                elif question_type == 3: 
+                # Retrieve all options for the multiple-choice question
+                    all_options = Option.objects.filter(question=question_pair).values_list('text', flat=True)
+
+                    # Retrieve student's choices for multiple-choice question
+                    student_choices = QuestionSelectedOption.objects.filter(
+                        question=question_pair, student=student, assignment=assignment
+                    ).values_list('option__text', flat=True)
+
+                    results_list.append({
+                        'question': question_info['question'],
+                        'answer': question_info['answer'],
+                        'all_options': list(all_options),  # Include all options for the multiple-choice question
+                        'student_answer': list(student_choices),  # Include student's choices for multiple-choice questions
+                        'points': result.points,
+                        'qtype': question_type,
+                        'opoints' : question_points
+                    })
+                else:
+                    results_list.append({
+                        'question': question_info['question'],
+                        'answer': question_info['answer'],
+                        'student_answer': result.answer,
+                        'points': result.points,
+                        'qtype': question_type,
+                        'opoints' : question_points
+                    })
      
         return JsonResponse({'success': True, 'results': results_list, 'title' : title, 'name' : name, 'questions' : all_questions, 'answers' : student_result})      
 

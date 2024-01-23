@@ -67,6 +67,7 @@ urlpatterns = [
 
     path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
     path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
+    path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
 
     # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
     # path('latests/', views.get_latests, name='get_latests'),

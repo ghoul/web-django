@@ -1,3 +1,4 @@
+from datetime import datetime
 from operator import mod
 from django.db import models
 # from django.contrib.auth.models import AbstractUser
@@ -19,10 +20,9 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('gender', 0)
         print("super")
 
-
-
 class School(models.Model):
     title = models.CharField(max_length=100) 
+    license_end = models.DateField( default=datetime.now().date())
 
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
@@ -37,7 +37,7 @@ class Homework(models.Model):
 
 class Class(models.Model):
     title = models.CharField(max_length=100)
-    teacher = models.ForeignKey(CustomUser, related_name='classs', on_delete=models.CASCADE)
+    school = models.ForeignKey(School, related_name='classs', on_delete=models.CASCADE)
 
 class Assignment(models.Model):
     classs = models.ForeignKey(Class, related_name='assignment', on_delete=models.CASCADE)

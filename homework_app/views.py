@@ -3,6 +3,7 @@ import subprocess
 from datetime import datetime, timedelta
 import email
 import json
+from turtle import st
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -432,11 +433,12 @@ def handle_assignments_teacher(request):
     role = payload.get('role')
     email = payload.get('email')
     teacher = CustomUser.objects.get(email=email)
+    school=teacher.school
 
     if request.method == 'GET':
         today = date.today()  
         active_assignments = Assignment.objects.filter(
-        classs__teacher=teacher,  # Filter by teacher ID
+        classs__school=school,  # Filter by teacher ID
         # from_date__lte=today,  # From date less than or equal to today
         to_date__gte=today,  # To date greater than or equal to today
     )
@@ -496,11 +498,12 @@ def handle_assignments_teacher_finished(request):
     role = payload.get('role')
     email = payload.get('email')
     teacher = CustomUser.objects.get(email=email)
+    school=teacher.school
 
     if request.method == 'GET':
         today = date.today()  
         active_assignments = Assignment.objects.filter(
-        classs__teacher=teacher,  # Filter by teacher ID
+        classs__school=school,  # Filter by teacher ID
         to_date__lte=today,
     )
 
@@ -575,7 +578,7 @@ def handle_assignments_student(request):
             'title': assignment.homework.title,
             'fromDate': assignment.from_date,
             'toDate': assignment.to_date,
-            'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+            'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
         }
         for assignment in active_assignments
         ]
@@ -632,7 +635,7 @@ def handle_assignments_student_finished(request):
         #         'title': assignment.homework.title,
         #         'fromDate': assignment.from_date,
         #         'toDate': assignment.to_date,
-        #         'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        #         'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
         #     }
         #     for assignment in (finished_assignments | past_assignments).distinct()
         # ]
@@ -653,7 +656,7 @@ def handle_assignments_student_finished(request):
         #     'title': assignment.homework.title,
         #     'fromDate': assignment.from_date,
         #     'toDate': assignment.to_date,
-        #     'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+        #     'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
         # }
         # for assignment in (past_assignments)
         # ]
@@ -675,7 +678,7 @@ def handle_assignments_student_finished(request):
                 'title': assignment.homework.title,
                 'fromDate': assignment.from_date,
                 'toDate': assignment.to_date,
-                'teacher': assignment.classs.teacher.first_name + ' ' + assignment.classs.teacher.last_name,
+                'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
             }
             for assignment in assignments
         ]
@@ -810,25 +813,23 @@ def handle_homework_id(request, pk):
         except Homework.DoesNotExist:
             return JsonResponse({'message': 'Homework not found'}, status=404)
 
-        # Update homework fields based on the request data
-        print("hw name: " + str(homework.title))
-
         data = json.loads(request.body)
         homework_name = data['homeworkName']
-        # homework_name = request.POST.get('homeworkName')
+        correct = data['correct']
+        multiple = data['multiple']
+
         if homework_name:
             homework.title = homework_name
-            print("homework_name: " + str(homework_name))
             homework.save()
         else:
             return JsonResponse({'message': 'Homework name is required'}, status=400)
 
         received_pairs = data.get('pairs', [])
         existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
-        
+
         # Extract IDs from received pairs
-        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('id'))
-        
+        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
+
         # Check and delete pairs that are missing from received data
         for existing_pair in existing_pairs:
             if existing_pair.id not in received_pair_ids:
@@ -837,25 +838,70 @@ def handle_homework_id(request, pk):
         for index, pair in enumerate(received_pairs):
             question = pair.get('question')
             answer = pair.get('answer')
-            image = pair.get('image')  # If image is included in the data
+            image = pair.get('image')
             points = pair.get('points')
-            try:
+            qtype = pair.get('type')
+
+            if qtype=='select':
+                qtype=1
+            elif qtype=='write':
+                qtype=2
+            elif qtype=='multiple':
+                qtype=3        
+          
+            pair_obj, created = QuestionAnswerPair.objects.get_or_create(
+                homework=homework,
+                id=pair.get('qid'),
+                defaults={
+                    'qtype': qtype,
+                    'question': question,
+                    'image': image,
+                    'points': points,
+                    'answer': answer
+                }
+            )
+
+            if not created:
+                if pair_obj.qtype != qtype:
+                    Option.objects.filter(question=pair_obj).delete()
+                    QuestionCorrectOption.objects.filter(question=pair_obj).delete()
+
+                pair_obj.qtype = qtype                   
+                pair_obj.question = question
+                pair_obj.answer = answer
+                pair_obj.image = image
+                pair_obj.points = points
+                pair_obj.save()
+            
+            if qtype == 1:
+                options = pair.get('options', [])
+                correct_option_index = correct[index]
+
+                options_old = Option.objects.filter(question=pair_obj)
+                options_old.delete()
+
+                for option_text in options:
+                    option = Option.objects.create(text=option_text, question=pair_obj)
+
+                if 0 <= correct_option_index < len(options):
+                    pair_obj.correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
+                    pair_obj.save()
+
+            elif qtype == 3:
+                options = pair.get('options', [])
+                print(multiple)
                 print(index)
-                pair = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('id'))
-                pair.question = question
-                pair.answer = answer
-                pair.image = image
-                pair.points = points
-                pair.save()
-            except QuestionAnswerPair.DoesNotExist:
-                print("naujas question")
-                pair = QuestionAnswerPair.objects.create(
-                    homework=homework,
-                    question=question,
-                    answer=answer,
-                    image=image,
-                    points=points
-                )
+                correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
+                print(correct_option_indexes)
+
+                options_old = Option.objects.filter(question=pair_obj)
+                options_old.delete()
+
+                for option_text in options:
+                    option = Option.objects.create(text=option_text, question=pair_obj)
+
+                for correct_option_index in correct_option_indexes:
+                    QuestionCorrectOption.objects.create(question=pair_obj, option=Option.objects.get(text=options[correct_option_index], question=pair_obj))
 
         return JsonResponse({'success': True, 'message': 'Operacija atlikta sėkmingai!'})
 
@@ -865,18 +911,6 @@ def handle_homework_id(request, pk):
         return JsonResponse({'success': True})
 
     elif request.method=="GET":
-        # try:
-        #     # homework = Homework.objects.get(pk=pk)
-        #     # questions = get_homework_questions(homework)
-        #     homework = Homework.objects.get(pk=pk)
-        #     pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
-        #     homework_data = {
-        #         'title': homework.title,
-        #         'pairs': list(pairs)
-        #     }
-        #     return JsonResponse({'success': True, 'homework': homework_data})
-        # except Homework.DoesNotExist:
-        #     return JsonResponse({'message': 'Homework not found'}, status=404)
         homework = Homework.objects.get(pk=pk)
         questions = get_homework_questions(homework)
     
@@ -902,14 +936,14 @@ def get_homework_questions(homework):
                 #surast visus teisingu indeksus ir sudet i array
                 correctOptions = QuestionCorrectOption.objects.filter(question=question).values_list('option__text', flat=True).distinct() #.values_list('option__id', flat=True)
                 #correctOptions = Option.objects.filter(id__in=correct_ids)
-                for index, obj in enumerate(options):
-                    print(f"Index: {index}, Option: {obj}")
+                # for index, obj in enumerate(options):
+                #     print(f"Index: {index}, Option: {obj}")
 
-                for index, obj in enumerate(correctOptions):
-                    print(f"Index: {index}, correct: {obj}")    
+                # for index, obj in enumerate(correctOptions):
+                #     print(f"Index: {index}, correct: {obj}")    
 
                 indexes = [(index) for index, obj in enumerate(options) if obj in correctOptions]
-                print(indexes)
+                # print(indexes)
                 
                 correctMultiple = indexes
 
@@ -969,17 +1003,18 @@ def handle_assign_homework(request):
 
 @csrf_exempt
 def handle_assignment_id(request,id):
-    token = request.headers.get('Authorization')   
-    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    email=payload.get('email')
-    userId = CustomUser.objects.get(email=email).pk
+    token = request.headers.get('Authorization') 
+    if not token:
+        userId=0
+    else:    
+        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+        email=payload.get('email')
+        userId = CustomUser.objects.get(email=email).pk
     if request.method == 'GET':
         homework = Assignment.objects.get(pk=id).homework
         questions_data = get_homework_questions(homework)
-        return JsonResponse({'questions': questions_data, 'uid' : userId}) 
+        return JsonResponse({'questions': questions_data, 'uid' : userId, 'success' : True}) 
 
-    elif request.method == 'POST':
-        data = request.loads.json()
 
 @csrf_exempt
 def handle_test_answers(request):
@@ -1110,9 +1145,10 @@ def get_classes_by_teacher(request):
     role = payload.get('role')
     email = payload.get('email')
     teacher = CustomUser.objects.get(email=email)
+    school=teacher.school
     if request.method == 'GET':
         try:
-            classes = Class.objects.filter(teacher=teacher)
+            classes = Class.objects.filter(school=school)
             data = [
             {
                 'title': classs.title,
@@ -1127,6 +1163,7 @@ def get_classes_by_teacher(request):
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
 #mokytojo studentai, mokytojas patvirtina,atmeta studenta
+#ISTRINTI
 @csrf_exempt
 def handle_teacher_students(request):
     token = request.headers.get('Authorization')   
@@ -1198,6 +1235,7 @@ def handle_teacher_students(request):
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
 #return teachers by school
+#ISTRINTI
 @csrf_exempt
 def handle_teachers(request):
     token = request.headers.get('Authorization')   
@@ -1240,6 +1278,7 @@ def handle_teachers(request):
 
     return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)   
 
+#ISTRINTI
 @csrf_exempt
 def get_not_confirmed_students(request):
     token = request.headers.get('Authorization')   
@@ -1337,6 +1376,7 @@ def handle_student_teachers(request):
     else:
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
+#ISTRINT
 @csrf_exempt
 def get_not_confirmed_teachers(request):
     token = request.headers.get('Authorization')   
@@ -1371,7 +1411,7 @@ def get_not_confirmed_teachers(request):
     else:
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
-
+#ADMIN TODO
 @csrf_exempt
 def handle_classes(request):
     token = request.headers.get('Authorization')   
@@ -1389,18 +1429,19 @@ def handle_classes(request):
     role = payload.get('role')
     email = payload.get('email')
     teacher = CustomUser.objects.get(email=email)
+    school = teacher.school
     if request.method=="POST":
         #if(role=="2" or role=="3"):
         data = json.loads(request.body.decode('utf-8'))
         title = data.get("title")
-        classs = Class(title=title, teacher=teacher)
+        classs = Class(title=title, school=school)
         classs.save()
         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
     elif request.method == 'GET':
         try:
             #TODO: tik mokytojo klasės
             #classes = Class.objects.all().values('id', 'title')
-            classes = Class.objects.filter(teacher=teacher).values('id', 'title')
+            classes = Class.objects.filter(school=school).values('id', 'title')
             classes_list = list(classes)
             return JsonResponse(classes_list, safe=False, status=200)
         except json.JSONDecodeError:
@@ -1480,6 +1521,7 @@ def handle_classes_id(request, pk):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)        
 
+
 @csrf_exempt
 def handle_teacher_class(request, cid):
     token = request.headers.get('Authorization')   
@@ -1499,6 +1541,7 @@ def handle_teacher_class(request, cid):
     if request.method == "GET":
         # TODO: Check if the user is a teacher       
         # Filter students associated with the specified teacher
+        #ADMIN TODO: klases studentus grazint??
         students_of_teacher = CustomUser.objects.filter(student_t__teacher=teacher)
         print(students_of_teacher)
 
@@ -1521,7 +1564,8 @@ def handle_teacher_class(request, cid):
         studentclass = StudentClass(student=student, classs = classs)
         studentclass.save()
         return  JsonResponse({'success': True})
-                     
+
+#ISTRINT                     
 @csrf_exempt
 def handle_students(request):
     token = request.headers.get('Authorization')   
@@ -1632,15 +1676,6 @@ def start_game(request):
     return JsonResponse({'message': 'Invalid request method'}, status=400)
 
 
-    # unity_url = 'http://localhost:port/some-unity-endpoint'  # Replace port and endpoint with Unity's details
-    # data_to_send = {'assignment_id': aid, 'student_id': sid}  # Data to send to Unity
-    # response = request.post(unity_url, json=data_to_send)
-
-    # if response.status_code == 200:
-    #     return HttpResponse('Request sent to Unity successfully.')
-    # else:
-    #     return HttpResponse('Failed to send request to Unity.', status=response.status_code)
-
 @csrf_exempt
 def get_questions(request,aid):
      if request.method == 'GET':
@@ -1661,23 +1696,35 @@ def get_questions(request,aid):
 @csrf_exempt
 def post_answer(request):
     if request.method == 'POST':
-        # data = json.loads(request.body)
-        # student_id = data['student_id']
-        # assignment_id = data['assignment_id']
-        # question_id = data['question_id']
-        # answer = data['answer']
-        # points = data['points']
         assignment_id = request.POST.get('assignment_id', None)
         question_id = request.POST.get('question_id', None)
         player_answer = request.POST.get('answer', None)
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)
+        selected = request.POST.get('selected', None) #string numeriuku
 
         if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
 
             question = QuestionAnswerPair.objects.get(pk=question_id)
+            qtype = question.qtype
             assignment = Assignment.objects.get(pk=assignment_id)
             student = CustomUser.objects.get(pk=student_id)
+
+            if qtype == 3:
+                print(selected)
+
+                selected_elements = selected.split(',')
+                print(selected_elements)
+                indexes = [int(element) for element in selected_elements]
+                #indexes - 0 1 2 3 bazinai, ir tada sekandtys jau is tikro kurie pasirinkti, tai skaiciuot index-4 galima
+                options = Option.objects.filter(question=question)
+                print(options)
+                selected_options = [options[index] for index in indexes]
+
+                for option in selected_options:
+                    stselected = QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+                    print("sukure multiple answer")
+
 
 
             pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)

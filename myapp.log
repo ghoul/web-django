@@ -28068,3 +28068,1927 @@ Watching for file changes with StatReloader
 "GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
 "GET /get_class_statistics/ HTTP/1.1" 200 415
 "GET /get_class_statistics/ HTTP/1.1" 200 415
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"GET /get_class_statistics/ HTTP/1.1" 200 415
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+"OPTIONS /handle_student_teachers/ HTTP/1.1" 200 0
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"OPTIONS /get_not_confirmed_teachers/ HTTP/1.1" 200 0
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_teachers/ HTTP/1.1" 200 147
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /handle_student_teachers/ HTTP/1.1" 200 83
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /get_not_confirmed_teachers/ HTTP/1.1" 200 16
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "agne@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "agne@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122730
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122730
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "agne@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "agne@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122730
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122730
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_homework/ HTTP/1.1" 200 336
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_teacher/ HTTP/1.1" 200 0
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /get_classes_by_teacher/ HTTP/1.1" 200 52
+"GET /handle_homework/ HTTP/1.1" 200 336
+"GET /handle_homework/ HTTP/1.1" 200 336
+"OPTIONS /handle_homework_id/60/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/60/ HTTP/1.1" 200 0
+"DELETE /handle_homework_id/60/ HTTP/1.1" 200 17
+"DELETE /handle_homework_id/60/ HTTP/1.1" 200 17
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/61/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/61/ HTTP/1.1" 200 0
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework_id/61/ HTTP/1.1" 200 486
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher_finished/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in handle_assignments_teacher_finished
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 500 123050
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+Internal Server Error: /handle_assignments_teacher/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 438, in handle_assignments_teacher
+    active_assignments = Assignment.objects.filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1464, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1275, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\query.py", line 1252, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "mokytoja@gmail.com": Must be "Class" instance.
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+"GET /handle_assignments_teacher/ HTTP/1.1" 500 122784
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 716
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 394
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 394
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 896, in handle_homework_id
+    pair_obj = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('qid'))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'write'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 933, in handle_homework_id
+    qapair = QuestionAnswerPair.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2060, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'qtype' expected a number but got 'write'.
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 896, in handle_homework_id
+    pair_obj = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('qid'))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'write'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 933, in handle_homework_id
+    qapair = QuestionAnswerPair.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2060, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'qtype' expected a number but got 'write'.
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 186089
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 186089
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 902, in handle_homework_id
+    pair_obj = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('qid'))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 902, in handle_homework_id
+    pair_obj = QuestionAnswerPair.objects.get(homework=homework, id=pair.get('qid'))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.QuestionAnswerPair.DoesNotExist: QuestionAnswerPair matching query does not exist.
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 90212
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 90212
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 937, in handle_homework_id
+    pair_obj.correct = pair_obj.options.get(text=options[correct_option_index])
+AttributeError: 'QuestionAnswerPair' object has no attribute 'options'
+Internal Server Error: /handle_homework_id/55/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 937, in handle_homework_id
+    pair_obj.correct = pair_obj.options.get(text=options[correct_option_index])
+AttributeError: 'QuestionAnswerPair' object has no attribute 'options'
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 82867
+"PUT /handle_homework_id/55/ HTTP/1.1" 500 82867
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+"GET /handle_homework_id/55/ HTTP/1.1" 200 599
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 606
+"GET /handle_homework_id/55/ HTTP/1.1" 200 606
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"PUT /handle_homework_id/55/ HTTP/1.1" 200 65
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+"GET /handle_homework_id/55/ HTTP/1.1" 200 603
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 507
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+Internal Server Error: /handle_assignment_id/12/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1057, in handle_assignment_id
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 254, in _load
+    raise DecodeError(f"Invalid token type. Token must be a {bytes}")
+jwt.exceptions.DecodeError: Invalid token type. Token must be a <class 'bytes'>
+Internal Server Error: /handle_assignment_id/12/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1057, in handle_assignment_id
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 254, in _load
+    raise DecodeError(f"Invalid token type. Token must be a {bytes}")
+jwt.exceptions.DecodeError: Invalid token type. Token must be a <class 'bytes'>
+"GET /handle_assignment_id/12/ HTTP/1.1" 500 94513
+"GET /handle_assignment_id/12/ HTTP/1.1" 500 94513
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 497
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"DELETE /handle_assignments_teacher/ HTTP/1.1" 200 17
+"DELETE /handle_assignments_teacher/ HTTP/1.1" 200 17
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 218
+"POST /post_answer/ HTTP/1.1" 200 28
+"POST /post_answer/ HTTP/1.1" 200 28
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1716, in post_answer
+    indexes = [int(element) for element in selected_elements]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1716, in <listcomp>
+    indexes = [int(element) for element in selected_elements]
+ValueError: invalid literal for int() with base 10: 'System.Int32[]'
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1716, in post_answer
+    indexes = [int(element) for element in selected_elements]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1716, in <listcomp>
+    indexes = [int(element) for element in selected_elements]
+ValueError: invalid literal for int() with base 10: 'System.Int32[]'
+"POST /post_answer/ HTTP/1.1" 500 81136
+"POST /post_answer/ HTTP/1.1" 500 81136
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1718, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1718, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1718, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1718, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85491
+"POST /post_answer/ HTTP/1.1" 500 85491
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85523
+"POST /post_answer/ HTTP/1.1" 500 85523
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85523
+"POST /post_answer/ HTTP/1.1" 500 85523
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85523
+"POST /post_answer/ HTTP/1.1" 500 85523
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1721, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85443
+"POST /post_answer/ HTTP/1.1" 500 85443
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85678
+"POST /post_answer/ HTTP/1.1" 500 85678
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+Internal Server Error: /post_answer/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in post_answer
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1722, in <listcomp>
+    selected_options = [options[index] for index in indexes]
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 450, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"POST /post_answer/ HTTP/1.1" 500 85651
+"POST /post_answer/ HTTP/1.1" 500 85651
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 28
+"POST /post_answer/ HTTP/1.1" 200 28
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12 HTTP/1.1" 301 0
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"GET /handle_assignment_id/12/ HTTP/1.1" 200 224
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_summary/ HTTP/1.1" 200 27
+"POST /post_answer/ HTTP/1.1" 200 28
+"POST /post_answer/ HTTP/1.1" 200 28

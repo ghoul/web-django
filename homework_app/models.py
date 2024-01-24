@@ -11,18 +11,23 @@ from django.contrib.auth.models import BaseUserManager
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         # Your custom logic for creating a regular user
-        print("reg")
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
     def create_superuser(self, email, password=None, **extra_fields):
         # Your custom logic for creating a superuser
         extra_fields.setdefault('role', 3)
-        extra_fields.setdefault('school', 0)
+        extra_fields.setdefault('is_superuser', 1)
+        extra_fields.setdefault('school_id', 1)
+        extra_fields.setdefault('is_staff', 1) 
         extra_fields.setdefault('gender', 0)
-        print("super")
+        return self.create_user(email, password, **extra_fields)
 
 class School(models.Model):
     title = models.CharField(max_length=100) 
-    license_end = models.DateField( default=datetime.now().date())
+    license_end = models.DateField( ) #default=datetime.now().date()
 
 class CustomUser(AbstractUser):
     school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)

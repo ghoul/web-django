@@ -21,6 +21,7 @@ from django.urls import re_path
 from homework_app.views import CustomTokenObtainPairView
 from django.conf import settings
 from django.conf.urls.static import static
+# from .admin import admin_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,7 +41,7 @@ urlpatterns = [
     path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
 
     path('handle_teacher_class/<int:cid>/', views.handle_teacher_class, name='handle_teacher_class'),
-    path('get_classes_by_teacher/', views.get_classes_by_teacher, name='get_classes_by_teacher'),
+    path('get_classes_by_school/', views.get_classes_by_school, name='get_classes_by_school'),
     path('handle_assign_homework/', views.handle_assign_homework, name='handle_assign_homework'),
     path('handle_teacher_students/', views.handle_teacher_students, name='handle_teacher_students'),
     path('handle_student_teachers/', views.handle_student_teachers, name='handle_student_teachers'),
@@ -66,6 +67,7 @@ urlpatterns = [
     path('get_user_id/',views.get_user_id, name='get_user_id'),
 
     path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
+    path('handle_assignment_update/<int:aid>/', views.handle_assignment_update, name='handle_assignment_update'),
     path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
     path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
 
@@ -80,6 +82,10 @@ urlpatterns = [
     
     # path('categories/<int:cid>/tricks/<int:tid>/comments/', views.handle_comment, name='handle_comment'),
     # path('categories/<int:cid>/tricks/<int:tid>/comments/<int:ccid>/', views.handle_comment_id, name='handle_comment_id'),
+
+    # path('admin/add_school/', views.AddSchoolView.as_view(), name='add_school'),
+    # path('admin/', admin_site.urls),
+    path('add_school/', views.add_school, name='add_school'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

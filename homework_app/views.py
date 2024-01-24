@@ -26,6 +26,12 @@ from datetime import date, time
 from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.serializers.json import DjangoJSONEncoder
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.views import View
+import csv
+from io import TextIOWrapper
+# from django.contrib.auth.hashers import make_random_password
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +45,117 @@ class CustomTokenSerializer(serializers.Serializer):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenSerializer
+
+# @method_decorator(staff_member_required, name='dispatch')
+# class AddSchoolView(View):
+#     template_name = 'admin/add_school.html'
+
+#     def get(self, request, *args, **kwargs):
+#         return render(request, self.template_name)
+
+#     def post(self, request, *args, **kwargs):
+#         # Handle file upload here
+#         school_title = request.POST.get('school_title')
+#         csv_file = request.FILES.get('file')
+
+#         # Process the file and create users
+#         if csv_file:
+#             self.create_users_from_file(school_title, csv_file)
+#             return HttpResponse(f'School Title: {school_title}, CSV File: {csv_file.name} processed successfully.')
+#         else:
+#             return HttpResponse('No CSV file provided.')
+
+#     def create_users_from_file(self, school_title, csv_file):
+#         # Implement your logic here
+#         pass
+
+@csrf_exempt
+def add_school(request):
+    # csv_file = request.FILES.get("file")
+    # with open(csv_file) as f:
+    #     print(f)
+
+    if request.method == 'POST':
+        csv_file = request.FILES.get("file")
+        title = request.POST.get("title")
+        license = request.POST.get("license")
+        print(title)
+        print(license)
+
+        school = School.objects.create(title=title, license_end=license)
+
+        csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
+
+        reader = csv.reader(csv_file, delimiter=';')
+
+        for row in reader:
+            first_name = row[0]
+            last_name = row[1]
+            class_name = row[2]
+            gender = row[3]
+            if gender=='vyras':
+                gender=1
+            else:
+                gender=2    
+
+            # Check if the class exists for the given school
+            existing_class = Class.objects.filter(school=school, title=class_name).first()
+
+            if not existing_class:
+                # Create the class if it doesn't exist
+                classs = Class.objects.create(school=school, title=class_name)
+            else:
+                classs = existing_class
+            
+            email_base = first_name.lower() + "." + last_name.lower()
+            email = email_base + "@goose.lt"
+            
+            counter = 1
+            while CustomUser.objects.filter(email=email).exists():
+                email = email_base + f"{counter}@goose.lt"
+                counter += 1
+            
+            # Generate a random password
+            password =  CustomUser.objects.make_random_password()
+
+            if class_name:
+                role=1
+            else:
+                role=2    
+                
+            user = CustomUser.objects.create(
+                first_name=first_name,
+                last_name=last_name, 
+                gender=gender,
+                school=school,
+                password=password, 
+                email = email,
+                role=role,
+                username=email
+            )
+
+            if class_name:
+                student_class = StudentClass.objects.create(student=user, classs=classs)
+
+        return JsonResponse({'success': True}, status=200)
+
+
+def classes_year_changes():
+    classes = Class.objects.all()
+    for classs in classes:
+        old_title = classs.title
+        match = re.match(r'(\d+)(\D*)', old_title)
+    
+        if match:
+            numeric_part, non_numeric_part = match.groups()
+
+            new_numeric_part = str(int(numeric_part) + 1)
+            if numeric_part>12:
+                classs.delete()
+            else:               
+                new_title = new_numeric_part + non_numeric_part
+                classs.title=new_title
+                classs.save()
 
 
 @csrf_exempt
@@ -527,7 +644,47 @@ def handle_assignments_teacher_finished(request):
         return JsonResponse({'data': assignment_data}) 
 
 
+@csrf_exempt
+def handle_assignment_update(request,aid):
+    token = request.headers.get('Authorization')   
+    if not token:
+        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
 
+    if request.method == 'GET':
+        assignment = Assignment.objects.get(pk=aid)   
+        assignment_info = {
+            'id': assignment.pk,
+            'title': assignment.homework.title,
+            'fromDate': assignment.from_date,
+            'toDate': assignment.to_date,
+            'classs': assignment.classs.pk
+        }
+        return JsonResponse({'data': assignment_info}) 
+    elif request.method == 'PUT':
+            assignment = Assignment.objects.get(pk=aid)  
+            try:
+                data = json.loads(request.body.decode('utf-8'))
+            except json.JSONDecodeError:
+                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+
+            toDate = data.get("toDate")
+            fromDate = data.get("fromDate")
+            classId = data.get("class")
+
+            classs = Class.objects.get(pk=classId)
+
+            if not toDate or not fromDate or not classId:
+                return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
+
+            assignment.to_date = toDate
+            assignment.from_date = fromDate
+            assignment.classs = classs
+
+            try:
+                assignment.save()
+                return JsonResponse({'success': True, "id" : assignment.pk}, status=200)
+            except Exception as e:
+                return JsonResponse({'success': False, 'error': str(e)}, status=500) 
 
 @csrf_exempt
 def handle_assignments_student(request):
@@ -609,57 +766,6 @@ def handle_assignments_student_finished(request):
         print("gettt")
         # Get classes associated with the student
         student_classes = Class.objects.filter(classs__student=student)
-
-        #  # Get finished assignments for each class
-        # finished_assignments = Assignment.objects.filter(
-        #     classs__in=student_classes,  # Filter by classes associated with the student
-        #     assignmentresult__student=student  # Filter by assignments finished by the student
-        # )
-        # print(finished_assignments)
-        # print("po1")
-
-        # # Get assignments in the past for each class
-        # today = date.today()
-        # past_assignments = Assignment.objects.filter(
-        #     classs__in=student_classes,  # Filter by classes associated with the student
-        #     to_date__lt=today  # To date less than today
-        # )
-
-        # print(past_assignments)
-        # print("po2")
-
-        # # Combine the two sets of assignments
-        # assignment_data = [
-        #     {
-        #         'id': assignment.id,
-        #         'title': assignment.homework.title,
-        #         'fromDate': assignment.from_date,
-        #         'toDate': assignment.to_date,
-        #         'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
-        #     }
-        #     for assignment in (finished_assignments | past_assignments).distinct()
-        # ]
-           # Get active assignments for each class
-
-        # today = date.today()
-        # past_assignments = Assignment.objects.filter(
-        #     classs__in=student_classes,  # Filter by classes associated with the student
-        #     to_date__lte=today,
-        # )
-
-        # # finished_assignments = AssignmentResult.objects.filter(
-        # #     student=student  # Filter by assignments finished by the student
-        # # )
-        # assignment_data = [
-        # {
-        #     'id': assignment.id,
-        #     'title': assignment.homework.title,
-        #     'fromDate': assignment.from_date,
-        #     'toDate': assignment.to_date,
-        #     'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
-        # }
-        # for assignment in (past_assignments)
-        # ]
         finished_assignments = AssignmentResult.objects.filter(
             student=student
         ).values_list('assignment__id', flat=True)
@@ -913,8 +1019,13 @@ def handle_homework_id(request, pk):
     elif request.method=="GET":
         homework = Homework.objects.get(pk=pk)
         questions = get_homework_questions(homework)
+        edit = True
+
+        assignments = Assignment.objects.filter(homework=homework)
+        if assignments.exists():
+            edit=False
     
-        return JsonResponse({'success': True, 'homework': questions}, safe=True)
+        return JsonResponse({'success': True, 'homework': questions, 'edit' : edit}, safe=True)
 
        
 
@@ -1129,7 +1240,7 @@ def handle_test_answers(request):
 
 
 @csrf_exempt
-def get_classes_by_teacher(request):
+def get_classes_by_school(request):
     token = request.headers.get('Authorization')   
     if not token:
         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)

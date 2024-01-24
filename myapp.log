@@ -29992,3 +29992,2487 @@ IndexError: list index out of range
 "POST /post_summary/ HTTP/1.1" 200 27
 "POST /post_answer/ HTTP/1.1" 200 28
 "POST /post_answer/ HTTP/1.1" 200 28
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"GET /user_data/ HTTP/1.1" 200 101
+"GET /user_data/ HTTP/1.1" 200 101
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /get_assignment_statistics/8/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/8/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 747
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 747
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/61/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/61/ HTTP/1.1" 200 0
+"GET /handle_homework_id/61/ HTTP/1.1" 200 228
+"GET /handle_homework_id/61/ HTTP/1.1" 200 228
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/27/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/27/ HTTP/1.1" 200 0
+"GET /handle_homework_id/27/ HTTP/1.1" 200 500
+"GET /handle_homework_id/27/ HTTP/1.1" 200 500
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/25/ HTTP/1.1" 200 0
+"GET /handle_homework_id/25/ HTTP/1.1" 200 412
+"GET /handle_homework_id/25/ HTTP/1.1" 200 412
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/55/ HTTP/1.1" 200 0
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework_id/55/ HTTP/1.1" 200 617
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/12/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/12/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_one_student_answers/12/1/ HTTP/1.1" 200 291
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"OPTIONS /get_one_student_answers/12/3/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/12/3/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/12/3/ HTTP/1.1" 200 476
+"GET /get_one_student_answers/12/3/ HTTP/1.1" 200 476
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /get_assignment_statistics/12/ HTTP/1.1" 200 737
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 662
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignment_update/8/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/8/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/8/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/8/ HTTP/1.1" 200 113
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"PUT /handle_assignment_update/8/ HTTP/1.1" 200 26
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"OPTIONS /handle_assignment_update/3/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/3/ HTTP/1.1" 200 0
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"OPTIONS /handle_assignment_update/9/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/9/ HTTP/1.1" 200 0
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/9/ HTTP/1.1" 200 105
+"GET /handle_assignment_update/9/ HTTP/1.1" 200 105
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4181
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4181
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7599
+"GET /favicon.ico HTTP/1.1" 404 7599
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4347
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4347
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4342
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4342
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4342
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 4342
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 5857
+"GET /admin/ HTTP/1.1" 200 5857
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/auth/group/add/ HTTP/1.1" 200 15777
+"GET /admin/auth/group/add/ HTTP/1.1" 200 15777
+"GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+"GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+"GET /static/admin/js/core.js HTTP/1.1" 200 5682
+"GET /static/admin/js/core.js HTTP/1.1" 200 5682
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+"GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+"GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+"GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+"GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+"GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15292
+"GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15292
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+"GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+"GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+"GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+"GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+"GET /admin/homework_app/customuser/add/ HTTP/1.1" 200 25903
+"GET /admin/homework_app/customuser/add/ HTTP/1.1" 200 25903
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"GET /admin/ HTTP/1.1" 200 5857
+"GET /admin/ HTTP/1.1" 200 5857
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 745
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 393
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /admin/add_school/
+Not Found: /admin/add_school/
+"GET /admin/add_school/ HTTP/1.1" 404 4170
+"GET /admin/add_school/ HTTP/1.1" 404 4170
+"GET /admin/ HTTP/1.1" 200 5153
+"GET /admin/ HTTP/1.1" 200 5153
+Not Found: /admin/add_school/
+Not Found: /admin/add_school/
+"GET /admin/add_school/ HTTP/1.1" 404 4170
+"GET /admin/add_school/ HTTP/1.1" 404 4170
+"GET /admin/auth/group/ HTTP/1.1" 200 6974
+"GET /admin/auth/group/ HTTP/1.1" 200 6974
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+Not Found: /admin/school/
+Not Found: /admin/school/
+"GET /admin/school/ HTTP/1.1" 404 4158
+"GET /admin/school/ HTTP/1.1" 404 4158
+Not Found: /admin/school/
+Not Found: /admin/school/
+"GET /admin/school/ HTTP/1.1" 404 4158
+"GET /admin/school/ HTTP/1.1" 404 4158
+Not Found: /admin/school/
+Not Found: /admin/school/
+"GET /admin/school/ HTTP/1.1" 404 4158
+"GET /admin/school/ HTTP/1.1" 404 4158
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /add_school/ HTTP/1.1" 200 0
+"OPTIONS /add_school/ HTTP/1.1" 200 0
+"OPTIONS /add_school/ HTTP/1.1" 200 0
+"OPTIONS /add_school/ HTTP/1.1" 200 0
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+"POST /add_school/ HTTP/1.1" 500 73238
+"POST /add_school/ HTTP/1.1" 500 73238
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /add_school/ HTTP/1.1" 200 17
+"POST /add_school/ HTTP/1.1" 200 17
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+"POST /add_school/ HTTP/1.1" 500 73238
+"POST /add_school/ HTTP/1.1" 500 73238
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183709
+"POST /add_school/ HTTP/1.1" 500 183709
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183709
+"POST /add_school/ HTTP/1.1" 500 183709
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183709
+"POST /add_school/ HTTP/1.1" 500 183709
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183709
+"POST /add_school/ HTTP/1.1" 500 183709
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 78, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183710
+"POST /add_school/ HTTP/1.1" 500 183710
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 80, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'title' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 80, in add_school
+    school = School.objects.create(title=title, license_end=license)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'title' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 183716
+"POST /add_school/ HTTP/1.1" 500 183716
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 85, in add_school
+    for row in reader:
+_csv.Error: iterator should return strings, not bytes (did you open the file in text mode?)
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 85, in add_school
+    for row in reader:
+_csv.Error: iterator should return strings, not bytes (did you open the file in text mode?)
+"POST /add_school/ HTTP/1.1" 500 77352
+"POST /add_school/ HTTP/1.1" 500 77352
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 87, in add_school
+    for row in reader:
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf0 in position 13: invalid continuation byte
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 87, in add_school
+    for row in reader:
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf0 in position 13: invalid continuation byte
+"POST /add_school/ HTTP/1.1" 500 82482
+"POST /add_school/ HTTP/1.1" 500 82482
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 98, in add_school
+    classs = Class.objects.create(school=school, name=class_name)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Class() got unexpected keyword arguments: 'name'
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 98, in add_school
+    classs = Class.objects.create(school=school, name=class_name)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Class() got unexpected keyword arguments: 'name'
+"POST /add_school/ HTTP/1.1" 500 93498
+"POST /add_school/ HTTP/1.1" 500 93498
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'vyras'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 113, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2060, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'gender' expected a number but got 'vyras'.
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'vyras'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 113, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1745, in as_sql
+    value_rows = [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1746, in <listcomp>
+    [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1747, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2060, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'gender' expected a number but got 'vyras'.
+"POST /add_school/ HTTP/1.1" 500 171372
+"POST /add_school/ HTTP/1.1" 500 171372
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'role' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 117, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'role' cannot be null")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1048, "Column 'role' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 117, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1048, "Column 'role' cannot be null")
+"POST /add_school/ HTTP/1.1" 500 202385
+"POST /add_school/ HTTP/1.1" 500 202385
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '' for key 'username'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 122, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'username'")
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '' for key 'username'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 122, in add_school
+    user = CustomUser.objects.create(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\MySQLdb\connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'username'")
+"POST /add_school/ HTTP/1.1" 500 202777
+"POST /add_school/ HTTP/1.1" 500 202777
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /add_school/ HTTP/1.1" 200 17
+"POST /add_school/ HTTP/1.1" 200 17
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 75, in add_school
+    with open(csv_file) as f:
+TypeError: expected str, bytes or os.PathLike object, not InMemoryUploadedFile
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 75, in add_school
+    with open(csv_file) as f:
+TypeError: expected str, bytes or os.PathLike object, not InMemoryUploadedFile
+"POST /add_school/ HTTP/1.1" 500 76697
+"POST /add_school/ HTTP/1.1" 500 76697
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+"POST /add_school/ HTTP/1.1" 500 74042
+"POST /add_school/ HTTP/1.1" 500 74042
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /add_school/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view homework_app.views.add_school didn't return an HttpResponse object. It returned None instead.
+"POST /add_school/ HTTP/1.1" 500 74043
+"POST /add_school/ HTTP/1.1" 500 74043
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /add_school/ HTTP/1.1" 200 17
+"POST /add_school/ HTTP/1.1" 200 17
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

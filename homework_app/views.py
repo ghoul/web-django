@@ -30,7 +30,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.views import View
 import csv
-from io import TextIOWrapper
+from io import TextIOWrapper,StringIO,BytesIO
+from django.http import FileResponse
+from django.core.files.base import ContentFile
 # from django.contrib.auth.hashers import make_random_password
 
 logger = logging.getLogger(__name__)
@@ -82,12 +84,18 @@ def add_school(request):
         print(title)
         print(license)
 
-        school = School.objects.create(title=title, license_end=license)
+        try:
+            # Try to get the school by title
+            school_exist = School.objects.get(title=title)
+            school = school_exist
+        except ObjectDoesNotExist:
+            # If the school doesn't exist, create it
+            school = School.objects.create(title=title, license_end=license)
 
         csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
 
         reader = csv.reader(csv_file, delimiter=';')
-
+        login_data =[]
         for row in reader:
             first_name = row[0]
             last_name = row[1]
@@ -101,7 +109,7 @@ def add_school(request):
             # Check if the class exists for the given school
             existing_class = Class.objects.filter(school=school, title=class_name).first()
 
-            if not existing_class:
+            if not existing_class and class_name:
                 # Create the class if it doesn't exist
                 classs = Class.objects.create(school=school, title=class_name)
             else:
@@ -122,13 +130,23 @@ def add_school(request):
                 role=1
             else:
                 role=2    
-                
-            user = CustomUser.objects.create(
+
+            login_user ={
+                'name': first_name,
+                'surname': last_name,
+                'classs' : class_name,
+                'email': email,
+                'password' : password,
+                'role' : role
+            }    
+            login_data.append(login_user)
+
+            user = CustomUser.objects.create_user(
                 first_name=first_name,
                 last_name=last_name, 
                 gender=gender,
                 school=school,
-                password=password, 
+                password= password, 
                 email = email,
                 role=role,
                 username=email
@@ -137,7 +155,74 @@ def add_school(request):
             if class_name:
                 student_class = StudentClass.objects.create(student=user, classs=classs)
 
-        return JsonResponse({'success': True}, status=200)
+        # content = BytesIO()
+        # content.write("Vardas\tPavardė\tKlasė\tEl.Paštas\tSlaptažodis\n".encode('utf-8'))
+
+        # for user in login_data:
+        #     content.write(f"{user['name']}\t{user['surname']}\t{user['classs']}\t{user['email']}\t{user['password']}\n".encode('utf-8'))
+
+        # # Seek to the beginning of the buffer before creating the FileResponse
+        # content.seek(0)
+
+        # # Create a response with the file as an attachment
+        # response = FileResponse(content, content_type='text/plain; charset=utf-8')
+        # response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
+
+        # # # json_data = {'success': True, 'message': 'Operation successful'}
+        # # # json_response = JsonResponse(json_data)
+
+        # # # responses = [file_response, json_response]
+
+        # return response
+
+        # headers = ["name", "surname", "classs", "email", "password"]
+        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
+        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
+
+        content = BytesIO()
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
+        content.write("{:91}\n".format('-'*91).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==2:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))    
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==1:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['classs']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))
+        # Seek to the beginning of the buffer before creating the FileResponse
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.seek(0)
+
+        # Create a response with the file as an attachment
+        response = FileResponse(content, content_type='text/plain; charset=utf-8')
+        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
+
+        return response
+
 
 
 def classes_year_changes():
@@ -209,18 +294,23 @@ def login_user(request):
             return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
 
         if user and check_password(password, user.password):
-        #if user is not None:
-            payload = {
-            'name': user.first_name,
-            'surname': user.last_name,
-            'email': user.email,
-            'role' : user.role,
-            'gender' : user.gender
-            #"exp": datetime.utcnow() + timedelta(hours=1)
-            } 
-            token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
-            login(request, user)
-            return JsonResponse({'success': True, 'token': token, 'role': user.role}, status=200)
+            license_end = user.school.license_end
+            if license_end>datetime.today().date():
+
+            #if user is not None:
+                payload = {
+                'name': user.first_name,
+                'surname': user.last_name,
+                'email': user.email,
+                'role' : user.role,
+                'gender' : user.gender
+                #"exp": datetime.utcnow() + timedelta(hours=1)
+                } 
+                token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
+                login(request, user)
+                return JsonResponse({'success': True, 'token': token, 'role': user.role}, status=200)
+            else:
+                return JsonResponse({'error': 'Jūsų licenzija nebegalioja'}, status=401)    
         else:
             return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
     else:
@@ -1750,10 +1840,11 @@ def handle_students_class(request,sid,cid):
 
 @csrf_exempt
 def get_user_id(request):
-    data = json.loads(request.body)
-    user_email = data['user_email']
-    user_id = CustomUser.objects.get(email=user_email).pk
-    return JsonResponse({'user_id': user_id})
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user_email = data['user_email']
+        user_id = CustomUser.objects.get(email=user_email).pk
+        return JsonResponse({'user_id': user_id})
 
 
 

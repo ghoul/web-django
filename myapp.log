@@ -33342,3 +33342,1523 @@ Unauthorized: /login/
 Unauthorized: /login/
 "POST /login/ HTTP/1.1" 401 49
 "POST /login/ HTTP/1.1" 401 49
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_student/
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_student/
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1846, in get_user_id
+    user_id = CustomUser.objects.get(email=user_email).pk
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1846, in get_user_id
+    user_id = CustomUser.objects.get(email=user_email).pk
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /get_user_id/ HTTP/1.1" 500 84692
+"POST /get_user_id/ HTTP/1.1" 500 84692
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_teacher/
+Unauthorized: /handle_assignments_student/
+Unauthorized: /handle_assignments_student/
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+"GET /handle_assignments_student/ HTTP/1.1" 401 44
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1846, in get_user_id
+    user_id = CustomUser.objects.get(email=user_email).pk
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+Internal Server Error: /get_user_id/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 1846, in get_user_id
+    user_id = CustomUser.objects.get(email=user_email).pk
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+homework_app.models.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+"POST /get_user_id/ HTTP/1.1" 500 84698
+"POST /get_user_id/ HTTP/1.1" 500 84698
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 49
+"POST /login/ HTTP/1.1" 401 49
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 452
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 452
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"OPTIONS /user_data/ HTTP/1.1" 200 0
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /user_data/ HTTP/1.1" 200 109
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 452
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 452
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"GET /get_class_statistics/ HTTP/1.1" 200 333
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/3/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/3/ HTTP/1.1" 200 0
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 652
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"OPTIONS /handle_assignment_update/13/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/13/ HTTP/1.1" 200 0
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignment_update/3/ HTTP/1.1" 200 113
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"OPTIONS /get_assignment_statistics/13/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/13/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/13/ HTTP/1.1" 200 561
+"GET /get_assignment_statistics/13/ HTTP/1.1" 200 561
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/3/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /get_assignment_statistics/3/ HTTP/1.1" 200 56
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"OPTIONS /get_one_student_answers/7/2/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/7/2/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_one_student_answers/7/2/ HTTP/1.1" 200 146
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"GET /get_assignment_statistics/7/ HTTP/1.1" 200 611
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/9/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/10/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 609
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 609
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/10/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_one_student_answers/10/1/ HTTP/1.1" 200 265
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 609
+"GET /get_assignment_statistics/10/ HTTP/1.1" 200 609
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/26/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/26/ HTTP/1.1" 200 0
+"GET /handle_homework_id/26/ HTTP/1.1" 200 230
+"GET /handle_homework_id/26/ HTTP/1.1" 200 230
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"OPTIONS /handle_homework_id/27/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework_id/27/ HTTP/1.1" 200 0
+"GET /handle_homework_id/27/ HTTP/1.1" 200 500
+"GET /handle_homework_id/27/ HTTP/1.1" 200 500
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"GET /get_assignment_statistics/9/ HTTP/1.1" 200 48
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /get_assignment_statistics/13/ HTTP/1.1" 200 561
+"GET /get_assignment_statistics/13/ HTTP/1.1" 200 561
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework_id/26/ HTTP/1.1" 200 230
+"GET /handle_homework_id/26/ HTTP/1.1" 200 230
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 125
+"GET /handle_homework/ HTTP/1.1" 200 295
+"GET /handle_homework/ HTTP/1.1" 200 295
+"POST /handle_homework/ HTTP/1.1" 200 53
+"POST /handle_homework/ HTTP/1.1" 200 53
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_assign_homework/ HTTP/1.1" 200 0
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"POST /handle_assign_homework/ HTTP/1.1" 200 56
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 272
+"POST /login/ HTTP/1.1" 200 272
+"GET /handle_assignments_student/ HTTP/1.1" 200 272
+"GET /handle_assignments_student/ HTTP/1.1" 200 272
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"OPTIONS /handle_assignment_id/14/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_id/14/ HTTP/1.1" 200 0
+"GET /handle_assignment_id/14/ HTTP/1.1" 200 351
+"GET /handle_assignment_id/14/ HTTP/1.1" 200 351
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+"OPTIONS /handle_test_answers/ HTTP/1.1" 200 0
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"POST /handle_test_answers/ HTTP/1.1" 200 27
+"OPTIONS /get_one_student_answers/14/1/ HTTP/1.1" 200 0
+"OPTIONS /get_one_student_answers/14/1/ HTTP/1.1" 200 0
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /get_assignment_statistics/14/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/14/ HTTP/1.1" 200 0
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_one_student_answers/14/1/ HTTP/1.1" 200 382
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 632
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 456
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 456
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"GET /handle_assignments_student/ HTTP/1.1" 200 139
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 456
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 456
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+Internal Server Error: /get_assignment_statistics/14/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 502, in get_assignment_statistics
+    return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs, 'id' : user.id})
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\http\response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+  File "C:\Users\Namai\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Class is not JSON serializable
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+"GET /get_assignment_statistics/14/ HTTP/1.1" 500 117236
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"POST /login/ HTTP/1.1" 200 261
+"POST /login/ HTTP/1.1" 200 261
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /get_assignment_statistics/14/ HTTP/1.1" 200 648
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"OPTIONS /handle_assignment_update/14/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignment_update/14/ HTTP/1.1" 200 0
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/14/ HTTP/1.1" 200 107
+"GET /handle_assignment_update/14/ HTTP/1.1" 200 107
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /get_classes_by_school/ HTTP/1.1" 200 52
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"GET /handle_assignment_update/13/ HTTP/1.1" 200 103
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"OPTIONS /get_user_id/ HTTP/1.1" 200 0
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_student_finished/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 200 537
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_homework/ HTTP/1.1" 200 347
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"POST /get_user_id/ HTTP/1.1" 200 14
+"POST /get_user_id/ HTTP/1.1" 200 14
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_student/ HTTP/1.1" 200 12
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244
+"GET /handle_assignments_teacher/ HTTP/1.1" 200 244

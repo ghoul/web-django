@@ -1,4 +1,5 @@
 from ast import Assign
+import math
 import subprocess
 from datetime import datetime, timedelta
 import email
@@ -443,6 +444,7 @@ def get_assignment_statistics(request,pk):
     email = payload.get('email')
     user = CustomUser.objects.get(email=email)
     assignment = Assignment.objects.get(pk=pk)
+    classs_title = assignment.classs.title
     assingment_title = assignment.homework.title
     #pagal assignment rast klase ir mokinius visus
     #tada tikrint kiekviena ar jau atliko ta assignment pagal AssignemtResult ir is ten paimt info 
@@ -450,7 +452,9 @@ def get_assignment_statistics(request,pk):
         classs = assignment.classs
         students_in_class = classs.classs.all()
         results = AssignmentResult.objects.filter(assignment=assignment)
-        
+
+        homework = assignment.homework
+        total_points = QuestionAnswerPair.objects.filter(homework=homework).aggregate(total_points=Sum('points'))['total_points']
         students_data = []
 
         for student in students_in_class:
@@ -463,6 +467,7 @@ def get_assignment_statistics(request,pk):
             points = ''
             status = 'Bad'
             gender = student.student.gender
+            grade = 0
 
             print(gender)
 
@@ -478,6 +483,8 @@ def get_assignment_statistics(request,pk):
 
                 # Calculate total points for the student
                 points = student_results.first().points
+                grade = math.ceil(points/total_points*10)
+                grade = min(grade, 10)
 
             students_data.append({
                 'id': student.student.pk,
@@ -488,10 +495,11 @@ def get_assignment_statistics(request,pk):
                 'points': points,
                 'status': status,  # Add status logic if needed
                 'gender' : gender,
+                'grade' : grade
             })
 
             students_data = sorted(students_data, key=sort_students)
-        return JsonResponse({'students': students_data, 'title': assingment_title, 'id' : user.id}) 
+        return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs_title, 'id' : user.id}) 
 
 def get_current_school_year():
     today = datetime.now().date()

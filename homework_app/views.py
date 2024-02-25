@@ -421,10 +421,10 @@ def sort_students(student):
     #     return (-student['points'], student['time'])
     # else:
     #     return (float('-inf'), float('-inf'))
-    if student['points'] == '' or student['time'] == '':
+    if student['scored'] == '' or student['time'] == '':
         return (float('inf'), float('inf'))
     else:
-        return (-int(student['points']) if student['points'] else 0, student['time'] if student['time'] else '99:99:99')
+        return (-int(student['scored']) if student['scored'] else 0, student['time'] if student['time'] else '99:99:99')
 
 @csrf_exempt
 def get_assignment_statistics(request,pk):
@@ -482,8 +482,17 @@ def get_assignment_statistics(request,pk):
                 time = student_results.first().time.strftime('%H:%M:%S')  # Format the time as needed
 
                 # Calculate total points for the student
-                points = student_results.first().points
-                grade = math.ceil(points/total_points*10)
+                scored_points_total = student_results.first().points
+                points = QuestionAnswerPairResult.objects.filter(
+                    assignment=assignment,
+                    student=student.student, 
+                ).aggregate(total_points=Sum('points'))['total_points']
+                print(student.student.last_name + " points: " + str(points))
+                
+                if total_points >0:
+                    grade = math.ceil(points/total_points*10)
+                else:
+                    grade = 0
                 grade = min(grade, 10)
 
             students_data.append({
@@ -495,7 +504,8 @@ def get_assignment_statistics(request,pk):
                 'points': points,
                 'status': status,  # Add status logic if needed
                 'gender' : gender,
-                'grade' : grade
+                'grade' : grade,
+                'scored' : scored_points_total
             })
 
             students_data = sorted(students_data, key=sort_students)
@@ -1155,6 +1165,7 @@ def get_homework_questions(homework):
                 # print(indexes)
                 
                 correctMultiple = indexes
+                print("correctmultiplle: " + ', '.join(map(str, correctMultiple)))
 
 
             question_info = {
@@ -1221,6 +1232,7 @@ def handle_assignment_id(request,id):
         userId = CustomUser.objects.get(email=email).pk
     if request.method == 'GET':
         homework = Assignment.objects.get(pk=id).homework
+     
         questions_data = get_homework_questions(homework)
         return JsonResponse({'questions': questions_data, 'uid' : userId, 'success' : True}) 
 

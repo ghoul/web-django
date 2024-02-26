@@ -1927,32 +1927,97 @@ def post_answer(request):
 
         if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
 
+          
             question = QuestionAnswerPair.objects.get(pk=question_id)
             qtype = question.qtype
             assignment = Assignment.objects.get(pk=assignment_id)
             student = CustomUser.objects.get(pk=student_id)
 
-            if qtype == 3:
-                print(selected)
+            # previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question) 
+            # if previous_answer is not None:
 
-                selected_elements = selected.split(',')
-                print(selected_elements)
-                indexes = [int(element) for element in selected_elements]
-                #indexes - 0 1 2 3 bazinai, ir tada sekandtys jau is tikro kurie pasirinkti, tai skaiciuot index-4 galima
-                options = Option.objects.filter(question=question)
-                print(options)
-                selected_options = [options[index] for index in indexes]
+            # if qtype == 3:
+            #     print(selected)
 
-                for option in selected_options:
-                    stselected = QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-                    print("sukure multiple answer")
+            #     selected_elements = selected.split(',')
+            #     print(selected_elements)
+            #     indexes = [int(element) for element in selected_elements]
+            #     #indexes - 0 1 2 3 bazinai, ir tada sekandtys jau is tikro kurie pasirinkti, tai skaiciuot index-4 galima
+            #     options = Option.objects.filter(question=question)
+            #     print(options)
+            #     selected_options = [options[index] for index in indexes]
+
+            #     for option in selected_options:
+            #         stselected = QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+            #         print("sukure multiple answer")
 
 
 
-            pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
-            return JsonResponse({'success': True, 'id': pairResult.pk})
+            # pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+            # previous_answer, created = QuestionAnswerPairResult.objects.get_or_create(assignment=assignment, student=student, question=question)
+            # previous = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
+            try:
+                previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
+                # If previous exists, it means something was found in the database
+                # Update the answer if it exists
+            # Update the answer if it exists
+            # if not created:
+                if qtype == 3:
+                    selected_elements = selected.split(',')
+                    if len(selected_elements) > 0:
+                        if len(selected_elements) == 1:
+                            # Handle single number case
+                            numbers = [int(selected_elements[0])]
+                            print(f"One element selected: {numbers[0]}")
+                        else:
+                            # Handle array case
+                            numbers = [int(element) for element in selected_elements]
+                            print("Multiple elements selected:", numbers)
+                        indexes = [int(element) for element in selected_elements]
+                        options = Option.objects.filter(question=question)
+                        selected_options = [options[index] for index in indexes]
+
+                        QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
+                        for option in selected_options:
+                            QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+                    else:
+                        print("nieko nepasirinko")
+                    
+                
+                
+                previous_answer.answer = player_answer
+                previous_answer.points = points
+                previous_answer.save()
+            # Create a new answer if it doesn't exist
+            except ObjectDoesNotExist:
+                if qtype == 3:
+                    selected_elements = selected.split(',')
+                    indexes = [int(element) for element in selected_elements]
+                    options = Option.objects.filter(question=question)
+                    selected_options = [options[index] for index in indexes]
+
+                    for option in selected_options:
+                        QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+
+                previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+
+           
+            return JsonResponse({'success': True, 'id': previous_answer.pk})
             
         return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
+
+@csrf_exempt
+def check_summary(request,aid,sid):
+    assignment = Assignment.objects.get(pk=aid)
+    student = CustomUser.objects.get(pk=sid)
+    exists = True
+    try:
+        AssignmentResult.objects.get(assignment = assignment, student=student)
+    except ObjectDoesNotExist:
+        exists=False
+
+    return JsonResponse({'success': True, 'exists': exists})
+
 
 @csrf_exempt
 def post_summary(request):
@@ -1965,8 +2030,16 @@ def post_summary(request):
     if assignment_id is not None and time is not None and student_id is not None and points is not None:
         assignment = Assignment.objects.get(pk=assignment_id)
         student = CustomUser.objects.get(pk=student_id)
+# assignmentResult, created = AssignmentResult.objects.get_or_create(assignment=assignment, student=student, date=date, points=points, time=time)
+        # assignmentResult, created = AssignmentResult.objects.get_or_create(assignment=assignment, student=student)
+        # if not created:
+        #     assignmentResult.date = date
+        #     assignmentResult.points = points
+        #     assignmentResult.time = time
+        #     assignmentResult.save()
+        # else:
+        assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
 
-        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
         return JsonResponse({'success': True, 'id': assignmentResult.pk})
         
     return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 

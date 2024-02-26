@@ -59,7 +59,8 @@ urlpatterns = [
     
     path('start_game/',views.start_game, name='start_game'),
     path('post_answer/',views.post_answer, name='post_answer'),
-    path('post_summary/',views.post_summary, name='post_summary'),
+    path('post_summary/',views.post_summary, name='post_summary'), 
+    path('check_summary/<int:aid>/<int:sid>/',views.check_summary, name='check_summary'),
     path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
     path('user_data/',views.user_data, name='user_data'),

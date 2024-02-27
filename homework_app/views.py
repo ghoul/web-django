@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import email
 import json
 from turtle import st
+from urllib.parse import ParseResultBytes
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -35,6 +36,7 @@ from io import TextIOWrapper,StringIO,BytesIO
 from django.http import FileResponse
 from django.core.files.base import ContentFile
 # from django.contrib.auth.hashers import make_random_password
+from django.contrib.auth.decorators import permission_required
 
 logger = logging.getLogger(__name__)
 
@@ -72,8 +74,22 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 #         # Implement your logic here
 #         pass
 
+
 @csrf_exempt
-def add_school(request):
+def get_schools(request):
+    schools = School.objects.all()
+    school_data = [{'id': school.pk, 'title': school.title} for school in schools]
+    return JsonResponse({'schools': school_data})
+
+@csrf_exempt
+def delete_schools(request):
+    schools = School.objects.all()
+    school_data = [{'id': school.pk, 'title': school.title} for school in schools]
+    return JsonResponse({'schools': school_data})
+
+
+@csrf_exempt
+def handle_school(request):
     # csv_file = request.FILES.get("file")
     # with open(csv_file) as f:
     #     print(f)
@@ -223,6 +239,24 @@ def add_school(request):
         response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
 
         return response
+
+    elif request.method == 'GET':
+        schools = School.objects.all()
+        school_data = [{'id': school.pk, 'title': school.title} for school in schools]
+        return JsonResponse({'schools': school_data})  
+
+@csrf_exempt
+def handle_school_id(request, sid):
+    if request.method == 'DELETE':
+        school = School.objects.get(pk=sid)
+        school.delete()
+
+        return JsonResponse({'data': 'ok'})  
+
+        # school_data = [{'id': school.pk, 'title': school.title} for school in schools]
+        # return JsonResponse({'schools': school_data})  
+    elif request.method == 'PUT':
+        pass       
 
 
 
@@ -640,9 +674,14 @@ def get_class_statistics(request):
 
 
 
-
+#@permission_required('homework_app.handle_assignments_teacher')
 @csrf_exempt
 def handle_assignments_teacher(request):
+    #TODO:
+    # if not request.user.has_perm('homework_app.handle_assignments_teacher'):
+    #      return JsonResponse({'success': False, 'error': 'No permission'}, status=403)
+    # curr_user = request.user
+    # print("curr_user: " + str(curr_user.first_name))
     token = request.headers.get('Authorization')   
     if not token:
         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
@@ -1293,6 +1332,7 @@ def handle_test_answers(request):
                 print("points: " + str(points))  
 
                 # print("i: " + str(i))
+               
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 # print(num_mult)
 

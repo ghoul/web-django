@@ -30,7 +30,7 @@ class School(models.Model):
     license_end = models.DateField( ) #default=datetime.now().date()
 
 class CustomUser(AbstractUser):
-    school = models.ForeignKey(School, related_name='school', on_delete=models.SET_NULL, null=True)
+    school = models.ForeignKey(School, related_name='school', on_delete=models.CASCADE)
     role = models.IntegerField() #1-mokinys 2-mokytojas 3-admin
     gender = models.IntegerField() #1- vyras 2-moteris
     objects = CustomUserManager()

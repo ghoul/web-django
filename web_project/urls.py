@@ -86,7 +86,8 @@ urlpatterns = [
 
     # path('admin/add_school/', views.AddSchoolView.as_view(), name='add_school'),
     # path('admin/', admin_site.urls),
-    path('add_school/', views.add_school, name='add_school'),
+    path('handle_school/', views.handle_school, name='handle_school'),
+    path('handle_school_id/<int:sid>/', views.handle_school_id, name='handle_school_id'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

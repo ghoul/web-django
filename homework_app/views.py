@@ -73,20 +73,18 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 #     def create_users_from_file(self, school_title, csv_file):
 #         # Implement your logic here
 #         pass
-
-
-@csrf_exempt
-def get_schools(request):
-    schools = School.objects.all()
-    school_data = [{'id': school.pk, 'title': school.title} for school in schools]
-    return JsonResponse({'schools': school_data})
-
-@csrf_exempt
-def delete_schools(request):
-    schools = School.objects.all()
-    school_data = [{'id': school.pk, 'title': school.title} for school in schools]
-    return JsonResponse({'schools': school_data})
-
+def generate_email_password(first_name, last_name):
+    email_base = first_name.lower() + "." + last_name.lower()
+    email = email_base + "@goose.lt"
+    
+    counter = 1
+    while CustomUser.objects.filter(email=email).exists():
+        email = email_base + f"{counter}@goose.lt"
+        counter += 1
+    
+    # Generate a random password
+    password =  CustomUser.objects.make_random_password()
+    return email, password
 
 @csrf_exempt
 def handle_school(request):
@@ -132,21 +130,9 @@ def handle_school(request):
             else:
                 classs = existing_class
             
-            email_base = first_name.lower() + "." + last_name.lower()
-            email = email_base + "@goose.lt"
-            
-            counter = 1
-            while CustomUser.objects.filter(email=email).exists():
-                email = email_base + f"{counter}@goose.lt"
-                counter += 1
-            
-            # Generate a random password
-            password =  CustomUser.objects.make_random_password()
+            email, password = generate_email_password(first_name, last_name)
 
-            if class_name:
-                role=1
-            else:
-                role=2    
+            role = 2 if class_name == '' else 1 
 
             login_user ={
                 'name': first_name,
@@ -172,27 +158,6 @@ def handle_school(request):
             if class_name:
                 student_class = StudentClass.objects.create(student=user, classs=classs)
 
-        # content = BytesIO()
-        # content.write("Vardas\tPavardė\tKlasė\tEl.Paštas\tSlaptažodis\n".encode('utf-8'))
-
-        # for user in login_data:
-        #     content.write(f"{user['name']}\t{user['surname']}\t{user['classs']}\t{user['email']}\t{user['password']}\n".encode('utf-8'))
-
-        # # Seek to the beginning of the buffer before creating the FileResponse
-        # content.seek(0)
-
-        # # Create a response with the file as an attachment
-        # response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        # response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
-
-        # # # json_data = {'success': True, 'message': 'Operation successful'}
-        # # # json_response = JsonResponse(json_data)
-
-        # # # responses = [file_response, json_response]
-
-        # return response
-
-        # headers = ["name", "surname", "classs", "email", "password"]
         headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
         headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
 
@@ -234,15 +199,20 @@ def handle_school(request):
         content.write("{:<101}\n".format('-'*101).encode('utf-8'))
         content.seek(0)
 
+        date_string = datetime.now().strftime("%Y-%m-%d")
+        filename = f"login_credentials_{school.title}_{date_string}.txt"
+
         # Create a response with the file as an attachment
         response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
+        # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        response['FormattedTitle'] = filename
 
         return response
 
     elif request.method == 'GET':
         schools = School.objects.all()
-        school_data = [{'id': school.pk, 'title': school.title} for school in schools]
+        school_data = [{'id': school.pk, 'title': school.title, 'license' : school.license_end} for school in schools]
         return JsonResponse({'schools': school_data})  
 
 @csrf_exempt
@@ -255,8 +225,168 @@ def handle_school_id(request, sid):
 
         # school_data = [{'id': school.pk, 'title': school.title} for school in schools]
         # return JsonResponse({'schools': school_data})  
-    elif request.method == 'PUT':
-        pass       
+    elif request.method == 'POST':
+        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas gal
+        csv_file = request.FILES.get("file")
+        new_school_title = request.POST.get("title")
+        new_license_expire_date = request.POST.get("license")
+        school_id = sid
+        print("nwe name school: " + new_school_title)
+        print("new license date : " + str(new_license_expire_date))
+        print("sid: " + str(school_id))
+
+        try:
+            # Retrieve the school object by its ID
+            school = School.objects.get(id=school_id)
+        except ObjectDoesNotExist:
+            return JsonResponse({'success' : False}, status=404)
+
+        # Update school details if provided
+        if new_school_title:
+            school.title = new_school_title
+        if new_license_expire_date:
+            school.license_end = new_license_expire_date
+        school.save()
+
+        # Update or create members (teachers and students)
+        if csv_file:
+            response = update_or_create_members(csv_file, school)
+            return response
+
+    return JsonResponse({'success' : True})
+
+
+def update_or_create_members(file, school):
+    processed_users = set()  # To keep track of processed users
+    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
+    print("viduj update members")
+    reader = csv.reader(csv_file, delimiter=';')
+    login_data =[]
+    for row in reader:
+        first_name = row[0]
+        print(first_name)
+        last_name = row[1]
+        class_name = row[2]
+        gender = row[3]
+        gender = 1 if gender=='vyras' else 2    
+        role = 2 if class_name == '' else 1
+
+        # Check if the class exists for the given school
+        existing_class = Class.objects.filter(school=school, title=class_name).first()
+
+        if not existing_class and class_name:
+            # Create the class if it doesn't exist
+            classs = Class.objects.create(school=school, title=class_name)
+        else:
+            classs = existing_class
+        
+        email, password = generate_email_password(first_name, last_name)
+
+        role = 2 if class_name == '' else 1 
+
+        login_user ={
+            'name': first_name,
+            'surname': last_name,
+            'classs' : class_name,
+            'email': email,
+            'password' : password,
+            'role' : role
+        }    
+
+        
+
+        try:    
+            # randa pagal varda i pavarde tai jei du vienodi mokykloj tai negerai, bet nieko tokio, jei pereina i klase irgi nereikia
+            #gali lyst i admin panel ir ten pavienius tvarkyt atvejus
+            user = CustomUser.objects.get(
+                first_name=first_name,
+                last_name=last_name,
+                role=role,
+                school = school
+            )
+            processed_users.add(user.id)  # Add user to processed users set
+            print("found user: " + str(user.id))
+
+        except ObjectDoesNotExist:
+            email, password = generate_email_password(first_name, last_name)
+            new_user = CustomUser.objects.create_user(
+                first_name=first_name,
+                last_name=last_name, 
+                gender=gender,
+                school=school,
+                password= password, 
+                email = email,
+                role=role,
+                username=email
+            )
+            processed_users.add(new_user.id)  # Add user to processed users set
+            print("new user: " + str(new_user.id))
+            login_data.append(login_user)
+            
+            if class_name:
+                student_class = StudentClass.objects.create(student=new_user, classs=classs)
+
+        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
+        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
+
+        content = BytesIO()
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
+        content.write("{:91}\n".format('-'*91).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==2:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))    
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==1:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['classs']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))
+        # Seek to the beginning of the buffer before creating the FileResponse
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.seek(0)
+
+        date_string = datetime.now().strftime("%Y-%m-%d")
+        filename = f"login_credentials_{school.title}_{date_string}.txt"
+
+        # Create a response with the file as an attachment
+        response = FileResponse(content, content_type='text/plain; charset=utf-8')
+        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
+        #response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        response['FormattedTitle'] = filename
+
+       
+
+    # Delete users who are not present in the new file
+    all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
+    users_to_delete = all_users.exclude(id__in=processed_users)
+    # for user in users_to_delete:
+    #     print(user.first_name)
+    
+    #users_to_delete.delete()
+
+    return response
 
 
 
@@ -367,13 +497,13 @@ def user_data(request):
     email = payload.get('email')
     user = CustomUser.objects.get(email=email)
     if request.method == "GET":
-        user_data =[
-        {
+        user_data = {
             'name': user.first_name,
             'surname': user.last_name,
             'email': user.email,
+            'school' : user.school.title
         }
-        ]
+        
         return JsonResponse({'data': user_data})
     elif request.method == "PUT":
         data = json.loads(request.body)
@@ -1307,6 +1437,15 @@ def handle_test_answers(request):
             get_points = 0
             answerOG = ''
             answersUser = []
+            new = False
+            try:
+                answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=student)
+                answered_before.delete()
+                selected = QuestionSelectedOption.objects.filter(assignment=assignment, student=student, question=question)
+                selected.delete()
+            except ObjectDoesNotExist:
+                new = True
+                
             if qtype == 1: #select
                 answerOG = question.correct.text
             elif qtype == 2: #write
@@ -1340,7 +1479,7 @@ def handle_test_answers(request):
                     optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
                     answersUser.append(optionIndex)
                     option = options[optionIndex]
-
+                    
                     saveSelected = QuestionSelectedOption.objects.create(assignment=assignment, student=student, question=question, option=option)   
                 print(answersUser)
                 print(originIndexes)
@@ -1360,10 +1499,6 @@ def handle_test_answers(request):
                 #arba jei nei vieno teisingo nepasirinko: 0 automatiskai               
 
                 total_points+=get_points    
-
-
-          
-            
 
             if qtype==1 or qtype==2:
                 if answerOG == answer:

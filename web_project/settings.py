@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-dd1843($be$0wz8%w6qv&*4(s%zht7u5yui7!^@!evb%_#*p5z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']  #localhost
+# ALLOWED_HOSTS = ['*']  #localhost
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'localhost:3000', '127.0.0.1:3000', 'localhost:8080', '127.0.0.1:8080']
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -38,21 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'homework_app',
     'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'web_project.urls'
@@ -75,7 +78,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'web_project.wsgi.application'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080', 
+    'http://localhost:3000',
+    'http://127.0.0.1:8080', 
+    'http://127.0.0.1:3000',    
+
+]
 CORS_ALLOW_METHODS = [
     'DELETE',
     'GET',
@@ -90,7 +101,8 @@ CORS_ALLOW_METHODS = [
 SECRET_KEY_FOR_JWT = 'scrta0ae54d3d4a7b9443ae46819ca830ea8bbbb459c34bb921c0faae11f5bc71707'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+       'rest_framework.authentication.SessionAuthentication', 
+       'rest_framework.authentication.TokenAuthentication',
     ],
 }
 

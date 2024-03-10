@@ -5,13 +5,15 @@ from datetime import datetime, timedelta
 import email
 import json
 from turtle import st
+from urllib import response
 from urllib.parse import ParseResultBytes
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
 from homework_app.models import Homework,QuestionAnswerPair, Class, StudentClass, AssignmentResult, QuestionCorrectOption,School, Assignment,StudentTeacher,StudentTeacherConfirm,QuestionAnswerPairResult
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.csrf import csrf_exempt, csrf_protect, ensure_csrf_cookie
+
 import logging
 import re
 from django.db import IntegrityError
@@ -19,7 +21,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework_simplejwt.tokens import Token
 from rest_framework import serializers
 from rest_framework_simplejwt.views import TokenObtainPairView
-# from django.contrib.auth.models import User
+
+from homework_app.utils import IsTeacher
 from .models import CustomUser, Option, QuestionSelectedOption
 import jwt 
 from django.conf import settings
@@ -35,44 +38,42 @@ import csv
 from io import TextIOWrapper,StringIO,BytesIO
 from django.http import FileResponse
 from django.core.files.base import ContentFile
-# from django.contrib.auth.hashers import make_random_password
 from django.contrib.auth.decorators import permission_required
+from django.middleware.csrf import get_token
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import *
+from rest_framework_simplejwt.authentication import JWTAuthentication, JWTTokenUserAuthentication
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
+from rest_framework.authentication import  SessionAuthentication, TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
+from rest_framework.permissions import IsAuthenticated
+from django.views.decorators.http import require_POST, require_GET
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from rest_framework import mixins
+from rest_framework import viewsets
+
+
+class AssignmentListViewTeacherTest(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]         
+
+    def get_queryset(self):
+        return Assignment.objects.filter(
+            homework__teacher=self.request.user, 
+            to_date__gte=date.today(),  
+        )
+    serializer_class = AssignmentSerializer
+
+
+def generate_csrf_token(request):
+    csrf_token = get_token(request)
+    return csrf_token
 
 logger = logging.getLogger(__name__)
 
-class CustomTokenSerializer(serializers.Serializer):
-    token = serializers.CharField()
-    username = serializers.CharField(source='user.username')
-    is_admin = serializers.SerializerMethodField()
 
-    def get_is_admin(self, obj):
-        return obj.user.is_staff
-
-class CustomTokenObtainPairView(TokenObtainPairView):
-    serializer_class = CustomTokenSerializer
-
-# @method_decorator(staff_member_required, name='dispatch')
-# class AddSchoolView(View):
-#     template_name = 'admin/add_school.html'
-
-#     def get(self, request, *args, **kwargs):
-#         return render(request, self.template_name)
-
-#     def post(self, request, *args, **kwargs):
-#         # Handle file upload here
-#         school_title = request.POST.get('school_title')
-#         csv_file = request.FILES.get('file')
-
-#         # Process the file and create users
-#         if csv_file:
-#             self.create_users_from_file(school_title, csv_file)
-#             return HttpResponse(f'School Title: {school_title}, CSV File: {csv_file.name} processed successfully.')
-#         else:
-#             return HttpResponse('No CSV file provided.')
-
-#     def create_users_from_file(self, school_title, csv_file):
-#         # Implement your logic here
-#         pass
 def generate_email_password(first_name, last_name):
     email_base = first_name.lower() + "." + last_name.lower()
     email = email_base + "@goose.lt"
@@ -88,10 +89,6 @@ def generate_email_password(first_name, last_name):
 
 @csrf_exempt
 def handle_school(request):
-    # csv_file = request.FILES.get("file")
-    # with open(csv_file) as f:
-    #     print(f)
-
     if request.method == 'POST':
         csv_file = request.FILES.get("file")
         title = request.POST.get("title")
@@ -170,7 +167,6 @@ def handle_school(request):
 
         for user in login_data:
             if user['role'] ==2:
-            # Customize the width of each column
                 content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
                     str(user['name']),
                     str(user['surname']),
@@ -187,7 +183,6 @@ def handle_school(request):
 
         for user in login_data:
             if user['role'] ==1:
-            # Customize the width of each column
                 content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
                     str(user['name']),
                     str(user['surname']),
@@ -206,7 +201,7 @@ def handle_school(request):
         response = FileResponse(content, content_type='text/plain; charset=utf-8')
         # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
         response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        response['FormattedTitle'] = filename
+        # response['FormattedTitle'] = filename
 
         return response
 
@@ -220,23 +215,14 @@ def handle_school_id(request, sid):
     if request.method == 'DELETE':
         school = School.objects.get(pk=sid)
         school.delete()
-
         return JsonResponse({'data': 'ok'})  
-
-        # school_data = [{'id': school.pk, 'title': school.title} for school in schools]
-        # return JsonResponse({'schools': school_data})  
     elif request.method == 'POST':
-        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas gal
+        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas
         csv_file = request.FILES.get("file")
         new_school_title = request.POST.get("title")
         new_license_expire_date = request.POST.get("license")
         school_id = sid
-        print("nwe name school: " + new_school_title)
-        print("new license date : " + str(new_license_expire_date))
-        print("sid: " + str(school_id))
-
         try:
-            # Retrieve the school object by its ID
             school = School.objects.get(id=school_id)
         except ObjectDoesNotExist:
             return JsonResponse({'success' : False}, status=404)
@@ -293,10 +279,8 @@ def update_or_create_members(file, school):
             'role' : role
         }    
 
-        
-
         try:    
-            # randa pagal varda i pavarde tai jei du vienodi mokykloj tai negerai, bet nieko tokio, jei pereina i klase irgi nereikia
+            #randa pagal varda i pavarde tai jei du vienodi mokykloj tai negerai, bet nieko tokio, jei pereina i klase irgi nereikia
             #gali lyst i admin panel ir ten pavienius tvarkyt atvejus
             user = CustomUser.objects.get(
                 first_name=first_name,
@@ -408,78 +392,26 @@ def classes_year_changes():
                 classs.save()
 
 
-@csrf_exempt
-def signup_user(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        name = data['name']
-        surname = data['surname']
-        password = data['password']
-        email = data['email']
-        role = data['role']
-        gender = data['gender']
-
-        existing_user = CustomUser.objects.filter(email=email).first()
-        if existing_user:
-            return JsonResponse({'error': 'Email is already taken.'}, status=400)
-
-        # Create a new user
-        user = CustomUser.objects.create_user(first_name=name, last_name=surname,email=email, username=email, password=password, gender=gender,role=role)
-
-        # Generate JWT token
-        payload = {
-            'name': user.first_name,
-            'surname': user.last_name,
-            'email': user.email,
-            'role' : user.role,
-            'gender' : user.gender
-        }
-        token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
-
-        # Log the user in
-        login(request, user)
-
-        return JsonResponse({'success': True, 'user': name, 'token': token, 'role': user.role}, status=200)
-    else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)
-
+@api_view(['POST'])
+@require_POST
 @csrf_exempt
 def login_user(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        email = data['email']
-        password = data['password']
-        print(email + str(1))
-        # print(password + str(1))
+    user = CustomUser.objects.get(email=request.data['email'])
+    if not user.check_password(request.data['password']):
+        return Response({"detail:" "Not found"})
 
-       # user = authenticate(request, email=email, password=password)
-        try:
-            user = CustomUser.objects.get(email=email)
-        except user.DoesNotExist:
-            return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
+    license_end = user.school.license_end
+    if license_end>datetime.today().date():
 
-        if user and check_password(password, user.password):
-            license_end = user.school.license_end
-            if license_end>datetime.today().date():
+        serializer = LoginUserSerializer(instance=user)    
+        token, created = Token.objects.get_or_create(user=user)
+        csrf_token = generate_csrf_token(request)
 
-            #if user is not None:
-                payload = {
-                'name': user.first_name,
-                'surname': user.last_name,
-                'email': user.email,
-                'role' : user.role,
-                'gender' : user.gender
-                #"exp": datetime.utcnow() + timedelta(hours=1)
-                } 
-                token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')  # Use a secure secret key
-                login(request, user)
-                return JsonResponse({'success': True, 'token': token, 'role': user.role}, status=200)
-            else:
-                return JsonResponse({'error': 'Jūsų licenzija nebegalioja'}, status=401)    
-        else:
-            return JsonResponse({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)
+        return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
     else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)
+        return Response({'error': 'Jūsų licenzija nebegalioja'}, status=401)           
+
+   
 
 @csrf_exempt
 def user_data(request):
@@ -532,28 +464,19 @@ def user_data(request):
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
+#PAVYZDYS
 @csrf_exempt
+# @require_PUT
+@api_view(['PUT'])
+@authentication_classes([SessionAuthentication, TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def change_password(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    email = payload.get('email')
-    user = CustomUser.objects.get(email=email)
-    if request.method == "PUT":
-        data = json.loads(request.body)
-        new_password = data['password']
+    if request.method == 'PUT':
+        new_password = request.data['password']
+        user = request.user
 
         if not new_password:
             return JsonResponse({'success': False, 'error': 'Klaida! Visi laukai privalomi'}, status=400)
-
 
         if not user.check_password(new_password):
             user.set_password(new_password)
@@ -581,10 +504,6 @@ def has_answered_all_questions(student, assignment):
     return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count
 
 def sort_students(student):
-    # if student['points'] != '' and student['time'] != '':
-    #     return (-student['points'], student['time'])
-    # else:
-    #     return (float('-inf'), float('-inf'))
     if student['scored'] == '' or student['time'] == '':
         return (float('inf'), float('inf'))
     else:
@@ -610,8 +529,7 @@ def get_assignment_statistics(request,pk):
     assignment = Assignment.objects.get(pk=pk)
     classs_title = assignment.classs.title
     assingment_title = assignment.homework.title
-    #pagal assignment rast klase ir mokinius visus
-    #tada tikrint kiekviena ar jau atliko ta assignment pagal AssignemtResult ir is ten paimt info 
+
     if request.method == 'GET':
         classs = assignment.classs
         students_in_class = classs.classs.all()
@@ -624,8 +542,6 @@ def get_assignment_statistics(request,pk):
         for student in students_in_class:
         # Filter AssignmentResult for the current student and assignment
             student_results = results.filter(student=student.student)
-
-            # Initialize empty values for date, time, points
             date = ''
             time = ''
             points = ''
@@ -641,9 +557,9 @@ def get_assignment_statistics(request,pk):
                     status = 'Good'
                 else: 
                     status = 'Average'
-                # Extracting the date and time from the first result (assuming all results have the same date and time for a student)
-                date = student_results.first().date.strftime('%Y-%m-%d')  # Format the date as needed
-                time = student_results.first().time.strftime('%H:%M:%S')  # Format the time as needed
+                # Extracting the date and time from the first result
+                date = student_results.first().date.strftime('%Y-%m-%d') 
+                time = student_results.first().time.strftime('%H:%M:%S')  
 
                 # Calculate total points for the student
                 scored_points_total = student_results.first().points
@@ -666,7 +582,7 @@ def get_assignment_statistics(request,pk):
                 'date': date,
                 'time': time,
                 'points': points,
-                'status': status,  # Add status logic if needed
+                'status': status, 
                 'gender' : gender,
                 'grade' : grade,
                 'scored' : scored_points_total
@@ -754,126 +670,31 @@ def get_class_statistics(request):
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=500)
 
-
-            # student_class = StudentClass.objects.get(student=user)
-
-            # # Step 2: Retrieve all the assignments for that class
-            # assignments = Assignment.objects.filter(classs=student_class.classs)
-
-            # # Step 3: Filter assignment results based on the school year
-            # start_date, end_date = get_current_school_year()
-            # assignment_results = AssignmentResult.objects.filter(
-            #     student=user,
-            #     assignment__in=assignments,
-            #     date__range=(start_date, end_date)
-            # )
-
-            # # Step 4: Calculate points for the given student in the class
-            # leaderboard_entries = []
-            # points = assignment_results.aggregate(Sum('points'))['points__sum'] or 0
-            # leaderboard_entries.append(LeaderboardEntry(f'{user.first_name} {user.last_name}', points, user.gender))
-
-            # # Step 5: Create a leaderboard
-            # leaderboard_entries.sort(key=lambda x: x.points, reverse=True)
-            # print("success")
-
-            # serialized_leaderboard_entries = json.dumps(leaderboard_entries, cls=LeaderboardEntryEncoder)
-
-            # return JsonResponse({'data': serialized_leaderboard_entries}, safe=False)
-
-
         elif role==2:
             print("mokytojo leaderboard")
 
-        
-
-    
-    #mokinys gali priklausyt vinai klasei is esmes, bet kartu ir pogrupiai buna mokykloj
-    #tai lyderiu lentelej turetu but pasirinkimas visu klasiu kuriom prikllauso jis
-    #reikia filtruot dar pagal metus kad senu irasu nepaimtu ir neskaiciuotu
-    #tarkim buvau 1a klasej - id 1, praeina metai - automatiskai pasikeicia i 2a id-1
-    #visi irasai assignments bus suije su ta pacia klase per visa laika
-    #reikia atskirt pagal assignment data gal kada atlikta ir skaiciuot
-    #NORS VIENA KLASE BUS TIESIOG
-    #siunciu token, ziuriu kokia data, lygint su rugsejo 1 vis, pagal studen atsirinkt assignments ir tada pagal data
-    #mokytojas pagal klase turi gaut visu
-    #mokinys pagal dalyka turi matyt savo leaderboard? - savo sukurtas klases visas mato
-    #ar viskas i viena dedasi is visu dalyku - is visu
 
 
+class AssignmentListViewTeacher(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated, IsTeacher]
 
+    def get(self, request):
+            active_assignments = Assignment.objects.filter(
+            homework__teacher = request.user, 
+            to_date__gte=date.today(),  
+            )
+            serializer = AssignmentSerializer(active_assignments, many=True)
+            return Response({'data': serializer.data})  
 
-
-#@permission_required('homework_app.handle_assignments_teacher')
-@csrf_exempt
-def handle_assignments_teacher(request):
-    #TODO:
-    # if not request.user.has_perm('homework_app.handle_assignments_teacher'):
-    #      return JsonResponse({'success': False, 'error': 'No permission'}, status=403)
-    # curr_user = request.user
-    # print("curr_user: " + str(curr_user.first_name))
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    school=teacher.school
-
-    if request.method == 'GET':
-        today = date.today()  
-        active_assignments = Assignment.objects.filter(
-        classs__school=school,  # Filter by teacher ID
-        # from_date__lte=today,  # From date less than or equal to today
-        to_date__gte=today,  # To date greater than or equal to today
-    )
-        assignment_data = []
-
-        for assignment in active_assignments:
-            status = get_assignment_status(assignment)
-            assignment_info = {
-                'id': assignment.pk,
-                'title': assignment.homework.title,
-                'fromDate': assignment.from_date,
-                'toDate': assignment.to_date,
-                'classs': assignment.classs.title,
-                'status': status
-            }
-            assignment_data.append(assignment_info)
-        return JsonResponse({'data': assignment_data}) 
-
-    elif request.method == 'DELETE':
-        data = json.loads(request.body)
-        id = data['id']
-        assignment = Assignment.objects.get(pk=id)
+    def delete(self, request):
+        assignment_id = request.data.get('id')
+        assignment = Assignment.objects.get(pk=assignment_id)
         assignment.delete()
-        return JsonResponse({'success': True}) 
+        return Response({'success': True})
 
-def get_completed_students_count(assignment):
-    assignment_results = AssignmentResult.objects.filter(assignment=assignment)
-    return assignment_results.values('student').distinct().count()
 
-def get_assignment_status(assignment):
-    completed_students_count = get_completed_students_count(assignment)
-    total_students_count = StudentClass.objects.filter(classs=assignment.classs).count()
-    if total_students_count == 0:
-        return 'Bad'
-    completion_percentage = (completed_students_count / total_students_count) * 100
-    if completion_percentage >= 75:
-        return 'Good'
-    elif completion_percentage >= 50:
-        return 'Average'
-    else:
-        return 'Bad'            
+  
 
 @csrf_exempt
 def handle_assignments_teacher_finished(request):
@@ -897,14 +718,11 @@ def handle_assignments_teacher_finished(request):
     if request.method == 'GET':
         today = date.today()  
         active_assignments = Assignment.objects.filter(
-        classs__school=school,  # Filter by teacher ID
+        classs__school=school,
+        homework__teacher = teacher,
         to_date__lte=today,
     )
 
-        # assignment_data = [
-        #         {'id' : hw.pk, 'title': hw.homework.title, 'fromDate': hw.from_date, 'toDate' : hw.to_date, 'classs' : hw.classs.title, 'status' : "good"}
-        #         for hw in active_assignments
-        #     ]
         assignment_data = []
 
         for assignment in active_assignments:
@@ -964,6 +782,7 @@ def handle_assignment_update(request,aid):
                 return JsonResponse({'success': False, 'error': str(e)}, status=500) 
 
 @csrf_exempt
+# @ensure_csrf_cookie
 def handle_assignments_student(request):
     token = request.headers.get('Authorization')   
     if not token:
@@ -982,18 +801,12 @@ def handle_assignments_student(request):
     student = CustomUser.objects.get(email=email)
 
     if request.method == 'GET':
-        # Get classes associated with the student
+        # Get classes associated with the student TODO: tik viena klase
         student_classes = Class.objects.filter(classs__student=student)
 
         # Get active assignments for each class
         today = date.today()
-        # active_assignments = Assignment.objects.filter(
-        #     classs__in=student_classes,  # Filter by classes associated with the student
-        #     from_date__lte=today,  # From date less than or equal to today
-        #     to_date__gte=today  # To date greater than or equal to today
-        # ).exclude(
-        #     Q(assignmentresult__student=student) & Q(assignmentresult__assignment_id=F('id'))
-        # )
+      
         finished_assignments = AssignmentResult.objects.filter(
             student=student
         ).values('assignment')
@@ -1070,6 +883,7 @@ def handle_assignments_student_finished(request):
 
 
 @csrf_exempt
+# @ensure_csrf_cookie
 def handle_homework(request):
     token = request.headers.get('Authorization')   
     if not token:
@@ -1140,8 +954,6 @@ def handle_homework(request):
                     option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
                     option = Option.objects.create(text=option_text, question=qapair)
                     options.append(option)
-                    #print(request.POST)
-
 
                 correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
                 try:
@@ -1150,8 +962,6 @@ def handle_homework(request):
                         qapair.save()
                 except ObjectDoesNotExist:
                     return JsonResponse({'success': False, 'error': 'Correct option not found'}, status=400)
-
-               
 
             elif qtype == 2:
                 qapair.answer = request.POST.get(f'pairs[{i}][answer]')
@@ -1304,7 +1114,6 @@ def handle_homework_id(request, pk):
     
         return JsonResponse({'success': True, 'homework': questions, 'edit' : edit}, safe=True)
 
-       
 
 def get_homework_questions(homework):
         homework_data = []
@@ -1323,15 +1132,8 @@ def get_homework_questions(homework):
             elif question.qtype == 3:
                 #surast visus teisingu indeksus ir sudet i array
                 correctOptions = QuestionCorrectOption.objects.filter(question=question).values_list('option__text', flat=True).distinct() #.values_list('option__id', flat=True)
-                #correctOptions = Option.objects.filter(id__in=correct_ids)
-                # for index, obj in enumerate(options):
-                #     print(f"Index: {index}, Option: {obj}")
-
-                # for index, obj in enumerate(correctOptions):
-                #     print(f"Index: {index}, correct: {obj}")    
-
+    
                 indexes = [(index) for index, obj in enumerate(options) if obj in correctOptions]
-                # print(indexes)
                 
                 correctMultiple = indexes
                 print("correctmultiplle: " + ', '.join(map(str, correctMultiple)))
@@ -1424,14 +1226,10 @@ def handle_test_answers(request):
 
         total_points = 0
        
-       
         for i, questionOG in enumerate(questions):
             qid = request.POST.get(f'pairs[{i}][questionId]')
-            # print(qid)
             answer = request.POST.get(f'pairs[{i}][answer]')    
-            # print("answer: " + str(answer))
             question = questions.get(pk=qid)
-            # print(question)
             qtype=question.qtype
             points = question.points
             get_points = 0
@@ -1466,15 +1264,9 @@ def handle_test_answers(request):
                         if option==correctOp.option:
                             originIndexes.append(j)
 
-                # print(originIndexes)
                 points /= len(originIndexes) if originIndexes else 1   
                 print("points: " + str(points))  
-
-                # print("i: " + str(i))
-               
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
-                # print(num_mult)
-
                 for y in range(num_mult):
                     optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
                     answersUser.append(optionIndex)
@@ -1558,256 +1350,8 @@ def get_classes_by_school(request):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
-#mokytojo studentai, mokytojas patvirtina,atmeta studenta
-#ISTRINTI
-@csrf_exempt
-def handle_teacher_students(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
 
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    if request.method=='GET':
-        students_of_teacher = StudentTeacher.objects.filter(teacher=teacher)
-        student_ids = students_of_teacher.values_list('student_id', flat=True)
-        students = CustomUser.objects.filter(id__in=student_ids).order_by('first_name', 'last_name')
-
-        students_data = [
-            {
-                'id': student.id,
-                'name': student.first_name,
-                'surname': student.last_name,
-            }
-            for student in students
-        ]
-
-        return JsonResponse({'students': students_data})
-    elif request.method == 'POST':
-        data = json.loads(request.body)
-        student_id = data['student_id']
-        if not student_id:
-            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
-
-        student = CustomUser.objects.filter(pk=student_id).first()
-        if not student:
-            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
-
-        teacher_student, created = StudentTeacher.objects.get_or_create(student=student, teacher=teacher)
-        deleteConfirm = StudentTeacherConfirm.objects.get(student=student, teacher=teacher)
-        deleteConfirm.delete()
-        if created:
-            return JsonResponse({'success': True})
-        else:
-            return JsonResponse({'success': False, 'error': 'Relationship already exists'}, status=400)
-
-    elif request.method == 'DELETE':
-        data = json.loads(request.body)
-        student_id = data['student_id']
-        if not student_id:
-            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
-
-        student = CustomUser.objects.filter(pk=student_id).first()
-        if not student:
-            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
-
-        teacher_student = StudentTeacherConfirm.objects.filter(student=student, teacher=teacher).first()
-        if not teacher_student:
-            return JsonResponse({'success': False, 'error': 'Relationship not found'}, status=404)
-
-        teacher_student.delete()
-        return JsonResponse({'success': True})
-
-    else:
-        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
-
-#return teachers by school
-#ISTRINTI
-@csrf_exempt
-def handle_teachers(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    student = CustomUser.objects.get(email=email)
-    if not student:
-        return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
-    school = student.school
-    if request.method=='GET':
-        teachers = CustomUser.objects.filter(
-        role="2",  # Assuming "2" is the role for teachers
-        school=school
-        ).exclude(
-            teacher_s__student=student  # Exclude teachers connected via StudentTeacher
-        ).exclude(
-            teacher_c__student=student  # Exclude teachers connected via StudentTeacherConfirm
-        ).distinct()
-
-        teachers_data = [
-        {
-            'id': teacher.id,
-            'name': teacher.first_name,
-            'surname': teacher.last_name,
-        }
-        for teacher in teachers]
-
-        return JsonResponse({'success': True, 'teachers': teachers_data})
-
-    return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)   
-
-#ISTRINTI
-@csrf_exempt
-def get_not_confirmed_students(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    if request.method=='GET':
-        students_of_teacher = StudentTeacherConfirm.objects.filter(teacher=teacher)
-        student_ids = students_of_teacher.values_list('student_id', flat=True)
-        students = CustomUser.objects.filter(id__in=student_ids)
-
-        students_data = [
-            {
-                'id': student.id,
-                'name': student.first_name,
-                'surname': student.last_name,
-            }
-            for student in students
-        ]
-
-        return JsonResponse({'students': students_data})
-#studento mokytojai, student pasirenka mokytoja, pasalina?(admin jau)
-@csrf_exempt
-def handle_student_teachers(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    student = CustomUser.objects.get(email=email)
-    if request.method=='GET':
-        teachers_of_student = StudentTeacher.objects.filter(student=student)
-        teacher_ids = teachers_of_student.values_list('teacher_id', flat=True)
-        teachers = CustomUser.objects.filter(id__in=teacher_ids)
-
-        teachers_data = [
-            {
-                'id': teacher.id,
-                'name': teacher.first_name,
-                'surname': teacher.last_name,
-            }
-            for teacher in teachers
-        ]
-
-        return JsonResponse({'teachers': teachers_data})
-    elif request.method == 'POST':
-        data = json.loads(request.body)
-        teacher_id = data['teacher_id']
-        if not teacher_id:
-            return JsonResponse({'success': False, 'error': 'teacher ID is required'}, status=400)
-
-        teacher = CustomUser.objects.get(pk=teacher_id)
-        if not teacher:
-            return JsonResponse({'success': False, 'error': 'teacher not found'}, status=404)
-
-        student_teacher, created = StudentTeacherConfirm.objects.get_or_create(teacher=teacher, student=student)
-        if created:
-            return JsonResponse({'success': True})
-        else:
-            return JsonResponse({'success': False, 'error': 'Relationship already exists'}, status=400)
-    elif request.method == 'DELETE':
-        data = json.loads(request.body)
-        teacher_id = data['teacher_id']
-        if not teacher_id:
-            return JsonResponse({'success': False, 'error': 'teacher ID is required'}, status=400)
-
-        teacher = CustomUser.objects.get(pk=teacher_id)
-        if not teacher:
-            return JsonResponse({'success': False, 'error': 'teacher not found'}, status=404)
-
-        student_teacher = StudentTeacherConfirm.objects.get(teacher=teacher, student=student)
-        student_teacher.delete()
-        return JsonResponse({'success': True})
-
-    else:
-        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
-
-#ISTRINT
-@csrf_exempt
-def get_not_confirmed_teachers(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    student = CustomUser.objects.get(email=email)
-    if request.method=='GET':
-        teachers_of_student = StudentTeacherConfirm.objects.filter(student=student)
-        teacher_ids = teachers_of_student.values_list('teacher_id', flat=True)
-        teachers = CustomUser.objects.filter(id__in=teacher_ids)
-
-        teachers_data = [
-            {
-                'id': teacher.id,
-                'name': teacher.first_name,
-                'surname': teacher.last_name,
-            }
-            for teacher in teachers
-        ]
-        return JsonResponse({'teachers': teachers_data})
-    else:
-        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
-
-#ADMIN TODO
+#ADMIN TODO??
 @csrf_exempt
 def handle_classes(request):
     token = request.headers.get('Authorization')   
@@ -1844,7 +1388,8 @@ def handle_classes(request):
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
-  
+
+#TODO? 
 @csrf_exempt
 def handle_classes_id(request, pk):
     token = request.headers.get('Authorization')   
@@ -1917,89 +1462,7 @@ def handle_classes_id(request, pk):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)        
 
-
-@csrf_exempt
-def handle_teacher_class(request, cid):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-            return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-    email = payload.get('email')
-    teacher = get_object_or_404(CustomUser, email=email)
-    classs = get_object_or_404(Class, pk=cid)
-
-    if request.method == "GET":
-        # TODO: Check if the user is a teacher       
-        # Filter students associated with the specified teacher
-        #ADMIN TODO: klases studentus grazint??
-        students_of_teacher = CustomUser.objects.filter(student_t__teacher=teacher)
-        print(students_of_teacher)
-
-        # Filter CustomUser instances not associated with the specified class
-        students_not_in_class = students_of_teacher.exclude(student__classs=classs)
-        print(students_not_in_class)
-        students_data = [
-                {'id' : student.pk, 'name': student.first_name, 'surname': student.last_name}
-                for student in students_not_in_class
-            ]
-        return JsonResponse({'students': students_data}) 
-    elif request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode('utf-8'))
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-        student_id = data.get("id")        
-        student = get_object_or_404(CustomUser, pk=student_id) #teacher class student
-        studentclass = StudentClass(student=student, classs = classs)
-        studentclass.save()
-        return  JsonResponse({'success': True})
-
-#ISTRINT                     
-@csrf_exempt
-def handle_students(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    if request.method == 'DELETE':
-        data = json.loads(request.body)
-        student_id = data['student_id']
-        # student_id = request.POST.get('student_id')
-        if not student_id:
-            return JsonResponse({'success': False, 'error': 'Student ID is required'}, status=400)
-
-        student = CustomUser.objects.filter(pk=student_id).first()
-        if not student:
-            return JsonResponse({'success': False, 'error': 'Student not found'}, status=404)
-
-        teacher_student = StudentTeacher.objects.filter(student=student, teacher=teacher).first()
-        if not teacher_student:
-            return JsonResponse({'success': False, 'error': 'Relationship not found'}, status=404)
-
-        teacher_student.delete()
-        return JsonResponse({'success': True})
-
-    else:
-        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
-
+#TODO? 
 @csrf_exempt
 def handle_students_class(request,sid,cid):
     #TOOD: perkelt i kit metoda
@@ -2042,182 +1505,6 @@ def get_user_id(request):
         return JsonResponse({'user_id': user_id})
 
 
-
-@csrf_exempt
-def start_game(request):
-
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        student_email = data['student_email']
-        aid = data['assignment_id']
-
-        sid = CustomUser.objects.get(email=student_email).pk
-
-        game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
-
-        # Command to start the game executable with parameters
-        command = [game_path, str(aid), str(sid)]
-
-        try:
-            # Execute the game using subprocess.Popen()
-            subprocess.Popen(command)
-
-            # Return success response
-            return JsonResponse({'message': 'Game started successfully'})
-        except Exception as e:
-            print(str(e))
-            # Return error response if execution fails
-            return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
-
-    # Return error response for non-POST requests
-    return JsonResponse({'message': 'Invalid request method'}, status=400)
-
-
-@csrf_exempt
-def get_questions(request,aid):
-     if request.method == 'GET':
-        homework_id = Assignment.objects.get(pk=aid).homework.pk
-        try:
-            homework = Homework.objects.get(pk=homework_id)
-            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
-            homework_data = {
-                'title': homework.title,
-                'pairs': list(pairs)
-            }
-            return JsonResponse({'success': True, 'homework': homework_data})
-        except Homework.DoesNotExist:
-            return JsonResponse({'message': 'Homework not found'}, status=404)
-
-
-
-@csrf_exempt
-def post_answer(request):
-    if request.method == 'POST':
-        assignment_id = request.POST.get('assignment_id', None)
-        question_id = request.POST.get('question_id', None)
-        player_answer = request.POST.get('answer', None)
-        student_id = request.POST.get('student_id', None)
-        points = request.POST.get('points', None)
-        selected = request.POST.get('selected', None) #string numeriuku
-
-        if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
-
-          
-            question = QuestionAnswerPair.objects.get(pk=question_id)
-            qtype = question.qtype
-            assignment = Assignment.objects.get(pk=assignment_id)
-            student = CustomUser.objects.get(pk=student_id)
-
-            # previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question) 
-            # if previous_answer is not None:
-
-            # if qtype == 3:
-            #     print(selected)
-
-            #     selected_elements = selected.split(',')
-            #     print(selected_elements)
-            #     indexes = [int(element) for element in selected_elements]
-            #     #indexes - 0 1 2 3 bazinai, ir tada sekandtys jau is tikro kurie pasirinkti, tai skaiciuot index-4 galima
-            #     options = Option.objects.filter(question=question)
-            #     print(options)
-            #     selected_options = [options[index] for index in indexes]
-
-            #     for option in selected_options:
-            #         stselected = QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-            #         print("sukure multiple answer")
-
-
-
-            # pairResult = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
-            # previous_answer, created = QuestionAnswerPairResult.objects.get_or_create(assignment=assignment, student=student, question=question)
-            # previous = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
-            try:
-                previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
-                # If previous exists, it means something was found in the database
-                # Update the answer if it exists
-            # Update the answer if it exists
-            # if not created:
-                if qtype == 3:
-                    selected_elements = selected.split(',')
-                    if len(selected_elements) > 0:
-                        if len(selected_elements) == 1:
-                            # Handle single number case
-                            numbers = [int(selected_elements[0])]
-                            print(f"One element selected: {numbers[0]}")
-                        else:
-                            # Handle array case
-                            numbers = [int(element) for element in selected_elements]
-                            print("Multiple elements selected:", numbers)
-                        indexes = [int(element) for element in selected_elements]
-                        options = Option.objects.filter(question=question)
-                        selected_options = [options[index] for index in indexes]
-
-                        QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
-                        for option in selected_options:
-                            QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-                    else:
-                        print("nieko nepasirinko")
-                    
-                
-                
-                previous_answer.answer = player_answer
-                previous_answer.points = points
-                previous_answer.save()
-            # Create a new answer if it doesn't exist
-            except ObjectDoesNotExist:
-                if qtype == 3:
-                    selected_elements = selected.split(',')
-                    indexes = [int(element) for element in selected_elements]
-                    options = Option.objects.filter(question=question)
-                    selected_options = [options[index] for index in indexes]
-
-                    for option in selected_options:
-                        QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-
-                previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
-
-           
-            return JsonResponse({'success': True, 'id': previous_answer.pk})
-            
-        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
-
-@csrf_exempt
-def check_summary(request,aid,sid):
-    assignment = Assignment.objects.get(pk=aid)
-    student = CustomUser.objects.get(pk=sid)
-    exists = True
-    try:
-        AssignmentResult.objects.get(assignment = assignment, student=student)
-    except ObjectDoesNotExist:
-        exists=False
-
-    return JsonResponse({'success': True, 'exists': exists})
-
-
-@csrf_exempt
-def post_summary(request):
-    assignment_id = request.POST.get('assignment_id', None)
-    time = request.POST.get('time', None) #TODO:float in seconds, convert to minutes or smth
-    student_id = request.POST.get('student_id', None)
-    points = request.POST.get('points', None)
-    date = datetime.now()
-
-    if assignment_id is not None and time is not None and student_id is not None and points is not None:
-        assignment = Assignment.objects.get(pk=assignment_id)
-        student = CustomUser.objects.get(pk=student_id)
-# assignmentResult, created = AssignmentResult.objects.get_or_create(assignment=assignment, student=student, date=date, points=points, time=time)
-        # assignmentResult, created = AssignmentResult.objects.get_or_create(assignment=assignment, student=student)
-        # if not created:
-        #     assignmentResult.date = date
-        #     assignmentResult.points = points
-        #     assignmentResult.time = time
-        #     assignmentResult.save()
-        # else:
-        assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
-
-        return JsonResponse({'success': True, 'id': assignmentResult.pk})
-        
-    return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
 
 @csrf_exempt
 def handle_students_assignment_results(request,aid):
@@ -2342,439 +1629,151 @@ def get_one_student_answers(request,aid,sid):
         return JsonResponse({'success': True, 'results': results_list, 'title' : title, 'name' : name, 'questions' : all_questions, 'answers' : student_result})      
 
 
-# def get_cat_id(request,type):
-#     category=Category.objects.get(type=type)
-#     data = {
-#         'id': category.id
-#     }
-#     return JsonResponse(data, status=200)
 
-# def get_latests(request):
-#     logger.info("latests ")
-#     tricks = Trick.objects.order_by('-id')[:4]
-#     data = [
-#         {
-#             'title': trick.title,
-#             'description': trick.description,
-#             'category': trick.category.type,
-#             'link': trick.link,
-#             'id':trick.id
-#         }
-#         for trick in tricks
-#     ]
-#     return JsonResponse(data, safe=False)
+################
+######GAME#####
+################
 
-# @csrf_exempt
-# def handle_trick(request, cid):
-#     token = request.headers.get('Authorization')
+@csrf_exempt
+def start_game(request):
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        student_email = data['student_email']
+        aid = data['assignment_id']
+
+        sid = CustomUser.objects.get(email=student_email).pk
+
+        game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
+
+        # Command to start the game executable with parameters
+        command = [game_path, str(aid), str(sid)]
+
+        try:
+            # Execute the game using subprocess.Popen()
+            subprocess.Popen(command)
+
+            # Return success response
+            return JsonResponse({'message': 'Game started successfully'})
+        except Exception as e:
+            print(str(e))
+            # Return error response if execution fails
+            return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
+
+    # Return error response for non-POST requests
+    return JsonResponse({'message': 'Invalid request method'}, status=400)
+
+
+@csrf_exempt
+def get_questions(request,aid):
+     if request.method == 'GET':
+        homework_id = Assignment.objects.get(pk=aid).homework.pk
+        try:
+            homework = Homework.objects.get(pk=homework_id)
+            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
+            homework_data = {
+                'title': homework.title,
+                'pairs': list(pairs)
+            }
+            return JsonResponse({'success': True, 'homework': homework_data})
+        except Homework.DoesNotExist:
+            return JsonResponse({'message': 'Homework not found'}, status=404)
+
+
+
+@csrf_exempt
+def post_answer(request):
+    if request.method == 'POST':
+        assignment_id = request.POST.get('assignment_id', None)
+        question_id = request.POST.get('question_id', None)
+        player_answer = request.POST.get('answer', None)
+        student_id = request.POST.get('student_id', None)
+        points = request.POST.get('points', None)
+        selected = request.POST.get('selected', None) #string numeriuku
+
+        if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
+
+          
+            question = QuestionAnswerPair.objects.get(pk=question_id)
+            qtype = question.qtype
+            assignment = Assignment.objects.get(pk=assignment_id)
+            student = CustomUser.objects.get(pk=student_id)
+
+            try:
+                previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
     
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handletrick" + token)    
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+            # Update the answer if it exists
+            # if not created:
+                if qtype == 3:
+                    selected_elements = selected.split(',')
+                    if len(selected_elements) > 0:
+                        if len(selected_elements) == 1:
+                            # Handle single number case
+                            numbers = [int(selected_elements[0])]
+                            print(f"One element selected: {numbers[0]}")
+                        else:
+                            # Handle array case
+                            numbers = [int(element) for element in selected_elements]
+                            print("Multiple elements selected:", numbers)
+                        indexes = [int(element) for element in selected_elements]
+                        options = Option.objects.filter(question=question)
+                        selected_options = [options[index] for index in indexes]
 
-#     # Check if the user is an admin
-#     is_admin = payload.get('admin', False)    
-
-#     if request.method == 'POST':
-#         try:
-#             data = json.loads(request.body)
-#             title = data['title']
-#             description = data['description']
-#             link = data['link']
-#             category_id = cid           
-           
-#             if not title or not description or not link or not category_id:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-#             if(is_admin):
-#                 category = Category.objects.get(pk=category_id)  # Fetch the category by ID
-
-#                 video_id_match = re.search(r'v=([^\s&]+)', link)
-#                 if video_id_match:
-#                     video_id = video_id_match.group(1)
-#                     embedded_link = f'https://www.youtube.com/embed/{video_id}'
-#                 else:
-#                     return JsonResponse({'success': False, 'error': 'Invalid YouTube URL'})
-
-#                 trick = Trick(title=title, description=description, link=embedded_link, category=category)
-#                 trick.save()
-#                 return JsonResponse({'success': True, "id" : trick.pk}, status = 201)
-#             else:
-#                 return JsonResponse({'success': False, 'error': 'Unauthorized access to create trick'}, status=403)   
-
-#         except (json.JSONDecodeError, KeyError, Category.DoesNotExist) as e:
-#             return JsonResponse({'success': False, 'error': str(e)}, status=400)
-
-#     elif request.method == 'GET':
-#         try:
-#             category = Category.objects.get(pk=cid)
-#             tricks = Trick.objects.filter(category__type=category.type)
-#             data = [
-#                 {
-#                     'title': trick.title,
-#                     'description': trick.description,
-#                     'category': trick.category.type,
-#                     'link': trick.link,
-#                     'id': trick.id
-#                 }
-#                 for trick in tricks
-#             ]
-#             return JsonResponse(data, safe=False)
-#         except Category.DoesNotExist:
-#             return HttpResponseNotFound("Category not found")
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#     else:
-#         return JsonResponse({'error': 'Method not allowed.'}, status=405)
-
-# @csrf_exempt
-# def handle_trick_id(request, cid, tid):
-#     token = request.headers.get('Authorization')
-    
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handletrickid" + token)
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-#     # Check if the user is an admin
-#     is_admin = payload.get('admin', False)
-
-#     if request.method == 'GET':
-#         try:
-#             trick = Trick.objects.get(pk=tid)
-#             data = {
-#                 'title': trick.title,
-#                 'description': trick.description,
-#                 'category': trick.category.id,
-#                 'link': trick.link
-#             }
-#             return JsonResponse(data, status=200)
-#         except Trick.DoesNotExist:
-#             return HttpResponseNotFound("Trick not found")
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#     elif request.method == 'PUT':
-#         if(is_admin):
-#             try:
-#                 trick = Trick.objects.get(pk=tid)
-#             except Trick.DoesNotExist:
-#                 return HttpResponseNotFound("Trick not found")
-#             try:
-#                 data = json.loads(request.body.decode('utf-8'))
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#             new_title = data.get("title")
-#             new_description = data.get("description")
-#             new_link = data.get("link")
-#             category_id = data.get("category")
-
-#             if not new_title or not new_description or not new_link or not category_id:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-#             if new_link != trick.link:
-#                 video_id_match = re.search(r'v=([^\s&]+)', new_link)
-#                 if video_id_match:
-#                     video_id = video_id_match.group(1)
-#                     new_link = f'https://www.youtube.com/embed/{video_id}'
-#                 else:
-#                     return JsonResponse({'success': False, 'error': 'Invalid YouTube URL'}, status=422)
-
-#             try:
-#                 new_category = Category.objects.get(pk=category_id)
-#             except Category.DoesNotExist:
-#                 return JsonResponse({'success': False, 'error': f'Category with ID {category_id} does not exist'}, status=404)
-
-#             trick.title = new_title
-#             trick.description = new_description
-#             trick.link = new_link
-#             trick.category = new_category
-
-#             try:
-#                 trick.save()
-#                 return JsonResponse({'success': True, "id" : trick.pk},   status=200)
-#             except Exception as e:
-#                 return JsonResponse({'success': False, 'error': str(e)}, status=500)
-#         else:
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to update trick'}, status=403) 
-
-#     elif request.method == 'DELETE':
-#         if(is_admin):
-#             try:          
-#                 trick = Trick.objects.get(pk=tid)
-#                 trick.delete()
-#                 return HttpResponse(status=204)
-#             except Trick.DoesNotExist:
-#                 return HttpResponseNotFound("Trick not found")
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#         else:
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to delete trick'}, status=403) 
-
-#     else:
-#         return HttpResponseServerError("Internal Server Error")
-    
-# #---------------
-# @csrf_exempt
-# def handle_comment(request,cid,tid):
-#     token = request.headers.get('Authorization')
-    
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handlecomment" + token)    
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-#     if request.method == 'GET':
-#         try:
-#             comments = Comment.objects.filter(trick_id=tid)
-#             comment_list = [{'id': comment.id,'text': comment.text, 'user': comment.user.username, 'date': comment.date.strftime('%Y-%m-%d')} for comment in comments]
-#             return JsonResponse({'success': True, 'comments': comment_list})
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#     elif request.method == 'POST':
-#         try:
-#             data = json.loads(request.body)
-#             text = data.get('text')
-#             date = datetime.now().date()
-
-#             # Check if the user is an admin
-#             username_from_token = payload.get('username', False)
-#             # Retrieve the user instance based on the username from the token
-#             user = User.objects.get(username=username_from_token)
-
-#             if not text or not user:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-        
-#             trick = Trick.objects.get(pk=tid) 
-#         except Trick.DoesNotExist:
-#             return JsonResponse({'success': False, 'error': f'Trick with ID {tid} does not exist'}, status=404)
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#         try:
-#             comment = Comment(text=text, date=date, trick=trick, user=user) 
-#             comment.save()
-#             return JsonResponse({'success': True, "id" : comment.pk}, status = 201)
-        
-#         except Exception as e:
-#             return JsonResponse({'success': False, 'error': str(e)}, status=500)
-
-#     else:
-#         return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=400)
-
-# #TODO: visada grazint ir jwt??
-# @csrf_exempt
-# def handle_comment_id(request, cid,tid,ccid):
-#      # Extract token from request headers
-#     token = request.headers.get('Authorization')
-    
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handlecommentid" + token)
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-#     # Check if the user is an admin
-#     is_admin = payload.get('admin', False)
-
-#  # Retrieve the comment by ID
-#     try:
-#         comment = Comment.objects.get(pk=ccid)
-#     except Comment.DoesNotExist:
-#         return HttpResponseNotFound("Comment not found")
-#     except json.JSONDecodeError:
-#         return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#     if request.method == 'GET':
-#         data = {
-#             'id': comment.id,
-#             'text': comment.text,
-#             'user': comment.user.id,
-#             'date': comment.date.strftime('%Y-%m-%d')
-#         }
-#         return JsonResponse(data, status=200)
-
-#     elif request.method == 'PUT':
-        
-#         try:
-#             data = json.loads(request.body.decode('utf-8'))
-#             new_text = data.get("text")
-#             print(new_text)
-#             if not new_text:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-#             if is_admin or comment.user.username == payload.get('username'):
-#                 comment.text = new_text
-#                 comment.save()
-#                 return JsonResponse({'success': True, "id" : comment.pk}, status = 200)
-#             else:
-#                 return JsonResponse({'success': False, 'error': 'Unauthorized access to update comment'}, status=403)      
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#         except Exception as e:
-#             return JsonResponse({'success': False, 'error': str(e)}, status=500)
-
-#     elif request.method == 'DELETE':
-#         # Access control logic based on user role for DELETE request
-#         if is_admin or comment.user.username == payload.get('username'):
-#             # Admin can delete any comment or user can delete their own comment
-#             comment.delete()
-#             return HttpResponse(status=204)
-#         else:
-#             # User does not have permission to delete the comment
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to delete this comment'}, status=403)
-
-#     else:
-#         return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=400)
-
-# #------------
-# @csrf_exempt
-# def handle_category(request):
-#     token = request.headers.get('Authorization')
-    
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handlecategory" + token)
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-#     # Check if the user is an admin
-#     is_admin = payload.get('admin', False)
-
-#     if request.method == 'POST':
-#         if(is_admin):
-#             try:
-#                 data = json.loads(request.body)
-#                 category_type = data.get('type')
-
-#                 if not category_type:
-#                     return JsonResponse({'success': False, 'error': 'Category type is required.'}, status=422)
-
+                        QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
+                        for option in selected_options:
+                            QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+                    else:
+                        print("nieko nepasirinko")
+                    
                 
-#                 category = Category(type=category_type)
-#                 category.save()
-#                 return JsonResponse({'success': True, "id" : category.pk}, status=201)
-#             except IntegrityError:
-#                 return JsonResponse({'success': False, 'error': 'Category type already exists.'}, status=400)
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#         else:
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to create category'}, status=403) 
+                
+                previous_answer.answer = player_answer
+                previous_answer.points = points
+                previous_answer.save()
+            # Create a new answer if it doesn't exist
+            except ObjectDoesNotExist:
+                if qtype == 3:
+                    selected_elements = selected.split(',')
+                    indexes = [int(element) for element in selected_elements]
+                    options = Option.objects.filter(question=question)
+                    selected_options = [options[index] for index in indexes]
 
-#     elif request.method == 'GET':
-#         try:
-#             categories = Category.objects.all().values('id', 'type')
-#             categories_list = list(categories)
-#             return JsonResponse(categories_list, safe=False, status=200)
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#     else:
-#         return JsonResponse({'error': 'Method not allowed.'}, status=405)
+                    for option in selected_options:
+                        QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+
+                previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+
+           
+            return JsonResponse({'success': True, 'id': previous_answer.pk})
+            
+        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
+
+@csrf_exempt
+def check_summary(request,aid,sid):
+    assignment = Assignment.objects.get(pk=aid)
+    student = CustomUser.objects.get(pk=sid)
+    exists = True
+    try:
+        AssignmentResult.objects.get(assignment = assignment, student=student)
+    except ObjectDoesNotExist:
+        exists=False
+
+    return JsonResponse({'success': True, 'exists': exists})
 
 
+@csrf_exempt
+def post_summary(request):
+    assignment_id = request.POST.get('assignment_id', None)
+    time = request.POST.get('time', None) 
+    student_id = request.POST.get('student_id', None)
+    points = request.POST.get('points', None)
+    date = datetime.now()
 
-# @csrf_exempt
-# def handle_category_id(request, pk):
-#     token = request.headers.get('Authorization')
-    
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     print("handlecategoryid" +token)
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+    if assignment_id is not None and time is not None and student_id is not None and points is not None:
+        assignment = Assignment.objects.get(pk=assignment_id)
+        student = CustomUser.objects.get(pk=student_id)
+        assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
 
-#     # Check if the user is an admin
-#     is_admin = payload.get('admin', False)
-
-#     if request.method == 'GET':
-#         try:
-#             category = Category.objects.get(pk=pk)
-#         except Category.DoesNotExist:
-#             return HttpResponseNotFound("Category not found")
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#         data = {
-#             'type': category.type
-#         }
-#         return JsonResponse(data, status=200)
-
-#     elif request.method == 'DELETE':
-#         if(is_admin):
-#             try:
-#                 category = Category.objects.get(pk=pk)
-#             except Category.DoesNotExist:
-#                 return HttpResponseNotFound("Category not found")
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-#         else:
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to delete category'}, status=403)         
-
-#         category.delete()
-#         return HttpResponse(status=204)
-
-#     elif request.method == 'PUT':
-#         if(is_admin):
-#             try:
-#                 category = Category.objects.get(pk=pk)
-#             except Category.DoesNotExist:
-#                 return HttpResponseNotFound("Category not found")
-
-#             try:
-#                 data = json.loads(request.body.decode('utf-8'))
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#             new_type = data.get("type")
-
-#             if not new_type:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-#             category.type = new_type
-
-#             try:
-#                 category.save()
-#                 return JsonResponse({'success': True, "id" : category.pk}, status=200)
-#             except Exception as e:
-#                 return JsonResponse({'success': False, 'error': str(e)}, status=500)
-#         else:
-#             return JsonResponse({'success': False, 'error': 'Unauthorized access to update category'}, status=403)   
-#     else:
-#         return JsonResponse({'error': 'Method not allowed.'}, status=405)             
+        return JsonResponse({'success': True, 'id': assignmentResult.pk})
+        
+    return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 

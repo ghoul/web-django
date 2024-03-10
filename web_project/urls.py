@@ -21,16 +21,20 @@ from django.urls import re_path
 from homework_app.views import CustomTokenObtainPairView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter
 # from .admin import admin_site
+router = DefaultRouter()
+router.register(r'assignments', views.AssignmentListViewTeacherTest, basename='assignment')
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path("", views.home, name="home"),
 
     # path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('members/', include('django.contrib.auth.urls')), #yoyoapp??
     path('login/',views.login_user, name='login_user'),
-    path('signup/',views.signup_user, name='signup_user'),
+    # path('signup/',views.signup_user, name='signup_user'),
 
     path('handle_homework/', views.handle_homework, name='handle_homework'),
     path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
@@ -38,19 +42,30 @@ urlpatterns = [
     path('handle_classes/', views.handle_classes, name='handle_classes'),
     path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
 
-    path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
-
-    path('handle_teacher_class/<int:cid>/', views.handle_teacher_class, name='handle_teacher_class'),
+    # path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
+    # path('handle_teacher_class/<int:cid>/', views.handle_teacher_class, name='handle_teacher_class'),
     path('get_classes_by_school/', views.get_classes_by_school, name='get_classes_by_school'),
+
     path('handle_assign_homework/', views.handle_assign_homework, name='handle_assign_homework'),
-    path('handle_teacher_students/', views.handle_teacher_students, name='handle_teacher_students'),
-    path('handle_student_teachers/', views.handle_student_teachers, name='handle_student_teachers'),
-    path('handle_teachers/', views.handle_teachers, name='handle_teachers'),
-    path('handle_students/', views.handle_students, name='handle_students'),
-    path('get_not_confirmed_students/',views.get_not_confirmed_students, name='get_not_confirmed_students'),
-    path('get_not_confirmed_teachers/',views.get_not_confirmed_teachers, name='get_not_confirmed_teachers'),
+
+    # path('handle_teacher_students/', views.handle_teacher_students, name='handle_teacher_students'),
+    # path('handle_student_teachers/', views.handle_student_teachers, name='handle_student_teachers'),
+    # path('handle_teachers/', views.handle_teachers, name='handle_teachers'),
+    # path('handle_students/', views.handle_students, name='handle_students'),
+    # path('get_not_confirmed_students/',views.get_not_confirmed_students, name='get_not_confirmed_students'),
+    # path('get_not_confirmed_teachers/',views.get_not_confirmed_teachers, name='get_not_confirmed_teachers'),
+
+
+    #path('assignments/', views.AssignmentListViewTeacher.as_view(), name='assignment-list'),
+
+    # path('assignments/', views.AssignmentListViewTeacherTest, name='assignment-list'),
+
+
+
+
+
     path('get_assignment_statistics/<int:pk>/',views.get_assignment_statistics, name='get_assignment_statistics'),
-    path('handle_assignments_teacher/',views.handle_assignments_teacher, name='handle_assignments_teacher'),
+    # path('handle_assignments_teacher/',views.handle_assignments_teacher, name='handle_assignments_teacher'),
     path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
     path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
     path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
@@ -68,21 +83,11 @@ urlpatterns = [
     path('get_user_id/',views.get_user_id, name='get_user_id'),
 
     path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
+
     path('handle_assignment_update/<int:aid>/', views.handle_assignment_update, name='handle_assignment_update'),
     path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
     path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
 
-    # path('category/type/<str:type>/', views.get_cat_id, name="get_cat_id"),
-    # path('latests/', views.get_latests, name='get_latests'),
-
-    # path('categories/', views.handle_category, name='handle_category'),
-    # path('categories/<int:pk>/', views.handle_category_id, name='handle_category_id'),
-
-    # path('categories/<int:cid>/tricks/', views.handle_trick, name='handle_trick'), 
-    # path('categories/<int:cid>/tricks/<int:tid>/', views.handle_trick_id, name='handle_trick_id'), 
-    
-    # path('categories/<int:cid>/tricks/<int:tid>/comments/', views.handle_comment, name='handle_comment'),
-    # path('categories/<int:cid>/tricks/<int:tid>/comments/<int:ccid>/', views.handle_comment_id, name='handle_comment_id'),
 
     # path('admin/add_school/', views.AddSchoolView.as_view(), name='add_school'),
     # path('admin/', admin_site.urls),

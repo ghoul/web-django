@@ -22,7 +22,7 @@ from rest_framework_simplejwt.tokens import Token
 from rest_framework import serializers
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from homework_app.utils import IsTeacher
+from homework_app.utils import *
 from .models import CustomUser, Option, QuestionSelectedOption
 import jwt 
 from django.conf import settings
@@ -55,18 +55,6 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from rest_framework import mixins
 from rest_framework import viewsets
 
-
-class AssignmentListViewTeacherTest(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
-    permission_classes = [IsAuthenticated, IsTeacher]         
-
-    def get_queryset(self):
-        return Assignment.objects.filter(
-            homework__teacher=self.request.user, 
-            to_date__gte=date.today(),  
-        )
-    serializer_class = AssignmentSerializer
-
-
 def generate_csrf_token(request):
     csrf_token = get_token(request)
     return csrf_token
@@ -77,392 +65,119 @@ logger = logging.getLogger(__name__)
 def generate_email_password(first_name, last_name):
     email_base = first_name.lower() + "." + last_name.lower()
     email = email_base + "@goose.lt"
-    
+
     counter = 1
     while CustomUser.objects.filter(email=email).exists():
         email = email_base + f"{counter}@goose.lt"
         counter += 1
-    
-    # Generate a random password
+
     password =  CustomUser.objects.make_random_password()
     return email, password
 
-@csrf_exempt
-def handle_school(request):
-    if request.method == 'POST':
-        csv_file = request.FILES.get("file")
-        title = request.POST.get("title")
-        license = request.POST.get("license")
-        print(title)
-        print(license)
-
-        try:
-            # Try to get the school by title
-            school_exist = School.objects.get(title=title)
-            school = school_exist
-        except ObjectDoesNotExist:
-            # If the school doesn't exist, create it
-            school = School.objects.create(title=title, license_end=license)
-
-        csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
-
-        reader = csv.reader(csv_file, delimiter=';')
-        login_data =[]
-        for row in reader:
-            first_name = row[0]
-            last_name = row[1]
-            class_name = row[2]
-            gender = row[3]
-            if gender=='vyras':
-                gender=1
-            else:
-                gender=2    
-
-            # Check if the class exists for the given school
-            existing_class = Class.objects.filter(school=school, title=class_name).first()
-
-            if not existing_class and class_name:
-                # Create the class if it doesn't exist
-                classs = Class.objects.create(school=school, title=class_name)
-            else:
-                classs = existing_class
-            
-            email, password = generate_email_password(first_name, last_name)
-
-            role = 2 if class_name == '' else 1 
-
-            login_user ={
-                'name': first_name,
-                'surname': last_name,
-                'classs' : class_name,
-                'email': email,
-                'password' : password,
-                'role' : role
-            }    
-            login_data.append(login_user)
-
-            user = CustomUser.objects.create_user(
-                first_name=first_name,
-                last_name=last_name, 
-                gender=gender,
-                school=school,
-                password= password, 
-                email = email,
-                role=role,
-                username=email
-            )
-
-            if class_name:
-                student_class = StudentClass.objects.create(student=user, classs=classs)
-
-        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
-        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
-
-        content = BytesIO()
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
-        content.write("{:91}\n".format('-'*91).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==2:
-                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))    
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==1:
-                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['classs']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))
-        # Seek to the beginning of the buffer before creating the FileResponse
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.seek(0)
-
-        date_string = datetime.now().strftime("%Y-%m-%d")
-        filename = f"login_credentials_{school.title}_{date_string}.txt"
-
-        # Create a response with the file as an attachment
-        response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
-        response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        # response['FormattedTitle'] = filename
-
-        return response
-
-    elif request.method == 'GET':
-        schools = School.objects.all()
-        school_data = [{'id': school.pk, 'title': school.title, 'license' : school.license_end} for school in schools]
-        return JsonResponse({'schools': school_data})  
-
-@csrf_exempt
-def handle_school_id(request, sid):
-    if request.method == 'DELETE':
-        school = School.objects.get(pk=sid)
-        school.delete()
-        return JsonResponse({'data': 'ok'})  
-    elif request.method == 'POST':
-        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas
-        csv_file = request.FILES.get("file")
-        new_school_title = request.POST.get("title")
-        new_license_expire_date = request.POST.get("license")
-        school_id = sid
-        try:
-            school = School.objects.get(id=school_id)
-        except ObjectDoesNotExist:
-            return JsonResponse({'success' : False}, status=404)
-
-        # Update school details if provided
-        if new_school_title:
-            school.title = new_school_title
-        if new_license_expire_date:
-            school.license_end = new_license_expire_date
-        school.save()
-
-        # Update or create members (teachers and students)
-        if csv_file:
-            response = update_or_create_members(csv_file, school)
-            return response
-
-    return JsonResponse({'success' : True})
 
 
-def update_or_create_members(file, school):
-    processed_users = set()  # To keep track of processed users
-    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
-    print("viduj update members")
-    reader = csv.reader(csv_file, delimiter=';')
-    login_data =[]
-    for row in reader:
-        first_name = row[0]
-        print(first_name)
-        last_name = row[1]
-        class_name = row[2]
-        gender = row[3]
-        gender = 1 if gender=='vyras' else 2    
-        role = 2 if class_name == '' else 1
+class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]         
 
-        # Check if the class exists for the given school
-        existing_class = Class.objects.filter(school=school, title=class_name).first()
+    def get_queryset(self):
+        return Assignment.objects.filter(
+            homework__teacher=self.request.user, 
+            to_date__gte=date.today(),  
+        )
+    serializer_class = AssignmentSerializer
 
-        if not existing_class and class_name:
-            # Create the class if it doesn't exist
-            classs = Class.objects.create(school=school, title=class_name)
-        else:
-            classs = existing_class
-        
-        email, password = generate_email_password(first_name, last_name)
+class AssignmentListViewStudent(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsStudent]         
+    serializer_class = AssignmentSerializer
 
-        role = 2 if class_name == '' else 1 
+    def get_queryset(self):
+        student_classes = Class.objects.filter(classs__student=self.request.user)
+        finished_assignments = AssignmentResult.objects.filter(student=self.request.user).values('assignment')
 
-        login_user ={
-            'name': first_name,
-            'surname': last_name,
-            'classs' : class_name,
-            'email': email,
-            'password' : password,
-            'role' : role
-        }    
-
-        try:    
-            #randa pagal varda i pavarde tai jei du vienodi mokykloj tai negerai, bet nieko tokio, jei pereina i klase irgi nereikia
-            #gali lyst i admin panel ir ten pavienius tvarkyt atvejus
-            user = CustomUser.objects.get(
-                first_name=first_name,
-                last_name=last_name,
-                role=role,
-                school = school
-            )
-            processed_users.add(user.id)  # Add user to processed users set
-            print("found user: " + str(user.id))
-
-        except ObjectDoesNotExist:
-            email, password = generate_email_password(first_name, last_name)
-            new_user = CustomUser.objects.create_user(
-                first_name=first_name,
-                last_name=last_name, 
-                gender=gender,
-                school=school,
-                password= password, 
-                email = email,
-                role=role,
-                username=email
-            )
-            processed_users.add(new_user.id)  # Add user to processed users set
-            print("new user: " + str(new_user.id))
-            login_data.append(login_user)
-            
-            if class_name:
-                student_class = StudentClass.objects.create(student=new_user, classs=classs)
-
-        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
-        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
-
-        content = BytesIO()
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
-        content.write("{:91}\n".format('-'*91).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==2:
-            # Customize the width of each column
-                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))    
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==1:
-            # Customize the width of each column
-                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['classs']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))
-        # Seek to the beginning of the buffer before creating the FileResponse
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.seek(0)
-
-        date_string = datetime.now().strftime("%Y-%m-%d")
-        filename = f"login_credentials_{school.title}_{date_string}.txt"
-
-        # Create a response with the file as an attachment
-        response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
-        #response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        response['FormattedTitle'] = filename
-
-       
-
-    # Delete users who are not present in the new file
-    all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
-    users_to_delete = all_users.exclude(id__in=processed_users)
-    # for user in users_to_delete:
-    #     print(user.first_name)
+        return Assignment.objects.filter(
+            classs__in=student_classes,
+            from_date__lte=date.today(), 
+            to_date__gte=date.today()  
+        ).exclude(
+            id__in=Subquery(finished_assignments)
+        )
     
-    #users_to_delete.delete()
+class AssignmentListViewTeacherFinished(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]         
 
-    return response
+    def get_queryset(self):
+        return Assignment.objects.filter(
+        homework__teacher = self.request.user,
+        to_date__lte=date.today(),
+    )
+    serializer_class = AssignmentSerializer
 
+class AssignmentListViewStudentFinished(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsStudent]         
+    serializer_class = AssignmentSerializer
 
+    def get_queryset(self):
+        student_classes = Class.objects.filter(classs__student=self.request.user)
+        finished_assignments = AssignmentResult.objects.filter(student=self.request.user).values_list('assignment__id', flat=True)
 
-def classes_year_changes():
-    classes = Class.objects.all()
-    for classs in classes:
-        old_title = classs.title
-        match = re.match(r'(\d+)(\D*)', old_title)
-    
-        if match:
-            numeric_part, non_numeric_part = match.groups()
+        return Assignment.objects.filter(
+            Q(classs__in=student_classes) &  # Filter by classes associated with the student
+            (Q(to_date__lt=date.today()) | Q(id__in=finished_assignments))  # Past or finished assignments
+        )
 
-            new_numeric_part = str(int(numeric_part) + 1)
-            if numeric_part>12:
-                classs.delete()
-            else:               
-                new_title = new_numeric_part + non_numeric_part
-                classs.title=new_title
-                classs.save()
+class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]         
+    serializer_class = AssignmentSerializer
+    def get_queryset(self):
+        return Assignment.objects.all() #filter pagal teacher
+        # assignment_id = self.kwargs.get('pk')
+        # return Assignment.objects.get(id=assignment_id)
+
+class ClassesListView(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]         
+    serializer_class = ClassSerializer
+    def get_queryset(self):
+        return Class.objects.filter(school = self.request.user.school)
+
+class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated] 
+    serializer_class = UserSerializer        
+    def get_queryset(self):
+        return CustomUser.objects.all() #self.request.user
 
 
 @api_view(['POST'])
 @require_POST
 @csrf_exempt
 def login_user(request):
+    print("loginn")
     user = CustomUser.objects.get(email=request.data['email'])
     if not user.check_password(request.data['password']):
-        return Response({"detail:" "Not found"})
+        print("loginn bad")
+        return Response({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)     
+
+    # user = authenticate(request, email=request.data['email'], password=request.data['password'])
+    # if not user:
+    #     print("bad login")
+    #     return Response({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)     
 
     license_end = user.school.license_end
     if license_end>datetime.today().date():
-
+        login(request, user)
         serializer = LoginUserSerializer(instance=user)    
         token, created = Token.objects.get_or_create(user=user)
         csrf_token = generate_csrf_token(request)
+        print(token.key)
+        print("loginn2")
 
         return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
     else:
         return Response({'error': 'Jūsų licenzija nebegalioja'}, status=401)           
 
-   
 
-@csrf_exempt
-def user_data(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
 
-    email = payload.get('email')
-    user = CustomUser.objects.get(email=email)
-    if request.method == "GET":
-        user_data = {
-            'name': user.first_name,
-            'surname': user.last_name,
-            'email': user.email,
-            'school' : user.school.title
-        }
-        
-        return JsonResponse({'data': user_data})
-    elif request.method == "PUT":
-        data = json.loads(request.body)
-        new_name = data['name']
-        new_surname = data['surname']
-        new_email = data['email']
+    
 
-        if not new_name or not new_surname or not new_email:
-            return JsonResponse({'success': False, 'error': 'Visi laukai privalomi'}, status=400)
-
-        user.first_name = new_name
-        user.last_name = new_surname
-        user.email = new_email
-
-        try:
-            user.save()
-            payload = {
-            'name': user.first_name,
-            'surname': user.last_name,
-            'email': user.email,
-            'role': user.role
-            }
-            token = jwt.encode(payload, settings.SECRET_KEY_FOR_JWT, algorithm='HS256')
-
-            return JsonResponse({'success': True, 'token': token, "id": user.pk}, status=200)
-        except Exception as e:
-            return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 #PAVYZDYS
 @csrf_exempt
@@ -675,70 +390,6 @@ def get_class_statistics(request):
 
 
 
-class AssignmentListViewTeacher(APIView):
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated, IsTeacher]
-
-    def get(self, request):
-            active_assignments = Assignment.objects.filter(
-            homework__teacher = request.user, 
-            to_date__gte=date.today(),  
-            )
-            serializer = AssignmentSerializer(active_assignments, many=True)
-            return Response({'data': serializer.data})  
-
-    def delete(self, request):
-        assignment_id = request.data.get('id')
-        assignment = Assignment.objects.get(pk=assignment_id)
-        assignment.delete()
-        return Response({'success': True})
-
-
-  
-
-@csrf_exempt
-def handle_assignments_teacher_finished(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    school=teacher.school
-
-    if request.method == 'GET':
-        today = date.today()  
-        active_assignments = Assignment.objects.filter(
-        classs__school=school,
-        homework__teacher = teacher,
-        to_date__lte=today,
-    )
-
-        assignment_data = []
-
-        for assignment in active_assignments:
-            status = get_assignment_status(assignment)
-            assignment_info = {
-                'id': assignment.pk,
-                'title': assignment.homework.title,
-                'fromDate': assignment.from_date,
-                'toDate': assignment.to_date,
-                'classs': assignment.classs.title,
-                'status': status
-            }
-            assignment_data.append(assignment_info)
-        return JsonResponse({'data': assignment_data}) 
-
-
 @csrf_exempt
 def handle_assignment_update(request,aid):
     token = request.headers.get('Authorization')   
@@ -780,106 +431,6 @@ def handle_assignment_update(request,aid):
                 return JsonResponse({'success': True, "id" : assignment.pk}, status=200)
             except Exception as e:
                 return JsonResponse({'success': False, 'error': str(e)}, status=500) 
-
-@csrf_exempt
-# @ensure_csrf_cookie
-def handle_assignments_student(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    student = CustomUser.objects.get(email=email)
-
-    if request.method == 'GET':
-        # Get classes associated with the student TODO: tik viena klase
-        student_classes = Class.objects.filter(classs__student=student)
-
-        # Get active assignments for each class
-        today = date.today()
-      
-        finished_assignments = AssignmentResult.objects.filter(
-            student=student
-        ).values('assignment')
-
-        active_assignments = Assignment.objects.filter(
-            classs__in=student_classes,  # Filter by classes associated with the student
-            from_date__lte=today,  # From date less than or equal to today
-            to_date__gte=today  # To date greater than or equal to today
-        ).exclude(
-            id__in=Subquery(finished_assignments)
-        )
-
-        assignment_data = [
-        {
-            'id': assignment.id,
-            'title': assignment.homework.title,
-            'fromDate': assignment.from_date,
-            'toDate': assignment.to_date,
-            'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
-        }
-        for assignment in active_assignments
-        ]
-
-        return JsonResponse({'data': assignment_data})
-
-            
-
-@csrf_exempt
-def handle_assignments_student_finished(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    student = CustomUser.objects.get(email=email)
-
-    if request.method == 'GET':
-        print("gettt")
-        # Get classes associated with the student
-        student_classes = Class.objects.filter(classs__student=student)
-        finished_assignments = AssignmentResult.objects.filter(
-            student=student
-        ).values_list('assignment__id', flat=True)
-
-        # Get assignments in the past and finished assignments for the student
-        today = date.today()
-        assignments = Assignment.objects.filter(
-            Q(classs__in=student_classes) &  # Filter by classes associated with the student
-            (Q(to_date__lt=today) | Q(id__in=finished_assignments))  # Past or finished assignments
-        )
-        print(assignments.query)
-        # Construct the assignment_data
-        assignment_data = [
-            {
-                'id': assignment.id,
-                'title': assignment.homework.title,
-                'fromDate': assignment.from_date,
-                'toDate': assignment.to_date,
-                'teacher': assignment.homework.teacher.first_name + ' ' + assignment.homework.teacher.last_name,
-            }
-            for assignment in assignments
-        ]
-
-        return JsonResponse({'data': assignment_data})
 
 
 @csrf_exempt
@@ -994,7 +545,6 @@ def handle_homework(request):
 
 def calculate_question_count(homework_id):
     question_count = QuestionAnswerPair.objects.filter(homework_id=homework_id).count()
-
     return question_count
 
 #TODO:
@@ -1777,3 +1327,307 @@ def post_summary(request):
         return JsonResponse({'success': True, 'id': assignmentResult.pk})
         
     return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
+
+
+@csrf_exempt
+def handle_school(request):
+    if request.method == 'POST':
+        csv_file = request.FILES.get("file")
+        title = request.POST.get("title")
+        license = request.POST.get("license")
+        print(title)
+        print(license)
+
+        try:
+            # Try to get the school by title
+            school_exist = School.objects.get(title=title)
+            school = school_exist
+        except ObjectDoesNotExist:
+            # If the school doesn't exist, create it
+            school = School.objects.create(title=title, license_end=license)
+
+        csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
+
+        reader = csv.reader(csv_file, delimiter=';')
+        login_data =[]
+        for row in reader:
+            first_name = row[0]
+            last_name = row[1]
+            class_name = row[2]
+            gender = row[3]
+            if gender=='vyras':
+                gender=1
+            else:
+                gender=2    
+
+            # Check if the class exists for the given school
+            existing_class = Class.objects.filter(school=school, title=class_name).first()
+
+            if not existing_class and class_name:
+                # Create the class if it doesn't exist
+                classs = Class.objects.create(school=school, title=class_name)
+            else:
+                classs = existing_class
+            
+            email, password = generate_email_password(first_name, last_name)
+
+            role = 2 if class_name == '' else 1 
+
+            login_user ={
+                'name': first_name,
+                'surname': last_name,
+                'classs' : class_name,
+                'email': email,
+                'password' : password,
+                'role' : role
+            }    
+            login_data.append(login_user)
+
+            user = CustomUser.objects.create_user(
+                first_name=first_name,
+                last_name=last_name, 
+                gender=gender,
+                school=school,
+                password= password, 
+                email = email,
+                role=role,
+                username=email
+            )
+
+            if class_name:
+                student_class = StudentClass.objects.create(student=user, classs=classs)
+
+        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
+        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
+
+        content = BytesIO()
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
+        content.write("{:91}\n".format('-'*91).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==2:
+                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))    
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==1:
+                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['classs']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))
+        # Seek to the beginning of the buffer before creating the FileResponse
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.seek(0)
+
+        date_string = datetime.now().strftime("%Y-%m-%d")
+        filename = f"login_credentials_{school.title}_{date_string}.txt"
+
+        # Create a response with the file as an attachment
+        response = FileResponse(content, content_type='text/plain; charset=utf-8')
+        # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        # response['FormattedTitle'] = filename
+
+        return response
+
+    elif request.method == 'GET':
+        schools = School.objects.all()
+        school_data = [{'id': school.pk, 'title': school.title, 'license' : school.license_end} for school in schools]
+        return JsonResponse({'schools': school_data})  
+
+@csrf_exempt
+def handle_school_id(request, sid):
+    if request.method == 'DELETE':
+        school = School.objects.get(pk=sid)
+        school.delete()
+        return JsonResponse({'data': 'ok'})  
+    elif request.method == 'POST':
+        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas
+        csv_file = request.FILES.get("file")
+        new_school_title = request.POST.get("title")
+        new_license_expire_date = request.POST.get("license")
+        school_id = sid
+        try:
+            school = School.objects.get(id=school_id)
+        except ObjectDoesNotExist:
+            return JsonResponse({'success' : False}, status=404)
+
+        # Update school details if provided
+        if new_school_title:
+            school.title = new_school_title
+        if new_license_expire_date:
+            school.license_end = new_license_expire_date
+        school.save()
+
+        # Update or create members (teachers and students)
+        if csv_file:
+            response = update_or_create_members(csv_file, school)
+            return response
+
+    return JsonResponse({'success' : True})
+
+
+def update_or_create_members(file, school):
+    processed_users = set()  # To keep track of processed users
+    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
+    print("viduj update members")
+    reader = csv.reader(csv_file, delimiter=';')
+    login_data =[]
+    for row in reader:
+        first_name = row[0]
+        print(first_name)
+        last_name = row[1]
+        class_name = row[2]
+        gender = row[3]
+        gender = 1 if gender=='vyras' else 2    
+        role = 2 if class_name == '' else 1
+
+        # Check if the class exists for the given school
+        existing_class = Class.objects.filter(school=school, title=class_name).first()
+
+        if not existing_class and class_name:
+            # Create the class if it doesn't exist
+            classs = Class.objects.create(school=school, title=class_name)
+        else:
+            classs = existing_class
+        
+        email, password = generate_email_password(first_name, last_name)
+
+        role = 2 if class_name == '' else 1 
+
+        login_user ={
+            'name': first_name,
+            'surname': last_name,
+            'classs' : class_name,
+            'email': email,
+            'password' : password,
+            'role' : role
+        }    
+
+        try:    
+            #randa pagal varda i pavarde tai jei du vienodi mokykloj tai negerai, bet nieko tokio, jei pereina i klase irgi nereikia
+            #gali lyst i admin panel ir ten pavienius tvarkyt atvejus
+            user = CustomUser.objects.get(
+                first_name=first_name,
+                last_name=last_name,
+                role=role,
+                school = school
+            )
+            processed_users.add(user.id)  # Add user to processed users set
+            print("found user: " + str(user.id))
+
+        except ObjectDoesNotExist:
+            email, password = generate_email_password(first_name, last_name)
+            new_user = CustomUser.objects.create_user(
+                first_name=first_name,
+                last_name=last_name, 
+                gender=gender,
+                school=school,
+                password= password, 
+                email = email,
+                role=role,
+                username=email
+            )
+            processed_users.add(new_user.id)  # Add user to processed users set
+            print("new user: " + str(new_user.id))
+            login_data.append(login_user)
+            
+            if class_name:
+                student_class = StudentClass.objects.create(student=new_user, classs=classs)
+
+        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
+        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
+
+        content = BytesIO()
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
+        content.write("{:91}\n".format('-'*91).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==2:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))    
+        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+
+        for user in login_data:
+            if user['role'] ==1:
+            # Customize the width of each column
+                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
+                    str(user['name']),
+                    str(user['surname']),
+                    str(user['classs']),
+                    str(user['email']),
+                    str(user['password'])
+                ).encode('utf-8'))
+        # Seek to the beginning of the buffer before creating the FileResponse
+        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+        content.seek(0)
+
+        date_string = datetime.now().strftime("%Y-%m-%d")
+        filename = f"login_credentials_{school.title}_{date_string}.txt"
+
+        # Create a response with the file as an attachment
+        response = FileResponse(content, content_type='text/plain; charset=utf-8')
+        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
+        #response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        response['FormattedTitle'] = filename
+
+       
+
+    # Delete users who are not present in the new file
+    all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
+    users_to_delete = all_users.exclude(id__in=processed_users)
+    # for user in users_to_delete:
+    #     print(user.first_name)
+    
+    #users_to_delete.delete()
+
+    return response
+
+
+def classes_year_changes():
+    classes = Class.objects.all()
+    for classs in classes:
+        old_title = classs.title
+        match = re.match(r'(\d+)(\D*)', old_title)
+    
+        if match:
+            numeric_part, non_numeric_part = match.groups()
+
+            new_numeric_part = str(int(numeric_part) + 1)
+            if numeric_part>12:
+                classs.delete()
+            else:               
+                new_title = new_numeric_part + non_numeric_part
+                classs.title=new_title
+                classs.save()

@@ -43960,3 +43960,1607 @@ C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /admin/auth/group/add/ HTTP/1.1" 200 16306
+"GET /admin/auth/group/add/ HTTP/1.1" 200 16306
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"POST /admin/auth/group/add/ HTTP/1.1" 302 0
+"POST /admin/auth/group/add/ HTTP/1.1" 302 0
+"GET /admin/auth/group/ HTTP/1.1" 200 9075
+"GET /admin/auth/group/ HTTP/1.1" 200 9075
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 247
+"POST /login/ HTTP/1.1" 200 247
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+Forbidden: /assignments_teacher/
+Forbidden: /assignments_teacher/
+"GET /assignments_teacher/ HTTP/1.1" 403 63
+"GET /assignments_teacher/ HTTP/1.1" 403 63
+Forbidden: /assignments_teacher/
+Forbidden: /assignments_teacher/
+"GET /assignments_teacher/ HTTP/1.1" 403 63
+"GET /assignments_teacher/ HTTP/1.1" 403 63
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+"GET /assignments_student/ HTTP/1.1" 200 567
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Assignment' object has no attribute 'teacher'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    return [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 687, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `teacher` on serializer `AssignmentSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Assignment` instance.
+Original exception text was: 'Assignment' object has no attribute 'teacher'.
+Internal Server Error: /assignments_student/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Assignment' object has no attribute 'teacher'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    return [
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 687, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `teacher` on serializer `AssignmentSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Assignment` instance.
+Original exception text was: 'Assignment' object has no attribute 'teacher'.
+"GET /assignments_student/ HTTP/1.1" 500 147234
+"GET /assignments_student/ HTTP/1.1" 500 147234
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+"OPTIONS /get_class_statistics/ HTTP/1.1" 200 0
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 257, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 358, in get_class_statistics
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 260, in _load
+    raise DecodeError("Not enough segments") from err
+jwt.exceptions.DecodeError: Not enough segments
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 257, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 358, in get_class_statistics
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 260, in _load
+    raise DecodeError("Not enough segments") from err
+jwt.exceptions.DecodeError: Not enough segments
+"GET /get_class_statistics/ HTTP/1.1" 500 100429
+"GET /get_class_statistics/ HTTP/1.1" 500 100429
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /profile/ HTTP/1.1" 200 0
+"OPTIONS /profile/ HTTP/1.1" 200 0
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /admin/auth/group/ HTTP/1.1" 200 8880
+"GET /admin/auth/group/ HTTP/1.1" 200 8880
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+Not Found: /profile/
+Not Found: /profile/
+"GET /profile/ HTTP/1.1" 404 8350
+"GET /profile/ HTTP/1.1" 404 8350
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /user_profile/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/ HTTP/1.1" 200 0
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8385
+"GET /user_profile/ HTTP/1.1" 404 8385
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_profile/
+Not Found: /user_profile/
+"PUT /user_profile/ HTTP/1.1" 404 8272
+"PUT /user_profile/ HTTP/1.1" 404 8272
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8272
+"GET /user_profile/ HTTP/1.1" 404 8272
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 8272
+"GET /user_profile/ HTTP/1.1" 404 8272
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 257, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 346, in get_class_statistics
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 260, in _load
+    raise DecodeError("Not enough segments") from err
+jwt.exceptions.DecodeError: Not enough segments
+Internal Server Error: /get_class_statistics/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 257, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\views.py", line 346, in get_class_statistics
+    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 210, in decode
+    decoded = self.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jwt.py", line 151, in decode_complete
+    decoded = api_jws.decode_complete(
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 198, in decode_complete
+    payload, signing_input, header, signature = self._load(jwt)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\jwt\api_jws.py", line 260, in _load
+    raise DecodeError("Not enough segments") from err
+jwt.exceptions.DecodeError: Not enough segments
+"GET /get_class_statistics/ HTTP/1.1" 500 100429
+"GET /get_class_statistics/ HTTP/1.1" 500 100429
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /handle_assignments_student_finished/ HTTP/1.1" 200 0
+Unauthorized: /handle_assignments_teacher_finished/
+Unauthorized: /handle_assignments_teacher_finished/
+Unauthorized: /handle_assignments_student_finished/
+Unauthorized: /handle_assignments_student_finished/
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 401 44
+"GET /handle_assignments_teacher_finished/ HTTP/1.1" 401 44
+"GET /handle_assignments_student_finished/ HTTP/1.1" 401 44
+"GET /handle_assignments_student_finished/ HTTP/1.1" 401 44
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student_finished/ HTTP/1.1" 200 0
+Forbidden: /assignments_teacher_finished/
+Forbidden: /assignments_teacher_finished/
+"GET /assignments_teacher_finished/ HTTP/1.1" 403 63
+"GET /assignments_teacher_finished/ HTTP/1.1" 403 63
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+Forbidden: /assignments_teacher_finished/
+Forbidden: /assignments_teacher_finished/
+"GET /assignments_teacher_finished/ HTTP/1.1" 403 63
+"GET /assignments_teacher_finished/ HTTP/1.1" 403 63
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+Unauthorized: /get_assignment_statistics/7/
+Unauthorized: /get_assignment_statistics/7/
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+"POST /login/ HTTP/1.1" 200 20
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 200 255
+"POST /login/ HTTP/1.1" 200 255
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+Unauthorized: /get_assignment_statistics/7/
+Unauthorized: /get_assignment_statistics/7/
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+Not Found: /user_profile/
+Not Found: /user_profile/
+"GET /user_profile/ HTTP/1.1" 404 9212
+"GET /user_profile/ HTTP/1.1" 404 9212
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+"OPTIONS /get_classes_by_school/ HTTP/1.1" 200 0
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"OPTIONS /assignments/13/ HTTP/1.1" 200 0
+"OPTIONS /assignments/13/ HTTP/1.1" 200 0
+Method Not Allowed: /assignments/13/
+Method Not Allowed: /assignments/13/
+"GET /assignments/13/ HTTP/1.1" 405 40
+"GET /assignments/13/ HTTP/1.1" 405 40
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\generics.py", line 83, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AssignmentView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 54, in retrieve
+    instance = self.get_object()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\generics.py", line 83, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AssignmentView' should either include a `queryset` attribute, or override the `get_queryset()` method.
+"GET /assignments/13/ HTTP/1.1" 500 22810
+"GET /assignments/13/ HTTP/1.1" 500 22810
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+Not Found: /assignments/13/
+Not Found: /assignments/13/
+"GET /assignments/13/ HTTP/1.1" 404 23
+"GET /assignments/13/ HTTP/1.1" 404 23
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+Unauthorized: /get_classes_by_school/
+Unauthorized: /get_classes_by_school/
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /get_classes_by_school/ HTTP/1.1" 401 44
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+Unauthorized: /handle_homework/
+Unauthorized: /handle_homework/
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /user_profile/6/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/6/ HTTP/1.1" 200 0
+Internal Server Error: /user_profile/6/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 507, in to_representation
+    for field in fields:
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 368, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'school_title' was declared on serializer UserSerializer, but has not been included in the 'fields' option.
+Internal Server Error: /user_profile/6/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 507, in to_representation
+    for field in fields:
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 368, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'school_title' was declared on serializer UserSerializer, but has not been included in the 'fields' option.
+"GET /user_profile/6/ HTTP/1.1" 500 145450
+"GET /user_profile/6/ HTTP/1.1" 500 145450
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user_profile/6/ HTTP/1.1" 200 238
+"GET /user_profile/6/ HTTP/1.1" 200 238
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /login/ HTTP/1.1" 200 0
+"OPTIONS /login/ HTTP/1.1" 200 0
+"POST /login/ HTTP/1.1" 200 247
+"POST /login/ HTTP/1.1" 200 247
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student/ HTTP/1.1" 200 0
+"GET /assignments_student/ HTTP/1.1" 200 789
+"GET /assignments_student/ HTTP/1.1" 200 789
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+Forbidden: /user_profile/1/
+Forbidden: /user_profile/1/
+"PUT /user_profile/1/ HTTP/1.1" 403 58
+"PUT /user_profile/1/ HTTP/1.1" 403 58
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+Bad Request: /user_profile/1/
+Bad Request: /user_profile/1/
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+Bad Request: /user_profile/1/
+Bad Request: /user_profile/1/
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+Bad Request: /user_profile/1/
+Bad Request: /user_profile/1/
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+"PUT /user_profile/1/ HTTP/1.1" 400 155
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+"GET /user_profile/1/ HTTP/1.1" 200 230
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+"OPTIONS /user_profile/1/ HTTP/1.1" 200 0
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\web_project\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"OPTIONS /assignments_student_finished/ HTTP/1.1" 200 0
+"OPTIONS /assignments_student_finished/ HTTP/1.1" 200 0
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+"GET /assignments_student_finished/ HTTP/1.1" 200 1097
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+Unauthorized: /login/
+Unauthorized: /login/
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 401 61
+"POST /login/ HTTP/1.1" 200 255
+"POST /login/ HTTP/1.1" 200 255
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+"OPTIONS /assignments_teacher/ HTTP/1.1" 200 0
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+"OPTIONS /handle_homework/ HTTP/1.1" 200 0
+Unauthorized: /handle_homework/
+Unauthorized: /handle_homework/
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /classes/ HTTP/1.1" 200 0
+"OPTIONS /classes/ HTTP/1.1" 200 0
+"OPTIONS /assignments/13/ HTTP/1.1" 200 0
+"OPTIONS /assignments/13/ HTTP/1.1" 200 0
+"GET /classes/ HTTP/1.1" 200 67
+"GET /classes/ HTTP/1.1" 200 67
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+"PUT /assignments/13/ HTTP/1.1" 500 130386
+"PUT /assignments/13/ HTTP/1.1" 500 130386
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 43, in update
+    instance.classs = validated_data.get('classs', instance.classs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "OrderedDict([('title', '2A'), ('school', <School: School object (1)>)])": "Assignment.classs" must be a "Class" instance.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 43, in update
+    instance.classs = validated_data.get('classs', instance.classs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "OrderedDict([('title', '2A'), ('school', <School: School object (1)>)])": "Assignment.classs" must be a "Class" instance.
+"PUT /assignments/13/ HTTP/1.1" 500 124662
+"PUT /assignments/13/ HTTP/1.1" 500 124662
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 50, in update
+    instance.classs = validated_data.get('classs', instance.classs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "OrderedDict([('title', '2A'), ('school', <School: School object (1)>)])": "Assignment.classs" must be a "Class" instance.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 50, in update
+    instance.classs = validated_data.get('classs', instance.classs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "OrderedDict([('title', '2A'), ('school', <School: School object (1)>)])": "Assignment.classs" must be a "Class" instance.
+"PUT /assignments/13/ HTTP/1.1" 500 125815
+"PUT /assignments/13/ HTTP/1.1" 500 125815
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+"PUT /assignments/13/ HTTP/1.1" 500 135644
+"PUT /assignments/13/ HTTP/1.1" 500 135644
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+"PUT /assignments/13/ HTTP/1.1" 500 135692
+"PUT /assignments/13/ HTTP/1.1" 500 135692
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+Internal Server Error: /assignments/13/
+Traceback (most recent call last):
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\homework_app\serializers.py", line 52, in update
+    return super().update(instance, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 992, in update
+    raise_errors_on_nested_writes('update', self, validated_data)
+  File "C:\Users\Namai\Desktop\web-django\.venv\lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `homework_app.serializers.AssignmentSerializer`, or set `read_only=True` on nested serializer fields.
+"PUT /assignments/13/ HTTP/1.1" 500 135692
+"PUT /assignments/13/ HTTP/1.1" 500 135692
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"PUT /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+"GET /assignments/13/ HTTP/1.1" 200 263
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+C:\Users\Namai\Desktop\web-django\homework_app\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /assignments/16/ HTTP/1.1" 200 0
+"OPTIONS /assignments/16/ HTTP/1.1" 200 0
+"GET /assignments/16/ HTTP/1.1" 200 258
+"GET /assignments/16/ HTTP/1.1" 200 258
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+Unauthorized: /handle_homework/
+Unauthorized: /handle_homework/
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /handle_homework/ HTTP/1.1" 401 44
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"OPTIONS /assignments_teacher_finished/ HTTP/1.1" 200 0
+"OPTIONS /assignments_teacher_finished/ HTTP/1.1" 200 0
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+"OPTIONS /get_assignment_statistics/7/ HTTP/1.1" 200 0
+Unauthorized: /get_assignment_statistics/7/
+Unauthorized: /get_assignment_statistics/7/
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /get_assignment_statistics/7/ HTTP/1.1" 401 44
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"GET /assignments_teacher_finished/ HTTP/1.1" 200 830
+"OPTIONS /assignments/7/ HTTP/1.1" 200 0
+"OPTIONS /assignments/7/ HTTP/1.1" 200 0
+"GET /assignments/7/ HTTP/1.1" 200 282
+"GET /assignments/7/ HTTP/1.1" 200 282
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments_teacher/ HTTP/1.1" 200 1318
+"GET /assignments HTTP/1.1" 301 0
+"GET /assignments HTTP/1.1" 301 0
+Forbidden: /assignments/
+Forbidden: /assignments/
+"GET /assignments/ HTTP/1.1" 403 3771
+"GET /assignments/ HTTP/1.1" 403 3771
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+"GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 10082
+"GET /favicon.ico HTTP/1.1" 404 10082

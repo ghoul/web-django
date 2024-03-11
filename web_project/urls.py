@@ -18,18 +18,25 @@ from django.contrib import admin
 from django.urls import path, include
 from homework_app import views
 from django.urls import re_path
-from homework_app.views import CustomTokenObtainPairView
+# from homework_app.views import CustomTokenObtainPairView
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 # from .admin import admin_site
 router = DefaultRouter()
-router.register(r'assignments', views.AssignmentListViewTeacherTest, basename='assignment')
+router.register(r'user_profile', views.ProfileViewUser, basename='user_profile')
+router.register(r'assignments', views.AssignmentView, basename='assignments') #get update create one
+router.register(r'classes', views.ClassesListView, basename='classes') #get one
+router.register(r'assignments_teacher', views.AssignmentListViewTeacher, basename='assignments_teacher') 
+router.register(r'assignments_student', views.AssignmentListViewStudent, basename='assignments_student')
+router.register(r'assignments_teacher_finished', views.AssignmentListViewTeacherFinished, basename='assignments_teacher_finished') 
+router.register(r'assignments_student_finished', views.AssignmentListViewStudentFinished, basename='assignments_student_finished')
+
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path("", views.home, name="home"),
+    # path("", views.home, name="home"),
 
     # path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('members/', include('django.contrib.auth.urls')), #yoyoapp??
@@ -66,9 +73,9 @@ urlpatterns = [
 
     path('get_assignment_statistics/<int:pk>/',views.get_assignment_statistics, name='get_assignment_statistics'),
     # path('handle_assignments_teacher/',views.handle_assignments_teacher, name='handle_assignments_teacher'),
-    path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
-    path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
-    path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
+    # path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
+    # path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
+    # path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
     path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
     path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     
@@ -78,7 +85,7 @@ urlpatterns = [
     path('check_summary/<int:aid>/<int:sid>/',views.check_summary, name='check_summary'),
     path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
-    path('user_data/',views.user_data, name='user_data'),
+    # path('user_data/',views.user_data, name='user_data'),
     path('change_password/',views.change_password, name='change_password'),
     path('get_user_id/',views.get_user_id, name='get_user_id'),
 

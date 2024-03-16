@@ -58,7 +58,7 @@ class QuestionAnswerPair(models.Model):
     correct = models.ForeignKey('Option', related_name='qapair', null = True, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='homework_images/', null=True, blank=True)
     points = models.IntegerField()
-    
+
 class Option(models.Model):
     text = models.CharField(max_length=255)
     question = models.ForeignKey(QuestionAnswerPair, related_name='option', on_delete=models.CASCADE)

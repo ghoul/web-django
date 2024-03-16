@@ -26,11 +26,13 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'user_profile', views.ProfileViewUser, basename='user_profile')
 router.register(r'assignments', views.AssignmentView, basename='assignments') #get update create one
-router.register(r'classes', views.ClassesListView, basename='classes') #get one
+router.register(r'classes', views.ClassesListView, basename='classes') #get by school
 router.register(r'assignments_teacher', views.AssignmentListViewTeacher, basename='assignments_teacher') 
 router.register(r'assignments_student', views.AssignmentListViewStudent, basename='assignments_student')
 router.register(r'assignments_teacher_finished', views.AssignmentListViewTeacherFinished, basename='assignments_teacher_finished') 
 router.register(r'assignments_student_finished', views.AssignmentListViewStudentFinished, basename='assignments_student_finished')
+router.register(r'assignment_statistics', views.AssignmentViewStatistics, basename='assignment_statistics')
+router.register(r'class_statistics', views.ClassViewStatistics, basename='class_statistics')
 
 
 urlpatterns = [
@@ -42,18 +44,21 @@ urlpatterns = [
     # path('members/', include('django.contrib.auth.urls')), #yoyoapp??
     path('login/',views.login_user, name='login_user'),
     # path('signup/',views.signup_user, name='signup_user'),
+     path('one_student_answers/<int:assignment_id>/<int:student_id>/', views.OneStudentViewStatistics.as_view({'get': 'list'}), name='one_student_answers'),
+
+
 
     path('handle_homework/', views.handle_homework, name='handle_homework'),
     path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
 
-    path('handle_classes/', views.handle_classes, name='handle_classes'),
-    path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
+    # path('handle_classes/', views.handle_classes, name='handle_classes'),
+    # path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
 
     # path('handle_students_class/<int:sid>/<int:cid>/', views.handle_students_class, name='handle_students_class'),
     # path('handle_teacher_class/<int:cid>/', views.handle_teacher_class, name='handle_teacher_class'),
-    path('get_classes_by_school/', views.get_classes_by_school, name='get_classes_by_school'),
+    # path('get_classes_by_school/', views.get_classes_by_school, name='get_classes_by_school'),
 
-    path('handle_assign_homework/', views.handle_assign_homework, name='handle_assign_homework'),
+    # path('handle_assign_homework/', views.handle_assign_homework, name='handle_assign_homework'),
 
     # path('handle_teacher_students/', views.handle_teacher_students, name='handle_teacher_students'),
     # path('handle_student_teachers/', views.handle_student_teachers, name='handle_student_teachers'),
@@ -71,13 +76,13 @@ urlpatterns = [
 
 
 
-    path('get_assignment_statistics/<int:pk>/',views.get_assignment_statistics, name='get_assignment_statistics'),
+    # path('get_assignment_statistics/<int:pk>/',views.get_assignment_statistics, name='get_assignment_statistics'),
     # path('handle_assignments_teacher/',views.handle_assignments_teacher, name='handle_assignments_teacher'),
     # path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
     # path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
     # path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
     path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
-    path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
+    # path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     
     path('start_game/',views.start_game, name='start_game'),
     path('post_answer/',views.post_answer, name='post_answer'),
@@ -91,9 +96,9 @@ urlpatterns = [
 
     path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
 
-    path('handle_assignment_update/<int:aid>/', views.handle_assignment_update, name='handle_assignment_update'),
+    # path('handle_assignment_update/<int:aid>/', views.handle_assignment_update, name='handle_assignment_update'),
     path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
-    path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
+    # path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
 
 
     # path('admin/add_school/', views.AddSchoolView.as_view(), name='add_school'),

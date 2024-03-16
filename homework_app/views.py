@@ -54,6 +54,8 @@ from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from rest_framework import mixins
 from rest_framework import viewsets
+from .utils import *
+from django.db.models import Subquery, OuterRef
 
 def generate_csrf_token(request):
     csrf_token = get_token(request)
@@ -73,7 +75,6 @@ def generate_email_password(first_name, last_name):
 
     password =  CustomUser.objects.make_random_password()
     return email, password
-
 
 
 class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
@@ -175,10 +176,6 @@ def login_user(request):
         return Response({'error': 'Jūsų licenzija nebegalioja'}, status=401)           
 
 
-
-    
-
-
 #PAVYZDYS
 @csrf_exempt
 # @require_PUT
@@ -205,232 +202,106 @@ def change_password(request):
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
-def home(request):
-    return HttpResponse("Hello, Django!")
+class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AssignmentResultSerializer
 
+    def retrieve(self, request, *args, **kwargs):
+        assignment_id = self.kwargs.get('pk')
+        assignment = Assignment.objects.get(pk=assignment_id)
 
-def has_answered_all_questions(student, assignment):
-    assignment_questions_count = QuestionAnswerPair.objects.filter(homework=assignment.homework).count()
-    student_answers_count = QuestionAnswerPairResult.objects.filter(
-        question__homework=assignment.homework,
-        student=student,
-        assignment=assignment
-    ).count()
-    return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count
+        queryset = AssignmentResult.objects.filter(assignment=assignment)
+        serializer = self.get_serializer(queryset, many=True)
 
-def sort_students(student):
-    if student['scored'] == '' or student['time'] == '':
-        return (float('inf'), float('inf'))
-    else:
-        return (-int(student['scored']) if student['scored'] else 0, student['time'] if student['time'] else '99:99:99')
+        students_data = serializer.data
+        sorted_students = sorted(students_data, key=sort_students)
 
-@csrf_exempt
-def get_assignment_statistics(request,pk):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    user = CustomUser.objects.get(email=email)
-    assignment = Assignment.objects.get(pk=pk)
-    classs_title = assignment.classs.title
-    assingment_title = assignment.homework.title
-
-    if request.method == 'GET':
-        classs = assignment.classs
-        students_in_class = classs.classs.all()
-        results = AssignmentResult.objects.filter(assignment=assignment)
-
-        homework = assignment.homework
-        total_points = QuestionAnswerPair.objects.filter(homework=homework).aggregate(total_points=Sum('points'))['total_points']
-        students_data = []
-
-        for student in students_in_class:
-        # Filter AssignmentResult for the current student and assignment
-            student_results = results.filter(student=student.student)
-            date = ''
-            time = ''
-            points = ''
-            status = 'Bad'
-            gender = student.student.gender
-            grade = 0
-
-            print(gender)
-
-            if student_results.exists():
-                answered_all, all_questions, student_result = has_answered_all_questions(student.student, assignment)
-                if answered_all:
-                    status = 'Good'
-                else: 
-                    status = 'Average'
-                # Extracting the date and time from the first result
-                date = student_results.first().date.strftime('%Y-%m-%d') 
-                time = student_results.first().time.strftime('%H:%M:%S')  
-
-                # Calculate total points for the student
-                scored_points_total = student_results.first().points
-                points = QuestionAnswerPairResult.objects.filter(
-                    assignment=assignment,
-                    student=student.student, 
-                ).aggregate(total_points=Sum('points'))['total_points']
-                print(student.student.last_name + " points: " + str(points))
-                
-                if total_points >0:
-                    grade = math.ceil(points/total_points*10)
-                else:
-                    grade = 0
-                grade = min(grade, 10)
-
-            students_data.append({
-                'id': student.student.pk,
-                'name': student.student.first_name,
-                'surname': student.student.last_name,
-                'date': date,
-                'time': time,
-                'points': points,
-                'status': status, 
-                'gender' : gender,
-                'grade' : grade,
-                'scored' : scored_points_total
-            })
-
-            students_data = sorted(students_data, key=sort_students)
-        return JsonResponse({'students': students_data, 'title': assingment_title, 'classs' : classs_title, 'id' : user.id}) 
-
-def get_current_school_year():
-    today = datetime.now().date()
-
-    # Calculate the start date for the school year
-    if today.month >= 9:  # If it's September or later in the current year
-        start_date = datetime(today.year, 9, 1).date()  # This year's September 1st
-    else:
-        start_date = datetime(today.year - 1, 9, 1).date()  # Last years ago September 1st
-
-    # Calculate the end date for the school year
-    if today.month >= 9:  # If it's September or later in the current year
-        end_date = datetime(today.year+1, 8, 31).date()  # Next year's August 31st
-    else:
-        end_date = datetime(today.year, 8, 31).date()  # This year's August 31st
-        print(start_date)
-        print(end_date)
-    return start_date, end_date
-
-class LeaderboardEntry:
-    def __init__(self, student, points, gender):
-        self.student = student
-        self.points = points
-        self.gender = gender
-
-class LeaderboardEntryEncoder(DjangoJSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, LeaderboardEntry):
-            return obj.__dict__
-        return super().default(obj)
-
-@csrf_exempt
-def get_class_statistics(request):
-    token = request.headers.get('Authorization')   
-   
-    payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    email = payload.get('email')
-    role=payload.get('role')
-    user = CustomUser.objects.get(email=email)
-    if request.method == 'GET':
-        if role==1:
-            print("mokinio leaderboard")
-            try:
-                # Step 1: Get the class of the student who sent the request
-                student_class = StudentClass.objects.get(student=user)
-                classs = student_class.classs.title
-
-                # Step 2: Retrieve all the assignments for that class
-                assignments = Assignment.objects.filter(classs=student_class.classs)
-
-                # Step 4: Calculate points for each student in the class
-                leaderboard_entries = []
-                student_ids = StudentClass.objects.filter(classs=student_class.classs).values_list('student', flat=True)
-                students = CustomUser.objects.filter(pk__in=student_ids)
-
-                # Step 3: Filter assignment results based on the school year and class
-                start_date, end_date = get_current_school_year()
-                assignment_results = AssignmentResult.objects.filter(
-                    student__in=students,
-                    assignment__in=assignments,
-                    date__range=(start_date, end_date)
-                )
-
-                for student in students:
-                    points = assignment_results.filter(student=student).aggregate(Sum('points'))['points__sum'] or 0
-                    print(points)
-                    leaderboard_entries.append(LeaderboardEntry(f'{student.first_name} {student.last_name}', points, student.gender))
-
-                # Step 5: Create a leaderboard
-                leaderboard_entries.sort(key=lambda x: x.points, reverse=True)
-                print("success")
-
-                serialized_leaderboard_entries = json.dumps(leaderboard_entries, cls=LeaderboardEntryEncoder,ensure_ascii=False)
-
-                return JsonResponse({'data': serialized_leaderboard_entries, 'classs' : classs}, safe=False)
-            except StudentClass.DoesNotExist:
-                return JsonResponse({'error': 'Student class not found'}, status=404)
-            except Exception as e:
-                return JsonResponse({'error': str(e)}, status=500)
-
-        elif role==2:
-            print("mokytojo leaderboard")
-
-
-
-@csrf_exempt
-def handle_assignment_update(request,aid):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-
-    if request.method == 'GET':
-        assignment = Assignment.objects.get(pk=aid)   
-        assignment_info = {
-            'id': assignment.pk,
-            'title': assignment.homework.title,
-            'fromDate': assignment.from_date,
-            'toDate': assignment.to_date,
-            'classs': assignment.classs.pk
+        response_data = {
+            'assignment': {
+                'title': assignment.homework.title,
+                'class_title': assignment.classs.title
+            },
+            'assignment_results': sorted_students
         }
-        return JsonResponse({'data': assignment_info}) 
-    elif request.method == 'PUT':
-            assignment = Assignment.objects.get(pk=aid)  
-            try:
-                data = json.loads(request.body.decode('utf-8'))
-            except json.JSONDecodeError:
-                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
 
-            toDate = data.get("toDate")
-            fromDate = data.get("fromDate")
-            classId = data.get("class")
+        return Response(response_data)
 
-            classs = Class.objects.get(pk=classId)
+class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated]
 
-            if not toDate or not fromDate or not classId:
-                return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
+    def list(self, request, *args, **kwargs):
+        classs = StudentClass.objects.get(student=request.user).classs
+        class_title = classs.title
+        students = StudentClass.objects.filter(classs=classs)
+        assignments = Assignment.objects.filter(classs=classs)
 
-            assignment.to_date = toDate
-            assignment.from_date = fromDate
-            assignment.classs = classs
+        start_date, end_date = get_current_school_year()
+        assignment_results = AssignmentResult.objects.filter(
+            student__in=students.values_list('student', flat=True),
+            assignment__in=assignments,
+            date__range=(start_date, end_date)
+        ).values('student__first_name', 'student__last_name', 'student__gender').annotate(
+            total_points=Sum('points')
+        )
 
-            try:
-                assignment.save()
-                return JsonResponse({'success': True, "id" : assignment.pk}, status=200)
-            except Exception as e:
-                return JsonResponse({'success': False, 'error': str(e)}, status=500) 
+        leaderboard_entries = [
+            {
+                'student': f"{result['student__first_name']} {result['student__last_name']}",
+                'gender': result['student__gender'],
+                'points': result['total_points'] or 0
+            }
+            for result in assignment_results
+        ]
+        leaderboard_entries.sort(key=lambda x: x['points'], reverse=True)
+        response_data = {
+            'leaderboard': leaderboard_entries,
+            'class_title': class_title
+        }
+
+        return Response(response_data)
+
+
+# @csrf_exempt
+# def handle_assignment_update(request,aid):
+#     token = request.headers.get('Authorization')   
+#     if not token:
+#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+
+#     if request.method == 'GET':
+#         assignment = Assignment.objects.get(pk=aid)   
+#         assignment_info = {
+#             'id': assignment.pk,
+#             'title': assignment.homework.title,
+#             'fromDate': assignment.from_date,
+#             'toDate': assignment.to_date,
+#             'classs': assignment.classs.pk
+#         }
+#         return JsonResponse({'data': assignment_info}) 
+#     elif request.method == 'PUT':
+#             assignment = Assignment.objects.get(pk=aid)  
+#             try:
+#                 data = json.loads(request.body.decode('utf-8'))
+#             except json.JSONDecodeError:
+#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+
+#             toDate = data.get("toDate")
+#             fromDate = data.get("fromDate")
+#             classId = data.get("class")
+
+#             classs = Class.objects.get(pk=classId)
+
+#             if not toDate or not fromDate or not classId:
+#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
+
+#             assignment.to_date = toDate
+#             assignment.from_date = fromDate
+#             assignment.classs = classs
+
+#             try:
+#                 assignment.save()
+#                 return JsonResponse({'success': True, "id" : assignment.pk}, status=200)
+#             except Exception as e:
+#                 return JsonResponse({'success': False, 'error': str(e)}, status=500) 
 
 
 @csrf_exempt
@@ -709,38 +580,38 @@ def get_homework_questions(homework):
         print(questions_data)
         return questions_data
 
-@csrf_exempt
-def handle_assign_homework(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
+# @csrf_exempt
+# def handle_assign_homework(request):
+#     token = request.headers.get('Authorization')   
+#     if not token:
+#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
+#     try:
+#         # Verify and decode the token
+#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
+#     except jwt.ExpiredSignatureError:
+#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
+#     except jwt.InvalidTokenError:
+#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
 
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    if request.method == 'POST':
-        data = json.loads(request.body.decode('utf-8'))
-        classs_id = data.get("class")
-        homework_id = data.get("homeworkId")
-        fromDate = data.get("fromDate")
-        toDate = data.get("toDate")
+#     # Check if the user is an admin
+#     role = payload.get('role')
+#     email = payload.get('email')
+#     teacher = CustomUser.objects.get(email=email)
+#     if request.method == 'POST':
+#         data = json.loads(request.body.decode('utf-8'))
+#         classs_id = data.get("class")
+#         homework_id = data.get("homeworkId")
+#         fromDate = data.get("fromDate")
+#         toDate = data.get("toDate")
 
    
 
-        classs = Class.objects.get(pk=classs_id)
-        homework = Homework.objects.get(pk=homework_id)
+#         classs = Class.objects.get(pk=classs_id)
+#         homework = Homework.objects.get(pk=homework_id)
 
-        assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
-        assignment.save()
-        return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
+#         assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
+#         assignment.save()
+#         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
 
 @csrf_exempt
 def handle_assignment_id(request,id):
@@ -1082,103 +953,42 @@ def handle_students_assignment_results(request,aid):
       
         return JsonResponse({'success': True, 'result': result})       
 
-@csrf_exempt
-def get_one_student_answers(request,aid,sid):
-    if request.method == 'GET':
-        student = CustomUser.objects.get(pk=sid)
-        name = student.first_name + " " + student.last_name
-        question_answer_pairs = QuestionAnswerPair.objects.filter(homework__assignment__id=aid)
-        assignment = Assignment.objects.get(pk=aid)  
-        # Retrieve QuestionAnswerPairResult objects for a given assignment and student
-        question_answer_results = QuestionAnswerPairResult.objects.filter(
-            assignment__id=aid, student__id=sid
-        )
-
-        print(question_answer_results)
-
-        #jei klausimas multiple - atsakymu masyvas kitas, reikia tikrint tipa ir jei 3 - pasiimt studento atsakymus
-        # student_choice = QuestionSelectedOption.objects.filter(question=pair, student=student, assignment=assignment).values('option__text')
-
-        title = Assignment.objects.get(pk=aid).homework.title
-        pairs_dict = {}
-        results_list = []
-        student_choices=[]
-
-        for pair in question_answer_pairs:
-            answer = ''
-            if pair.qtype == 2:
-                answer=pair.answer
-            elif pair.qtype == 1:
-                answer=pair.correct.text 
-            elif pair.qtype==3:             
-                correct_choices = QuestionCorrectOption.objects.filter(question=pair).values('option__text')
-                # correct_choices = Option.objects.filter(question=pair.questioncorrectoption.question).values_list('text', flat=True)
-                values_list = [item['option__text'] for item in correct_choices]
-                answer = list(values_list)
-                print("3")
-                print(answer)    
 
 
-            pairs_dict[pair.question] = {
-                'question': pair.question,
-                'answer': answer
-            }
+class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuestionAnswerPairResultSerializer
+    lookup_url_kwarg = 'assignment_id'
 
-          
-        answered_all, all_questions, student_result = has_answered_all_questions(student, assignment)
-        # Create a list of student answers aligned with their respective questions
-        for result in question_answer_results:
-            question_pair=result.question
-            question_text = result.question.question
-            question_id=result.question.pk
-            question_type = result.question.qtype
-            question_points = result.question.points
-            if question_text in pairs_dict:
+    def get_queryset(self):
+        assignment_id = self.kwargs.get('assignment_id')
+        student_id = self.kwargs.get('student_id')
 
-                question_info = pairs_dict[question_text]
-                if question_type == 1:
-                    all_options = Option.objects.filter(question=question_pair).values_list('text', flat=True)
-                   
-                    results_list.append({
-                        'question': question_info['question'],
-                        'answer': question_info['answer'],
-                        'all_options': list(all_options),  # Include all options for the multiple-choice question
-                        'student_answer': result.answer,  # Include student's choices for multiple-choice questions
-                        'points': result.points,
-                        'qtype': question_type,
-                        'opoints' : question_points
-                    })
-                elif question_type == 3: 
-                # Retrieve all options for the multiple-choice question
-                    all_options = Option.objects.filter(question=question_pair).values_list('text', flat=True)
+        queryset = QuestionAnswerPairResult.objects.filter(
+            assignment__id=assignment_id,
+            student__id=student_id
+        ).select_related('question__homework', 'question__correct').prefetch_related('question__option', 'question__questionoselect')
 
-                    # Retrieve student's choices for multiple-choice question
-                    student_choices = QuestionSelectedOption.objects.filter(
-                        question=question_pair, student=student, assignment=assignment
-                    ).values_list('option__text', flat=True)
+        return queryset
 
-                    results_list.append({
-                        'question': question_info['question'],
-                        'answer': question_info['answer'],
-                        'all_options': list(all_options),  # Include all options for the multiple-choice question
-                        'student_answer': list(student_choices),  # Include student's choices for multiple-choice questions
-                        'points': result.points,
-                        'qtype': question_type,
-                        'opoints' : question_points
-                    })
-                else:
-                    results_list.append({
-                        'question': question_info['question'],
-                        'answer': question_info['answer'],
-                        'student_answer': result.answer,
-                        'points': result.points,
-                        'qtype': question_type,
-                        'opoints' : question_points
-                    })
-     
-        return JsonResponse({'success': True, 'results': results_list, 'title' : title, 'name' : name, 'questions' : all_questions, 'answers' : student_result})      
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        assignment = queryset.first().assignment
+        student = queryset.first().student
 
+        score = calculate_score(student, assignment)
+        assignment_points = calculate_assignment_points(assignment)
+        grade = calculate_grade(score, assignment)
 
+        data = self.serializer_class(queryset, many=True).data
+        response_data = {
+            'results': data,
+            'points' : assignment_points,
+            'score': score,
+            'grade': grade
+        }
+        return Response(response_data)
+    
 
 ################
 ######GAME#####

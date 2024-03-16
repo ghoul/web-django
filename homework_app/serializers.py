@@ -1,7 +1,8 @@
+import math
 from rest_framework import serializers
 
-from .utils import get_assignment_status
-from .models import Assignment, CustomUser, Homework, Class
+from .utils import *
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     school_title = serializers.CharField(source='school.title')
@@ -76,3 +77,81 @@ class AssignmentSerializer(serializers.ModelSerializer):
         # Save and return the updated instance
         instance.save()
         return super().update(instance, validated_data)    # instance
+
+
+class AssignmentResultSerializer(serializers.ModelSerializer):
+    grade = serializers.SerializerMethodField()
+    score = serializers.SerializerMethodField() # just points from questions, without enemies kill, instance.points - su viskuo
+    status = serializers.SerializerMethodField()
+    student_first_name = serializers.CharField(source='student.first_name')
+    student_last_name = serializers.CharField(source='student.last_name')
+    student_gender = serializers.CharField(source='student.gender')
+    student_id = serializers.IntegerField(source = 'student.id')
+
+    class Meta:
+        model = AssignmentResult
+        fields = '__all__'  #('id', 'date', 'time', 'points') #'status', 'student', 'grade', 'score'
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['date'] = instance.date.strftime('%Y-%m-%d')
+        representation['time'] = instance.time.strftime('%H:%M:%S')  
+        return representation
+
+
+    def get_status(self, instance):
+        answered_all = has_answered_all_questions(instance.student, instance.assignment)
+        if answered_all:
+            status = 'Good'
+        else: 
+            status = 'Average'
+        return status        
+
+    def get_score(self, instance):
+       return calculate_score(instance.student, instance.assignment)
+
+    def get_grade(self, instance):
+        score = calculate_score(instance.student, instance.assignment)
+        return calculate_grade(score, instance.assignment)
+
+class OptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Option
+        fields = '__all__'
+
+class CorrectOptionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionCorrectOption   
+        fields = '__all__'
+
+class QuestionAnswerPairSerializer(serializers.ModelSerializer):
+    homework = HomeworkSerializer()
+    options = OptionSerializer(many=True, source='option')
+    correct_options = CorrectOptionsSerializer(many=True, source='questiono') 
+
+    def get_correct_options(self, obj):
+        correct_options = Option.objects.filter(questiono__question=obj)
+        return OptionSerializer(correct_options, many=True).data
+
+    class Meta:
+        model = QuestionAnswerPair
+        fields = '__all__'
+
+class QuestionSelectedOptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionSelectedOption
+        fields = '__all__'
+
+class QuestionAnswerPairResultSerializer(serializers.ModelSerializer):
+    question = QuestionAnswerPairSerializer()
+    selected_options = QuestionSelectedOptionSerializer(many=True, source='question.questionoselect')
+    student = LoginUserSerializer()
+    class Meta:
+        model = QuestionAnswerPairResult
+        fields = '__all__'   
+
+class CorrectOptionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionCorrectOption   
+        fields = '__all__'    
+

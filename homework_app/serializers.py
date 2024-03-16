@@ -15,13 +15,6 @@ class LoginUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id', 'email', 'first_name', 'last_name', 'role', 'gender']        
 
-class HomeworkSerializer(serializers.ModelSerializer):
-    teacher_first_name = serializers.CharField(source='teacher.first_name')
-    teacher_last_name = serializers.CharField(source='teacher.last_name')
-
-    class Meta:
-        model = Homework
-        fields = '__all__'
 
 class ClassSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,10 +22,17 @@ class ClassSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AssignmentSerializer(serializers.ModelSerializer):
-    homework = HomeworkSerializer()
-    classs = ClassSerializer()
+    # homework = serializers.SerializerMethodField() #HomeworkSerializer()
+    # classs = serializers.SerializerMethodField() #ClassSerializer()
+    homework = serializers.PrimaryKeyRelatedField(queryset=Homework.objects.all())
+    classs = serializers.PrimaryKeyRelatedField(queryset=Class.objects.all()) 
     status = serializers.SerializerMethodField()
 
+    homework_title = serializers.CharField(source='homework.title')
+    teacher_first_name = serializers.CharField(source='homework.teacher.first_name')
+    teacher_last_name = serializers.CharField(source='homework.teacher.last_name')
+    classs_title = serializers.CharField(source='classs.title')
+     
     class Meta:
         model = Assignment
         fields = '__all__'
@@ -88,6 +88,11 @@ class AssignmentResultSerializer(serializers.ModelSerializer):
     student_gender = serializers.CharField(source='student.gender')
     student_id = serializers.IntegerField(source = 'student.id')
 
+    homework_title = serializers.CharField(source='assignment.homework.title')
+    teacher_first_name = serializers.CharField(source='assignment.homework.teacher.first_name')
+    teacher_last_name = serializers.CharField(source='assignment.homework.teacher.last_name')
+    classs_title = serializers.CharField(source='assignment.classs.title')
+
     class Meta:
         model = AssignmentResult
         fields = '__all__'  #('id', 'date', 'time', 'points') #'status', 'student', 'grade', 'score'
@@ -124,8 +129,29 @@ class CorrectOptionsSerializer(serializers.ModelSerializer):
         model = QuestionCorrectOption   
         fields = '__all__'
 
+class HomeworkSerializer(serializers.ModelSerializer):
+    teacher_first_name = serializers.CharField(source='teacher.first_name')
+    teacher_last_name = serializers.CharField(source='teacher.last_name')
+    num_questions = serializers.SerializerMethodField()
+    pairs = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Homework
+        fields = '__all__'
+
+    def get_pairs(self, obj):
+        pairs = QuestionAnswerPair.objects.filter(homework=obj)  
+        serializer = QuestionAnswerPairSerializer(pairs, many=True)
+        return serializer.data    
+
+    def get_num_questions(self,obj):
+        num = QuestionAnswerPair.objects.filter(homework=obj).count()
+        return num    
+
+
+
 class QuestionAnswerPairSerializer(serializers.ModelSerializer):
-    homework = HomeworkSerializer()
+    # homework = HomeworkSerializer()
     options = OptionSerializer(many=True, source='option')
     correct_options = CorrectOptionsSerializer(many=True, source='questiono') 
 
@@ -154,4 +180,14 @@ class CorrectOptionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionCorrectOption   
         fields = '__all__'    
+
+class TestSerializer(serializers.ModelSerializer):
+    options = OptionSerializer(many=True, source='option')
+    homework_title = serializers.CharField(source='homework.title', read_only=True)
+
+    class Meta:
+        model = QuestionAnswerPair
+        fields = ['id', 'question', 'options', 'qtype', 'points', 'homework_title'] 
+    
+
 

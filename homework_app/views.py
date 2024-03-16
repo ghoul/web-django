@@ -55,7 +55,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from rest_framework import mixins
 from rest_framework import viewsets
 from .utils import *
-from django.db.models import Subquery, OuterRef
+from django.db.models import Subquery, OuterRef,Count
 
 def generate_csrf_token(request):
     csrf_token = get_token(request)
@@ -129,6 +129,7 @@ class AssignmentListViewStudentFinished(mixins.ListModelMixin, viewsets.GenericV
 class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = AssignmentSerializer
+
     def get_queryset(self):
         return Assignment.objects.all() #filter pagal teacher
         # assignment_id = self.kwargs.get('pk')
@@ -146,6 +147,45 @@ class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewse
     def get_queryset(self):
         return CustomUser.objects.all() #self.request.user
 
+class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,mixins.CreateModelMixin,viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsTeacher]
+    serializer_class = HomeworkSerializer
+
+
+    def get_queryset(self):
+        queryset = Homework.objects.filter(teacher=self.request.user) #\
+            # .annotate(num_questions=Count('pairs'))
+        return queryset
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = queryset.get(pk=self.kwargs['pk'])
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        edit = True
+        assignments = Assignment.objects.filter(homework=instance)
+        if assignments.exists():
+            edit = False
+
+        serializer = self.get_serializer(instance)
+        serialized_data = serializer.data
+        serialized_data['edit'] = edit
+
+        return Response(serialized_data)    
+ 
+
+class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsStudent]
+    serializer_class = TestSerializer
+
+    def get_queryset(self):
+        assignment_id = self.kwargs.get('assignment_id')
+        homework = Assignment.objects.get(pk=assignment_id).homework
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+        return questions
 
 @api_view(['POST'])
 @require_POST
@@ -261,49 +301,6 @@ class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response(response_data)
 
 
-# @csrf_exempt
-# def handle_assignment_update(request,aid):
-#     token = request.headers.get('Authorization')   
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-
-#     if request.method == 'GET':
-#         assignment = Assignment.objects.get(pk=aid)   
-#         assignment_info = {
-#             'id': assignment.pk,
-#             'title': assignment.homework.title,
-#             'fromDate': assignment.from_date,
-#             'toDate': assignment.to_date,
-#             'classs': assignment.classs.pk
-#         }
-#         return JsonResponse({'data': assignment_info}) 
-#     elif request.method == 'PUT':
-#             assignment = Assignment.objects.get(pk=aid)  
-#             try:
-#                 data = json.loads(request.body.decode('utf-8'))
-#             except json.JSONDecodeError:
-#                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-#             toDate = data.get("toDate")
-#             fromDate = data.get("fromDate")
-#             classId = data.get("class")
-
-#             classs = Class.objects.get(pk=classId)
-
-#             if not toDate or not fromDate or not classId:
-#                 return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-#             assignment.to_date = toDate
-#             assignment.from_date = fromDate
-#             assignment.classs = classs
-
-#             try:
-#                 assignment.save()
-#                 return JsonResponse({'success': True, "id" : assignment.pk}, status=200)
-#             except Exception as e:
-#                 return JsonResponse({'success': False, 'error': str(e)}, status=500) 
-
-
 @csrf_exempt
 # @ensure_csrf_cookie
 def handle_homework(request):
@@ -323,14 +320,7 @@ def handle_homework(request):
     email = payload.get('email')
     teacher = CustomUser.objects.get(email=email)
 
-    if request.method == 'GET':
-        homework = Homework.objects.filter(teacher=teacher)
-        homework_data = [
-                {'id' : hw.pk, 'title': hw.title, 'questions': calculate_question_count(hw.pk)}
-                for hw in homework
-            ]
-        return JsonResponse({'homework': homework_data}) 
-    elif request.method == 'POST':
+    if request.method == 'POST':
      
         homework_name = request.POST.get('homeworkName')
         date = datetime.now().date()
@@ -413,10 +403,6 @@ def handle_homework(request):
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
-
-def calculate_question_count(homework_id):
-    question_count = QuestionAnswerPair.objects.filter(homework_id=homework_id).count()
-    return question_count
 
 #TODO:
 @csrf_exempt
@@ -519,22 +505,6 @@ def handle_homework_id(request, pk):
 
         return JsonResponse({'success': True, 'message': 'Operacija atlikta sėkmingai!'})
 
-    elif request.method=="DELETE":
-        homework = Homework.objects.get(pk=pk)
-        homework.delete()
-        return JsonResponse({'success': True})
-
-    elif request.method=="GET":
-        homework = Homework.objects.get(pk=pk)
-        questions = get_homework_questions(homework)
-        edit = True
-
-        assignments = Assignment.objects.filter(homework=homework)
-        if assignments.exists():
-            edit=False
-    
-        return JsonResponse({'success': True, 'homework': questions, 'edit' : edit}, safe=True)
-
 
 def get_homework_questions(homework):
         homework_data = []
@@ -579,39 +549,6 @@ def get_homework_questions(homework):
             }
         print(questions_data)
         return questions_data
-
-# @csrf_exempt
-# def handle_assign_homework(request):
-#     token = request.headers.get('Authorization')   
-#     if not token:
-#         return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-#     try:
-#         # Verify and decode the token
-#         payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-#     except jwt.ExpiredSignatureError:
-#         return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-#     except jwt.InvalidTokenError:
-#         return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-#     # Check if the user is an admin
-#     role = payload.get('role')
-#     email = payload.get('email')
-#     teacher = CustomUser.objects.get(email=email)
-#     if request.method == 'POST':
-#         data = json.loads(request.body.decode('utf-8'))
-#         classs_id = data.get("class")
-#         homework_id = data.get("homeworkId")
-#         fromDate = data.get("fromDate")
-#         toDate = data.get("toDate")
-
-   
-
-#         classs = Class.objects.get(pk=classs_id)
-#         homework = Homework.objects.get(pk=homework_id)
-
-#         assignment = Assignment(classs=classs, homework=homework, from_date=fromDate, to_date=toDate)
-#         assignment.save()
-#         return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
 
 @csrf_exempt
 def handle_assignment_id(request,id):

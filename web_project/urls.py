@@ -33,6 +33,8 @@ router.register(r'assignments_teacher_finished', views.AssignmentListViewTeacher
 router.register(r'assignments_student_finished', views.AssignmentListViewStudentFinished, basename='assignments_student_finished')
 router.register(r'assignment_statistics', views.AssignmentViewStatistics, basename='assignment_statistics')
 router.register(r'class_statistics', views.ClassViewStatistics, basename='class_statistics')
+router.register(r'homework', views.HomeworkView, basename='homework')
+# router.register(r'test', views.TestView, basename='test')
 
 
 urlpatterns = [
@@ -44,8 +46,8 @@ urlpatterns = [
     # path('members/', include('django.contrib.auth.urls')), #yoyoapp??
     path('login/',views.login_user, name='login_user'),
     # path('signup/',views.signup_user, name='signup_user'),
-     path('one_student_answers/<int:assignment_id>/<int:student_id>/', views.OneStudentViewStatistics.as_view({'get': 'list'}), name='one_student_answers'),
-
+    path('one_student_answers/<int:assignment_id>/<int:student_id>/', views.OneStudentViewStatistics.as_view({'get': 'list'}), name='one_student_answers'),
+    path('test/<int:assignment_id>/', views.TestView.as_view({'get':'list'}), name='test'),
 
 
     path('handle_homework/', views.handle_homework, name='handle_homework'),

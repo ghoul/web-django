@@ -48,7 +48,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication, JWTTokenU
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import  SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view,authentication_classes,permission_classes
+from rest_framework.decorators import api_view,authentication_classes,permission_classes,action
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.mixins import PermissionRequiredMixin
@@ -56,6 +56,7 @@ from rest_framework import mixins
 from rest_framework import viewsets
 from .utils import *
 from django.db.models import Subquery, OuterRef,Count
+
 
 def generate_csrf_token(request):
     csrf_token = get_token(request)
@@ -130,6 +131,36 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = AssignmentSerializer
 
+    def options(self, request, *args, **kwargs):
+        print("options inside")
+        response = Response()
+        response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
+        return response
+
+    # def update(self, request, *args, **kwargs):
+    #     response = super().update(request, *args, **kwargs)
+    #     response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
+    #     return response
+
+    def create(self, request, *args, **kwargs):
+        # # Check if assignment with provided ID exists
+        # assignment_id = request.data.get('id')
+        # if assignment_id and Assignment.objects.filter(id=assignment_id).exists():
+        #     return self.update(request, *args, **kwargs)
+        # else:
+        #     return super().create(request, *args, **kwargs)
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # serializer.is_valid(raise_exception=True)
+        # self.perform_create(serializer)
+        # headers = self.get_success_headers(serializer.data)
+        # return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
     def get_queryset(self):
         return Assignment.objects.all() #filter pagal teacher
         # assignment_id = self.kwargs.get('pk')
@@ -151,6 +182,8 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
     permission_classes = [IsAuthenticated, IsTeacher]
     serializer_class = HomeworkSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
 
     def get_queryset(self):
         queryset = Homework.objects.filter(teacher=self.request.user) #\
@@ -175,7 +208,74 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
         serialized_data['edit'] = edit
 
         return Response(serialized_data)    
- 
+
+    def create_question_answer_pairs(self, request, homework):
+        data = []
+        num_pairs = sum('question' in key for key in request.POST.keys())
+        qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
+
+        for i in range(num_pairs):
+            qtype = request.POST.get(f'pairs[{i}][qtype]')
+            qtype = qtype_mapping.get(qtype, None)
+            question = request.POST.get(f'pairs[{i}][question]')
+            answer = request.POST.get(f'pairs[{i}][answer]')
+            points = request.POST.get(f'pairs[{i}][points]')
+
+            qapair_serializer = QuestionAnswerPairSerializer(data={'homework': homework.id, 'qtype': qtype, 'question': question, 'answer' : answer, 'points': points}, context={'request': request})
+            if qapair_serializer.is_valid():
+                qapair = qapair_serializer.save()
+                data.append(qapair_serializer.data)
+
+                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
+
+                options = []
+                for option_i in range(num_options):
+                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
+                    option_serializer = OptionSerializer(data={'text': option_text, 'question': qapair.id}, context={'request': request})
+                    if option_serializer.is_valid():
+                        option = option_serializer.save()
+                        options.append(option)
+
+                        if qtype == 3:  # multiple select question      
+                            num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())                                                      
+                            for y in range(num_mult):                                
+                                correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
+                                if correct==option_i:
+                                    create_correct_option(qapair, option)   
+
+                    else:
+                        print("option : " + str(option_serializer.errors))
+                        return {'success': False, 'error': option_serializer.errors}, status.HTTP_400_BAD_REQUEST   
+
+                if qtype == 1:                      
+                            correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
+                            if 0 <= correct_option_index < len(options):
+                                create_correct_option(qapair, options[correct_option_index])     
+
+            else:
+                print("qapair: " + str(qapair_serializer.errors))
+                return {'success': False, 'error': option_serializer.errors}, status.HTTP_400_BAD_REQUEST                          
+
+        return data, status.HTTP_201_CREATED
+
+    def create(self, request):
+        print("crating homework start")
+        mutable_data = request.data.copy()
+        mutable_data['teacher'] = request.user.id
+        mutable_data['date'] = datetime.now().date()
+
+        serializer = self.serializer_class(data=mutable_data)
+        # serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            homework = serializer.save() #teacher=request.user, date = datetime.now().date()
+            print("success1")
+            data = self.create_question_answer_pairs(request, homework)
+            return Response(data, status=status.HTTP_201_CREATED)
+        else:
+            print(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+
 
 class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsStudent]
@@ -186,6 +286,122 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         homework = Assignment.objects.get(pk=assignment_id).homework
         questions = QuestionAnswerPair.objects.filter(homework=homework)
         return questions
+
+    def post_answers(self, request, *args, **kwargs): 
+
+        assignment_id = self.kwargs.get('assignment_id')
+        elapsed = float(request.POST.get('time'))/1000
+        print(elapsed)
+      
+        date = datetime.now()
+        assignment = Assignment.objects.get(pk=assignment_id)
+        homework=assignment.homework
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+
+        total_points = 0
+       
+        for i, questionOG in enumerate(questions):
+            print(i)
+            qid = request.POST.get(f'pairs[{i}][questionId]')
+            answer = request.POST.get(f'pairs[{i}][answer]')   
+            print("answer: " + str(answer)) 
+            question = questions.get(pk=qid)
+            qtype=question.qtype
+            points = question.points
+            get_points = 0
+            answerOG = ''
+            answersUser = []
+            new = False
+            try:
+                answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=request.user)
+                answered_before.delete()
+                selected = QuestionSelectedOption.objects.filter(assignment=assignment, student=request.user, question=question)
+                selected.delete()
+            except ObjectDoesNotExist:
+                new = True
+                
+            if qtype == 1: #select
+                answerOG = QuestionCorrectOption.objects.get(question=question).option.id
+                option = Option.objects.get(pk=answerOG)
+                QuestionSelectedOption.objects.create(option = option, question = questionOG, student = request.user, assignment=assignment) #serializer TODO
+                print("id: " +  str(answerOG))
+            elif qtype == 2: #write
+                answerOG = question.answer
+
+
+            elif qtype ==3:
+                answer=''
+                options = Option.objects.filter(question=question)
+                options =list(options)
+                correctOptions = QuestionCorrectOption.objects.filter(question=question)
+                correctOptions=list(correctOptions)
+
+                originIndexes = []
+
+                for  j, option in enumerate(options):
+                    for y, correctOp in enumerate(correctOptions):
+                        if option==correctOp.option:
+                            originIndexes.append(j)
+
+                points /= len(originIndexes) if originIndexes else 1   
+                print("points: " + str(points))  
+                num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
+                for y in range(num_mult):
+                    optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
+                    answersUser.append(optionIndex)
+                    print(options)
+                    print(str(len(options)))
+                    print(str(optionIndex))
+
+                    option = Option.objects.get(pk=optionIndex) #options[optionIndex]
+                    
+                    saveSelected = QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=option)   
+                print(answersUser)
+                print(originIndexes)
+                for optionIndex in answersUser:
+                    if optionIndex in originIndexes:
+                        print(optionIndex)
+                        get_points+=points
+                        print("getpoints: " + str(get_points))
+
+                #jei per daug pasirenka
+                if len(answersUser)>len(originIndexes):
+                    wrongC = len(answersUser)-len(originIndexes)
+                    minusPoints = question.points/len(options)
+                    for w in range(wrongC):
+                        get_points-=minusPoints 
+
+                #arba jei nei vieno teisingo nepasirinko: 0 automatiskai               
+
+                total_points+=get_points   
+                
+
+            if qtype==2 or qtype == 1:
+                print("og: " + str(answerOG))
+                print("ans: " + str(answer))
+                if str(answerOG) == str(answer):
+                    print("ifif points: " + str(points))
+                    get_points=points
+
+            total_points+=get_points  
+
+            print("total points: " + str(total_points)) 
+
+
+            QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=request.user, answer=answer, points=get_points)
+            get_points=0
+        elapsed_timedelta = timedelta(seconds=elapsed)
+
+        # Extract hours, minutes, and seconds from the timedelta
+        hours, remainder = divmod(elapsed_timedelta.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+
+        # Create a string representation of the elapsed time
+        formatted_time = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
+
+        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=request.user, date=date, points=total_points, time=formatted_time)
+        return Response(status=201)
+
 
 @api_view(['POST'])
 @require_POST
@@ -250,21 +466,91 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
         assignment_id = self.kwargs.get('pk')
         assignment = Assignment.objects.get(pk=assignment_id)
 
-        queryset = AssignmentResult.objects.filter(assignment=assignment)
-        serializer = self.get_serializer(queryset, many=True)
+        # queryset = AssignmentResult.objects.filter(assignment=assignment)
+        # serializer = self.get_serializer(queryset, many=True)
 
+        # students_data = serializer.data
+       
+        # sorted_students = sorted(students_data, key=sort_students)
+
+        class_students = StudentClass.objects.filter(classs=assignment.classs).values_list('student', flat=True)
+        
+        # Get students who haven't submitted their assignment results yet
+        submitted_students = AssignmentResult.objects.filter(assignment=assignment).values_list('student', flat=True)
+        print(submitted_students)
+        remaining_students = class_students.exclude(id__in=submitted_students)
+        
+
+        serializer = StatisticUserSerializer(instance=remaining_students, many=True)
         students_data = serializer.data
-        sorted_students = sorted(students_data, key=sort_students)
+        
+        # Get assignment results
+        assignment_results = AssignmentResult.objects.filter(assignment=assignment)
+        assignment_serializer = self.get_serializer(assignment_results, many=True)
+        assignment_data = assignment_serializer.data
+        
+        print(students_data)
+        # Combine assignment results and remaining students
+        #TODO - NESORTINA PAGAL SITA, NERANDA NAMES
+        sorted_students_data = sorted(students_data, key=lambda x: (x['first_name'], x['last_name']))
+
+        # Sort assignment_data using sort_students function
+        sorted_assignment_data = sorted(assignment_data, key=sort_students)
+
+        combined_data = sorted_assignment_data + sorted_students_data
+        
+        # Sort the combined data
+        #sorted_data = sorted(combined_data, key=sort_students) 
 
         response_data = {
             'assignment': {
                 'title': assignment.homework.title,
                 'class_title': assignment.classs.title
             },
-            'assignment_results': sorted_students
+            'assignment_results': combined_data
         }
 
         return Response(response_data)
+    # def retrieve(self, request, *args, **kwargs):
+    #     assignment_id = self.kwargs.get('pk')
+    #     assignment = Assignment.objects.get(pk=assignment_id)
+
+    #     # Get all students from the class
+    #     student_class_relations = StudentClass.objects.filter(classs=assignment.classs)
+
+    #     # Extract the students from the relations
+    #     students_in_class = [relation.student for relation in student_class_relations]
+
+
+    #     # Get assignment results for the assignment
+    #     assignment_results = AssignmentResult.objects.filter(assignment=assignment)
+
+    #     # Create a dictionary to hold the results for each student
+    #     student_results = {student.id: None for student in students_in_class}
+    #     print(student_results)
+
+    #     # Update the dictionary with assignment results
+    #     for result in assignment_results:
+    #         student_results[result.student.id] = result
+    #         print(result.student.id)
+    #         print(result)
+
+    #     # Serialize the data
+    #     serializer = self.get_serializer(student_results.values(), many=True)
+    #     students_data = serializer.data
+    #     sorted_students = sorted(students_data, key=sort_students)
+    #     print(sorted_students)
+
+    #     response_data = {
+    #         'assignment': {
+    #             'title': assignment.homework.title,
+    #             'class_title': assignment.classs.title
+    #         },
+    #         'assignment_results': sorted_students
+    #     }
+
+    #     return Response(response_data)
+
 
 class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
@@ -299,109 +585,6 @@ class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
         }
 
         return Response(response_data)
-
-
-@csrf_exempt
-# @ensure_csrf_cookie
-def handle_homework(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-
-    if request.method == 'POST':
-     
-        homework_name = request.POST.get('homeworkName')
-        date = datetime.now().date()
-
-        # Create a new homework object
-        homework = Homework.objects.create(title=homework_name, date=date, teacher=teacher)
-
-
-        num_pairs = sum('question' in key for key in request.POST.keys())
-        print(num_pairs)
-       
-        for i in range(num_pairs):
-            qtype = request.POST.get(f'pairs[{i}][qtype]')
-            print(qtype)
-            question = request.POST.get(f'pairs[{i}][question]')
-            image = request.FILES.get(f'pairs[{i}][image]')
-            points = request.POST.get(f'pairs[{i}][points]')
-
-            if qtype == 'select':
-                qtype=1
-            elif qtype == 'write':
-                qtype=2   
-            elif qtype == 'multiple':
-                qtype=3  
-            #multipleOptionIndex vieno klausimo
-            num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())
-            print(str(i) + " num mult: " + str(num_mult))
-            # Create a question-answer pair object and associate it with the homework
-            qapair = QuestionAnswerPair.objects.create(
-                homework=homework,
-                qtype=qtype,
-                question=question,
-                image=image,
-                points=points
-            )
-       
-            if qtype == 1:  # Select question
-
-                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
-                print(num_options)
-                options = []
-                for option_i in range(num_options):
-                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
-                    option = Option.objects.create(text=option_text, question=qapair)
-                    options.append(option)
-
-                correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
-                try:
-                    if 0 <= correct_option_index < len(options):
-                        qapair.correct = options[correct_option_index]
-                        qapair.save()
-                except ObjectDoesNotExist:
-                    return JsonResponse({'success': False, 'error': 'Correct option not found'}, status=400)
-
-            elif qtype == 2:
-                qapair.answer = request.POST.get(f'pairs[{i}][answer]')
-                qapair.save()     
-
-            elif qtype == 3:  # multiple select question
-
-                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
-                print("multiple : " + str(num_options))
-                options = []
-                for option_i in range(num_options):
-                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
-                    option = Option.objects.create(text=option_text, question=qapair)
-                    options.append(option)
-                    #tikrint for multipleindexes ar nera i question option ir tada tikrint ar ia ta pati kuria rado 
-                    #ir jei ta pati, tai sukurt optioncorrect objekta
-                    for y in range(num_mult):
-                        
-                        correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
-                        print("correct: " + str(correct))
-                        print("optioni: " + str(option_i))
-                        if correct==option_i:
-                           QuestionCorrectOption.objects.create(question=qapair, option = option)
-                            
-
-        return JsonResponse({'success': True, 'message': 'Operation successful!'})
-    else:
-        return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
 
 #TODO:
@@ -506,207 +689,7 @@ def handle_homework_id(request, pk):
         return JsonResponse({'success': True, 'message': 'Operacija atlikta sėkmingai!'})
 
 
-def get_homework_questions(homework):
-        homework_data = []
-        questions = QuestionAnswerPair.objects.filter(homework=homework)
 
-        for question in questions:
-            options=[]
-            correct = ''
-            correctMultiple = []
-            if question.qtype==1 or question.qtype==3:
-                options = Option.objects.filter(question=question).values_list('text', flat=True)
-                options=list(options)
-
-            if question.qtype ==1:    
-                correct = question.correct.text
-            elif question.qtype == 3:
-                #surast visus teisingu indeksus ir sudet i array
-                correctOptions = QuestionCorrectOption.objects.filter(question=question).values_list('option__text', flat=True).distinct() #.values_list('option__id', flat=True)
-    
-                indexes = [(index) for index, obj in enumerate(options) if obj in correctOptions]
-                
-                correctMultiple = indexes
-                print("correctmultiplle: " + ', '.join(map(str, correctMultiple)))
-
-
-            question_info = {
-                'qid' : question.pk,
-                'question': question.question,
-                'type': question.qtype,
-                'options': options,
-                'answer' : question.answer,
-                'correct' : correct,
-                'correctMultiple' : correctMultiple,
-                'points' : question.points
-            }
-            homework_data.append(question_info)
-
-   
-        questions_data = {
-                'title': homework.title,
-                'pairs': list(homework_data)
-            }
-        print(questions_data)
-        return questions_data
-
-@csrf_exempt
-def handle_assignment_id(request,id):
-    token = request.headers.get('Authorization') 
-    if not token:
-        userId=0
-    else:    
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-        email=payload.get('email')
-        userId = CustomUser.objects.get(email=email).pk
-    if request.method == 'GET':
-        homework = Assignment.objects.get(pk=id).homework
-     
-        questions_data = get_homework_questions(homework)
-        return JsonResponse({'questions': questions_data, 'uid' : userId, 'success' : True}) 
-
-
-@csrf_exempt
-def handle_test_answers(request):
-    if request.method == 'POST':
-        aid = request.POST.get('assignmentId')
-        elapsed = float(request.POST.get('time'))/1000
-        print(elapsed)
-        token = request.headers.get('Authorization')   
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-        email = payload.get('email')
-        student = CustomUser.objects.get(email=email)
-        print(aid)
-        date = datetime.now()
-        assignment = Assignment.objects.get(pk=aid)
-        homework=assignment.homework
-        questions = QuestionAnswerPair.objects.filter(homework=homework)
-
-        total_points = 0
-       
-        for i, questionOG in enumerate(questions):
-            qid = request.POST.get(f'pairs[{i}][questionId]')
-            answer = request.POST.get(f'pairs[{i}][answer]')    
-            question = questions.get(pk=qid)
-            qtype=question.qtype
-            points = question.points
-            get_points = 0
-            answerOG = ''
-            answersUser = []
-            new = False
-            try:
-                answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=student)
-                answered_before.delete()
-                selected = QuestionSelectedOption.objects.filter(assignment=assignment, student=student, question=question)
-                selected.delete()
-            except ObjectDoesNotExist:
-                new = True
-                
-            if qtype == 1: #select
-                answerOG = question.correct.text
-            elif qtype == 2: #write
-                answerOG = question.answer
-
-
-            elif qtype ==3:
-                answer=''
-                options = Option.objects.filter(question=question)
-                options =list(options)
-                correctOptions = QuestionCorrectOption.objects.filter(question=question)
-                correctOptions=list(correctOptions)
-
-                originIndexes = []
-
-                for  j, option in enumerate(options):
-                    for y, correctOp in enumerate(correctOptions):
-                        if option==correctOp.option:
-                            originIndexes.append(j)
-
-                points /= len(originIndexes) if originIndexes else 1   
-                print("points: " + str(points))  
-                num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
-                for y in range(num_mult):
-                    optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
-                    answersUser.append(optionIndex)
-                    option = options[optionIndex]
-                    
-                    saveSelected = QuestionSelectedOption.objects.create(assignment=assignment, student=student, question=question, option=option)   
-                print(answersUser)
-                print(originIndexes)
-                for optionIndex in answersUser:
-                    if optionIndex in originIndexes:
-                        print(optionIndex)
-                        get_points+=points
-                        print("getpoints: " + str(get_points))
-
-                #jei per daug pasirenka
-                if len(answersUser)>len(originIndexes):
-                    wrongC = len(answersUser)-len(originIndexes)
-                    minusPoints = question.points/len(options)
-                    for w in range(wrongC):
-                        get_points-=minusPoints 
-
-                #arba jei nei vieno teisingo nepasirinko: 0 automatiskai               
-
-                total_points+=get_points    
-
-            if qtype==1 or qtype==2:
-                if answerOG == answer:
-                    get_points=points
-
-                total_points+=get_points  
-
-
-            QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=answer, points=get_points)
-            get_points=0
-        elapsed_timedelta = timedelta(seconds=elapsed)
-
-        # Extract hours, minutes, and seconds from the timedelta
-        hours, remainder = divmod(elapsed_timedelta.seconds, 3600)
-        minutes, seconds = divmod(remainder, 60)
-
-        # Create a string representation of the elapsed time
-        formatted_time = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
-
-        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=formatted_time)
-
-    return JsonResponse({'success': True, 'id': assignmentResult.pk})
-
-
-
-@csrf_exempt
-def get_classes_by_school(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    school=teacher.school
-    if request.method == 'GET':
-        try:
-            classes = Class.objects.filter(school=school)
-            data = [
-            {
-                'title': classs.title,
-                'id': classs.pk
-            }
-            for classs in classes
-        ]
-            return JsonResponse(data, safe=False, status=200)
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-    else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
 
 #ADMIN TODO??
@@ -854,41 +837,32 @@ def handle_students_class(request,sid,cid):
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
 
-@csrf_exempt
-def get_user_id(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        user_email = data['user_email']
-        user_id = CustomUser.objects.get(email=user_email).pk
-        return JsonResponse({'user_id': user_id})
 
+# @csrf_exempt
+# def handle_students_assignment_results(request,aid):
+#     if request.method == 'GET':
+#         assignment = Assignment.objects.get(pk=aid)
+#         assignmentResults = AssignmentResult.objects.filter(assignment=assignment)
 
-
-@csrf_exempt
-def handle_students_assignment_results(request,aid):
-    if request.method == 'GET':
-        assignment = Assignment.objects.get(pk=aid)
-        assignmentResults = AssignmentResult.objects.filter(assignment=assignment)
-
-        students_data = [
-            {'id' : result.pk, 'name': result.student.first_name, 'surname': result.student.last_name, 'date' : result.date, 'time': result.time, 'points':result.points}
-            for result in assignmentResults
-        ]
+#         students_data = [
+#             {'id' : result.pk, 'name': result.student.first_name, 'surname': result.student.last_name, 'date' : result.date, 'time': result.time, 'points':result.points}
+#             for result in assignmentResults
+#         ]
       
-        return JsonResponse({'success': True, 'results': students_data}) 
-    #TODO: IS ZAIDIMO KREIPIASI I SITA PASIBAIGUS UZDUOTIM
-    elif request.method == 'POST':
-        assignment = Assignment.objects.get(pk=aid)
-        data = json.loads(request.body)
-        student_id = data['student_id']
-        student = CustomUser.objects.get(pk=student_id)
-        date = data['date']
-        time = data['time']
-        points = data['points']
+#         return JsonResponse({'success': True, 'results': students_data}) 
+#     #TODO: IS ZAIDIMO KREIPIASI I SITA PASIBAIGUS UZDUOTIM
+#     elif request.method == 'POST':
+#         assignment = Assignment.objects.get(pk=aid)
+#         data = json.loads(request.body)
+#         student_id = data['student_id']
+#         student = CustomUser.objects.get(pk=student_id)
+#         date = data['date']
+#         time = data['time']
+#         points = data['points']
 
-        result = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, time=time, points=points)
+#         result = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, time=time, points=points)
       
-        return JsonResponse({'success': True, 'result': result})       
+#         return JsonResponse({'success': True, 'result': result})       
 
 
 
@@ -904,7 +878,7 @@ class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
         queryset = QuestionAnswerPairResult.objects.filter(
             assignment__id=assignment_id,
             student__id=student_id
-        ).select_related('question__homework', 'question__correct').prefetch_related('question__option', 'question__questionoselect')
+        ).select_related('question__homework').prefetch_related('question__option', 'question__questionoselect')
 
         return queryset
 
@@ -917,7 +891,7 @@ class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
         assignment_points = calculate_assignment_points(assignment)
         grade = calculate_grade(score, assignment)
 
-        data = self.serializer_class(queryset, many=True).data
+        data = self.serializer_class(queryset, many=True, context = {'request': self.request}).data
         response_data = {
             'results': data,
             'points' : assignment_points,

@@ -3,6 +3,11 @@ from .models import *
 from rest_framework.permissions import BasePermission
 from django.db.models import Q, F, Exists,Subquery,Sum
 from django.core.serializers.json import DjangoJSONEncoder
+from rest_framework import status
+from rest_framework.response import Response
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.datastructures import MultiValueDict
+
 
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
@@ -93,3 +98,17 @@ def get_current_school_year():
         print(start_date)
         print(end_date)
     return start_date, end_date        
+
+
+def create_correct_option(question_answer_pair, option):
+        try:
+            print("Before correct option crete")
+            QuestionCorrectOption.objects.create(question=question_answer_pair, option=option)
+            print("After correct option crete")
+        except ObjectDoesNotExist:
+            return {'success': False, 'error': 'Failed to create correct option'}, status.HTTP_500_INTERNAL_SERVER_ERROR   
+
+
+
+
+     

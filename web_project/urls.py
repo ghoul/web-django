@@ -34,6 +34,7 @@ router.register(r'assignments_student_finished', views.AssignmentListViewStudent
 router.register(r'assignment_statistics', views.AssignmentViewStatistics, basename='assignment_statistics')
 router.register(r'class_statistics', views.ClassViewStatistics, basename='class_statistics')
 router.register(r'homework', views.HomeworkView, basename='homework')
+# router.register(r'homework-create', views.HomeworkCreateView, basename='homework-create')
 # router.register(r'test', views.TestView, basename='test')
 
 
@@ -47,10 +48,10 @@ urlpatterns = [
     path('login/',views.login_user, name='login_user'),
     # path('signup/',views.signup_user, name='signup_user'),
     path('one_student_answers/<int:assignment_id>/<int:student_id>/', views.OneStudentViewStatistics.as_view({'get': 'list'}), name='one_student_answers'),
-    path('test/<int:assignment_id>/', views.TestView.as_view({'get':'list'}), name='test'),
+    path('test/<int:assignment_id>/', views.TestView.as_view({'get':'list', 'post':'post_answers'}), name='test'),
 
 
-    path('handle_homework/', views.handle_homework, name='handle_homework'),
+    # path('handle_homework/', views.handle_homework, name='handle_homework'),
     path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
 
     # path('handle_classes/', views.handle_classes, name='handle_classes'),
@@ -83,23 +84,23 @@ urlpatterns = [
     # path('handle_assignments_teacher_finished/',views.handle_assignments_teacher_finished, name='handle_assignments_teacher_finished'),
     # path('handle_assignments_student/',views.handle_assignments_student, name='handle_assignments_student'),
     # path('handle_assignments_student_finished/',views.handle_assignments_student_finished, name='handle_assignments_student_finished'),
-    path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
+    # path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
     # path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     
     path('start_game/',views.start_game, name='start_game'),
     path('post_answer/',views.post_answer, name='post_answer'),
     path('post_summary/',views.post_summary, name='post_summary'), 
-    path('check_summary/<int:aid>/<int:sid>/',views.check_summary, name='check_summary'),
-    path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
+    # path('check_summary/<int:aid>/<int:sid>/',views.check_summary, name='check_summary'),
+    # path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
     # path('user_data/',views.user_data, name='user_data'),
     path('change_password/',views.change_password, name='change_password'),
-    path('get_user_id/',views.get_user_id, name='get_user_id'),
+    # path('get_user_id/',views.get_user_id, name='get_user_id'),
 
-    path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
+    # path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
 
     # path('handle_assignment_update/<int:aid>/', views.handle_assignment_update, name='handle_assignment_update'),
-    path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
+    # path('handle_test_answers/', views.handle_test_answers, name='handle_test_answers'),
     # path('get_class_statistics/', views.get_class_statistics, name='get_class_statistics'),
 
 

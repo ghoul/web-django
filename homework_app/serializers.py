@@ -40,6 +40,8 @@ class AssignmentSerializer(serializers.ModelSerializer):
     teacher_last_name = serializers.SerializerMethodField()
     classs_title = serializers.SerializerMethodField()
 
+    
+
     class Meta:
         model = Assignment
         fields = '__all__'
@@ -71,43 +73,58 @@ class AssignmentSerializer(serializers.ModelSerializer):
     def get_status(self, obj):
         return get_assignment_status(obj)
 
+
     def update(self, instance, validated_data):
-        # # class_data = validated_data.get('classs')
-        # # class_title = class_data.get('title')
-        # # school = class_data.get('school')
-        # # class_instance, created = Class.objects.get_or_create(title=class_title, school=school)
 
-        # # # Update the instance with the new Class object
-        # # instance.classs = class_instance
+        # Handle updating 'classs' field
+        # instance.classs = validated_data.pop('classs', None)
 
-        # instance.classs = Class.objects.get(pk=1)#validated_data.get('classs', instance.classs)
-        # instance.homework = Homework.objects.get(pk=61)#validated_data.get('homework', instance.homework)
-        # return super().update(instance, validated_data)    
-           # Extract and update nested fields
+        # Update other fields
+        instance.from_date = validated_data.get('from_date', instance.from_date)
+        instance.to_date = validated_data.get('to_date', instance.to_date)
+        # Update other fields as needed...
 
-        homework_data = validated_data.pop('homework', None)
-        class_data = validated_data.pop('classs', None)
-
-        # Update instance fields
-        # instance.from_date = validated_data.get('from_date', instance.from_date)
-        # instance.to_date = validated_data.get('to_date', instance.to_date)
-
-        # Handle nested fields
-        if homework_data:
-            homework_instance = instance.homework
-            homework_serializer = self.fields['homework']
-            updated_homework = homework_serializer.update(homework_instance, homework_data)
-            instance.homework = updated_homework
-
-        if class_data:
-            class_instance = instance.classs
-            class_serializer = self.fields['classs']
-            updated_class = class_serializer.update(class_instance, class_data)
-            instance.classs = updated_class
-
-        # Save and return the updated instance
+        # Save the instance
         instance.save()
-        return super().update(instance, validated_data)    # instance
+        return instance
+
+    # def update(self, instance, validated_data):
+    #     # # class_data = validated_data.get('classs')
+    #     # # class_title = class_data.get('title')
+    #     # # school = class_data.get('school')
+    #     # # class_instance, created = Class.objects.get_or_create(title=class_title, school=school)
+
+    #     # # # Update the instance with the new Class object
+    #     # # instance.classs = class_instance
+
+    #     # instance.classs = Class.objects.get(pk=1)#validated_data.get('classs', instance.classs)
+    #     # instance.homework = Homework.objects.get(pk=61)#validated_data.get('homework', instance.homework)
+    #     # return super().update(instance, validated_data)    
+    #        # Extract and update nested fields
+
+    #     homework_data = validated_data.pop('homework', None)
+    #     class_data = validated_data.pop('classs', None)
+
+    #     # Update instance fields
+    #     # instance.from_date = validated_data.get('from_date', instance.from_date)
+    #     # instance.to_date = validated_data.get('to_date', instance.to_date)
+
+    #     # Handle nested fields
+    #     if homework_data:
+    #         homework_instance = instance.homework
+    #         homework_serializer = self.fields['homework']
+    #         updated_homework = homework_serializer.update(homework_instance, homework_data)
+    #         instance.homework = updated_homework
+
+    #     if class_data:
+    #         class_instance = instance.classs
+    #         class_serializer = self.fields['classs']
+    #         updated_class = class_serializer.update(class_instance, class_data)
+    #         instance.classs = updated_class
+
+    #     # Save and return the updated instance
+    #     instance.save()
+    #     return super().update(instance, validated_data)    # instance
 
 
 class AssignmentResultSerializer(serializers.ModelSerializer):

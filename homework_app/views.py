@@ -138,9 +138,16 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
         return response
 
     # def update(self, request, *args, **kwargs):
-    #     response = super().update(request, *args, **kwargs)
-    #     response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
+    #     # response = super().update(request, *args, **kwargs)
+    #     # response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
     #     return response
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()  # Retrieve the instance to update
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         # # Check if assignment with provided ID exists
@@ -219,6 +226,9 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
             qtype = qtype_mapping.get(qtype, None)
             question = request.POST.get(f'pairs[{i}][question]')
             answer = request.POST.get(f'pairs[{i}][answer]')
+            #TODO
+            if len(answer) == 0:
+                answer = "none"
             points = request.POST.get(f'pairs[{i}][points]')
 
             qapair_serializer = QuestionAnswerPairSerializer(data={'homework': homework.id, 'qtype': qtype, 'question': question, 'answer' : answer, 'points': points}, context={'request': request})
@@ -274,6 +284,104 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
         else:
             print(serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+    def update(self, request,*args, **kwargs):
+        try:
+            homework = self.get_object()
+        except Homework.DoesNotExist:
+            return JsonResponse({'message': 'Homework not found'}, status=404)
+
+        # data = json.loads(request.body)
+        print(request.data)
+        homework_name = request.data.get('title')
+        correct = request.data.get('correct') #local indxes each question answer option
+        multiple = request.data.get('multiple') #local ids qid ir oid each question
+
+        if not homework_name:
+            return JsonResponse({'message': 'Homework name is required'}, status=400)
+
+        homework.title = homework_name
+        homework.save()    
+
+        received_pairs = request.data.get('pairs', [])
+        existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
+        qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
+
+        # Extract IDs from received pairs
+        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
+
+        # Check and delete pairs that are missing from received data
+        for existing_pair in existing_pairs:
+            if existing_pair.id not in received_pair_ids:
+                existing_pair.delete()
+
+        for index, pair in enumerate(received_pairs):
+            question = pair.get('question')
+            answer = pair.get('answer')
+            points = pair.get('points')
+            qtype = pair.get('qtype')
+            qtype = qtype_mapping.get(qtype, None) 
+          
+            pair_obj, created = QuestionAnswerPair.objects.get_or_create(
+                homework=homework,
+                id=pair.get('id'),
+                defaults={
+                    'qtype': qtype,
+                    'question': question,
+                    'points': points,
+                    'answer': answer
+                }
+            )
+
+            if not created:
+                if pair_obj.qtype != qtype:
+                    Option.objects.filter(question=pair_obj).delete()
+                    QuestionCorrectOption.objects.filter(question=pair_obj).delete()
+
+                pair_obj.qtype = qtype                   
+                pair_obj.question = question
+                pair_obj.answer = answer
+                pair_obj.points = points
+                pair_obj.save()
+            
+            if qtype == 1:
+                options = pair.get('options', [])
+                correct_option_index = correct[index]
+
+                try:
+                    options_old = Option.objects.filter(question=pair_obj)
+                    options_old.delete()
+                    correct_old = QuestionCorrectOption.objects.get(question = pair_obj)
+                    correct_old.delete()
+                except:
+                    print("nera")    
+
+                for option_text in options:
+                    option = Option.objects.create(text=option_text, question=pair_obj)
+
+                if 0 <= correct_option_index < len(options):
+                    correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
+                    QuestionCorrectOption.objects.create(option = correct, question = pair_obj)
+
+            elif qtype == 3:
+                options = pair.get('options', [])
+                correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
+
+                try:
+                    options_old = Option.objects.filter(question=pair_obj)
+                    options_old.delete()
+                    correct_options_old = QuestionCorrectOption.objects.filter(question=pair_obj)
+                    correct_options_old.delete()
+                except:
+                    print("nera mult")    
+
+                for option_text in options:
+                    option = Option.objects.create(text=option_text, question=pair_obj)
+
+                for correct_option_index in correct_option_indexes:
+                    QuestionCorrectOption.objects.create(question=pair_obj, option=Option.objects.get(text=options[correct_option_index], question=pair_obj))      
+
+        return Response(status=status.HTTP_201_CREATED)            
 
 
 
@@ -466,48 +574,48 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
         assignment_id = self.kwargs.get('pk')
         assignment = Assignment.objects.get(pk=assignment_id)
 
-        # queryset = AssignmentResult.objects.filter(assignment=assignment)
-        # serializer = self.get_serializer(queryset, many=True)
+        queryset = AssignmentResult.objects.filter(assignment=assignment)
+        serializer = self.get_serializer(queryset, many=True)
 
-        # students_data = serializer.data
-       
-        # sorted_students = sorted(students_data, key=sort_students)
-
-        class_students = StudentClass.objects.filter(classs=assignment.classs).values_list('student', flat=True)
-        
-        # Get students who haven't submitted their assignment results yet
-        submitted_students = AssignmentResult.objects.filter(assignment=assignment).values_list('student', flat=True)
-        print(submitted_students)
-        remaining_students = class_students.exclude(id__in=submitted_students)
-        
-
-        serializer = StatisticUserSerializer(instance=remaining_students, many=True)
         students_data = serializer.data
-        
-        # Get assignment results
-        assignment_results = AssignmentResult.objects.filter(assignment=assignment)
-        assignment_serializer = self.get_serializer(assignment_results, many=True)
-        assignment_data = assignment_serializer.data
-        
-        print(students_data)
-        # Combine assignment results and remaining students
-        #TODO - NESORTINA PAGAL SITA, NERANDA NAMES
-        sorted_students_data = sorted(students_data, key=lambda x: (x['first_name'], x['last_name']))
+       
+        sorted_students = sorted(students_data, key=sort_students)
 
-        # Sort assignment_data using sort_students function
-        sorted_assignment_data = sorted(assignment_data, key=sort_students)
+        # class_students = StudentClass.objects.filter(classs=assignment.classs).values_list('student', flat=True)
+        
+        # # Get students who haven't submitted their assignment results yet
+        # submitted_students = AssignmentResult.objects.filter(assignment=assignment).values_list('student', flat=True)
+        # print(submitted_students)
+        # remaining_students = class_students.exclude(id__in=submitted_students)
+        
 
-        combined_data = sorted_assignment_data + sorted_students_data
+        # serializer = StatisticUserSerializer(instance=remaining_students, many=True)
+        # students_data = serializer.data
+        
+        # # Get assignment results
+        # assignment_results = AssignmentResult.objects.filter(assignment=assignment)
+        # assignment_serializer = self.get_serializer(assignment_results, many=True)
+        # assignment_data = assignment_serializer.data
+        
+        # print(students_data)
+        # # Combine assignment results and remaining students
+        # #TODO - NESORTINA PAGAL SITA, NERANDA NAMES
+        # sorted_students_data = sorted(students_data, key=lambda x: (x['first_name'], x['last_name']))
+
+        # # Sort assignment_data using sort_students function
+        # sorted_assignment_data = sorted(assignment_data, key=sort_students)
+
+        # sorted_data = sorted_assignment_data + sorted_students_data
         
         # Sort the combined data
-        #sorted_data = sorted(combined_data, key=sort_students) 
+        #sorted_students = sorted(combined_data, key=sort_students) 
 
         response_data = {
             'assignment': {
                 'title': assignment.homework.title,
                 'class_title': assignment.classs.title
             },
-            'assignment_results': combined_data
+            'assignment_results': sorted_students
         }
 
         return Response(response_data)

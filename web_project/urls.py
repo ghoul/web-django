@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 # from .admin import admin_site
 router = DefaultRouter()
+router.register(r'login', views.LoginViewUser, basename='login')
+router.register(r'password', views.PasswordView, basename='password')
 router.register(r'user_profile', views.ProfileViewUser, basename='user_profile')
 router.register(r'assignments', views.AssignmentView, basename='assignments') #get update create one
 router.register(r'classes', views.ClassesListView, basename='classes') #get by school
@@ -34,6 +36,7 @@ router.register(r'assignments_student_finished', views.AssignmentListViewStudent
 router.register(r'assignment_statistics', views.AssignmentViewStatistics, basename='assignment_statistics')
 router.register(r'class_statistics', views.ClassViewStatistics, basename='class_statistics')
 router.register(r'homework', views.HomeworkView, basename='homework')
+router.register(r'school', views.SchoolViewAdmin, basename='school')
 # router.register(r'homework-create', views.HomeworkCreateView, basename='homework-create')
 # router.register(r'test', views.TestView, basename='test')
 
@@ -42,17 +45,21 @@ urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     # path("", views.home, name="home"),
+    path('login/', views.LoginViewUser.as_view({'post': 'post'}), name='login'),
 
     # path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('members/', include('django.contrib.auth.urls')), #yoyoapp??
-    path('login/',views.login_user, name='login_user'),
+    # path('login/',views.login_user, name='login_user'),
+    
     # path('signup/',views.signup_user, name='signup_user'),
     path('one_student_answers/<int:assignment_id>/<int:student_id>/', views.OneStudentViewStatistics.as_view({'get': 'list'}), name='one_student_answers'),
     path('test/<int:assignment_id>/', views.TestView.as_view({'get':'list', 'post':'post_answers'}), name='test'),
+    # path('school/update/<int:pk>/', views.SchoolViewAdmin.update_school, name='school-update'),
+    path('school/update/<int:school_id>/', views.UpdateViewSchool.as_view(), name='school-update'), #{'post': 'post'}
 
 
     # path('handle_homework/', views.handle_homework, name='handle_homework'),
-    path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
+    # path('handle_homework_id/<int:pk>/', views.handle_homework_id, name='handle_homework_id'),
 
     # path('handle_classes/', views.handle_classes, name='handle_classes'),
     # path('handle_classes/<int:pk>/', views.handle_classes_id, name='handle_classes_id'),
@@ -94,7 +101,7 @@ urlpatterns = [
     # path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 
     # path('user_data/',views.user_data, name='user_data'),
-    path('change_password/',views.change_password, name='change_password'),
+    # path('change_password/',views.change_password, name='change_password'),
     # path('get_user_id/',views.get_user_id, name='get_user_id'),
 
     # path('handle_assignment_id/<int:id>/', views.handle_assignment_id, name='handle_assignment_id'),
@@ -106,8 +113,9 @@ urlpatterns = [
 
     # path('admin/add_school/', views.AddSchoolView.as_view(), name='add_school'),
     # path('admin/', admin_site.urls),
-    path('handle_school/', views.handle_school, name='handle_school'),
-    path('handle_school_id/<int:sid>/', views.handle_school_id, name='handle_school_id'),
+    # path('handle_school/', views.handle_school, name='handle_school'),
+
+    # path('handle_school_id/<int:sid>/', views.handle_school_id, name='handle_school_id'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

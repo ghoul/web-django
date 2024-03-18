@@ -1,7 +1,7 @@
 from datetime import timezone
 import math
 from rest_framework import serializers
-
+from django.contrib.auth.hashers import make_password
 from .utils import *
 from .models import *
 
@@ -16,10 +16,26 @@ class LoginUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id', 'email', 'first_name', 'last_name', 'role', 'gender']        
 
+class PasswordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['password']
+
+    def update(self, instance, validated_data):
+        print("passss")
+        print("passs: " + validated_data['password'])
+        instance.password = make_password(validated_data['password'])
+        instance.save()
+        return instance
 
 class ClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = Class
+        fields = '__all__'
+
+class SchoolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = School
         fields = '__all__'
 
 class AssignmentSerializer(serializers.ModelSerializer):

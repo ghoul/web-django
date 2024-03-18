@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import email
 import json
 from turtle import st
-from urllib import response
+from urllib import request, response
 from urllib.parse import ParseResultBytes
 from xml.etree.ElementTree import Comment
 from django.http import HttpResponse,Http404
@@ -39,7 +39,6 @@ from io import TextIOWrapper,StringIO,BytesIO
 from django.http import FileResponse
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import permission_required
-from django.middleware.csrf import get_token
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -49,33 +48,54 @@ from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import  SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view,authentication_classes,permission_classes,action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from rest_framework import mixins
 from rest_framework import viewsets
 from .utils import *
 from django.db.models import Subquery, OuterRef,Count
-
-
-def generate_csrf_token(request):
-    csrf_token = get_token(request)
-    return csrf_token
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import Group
 
 logger = logging.getLogger(__name__)
 
 
-def generate_email_password(first_name, last_name):
-    email_base = first_name.lower() + "." + last_name.lower()
-    email = email_base + "@goose.lt"
+class LoginViewUser(viewsets.GenericViewSet):
+    serializer_class = LoginUserSerializer
 
-    counter = 1
-    while CustomUser.objects.filter(email=email).exists():
-        email = email_base + f"{counter}@goose.lt"
-        counter += 1
+    def post(self, request):
+        user = CustomUser.objects.get(email=request.data.get('email'))
+        if user.check_password(request.data.get('password')):
+            license_end = user.school.license_end
+            if license_end and license_end < datetime.today().date():
+                return Response({"error": "Your license has expired. Please contact your administrator."}, status=403)
 
-    password =  CustomUser.objects.make_random_password()
-    return email, password
+            login(request, user)
+            serializer = self.get_serializer(user)
+            token, created = Token.objects.get_or_create(user=user)
+            csrf_token = generate_csrf_token(request)
+
+            return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
+        else:
+            return Response({"error": "Invalid credentials"}, status=400)
+
+
+class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PasswordSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            if str(request.user.id) != kwargs['pk']:
+                return Response({"error": "You can only update your own password."}, status=status.HTTP_403_FORBIDDEN)
+            return super().update(request, *args, **kwargs)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
@@ -100,9 +120,7 @@ class AssignmentListViewStudent(mixins.ListModelMixin, viewsets.GenericViewSet):
             classs__in=student_classes,
             from_date__lte=date.today(), 
             to_date__gte=date.today()  
-        ).exclude(
-            id__in=Subquery(finished_assignments)
-        )
+        ).exclude(id__in=Subquery(finished_assignments))
     
 class AssignmentListViewTeacherFinished(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
@@ -131,31 +149,14 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = AssignmentSerializer
 
-    def options(self, request, *args, **kwargs):
-        print("options inside")
-        response = Response()
-        response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
-        return response
-
-    # def update(self, request, *args, **kwargs):
-    #     # response = super().update(request, *args, **kwargs)
-    #     # response['Access-Control-Allow-Methods'] = 'DELETE, GET, OPTIONS, PATCH, POST, PUT'
-    #     return response
-
     def update(self, request, *args, **kwargs):
-        instance = self.get_object()  # Retrieve the instance to update
+        instance = self.get_object() 
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
-        # # Check if assignment with provided ID exists
-        # assignment_id = request.data.get('id')
-        # if assignment_id and Assignment.objects.filter(id=assignment_id).exists():
-        #     return self.update(request, *args, **kwargs)
-        # else:
-        #     return super().create(request, *args, **kwargs)
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -163,15 +164,9 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
         else:
             print(serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        # serializer.is_valid(raise_exception=True)
-        # self.perform_create(serializer)
-        # headers = self.get_success_headers(serializer.data)
-        # return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def get_queryset(self):
-        return Assignment.objects.all() #filter pagal teacher
-        # assignment_id = self.kwargs.get('pk')
-        # return Assignment.objects.get(id=assignment_id)
+        return Assignment.objects.all()
 
 class ClassesListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
@@ -185,6 +180,101 @@ class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewse
     def get_queryset(self):
         return CustomUser.objects.all() #self.request.user
 
+class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AssignmentResultSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        assignment_id = self.kwargs.get('pk')
+        assignment = Assignment.objects.get(pk=assignment_id)
+        #TODO VISI STUDENTS KLASEJ
+        queryset = AssignmentResult.objects.filter(assignment=assignment)
+        serializer = self.get_serializer(queryset, many=True)
+
+        students_data = serializer.data
+       
+        sorted_students = sorted(students_data, key=sort_students)
+
+        response_data = {
+            'assignment': {
+                'title': assignment.homework.title,
+                'class_title': assignment.classs.title
+            },
+            'assignment_results': sorted_students
+        }
+
+        return Response(response_data)
+
+
+class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request, *args, **kwargs):
+        classs = StudentClass.objects.get(student=request.user).classs
+        class_title = classs.title
+        students = StudentClass.objects.filter(classs=classs)
+        assignments = Assignment.objects.filter(classs=classs)
+
+        start_date, end_date = get_current_school_year()
+        assignment_results = AssignmentResult.objects.filter(
+            student__in=students.values_list('student', flat=True),
+            assignment__in=assignments,
+            date__range=(start_date, end_date)
+        ).values('student__first_name', 'student__last_name', 'student__gender').annotate(
+            total_points=Sum('points')
+        )
+
+        leaderboard_entries = [
+            {
+                'student': f"{result['student__first_name']} {result['student__last_name']}",
+                'gender': result['student__gender'],
+                'points': result['total_points'] or 0
+            }
+            for result in assignment_results
+        ]
+        leaderboard_entries.sort(key=lambda x: x['points'], reverse=True)
+        response_data = {
+            'leaderboard': leaderboard_entries,
+            'class_title': class_title
+        }
+
+        return Response(response_data)
+
+class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuestionAnswerPairResultSerializer
+    lookup_url_kwarg = 'assignment_id'
+
+    def get_queryset(self):
+        assignment_id = self.kwargs.get('assignment_id')
+        student_id = self.kwargs.get('student_id')
+
+        queryset = QuestionAnswerPairResult.objects.filter(
+            assignment__id=assignment_id,
+            student__id=student_id
+        ).select_related('question__homework').prefetch_related('question__option', 'question__questionoselect')
+
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        assignment = queryset.first().assignment
+        student = queryset.first().student
+
+        score = calculate_score(student, assignment)
+        assignment_points = calculate_assignment_points(assignment)
+        grade = calculate_grade(score, assignment)
+
+        data = self.serializer_class(queryset, many=True, context = {'request': self.request}).data
+        response_data = {
+            'results': data,
+            'points' : assignment_points,
+            'score': score,
+            'grade': grade
+        }
+        return Response(response_data)
+
+
 class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,mixins.CreateModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]
     serializer_class = HomeworkSerializer
@@ -193,8 +283,7 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
         return {'request': self.request}
 
     def get_queryset(self):
-        queryset = Homework.objects.filter(teacher=self.request.user) #\
-            # .annotate(num_questions=Count('pairs'))
+        queryset = Homework.objects.filter(teacher=self.request.user)
         return queryset
 
     def get_object(self):
@@ -275,9 +364,8 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
         mutable_data['date'] = datetime.now().date()
 
         serializer = self.serializer_class(data=mutable_data)
-        # serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            homework = serializer.save() #teacher=request.user, date = datetime.now().date()
+            homework = serializer.save() 
             print("success1")
             data = self.create_question_answer_pairs(request, homework)
             return Response(data, status=status.HTTP_201_CREATED)
@@ -384,7 +472,6 @@ class HomeworkView(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.Update
         return Response(status=status.HTTP_201_CREATED)            
 
 
-
 class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsStudent]
     serializer_class = TestSerializer
@@ -396,11 +483,8 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         return questions
 
     def post_answers(self, request, *args, **kwargs): 
-
         assignment_id = self.kwargs.get('assignment_id')
-        elapsed = float(request.POST.get('time'))/1000
-        print(elapsed)
-      
+        elapsed = float(request.POST.get('time'))/1000      
         date = datetime.now()
         assignment = Assignment.objects.get(pk=assignment_id)
         homework=assignment.homework
@@ -409,10 +493,8 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         total_points = 0
        
         for i, questionOG in enumerate(questions):
-            print(i)
             qid = request.POST.get(f'pairs[{i}][questionId]')
             answer = request.POST.get(f'pairs[{i}][answer]')   
-            print("answer: " + str(answer)) 
             question = questions.get(pk=qid)
             qtype=question.qtype
             points = question.points
@@ -432,7 +514,6 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 answerOG = QuestionCorrectOption.objects.get(question=question).option.id
                 option = Option.objects.get(pk=answerOG)
                 QuestionSelectedOption.objects.create(option = option, question = questionOG, student = request.user, assignment=assignment) #serializer TODO
-                print("id: " +  str(answerOG))
             elif qtype == 2: #write
                 answerOG = question.answer
 
@@ -452,25 +533,17 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                             originIndexes.append(j)
 
                 points /= len(originIndexes) if originIndexes else 1   
-                print("points: " + str(points))  
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):
                     optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
                     answersUser.append(optionIndex)
-                    print(options)
-                    print(str(len(options)))
-                    print(str(optionIndex))
 
-                    option = Option.objects.get(pk=optionIndex) #options[optionIndex]
-                    
-                    saveSelected = QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=option)   
-                print(answersUser)
-                print(originIndexes)
+                    option = Option.objects.get(pk=optionIndex) 
+                    QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=option)   
+
                 for optionIndex in answersUser:
                     if optionIndex in originIndexes:
-                        print(optionIndex)
                         get_points+=points
-                        print("getpoints: " + str(get_points))
 
                 #jei per daug pasirenka
                 if len(answersUser)>len(originIndexes):
@@ -485,10 +558,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 
 
             if qtype==2 or qtype == 1:
-                print("og: " + str(answerOG))
-                print("ans: " + str(answer))
                 if str(answerOG) == str(answer):
-                    print("ifif points: " + str(points))
                     get_points=points
 
             total_points+=get_points  
@@ -507,296 +577,8 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         # Create a string representation of the elapsed time
         formatted_time = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
 
-        assignmentResult = AssignmentResult.objects.create(assignment=assignment, student=request.user, date=date, points=total_points, time=formatted_time)
+        AssignmentResult.objects.create(assignment=assignment, student=request.user, date=date, points=total_points, time=formatted_time)
         return Response(status=201)
-
-
-@api_view(['POST'])
-@require_POST
-@csrf_exempt
-def login_user(request):
-    print("loginn")
-    user = CustomUser.objects.get(email=request.data['email'])
-    if not user.check_password(request.data['password']):
-        print("loginn bad")
-        return Response({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)     
-
-    # user = authenticate(request, email=request.data['email'], password=request.data['password'])
-    # if not user:
-    #     print("bad login")
-    #     return Response({'error': 'Neteisingas prisijungimo vardas arba slaptažodis'}, status=401)     
-
-    license_end = user.school.license_end
-    if license_end>datetime.today().date():
-        login(request, user)
-        serializer = LoginUserSerializer(instance=user)    
-        token, created = Token.objects.get_or_create(user=user)
-        csrf_token = generate_csrf_token(request)
-        print(token.key)
-        print("loginn2")
-
-        return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
-    else:
-        return Response({'error': 'Jūsų licenzija nebegalioja'}, status=401)           
-
-
-#PAVYZDYS
-@csrf_exempt
-# @require_PUT
-@api_view(['PUT'])
-@authentication_classes([SessionAuthentication, TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def change_password(request):
-    if request.method == 'PUT':
-        new_password = request.data['password']
-        user = request.user
-
-        if not new_password:
-            return JsonResponse({'success': False, 'error': 'Klaida! Visi laukai privalomi'}, status=400)
-
-        if not user.check_password(new_password):
-            user.set_password(new_password)
-        else:
-            return JsonResponse({'success': False, 'error': "Klaida! Naujas slaptažodis negali būti toks pats kaip senas slaptažodis"})    
-        
-        try:
-            user.save()
-            return JsonResponse({'success': True, "id": user.pk}, status=200)
-        except Exception as e:
-            return JsonResponse({'success': False, 'error': str(e)}, status=500)
-
-
-class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
-    permission_classes = [IsAuthenticated]
-    serializer_class = AssignmentResultSerializer
-
-    def retrieve(self, request, *args, **kwargs):
-        assignment_id = self.kwargs.get('pk')
-        assignment = Assignment.objects.get(pk=assignment_id)
-
-        queryset = AssignmentResult.objects.filter(assignment=assignment)
-        serializer = self.get_serializer(queryset, many=True)
-
-        students_data = serializer.data
-       
-        sorted_students = sorted(students_data, key=sort_students)
-
-        # class_students = StudentClass.objects.filter(classs=assignment.classs).values_list('student', flat=True)
-        
-        # # Get students who haven't submitted their assignment results yet
-        # submitted_students = AssignmentResult.objects.filter(assignment=assignment).values_list('student', flat=True)
-        # print(submitted_students)
-        # remaining_students = class_students.exclude(id__in=submitted_students)
-        
-
-        # serializer = StatisticUserSerializer(instance=remaining_students, many=True)
-        # students_data = serializer.data
-        
-        # # Get assignment results
-        # assignment_results = AssignmentResult.objects.filter(assignment=assignment)
-        # assignment_serializer = self.get_serializer(assignment_results, many=True)
-        # assignment_data = assignment_serializer.data
-        
-        # print(students_data)
-        # # Combine assignment results and remaining students
-        # #TODO - NESORTINA PAGAL SITA, NERANDA NAMES
-        # sorted_students_data = sorted(students_data, key=lambda x: (x['first_name'], x['last_name']))
-
-        # # Sort assignment_data using sort_students function
-        # sorted_assignment_data = sorted(assignment_data, key=sort_students)
-
-        # sorted_data = sorted_assignment_data + sorted_students_data
-        
-        # Sort the combined data
-        #sorted_students = sorted(combined_data, key=sort_students) 
-
-        response_data = {
-            'assignment': {
-                'title': assignment.homework.title,
-                'class_title': assignment.classs.title
-            },
-            'assignment_results': sorted_students
-        }
-
-        return Response(response_data)
-    # def retrieve(self, request, *args, **kwargs):
-    #     assignment_id = self.kwargs.get('pk')
-    #     assignment = Assignment.objects.get(pk=assignment_id)
-
-    #     # Get all students from the class
-    #     student_class_relations = StudentClass.objects.filter(classs=assignment.classs)
-
-    #     # Extract the students from the relations
-    #     students_in_class = [relation.student for relation in student_class_relations]
-
-
-    #     # Get assignment results for the assignment
-    #     assignment_results = AssignmentResult.objects.filter(assignment=assignment)
-
-    #     # Create a dictionary to hold the results for each student
-    #     student_results = {student.id: None for student in students_in_class}
-    #     print(student_results)
-
-    #     # Update the dictionary with assignment results
-    #     for result in assignment_results:
-    #         student_results[result.student.id] = result
-    #         print(result.student.id)
-    #         print(result)
-
-    #     # Serialize the data
-    #     serializer = self.get_serializer(student_results.values(), many=True)
-    #     students_data = serializer.data
-    #     sorted_students = sorted(students_data, key=sort_students)
-    #     print(sorted_students)
-
-    #     response_data = {
-    #         'assignment': {
-    #             'title': assignment.homework.title,
-    #             'class_title': assignment.classs.title
-    #         },
-    #         'assignment_results': sorted_students
-    #     }
-
-    #     return Response(response_data)
-
-
-class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
-    permission_classes = [IsAuthenticated]
-
-    def list(self, request, *args, **kwargs):
-        classs = StudentClass.objects.get(student=request.user).classs
-        class_title = classs.title
-        students = StudentClass.objects.filter(classs=classs)
-        assignments = Assignment.objects.filter(classs=classs)
-
-        start_date, end_date = get_current_school_year()
-        assignment_results = AssignmentResult.objects.filter(
-            student__in=students.values_list('student', flat=True),
-            assignment__in=assignments,
-            date__range=(start_date, end_date)
-        ).values('student__first_name', 'student__last_name', 'student__gender').annotate(
-            total_points=Sum('points')
-        )
-
-        leaderboard_entries = [
-            {
-                'student': f"{result['student__first_name']} {result['student__last_name']}",
-                'gender': result['student__gender'],
-                'points': result['total_points'] or 0
-            }
-            for result in assignment_results
-        ]
-        leaderboard_entries.sort(key=lambda x: x['points'], reverse=True)
-        response_data = {
-            'leaderboard': leaderboard_entries,
-            'class_title': class_title
-        }
-
-        return Response(response_data)
-
-
-#TODO:
-@csrf_exempt
-def handle_homework_id(request, pk):
-    if request.method=="PUT":
-        try:
-            homework = Homework.objects.get(pk=pk)
-        except Homework.DoesNotExist:
-            return JsonResponse({'message': 'Homework not found'}, status=404)
-
-        data = json.loads(request.body)
-        homework_name = data['homeworkName']
-        correct = data['correct']
-        multiple = data['multiple']
-
-        if homework_name:
-            homework.title = homework_name
-            homework.save()
-        else:
-            return JsonResponse({'message': 'Homework name is required'}, status=400)
-
-        received_pairs = data.get('pairs', [])
-        existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
-
-        # Extract IDs from received pairs
-        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
-
-        # Check and delete pairs that are missing from received data
-        for existing_pair in existing_pairs:
-            if existing_pair.id not in received_pair_ids:
-                existing_pair.delete()
-
-        for index, pair in enumerate(received_pairs):
-            question = pair.get('question')
-            answer = pair.get('answer')
-            image = pair.get('image')
-            points = pair.get('points')
-            qtype = pair.get('type')
-
-            if qtype=='select':
-                qtype=1
-            elif qtype=='write':
-                qtype=2
-            elif qtype=='multiple':
-                qtype=3        
-          
-            pair_obj, created = QuestionAnswerPair.objects.get_or_create(
-                homework=homework,
-                id=pair.get('qid'),
-                defaults={
-                    'qtype': qtype,
-                    'question': question,
-                    'image': image,
-                    'points': points,
-                    'answer': answer
-                }
-            )
-
-            if not created:
-                if pair_obj.qtype != qtype:
-                    Option.objects.filter(question=pair_obj).delete()
-                    QuestionCorrectOption.objects.filter(question=pair_obj).delete()
-
-                pair_obj.qtype = qtype                   
-                pair_obj.question = question
-                pair_obj.answer = answer
-                pair_obj.image = image
-                pair_obj.points = points
-                pair_obj.save()
-            
-            if qtype == 1:
-                options = pair.get('options', [])
-                correct_option_index = correct[index]
-
-                options_old = Option.objects.filter(question=pair_obj)
-                options_old.delete()
-
-                for option_text in options:
-                    option = Option.objects.create(text=option_text, question=pair_obj)
-
-                if 0 <= correct_option_index < len(options):
-                    pair_obj.correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
-                    pair_obj.save()
-
-            elif qtype == 3:
-                options = pair.get('options', [])
-                print(multiple)
-                print(index)
-                correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
-                print(correct_option_indexes)
-
-                options_old = Option.objects.filter(question=pair_obj)
-                options_old.delete()
-
-                for option_text in options:
-                    option = Option.objects.create(text=option_text, question=pair_obj)
-
-                for correct_option_index in correct_option_indexes:
-                    QuestionCorrectOption.objects.create(question=pair_obj, option=Option.objects.get(text=options[correct_option_index], question=pair_obj))
-
-        return JsonResponse({'success': True, 'message': 'Operacija atlikta sėkmingai!'})
-
-
 
 
 
@@ -838,181 +620,14 @@ def handle_classes(request):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
-#TODO? 
-@csrf_exempt
-def handle_classes_id(request, pk):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
 
-    # Check if the user is an admin
-    role = payload.get('role')
-
-    if request.method == 'GET':
-        try:
-            classs = Class.objects.get(pk=pk)
-        except Class.DoesNotExist:
-            return HttpResponseNotFound("Class not found")
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-        data = {
-            'title': classs.title
-        }
-        return JsonResponse(data, status=200)
-
-    elif request.method == 'DELETE':
-        if(role==2 or role==3):
-            try:
-                classs = Class.objects.get(pk=pk)
-            except Class.DoesNotExist:
-                return HttpResponseNotFound("Class not found")
-            except json.JSONDecodeError:
-                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-        else:
-            return JsonResponse({'success': False, 'error': 'Unauthorized access to delete classs'}, status=403)         
-
-        classs.delete()
-        return HttpResponse(status=204)
-
-    elif request.method == 'PUT':
-        if(role=="1" or role=="2" or role=="3"): #TODO: ISIMT 1
-            try:
-                classs = Class.objects.get(pk=pk)
-            except Class.DoesNotExist:
-                return HttpResponseNotFound("Class not found")
-
-            try:
-                data = json.loads(request.body.decode('utf-8'))
-            except json.JSONDecodeError:
-                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-            new_title = data.get("title")
-
-            if not new_title:
-                return JsonResponse({'success': False, 'error': 'All fields are required'}, status=422)
-
-            classs.title = new_title
-
-            try:
-                classs.save()
-                return JsonResponse({'success': True, "id" : classs.pk}, status=200)
-            except Exception as e:
-                return JsonResponse({'success': False, 'error': str(e)}, status=500)
-        else:
-            return JsonResponse({'success': False, 'error': 'Unauthorized access to update classs'}, status=403)   
-    else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)        
-
-#TODO? 
-@csrf_exempt
-def handle_students_class(request,sid,cid):
-    #TOOD: perkelt i kit metoda
-    if request.method == 'GET':
-        classs = get_object_or_404(Class, pk=cid)
-
-        # Step 2: Filter StudentClass instances based on the class
-        student_class_instances = StudentClass.objects.filter(classs=classs)
-
-        # Step 3: Retrieve the associated CustomUser instances
-        student_users = [student.student for student in student_class_instances]
-
-        # If you want to retrieve distinct CustomUser instances, use set() to remove duplicates
-        students_in_class = list(set(student_users))
-
-        # students_in_class = CustomUser.objects.filter(studentclass__classs__id=cid)
-        students_data = [
-            {'id' : student.pk, 'name': student.first_name, 'surname': student.last_name}
-            for student in students_in_class
-        ]
-        return JsonResponse({'students': students_data})
-        
-    elif request.method == 'DELETE':
-        try:
-            student_class_entry = get_object_or_404(StudentClass, student_id=sid, classs_id=cid)
-            student_class_entry.delete()
-            # return HttpResponse(status=204)
-            return JsonResponse({'successs': True})
-        except StudentClass.DoesNotExist:
-            return HttpResponseNotFound("StudentClass not found")
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-
-
-# @csrf_exempt
-# def handle_students_assignment_results(request,aid):
-#     if request.method == 'GET':
-#         assignment = Assignment.objects.get(pk=aid)
-#         assignmentResults = AssignmentResult.objects.filter(assignment=assignment)
-
-#         students_data = [
-#             {'id' : result.pk, 'name': result.student.first_name, 'surname': result.student.last_name, 'date' : result.date, 'time': result.time, 'points':result.points}
-#             for result in assignmentResults
-#         ]
-      
-#         return JsonResponse({'success': True, 'results': students_data}) 
-#     #TODO: IS ZAIDIMO KREIPIASI I SITA PASIBAIGUS UZDUOTIM
-#     elif request.method == 'POST':
-#         assignment = Assignment.objects.get(pk=aid)
-#         data = json.loads(request.body)
-#         student_id = data['student_id']
-#         student = CustomUser.objects.get(pk=student_id)
-#         date = data['date']
-#         time = data['time']
-#         points = data['points']
-
-#         result = AssignmentResult.objects.create(assignment=assignment, student=student, date=date, time=time, points=points)
-      
-#         return JsonResponse({'success': True, 'result': result})       
-
-
-
-class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
-    permission_classes = [IsAuthenticated]
-    serializer_class = QuestionAnswerPairResultSerializer
-    lookup_url_kwarg = 'assignment_id'
-
-    def get_queryset(self):
-        assignment_id = self.kwargs.get('assignment_id')
-        student_id = self.kwargs.get('student_id')
-
-        queryset = QuestionAnswerPairResult.objects.filter(
-            assignment__id=assignment_id,
-            student__id=student_id
-        ).select_related('question__homework').prefetch_related('question__option', 'question__questionoselect')
-
-        return queryset
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        assignment = queryset.first().assignment
-        student = queryset.first().student
-
-        score = calculate_score(student, assignment)
-        assignment_points = calculate_assignment_points(assignment)
-        grade = calculate_grade(score, assignment)
-
-        data = self.serializer_class(queryset, many=True, context = {'request': self.request}).data
-        response_data = {
-            'results': data,
-            'points' : assignment_points,
-            'score': score,
-            'grade': grade
-        }
-        return Response(response_data)
     
 
 ################
 ######GAME#####
 ################
 
+#NEREIKIA?
 @csrf_exempt
 def start_game(request):
 
@@ -1042,14 +657,14 @@ def start_game(request):
     # Return error response for non-POST requests
     return JsonResponse({'message': 'Invalid request method'}, status=400)
 
-
+#NEREIKIA?? - I ASSIGNMENTKVIEW ar kita
 @csrf_exempt
 def get_questions(request,aid):
      if request.method == 'GET':
         homework_id = Assignment.objects.get(pk=aid).homework.pk
         try:
             homework = Homework.objects.get(pk=homework_id)
-            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points', 'image')           
+            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points')           
             homework_data = {
                 'title': homework.title,
                 'pairs': list(pairs)
@@ -1158,12 +773,23 @@ def post_summary(request):
     return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
 
 
-@csrf_exempt
-def handle_school(request):
-    if request.method == 'POST':
+
+#####################
+#### ADMIN SCHOOL ####
+#####################
+class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    serializer_class = SchoolSerializer
+
+    def get_queryset(self):
+        return School.objects.all()
+
+    def create(self, request):
         csv_file = request.FILES.get("file")
         title = request.POST.get("title")
         license = request.POST.get("license")
+        students_group, created = Group.objects.get_or_create(name='student')
+        teachers_group, created = Group.objects.get_or_create(name='teacher')
         print(title)
         print(license)
 
@@ -1224,79 +850,28 @@ def handle_school(request):
             )
 
             if class_name:
-                student_class = StudentClass.objects.create(student=user, classs=classs)
+                StudentClass.objects.create(student=user, classs=classs)
+                user.groups.add(students_group)
+            else:
+                user.groups.add(teachers_group)   
 
-        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
-        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
-
-        content = BytesIO()
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
-        content.write("{:91}\n".format('-'*91).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==2:
-                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))    
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==1:
-                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['classs']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))
-        # Seek to the beginning of the buffer before creating the FileResponse
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.seek(0)
-
-        date_string = datetime.now().strftime("%Y-%m-%d")
-        filename = f"login_credentials_{school.title}_{date_string}.txt"
-
-        # Create a response with the file as an attachment
-        response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
-        response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        # response['FormattedTitle'] = filename
+        response = login_file(login_data, school)
 
         return response
 
-    elif request.method == 'GET':
-        schools = School.objects.all()
-        school_data = [{'id': school.pk, 'title': school.title, 'license' : school.license_end} for school in schools]
-        return JsonResponse({'schools': school_data})  
+   
+class UpdateViewSchool(APIView):
+    def post(self, request, school_id):
+        # Retrieve school instance
+        try:
+            school = School.objects.get(id=school_id)
+        except School.DoesNotExist:
+            return Response({'error': 'School not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-@csrf_exempt
-def handle_school_id(request, sid):
-    if request.method == 'DELETE':
-        school = School.objects.get(pk=sid)
-        school.delete()
-        return JsonResponse({'data': 'ok'})  
-    elif request.method == 'POST':
-        #gali ir nebut failo - tada tik licenzijos data keiciasi ir pavadinimas
+        # Extract data from request
         csv_file = request.FILES.get("file")
         new_school_title = request.POST.get("title")
         new_license_expire_date = request.POST.get("license")
-        school_id = sid
-        try:
-            school = School.objects.get(id=school_id)
-        except ObjectDoesNotExist:
-            return JsonResponse({'success' : False}, status=404)
 
         # Update school details if provided
         if new_school_title:
@@ -1305,16 +880,18 @@ def handle_school_id(request, sid):
             school.license_end = new_license_expire_date
         school.save()
 
-        # Update or create members (teachers and students)
+        # Update or create members (teachers and students) if CSV file is provided
         if csv_file:
             response = update_or_create_members(csv_file, school)
             return response
 
-    return JsonResponse({'success' : True})
+        return Response({'success': True})
 
 
 def update_or_create_members(file, school):
     processed_users = set()  # To keep track of processed users
+    students_group, created = Group.objects.get_or_create(name='student')
+    teachers_group, created = Group.objects.get_or_create(name='teacher')
     csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
     print("viduj update members")
     reader = csv.reader(csv_file, delimiter=';')
@@ -1379,59 +956,12 @@ def update_or_create_members(file, school):
             login_data.append(login_user)
             
             if class_name:
-                student_class = StudentClass.objects.create(student=new_user, classs=classs)
+                StudentClass.objects.create(student=new_user, classs=classs)
+                new_user.groups.add(students_group)
+            else:
+                new_user.groups.add(teachers_group)   
 
-        headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
-        headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
-
-        content = BytesIO()
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
-        content.write("{:91}\n".format('-'*91).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==2:
-            # Customize the width of each column
-                content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))    
-        content.write("{:<91}\n".format('-'*91).encode('utf-8'))
-        content.write("{:<101}\n".format(' '*101).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-
-        for user in login_data:
-            if user['role'] ==1:
-            # Customize the width of each column
-                content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
-                    str(user['name']),
-                    str(user['surname']),
-                    str(user['classs']),
-                    str(user['email']),
-                    str(user['password'])
-                ).encode('utf-8'))
-        # Seek to the beginning of the buffer before creating the FileResponse
-        content.write("{:<101}\n".format('-'*101).encode('utf-8'))
-        content.seek(0)
-
-        date_string = datetime.now().strftime("%Y-%m-%d")
-        filename = f"login_credentials_{school.title}_{date_string}.txt"
-
-        # Create a response with the file as an attachment
-        response = FileResponse(content, content_type='text/plain; charset=utf-8')
-        response['Content-Disposition'] = 'attachment; filename="login_credentials.txt"'
-        #response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        response['FormattedTitle'] = filename
-
-       
+    response = login_file(login_data, school)
 
     # Delete users who are not present in the new file
     all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
@@ -1444,19 +974,4 @@ def update_or_create_members(file, school):
     return response
 
 
-def classes_year_changes():
-    classes = Class.objects.all()
-    for classs in classes:
-        old_title = classs.title
-        match = re.match(r'(\d+)(\D*)', old_title)
-    
-        if match:
-            numeric_part, non_numeric_part = match.groups()
 
-            new_numeric_part = str(int(numeric_part) + 1)
-            if numeric_part>12:
-                classs.delete()
-            else:               
-                new_title = new_numeric_part + non_numeric_part
-                classs.title=new_title
-                classs.save()

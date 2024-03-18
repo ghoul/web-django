@@ -1,4 +1,5 @@
 import math
+import re
 from .models import *
 from rest_framework.permissions import BasePermission
 from django.db.models import Q, F, Exists,Subquery,Sum
@@ -7,6 +8,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.datastructures import MultiValueDict
+from django.middleware.csrf import get_token
+from io import BytesIO
+from django.http import FileResponse
 
 
 class IsTeacher(BasePermission):
@@ -28,6 +32,24 @@ class LeaderboardEntryEncoder(DjangoJSONEncoder):
         if isinstance(obj, LeaderboardEntry):
             return obj.__dict__
         return super().default(obj)
+
+
+def generate_csrf_token(request):
+    csrf_token = get_token(request)
+    return csrf_token
+
+
+def generate_email_password(first_name, last_name):
+    email_base = first_name.lower() + "." + last_name.lower()
+    email = email_base + "@goose.lt"
+
+    counter = 1
+    while CustomUser.objects.filter(email=email).exists():
+        email = email_base + f"{counter}@goose.lt"
+        counter += 1
+
+    password =  CustomUser.objects.make_random_password()
+    return email, password
 
 def get_completed_students_count(assignment):
     assignment_results = AssignmentResult.objects.filter(assignment=assignment)
@@ -108,7 +130,73 @@ def create_correct_option(question_answer_pair, option):
         except ObjectDoesNotExist:
             return {'success': False, 'error': 'Failed to create correct option'}, status.HTTP_500_INTERNAL_SERVER_ERROR   
 
+def login_file(login_data, school):
+    headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
+    headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
+
+    content = BytesIO()
+    content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+    content.write("{:^91}\n".format("MOKYTOJAI").encode('utf-8'))
+    content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+    content.write("{:<20}{:<20}{:<40}{:<10}\n".format(*headersM).encode('utf-8'))
+    content.write("{:91}\n".format('-'*91).encode('utf-8'))
+
+    for user in login_data:
+        if user['role'] ==2:
+            content.write("{:<20}{:<20}{:<40}{:<10}\n".format(
+                str(user['name']),
+                str(user['surname']),
+                str(user['email']),
+                str(user['password'])
+            ).encode('utf-8'))    
+    content.write("{:<91}\n".format('-'*91).encode('utf-8'))
+    content.write("{:<101}\n".format(' '*101).encode('utf-8'))
+    content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+    content.write("{:^101}\n".format("MOKINIAI").encode('utf-8'))
+    content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+    content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(*headersS).encode('utf-8'))
+    content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+
+    for user in login_data:
+        if user['role'] ==1:
+            content.write("{:<20}{:<20}{:<10}{:<40}{:<10}\n".format(
+                str(user['name']),
+                str(user['surname']),
+                str(user['classs']),
+                str(user['email']),
+                str(user['password'])
+            ).encode('utf-8'))
+    # Seek to the beginning of the buffer before creating the FileResponse
+    content.write("{:<101}\n".format('-'*101).encode('utf-8'))
+    content.seek(0)
+
+    date_string = datetime.now().strftime("%Y-%m-%d")
+    filename = f"login_credentials_{school.title}_{date_string}.txt"
+
+    # Create a response with the file as an attachment
+    response = FileResponse(content, content_type='text/plain; charset=utf-8')
+    # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    # response['FormattedTitle'] = filename
+
+    return response
 
 
+def classes_year_changes():
+    classes = Class.objects.all()
+    for classs in classes:
+        old_title = classs.title
+        match = re.match(r'(\d+)(\D*)', old_title)
+    
+        if match:
+            numeric_part, non_numeric_part = match.groups()
+
+            new_numeric_part = str(int(numeric_part) + 1)
+            if numeric_part>12:
+                classs.delete()
+            else:               
+                new_title = new_numeric_part + non_numeric_part
+                classs.title=new_title
+                classs.save()
 
      

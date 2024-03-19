@@ -37,6 +37,7 @@ router.register(r'assignment_statistics', views.AssignmentViewStatistics, basena
 router.register(r'class_statistics', views.ClassViewStatistics, basename='class_statistics')
 router.register(r'homework', views.HomeworkView, basename='homework')
 router.register(r'school', views.SchoolViewAdmin, basename='school')
+# router.register(r'game_questions', views.QuestionsViewGame, basename='game_questions')
 # router.register(r'homework-create', views.HomeworkCreateView, basename='homework-create')
 # router.register(r'test', views.TestView, basename='test')
 
@@ -56,6 +57,9 @@ urlpatterns = [
     path('test/<int:assignment_id>/', views.TestView.as_view({'get':'list', 'post':'post_answers'}), name='test'),
     # path('school/update/<int:pk>/', views.SchoolViewAdmin.update_school, name='school-update'),
     path('school/update/<int:school_id>/', views.UpdateViewSchool.as_view(), name='school-update'), #{'post': 'post'}
+
+    path('game/<int:assignment_id>/', views.QuestionsViewGame.as_view({'get':'list', 'post': 'post_answer'}), name='game'),
+    path('post_summary/', views.SummaryView.as_view({'post':'create'}), name='post_summary'),
 
 
     # path('handle_homework/', views.handle_homework, name='handle_homework'),
@@ -94,9 +98,10 @@ urlpatterns = [
     # path('handle_students_assignment_results/<int:aid>/',views.handle_students_assignment_results, name='handle_students_assignment_results'),
     # path('get_one_student_answers/<int:aid>/<int:sid>/',views.get_one_student_answers, name='get_one_student_answers'),
     
-    path('start_game/',views.start_game, name='start_game'),
-    path('post_answer/',views.post_answer, name='post_answer'),
-    path('post_summary/',views.post_summary, name='post_summary'), 
+    # path('start_game/',views.start_game, name='start_game'),
+    # # path('get_questions/<int:assignment_id>/', views.get_questions, name='get_questions'),
+    # path('post_answer/',views.post_answer, name='post_answer'),
+    # path('post_summary/',views.post_summary, name='post_summary'), 
     # path('check_summary/<int:aid>/<int:sid>/',views.check_summary, name='check_summary'),
     # path('get_questions/<int:aid>/',views.get_questions, name='get_questions'),
 

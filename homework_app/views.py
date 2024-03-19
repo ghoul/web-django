@@ -628,40 +628,41 @@ def handle_classes(request):
 ################
 
 #NEREIKIA?
-@csrf_exempt
-def start_game(request):
+# @csrf_exempt
+# def start_game(request):
 
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        student_email = data['student_email']
-        aid = data['assignment_id']
+#     if request.method == 'POST':
+#         data = json.loads(request.body)
+#         student_email = data['student_email']
+#         aid = data['assignment_id']
 
-        sid = CustomUser.objects.get(email=student_email).pk
+#         sid = CustomUser.objects.get(email=student_email).pk
 
-        game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
+#         game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
 
-        # Command to start the game executable with parameters
-        command = [game_path, str(aid), str(sid)]
+#         # Command to start the game executable with parameters
+#         command = [game_path, str(aid), str(sid)]
 
-        try:
-            # Execute the game using subprocess.Popen()
-            subprocess.Popen(command)
+#         try:
+#             # Execute the game using subprocess.Popen()
+#             subprocess.Popen(command)
 
-            # Return success response
-            return JsonResponse({'message': 'Game started successfully'})
-        except Exception as e:
-            print(str(e))
-            # Return error response if execution fails
-            return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
+#             # Return success response
+#             return JsonResponse({'message': 'Game started successfully'})
+#         except Exception as e:
+#             print(str(e))
+#             # Return error response if execution fails
+#             return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
 
-    # Return error response for non-POST requests
-    return JsonResponse({'message': 'Invalid request method'}, status=400)
+#     # Return error response for non-POST requests
+#     return JsonResponse({'message': 'Invalid request method'}, status=400)
 
 #NEREIKIA?? - I ASSIGNMENTKVIEW ar kita
+#handle_homework_id
 @csrf_exempt
-def get_questions(request,aid):
+def get_questions(request,assignment_id):
      if request.method == 'GET':
-        homework_id = Assignment.objects.get(pk=aid).homework.pk
+        homework_id = Assignment.objects.get(pk=assignment_id).homework.pk
         try:
             homework = Homework.objects.get(pk=homework_id)
             pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points')           
@@ -673,19 +674,31 @@ def get_questions(request,aid):
         except Homework.DoesNotExist:
             return JsonResponse({'message': 'Homework not found'}, status=404)
 
+class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
+    # permission_classes = [IsAuthenticated, IsStudent]
+    serializer_class = TestSerializer
 
+    def get_queryset(self):
+        assignment_id = self.kwargs.get('assignment_id')
+        homework = Assignment.objects.get(pk=assignment_id).homework
+        questions = QuestionAnswerPair.objects.filter(homework=homework)
+        return questions
+        
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serialized_questions = self.serializer_class(queryset, many=True)
+        return Response({"questions": serialized_questions.data})
 
-@csrf_exempt
-def post_answer(request):
-    if request.method == 'POST':
+    def post_answer(self, request,*args, **kwargs ):
+        print("post answer") 
         assignment_id = request.POST.get('assignment_id', None)
         question_id = request.POST.get('question_id', None)
-        player_answer = request.POST.get('answer', None)
+        player_answer = request.POST.get('answer', '')
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)
-        selected = request.POST.get('selected', None) #string numeriuku
+        selected = request.POST.get('selected', None) #string options ids
 
-        if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
+        if assignment_id is not None and question_id is not None and student_id is not None and points is not None:
 
           
             question = QuestionAnswerPair.objects.get(pk=question_id)
@@ -695,13 +708,16 @@ def post_answer(request):
 
             try:
                 previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
+                print(previous_answer)
     
             # Update the answer if it exists
             # if not created:
+                print(str(qtype))
                 if qtype == 3:
+                    
                     selected_elements = selected.split(',')
                     if len(selected_elements) > 0:
-                        if len(selected_elements) == 1:
+                        if len(selected_elements) == 1 :
                             # Handle single number case
                             numbers = [int(selected_elements[0])]
                             print(f"One element selected: {numbers[0]}")
@@ -709,6 +725,8 @@ def post_answer(request):
                             # Handle array case
                             numbers = [int(element) for element in selected_elements]
                             print("Multiple elements selected:", numbers)
+
+                            #ids ir tada options pagal ids
                         indexes = [int(element) for element in selected_elements]
                         options = Option.objects.filter(question=question)
                         selected_options = [options[index] for index in indexes]
@@ -718,14 +736,26 @@ def post_answer(request):
                             QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
                     else:
                         print("nieko nepasirinko")
+
+
+                    print("po update seno")    
                     
-                
-                
-                previous_answer.answer = player_answer
+                elif qtype==1:
+                    option_text = player_answer
+                    option = Option.objects.get(question=question, text=option_text)
+                    print("old type 1")
+                    QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
+                    QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+
+                #TODO: CALCULATE POINTS
+                else:
+                    previous_answer.answer = player_answer
+
                 previous_answer.points = points
                 previous_answer.save()
             # Create a new answer if it doesn't exist
             except ObjectDoesNotExist:
+                print("except")
                 if qtype == 3:
                     selected_elements = selected.split(',')
                     indexes = [int(element) for element in selected_elements]
@@ -734,43 +764,135 @@ def post_answer(request):
 
                     for option in selected_options:
                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+                
+                elif qtype==1:
+                    option_text = player_answer
+                    option = Option.objects.get(question=question, text=option_text)
+                    print("naujas qtype 1")
+                    QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
+                #TODO: CALCULATE POINTS
+                
                 previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+                print("po creation naujo")
 
            
             return JsonResponse({'success': True, 'id': previous_answer.pk})
             
-        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
+        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)       
 
-@csrf_exempt
-def check_summary(request,aid,sid):
-    assignment = Assignment.objects.get(pk=aid)
-    student = CustomUser.objects.get(pk=sid)
-    exists = True
-    try:
-        AssignmentResult.objects.get(assignment = assignment, student=student)
-    except ObjectDoesNotExist:
-        exists=False
+#csrf dar, bet zodziu, turetu is react kreiptis i cia, bet paskui is cia i game nezinau ar gerai kreiptis, nes i react vel reiketu, bet reikia i game tiesiai..
+# def sendTokens(request):
+#     token = request.headers.get('Authorization')
+#     if token and token.startswith('Token '):
+#         return token.split(' ')[1]
 
-    return JsonResponse({'success': True, 'exists': exists})
+# @csrf_exempt
+# def post_answer(request):
+#     if request.method == 'POST':
+#         assignment_id = request.POST.get('assignment_id', None)
+#         question_id = request.POST.get('question_id', None)
+#         player_answer = request.POST.get('answer', None)
+#         student_id = request.POST.get('student_id', None)
+#         points = request.POST.get('points', None)
+#         selected = request.POST.get('selected', None) #string options ids
+
+#         if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
+
+          
+#             question = QuestionAnswerPair.objects.get(pk=question_id)
+#             qtype = question.qtype
+#             assignment = Assignment.objects.get(pk=assignment_id)
+#             student = CustomUser.objects.get(pk=student_id)
+
+#             try:
+#                 previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
+    
+#             # Update the answer if it exists
+#             # if not created:
+#                 if qtype == 3:
+#                     selected_elements = selected.split(',')
+#                     if len(selected_elements) > 0:
+#                         if len(selected_elements) == 1:
+#                             # Handle single number case
+#                             numbers = [int(selected_elements[0])]
+#                             print(f"One element selected: {numbers[0]}")
+#                         else:
+#                             # Handle array case
+#                             numbers = [int(element) for element in selected_elements]
+#                             print("Multiple elements selected:", numbers)
+
+#                             #ids ir tada options pagal ids
+#                         indexes = [int(element) for element in selected_elements]
+#                         options = Option.objects.filter(question=question)
+#                         selected_options = [options[index] for index in indexes]
+
+#                         QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
+#                         for option in selected_options:
+#                             QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+#                     else:
+#                         print("nieko nepasirinko")
+                    
+                
+                
+#                 previous_answer.answer = player_answer
+#                 previous_answer.points = points
+#                 previous_answer.save()
+#             # Create a new answer if it doesn't exist
+#             except ObjectDoesNotExist:
+#                 if qtype == 3:
+#                     selected_elements = selected.split(',')
+#                     ids = [int(element) for element in selected_elements]
+#                     selected_options = Option.objects.filter(id__in=ids)
+
+#                     for option in selected_options:
+#                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
+
+#                 previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+
+           
+#             return JsonResponse({'success': True, 'id': previous_answer.pk})
+            
+#         return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
+
+#NEREIKIA??
+# @csrf_exempt
+# def check_summary(request,aid,sid):
+#     assignment = Assignment.objects.get(pk=aid)
+#     student = CustomUser.objects.get(pk=sid)
+#     exists = True
+#     try:
+#         AssignmentResult.objects.get(assignment = assignment, student=student)
+#     except ObjectDoesNotExist:
+#         exists=False
+
+#     return JsonResponse({'success': True, 'exists': exists})
 
 
-@csrf_exempt
-def post_summary(request):
-    assignment_id = request.POST.get('assignment_id', None)
-    time = request.POST.get('time', None) 
-    student_id = request.POST.get('student_id', None)
-    points = request.POST.get('points', None)
-    date = datetime.now()
+# @csrf_exempt
+# def post_summary(request):
 
-    if assignment_id is not None and time is not None and student_id is not None and points is not None:
-        assignment = Assignment.objects.get(pk=assignment_id)
-        student = CustomUser.objects.get(pk=student_id)
-        assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):    
+    # serializer_class = AssignmentResultSerializer
+    def get_queryset(self):
+        queryset = AssignmentResult.objects.all()
+        return queryset
 
-        return JsonResponse({'success': True, 'id': assignmentResult.pk})
-        
-    return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
+    def create(self, request): 
+        assignment_id = request.POST.get('assignment_id', None)
+        time = request.POST.get('time', None) 
+        student_id = request.POST.get('student_id', None)
+        points = request.POST.get('points', None)
+        date = datetime.now()
+
+        if assignment_id is not None and time is not None and student_id is not None and points is not None:
+            assignment = Assignment.objects.get(pk=assignment_id)
+            student = CustomUser.objects.get(pk=student_id)
+            assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+
+    #     return JsonResponse({'success': True, 'id': assignmentResult.pk})
+        return Response(status=status.HTTP_201_CREATED)     
+    # return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
 
 
 

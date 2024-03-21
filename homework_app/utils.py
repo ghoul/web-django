@@ -97,11 +97,27 @@ def calculate_grade(score, assignment):
         return min(math.ceil(score / total_points * 10), 10)
     return 0
 
+# def sort_students(student):
+#     if student['points'] == '' or student['time'] == '':
+#         return (float('inf'), float('inf'))
+#     else:
+#         return (-int(student['points']) if student['points'] else 0, student['time'] if student['time'] else '99:99:99')    
+
+# def sort_students(student):
+#     if student['points'] == '' or student['time'] == '':
+#         # Prioritize students who haven't finished their assignments
+#         return (float('inf'), student['first_name'])
+#     else:
+#         # Prioritize students who finished their assignments
+#         return (-int(student['points']), student['time'], student['first_name'])
+
 def sort_students(student):
-    if student['score'] == '' or student['time'] == '':
-        return (float('inf'), float('inf'))
+    if student['points'] == 0 and student['time'] == '00:00:00.000000':
+        return (float('inf'), student.get('first_name', student.get('student_first_name', '')))
     else:
-        return (-int(student['score']) if student['score'] else 0, student['time'] if student['time'] else '99:99:99')    
+        print("yra points or time")
+        # Prioritize students who finished their assignments
+        return (-int(student['points']), student['time'], student.get('first_name', student.get('student_first_name', '')))
 
 def get_current_school_year():
     today = datetime.now().date()
@@ -180,6 +196,29 @@ def login_file(login_data, school):
     # response['FormattedTitle'] = filename
 
     return response
+
+def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
+    total_points=0
+    if selected_options.count() > 0:
+        points_per_option = (question.points/all_options.count())
+        correct_options = QuestionCorrectOption.objects.filter(question=question)
+
+        for optioni in selected_options:
+            if optioni in correct_options:
+                correct_count += 1
+                total_points += points_per_option
+            else:
+                total_points -= points_per_option
+
+        if total_points<0:
+            total_points=0     
+        elif total_points>question.points:
+            total_points=question.points  
+
+    else:
+        total_points = 0   
+
+    return total_points    
 
 
 def classes_year_changes():

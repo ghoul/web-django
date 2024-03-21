@@ -26,7 +26,7 @@ from homework_app.utils import *
 from .models import CustomUser, Option, QuestionSelectedOption
 import jwt 
 from django.conf import settings
-from django.db.models import Q, F, Exists,Subquery,Sum
+from django.db.models import Q, F, Exists,Subquery,Sum, Value, IntegerField
 from datetime import date, time
 from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
@@ -184,16 +184,63 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
     permission_classes = [IsAuthenticated]
     serializer_class = AssignmentResultSerializer
 
+    # def retrieve(self, request, *args, **kwargs):
+    #     assignment_id = self.kwargs.get('pk')
+    #     assignment = Assignment.objects.get(pk=assignment_id)
+    #     #TODO VISI STUDENTS KLASEJ
+    #     queryset = AssignmentResult.objects.filter(assignment=assignment)
+    #     serializer = self.get_serializer(queryset, many=True)
+
+    #     students_data = serializer.data
+
+    #     not_finished_students = students_data.exclude(
+    #         assignmentresult__in=assignment_results
+    #     ).annotate(
+    #         total_points=Value(0, output_field=IntegerField())
+    #     ).values('first_name', 'last_name', 'gender', 'total_points')
+        
+    #     print(students_data)
+    #     print(not_finished_students)
+
+    # # Add not_finished_students to assignment_results
+    #     assignment_results = list(assignment_results) + list(not_finished_students)
+       
+    #     sorted_students = sorted(students_data, key=sort_students)
+
+    #     response_data = {
+    #         'assignment': {
+    #             'title': assignment.homework.title,
+    #             'class_title': assignment.classs.title
+    #         },
+    #         'assignment_results': sorted_students
+    #     }
+
+    #     return Response(response_data)
     def retrieve(self, request, *args, **kwargs):
         assignment_id = self.kwargs.get('pk')
         assignment = Assignment.objects.get(pk=assignment_id)
-        #TODO VISI STUDENTS KLASEJ
+
+        # Retrieve finished students' assignment results
         queryset = AssignmentResult.objects.filter(assignment=assignment)
         serializer = self.get_serializer(queryset, many=True)
+        finished_students_data = serializer.data
 
-        students_data = serializer.data
-       
-        sorted_students = sorted(students_data, key=sort_students)
+        # Calculate not finished students' assignment results with 0 points
+        classs = assignment.classs
+        students = StudentClass.objects.filter(classs=classs).values_list('student', flat=True)
+        not_finished_students = CustomUser.objects.filter(id__in=students).exclude(
+            results__in=queryset
+        ).annotate(
+            points=Value(0, output_field=IntegerField()),
+            time=Value('00:00:00', output_field=models.TimeField()),
+            status = Value('Bad', output_field = models.CharField())
+        ).values('first_name', 'last_name', 'gender', 'points', 'time', 'status')
+
+        # Combine finished and not finished students' data
+        all_students_data = finished_students_data + list(not_finished_students)
+
+        # Serialize the combined data
+        sorted_students = sorted(all_students_data, key=sort_students)
 
         response_data = {
             'assignment': {
@@ -205,7 +252,19 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
 
         return Response(response_data)
 
+        # not_finished_students = CustomUser.objects.filter(students not in assignment results).points=0
 
+        # not_finished_students = students.exclude(
+        #     assignmentresult__in=assignment_results
+        # ).annotate(
+        #     total_points=Value(0, output_field=IntegerField())
+        # ).values('first_name', 'last_name', 'gender', 'total_points')
+
+        # print(students)
+        # print(not_finished_students)
+
+    # Add not_finished_students to assignment_results
+        # assignment_results = list(assignment_results) + list(not_finished_students)
 class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
 
@@ -224,17 +283,39 @@ class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
             total_points=Sum('points')
         )
 
+        # not_finished_students = CustomUser.objects.filter(id__in=students).exclude(
+        #     results__in=assignment_results
+        # ).annotate(
+        #     points=Value(0, output_field=IntegerField()),
+        # ).values('first_name', 'last_name', 'gender', 'points')
+        not_finished_students = CustomUser.objects.filter(
+            id__in=students.values_list('student', flat=True)
+        ).exclude(
+            id__in=AssignmentResult.objects.filter(
+                assignment__in=assignments,
+                date__range=(start_date, end_date)
+            ).values_list('student', flat=True)
+        ).annotate(
+            points=Value(0, output_field=IntegerField()),
+        ).values('first_name', 'last_name', 'gender', 'points')
+
+        # Combine finished and not finished students' data
+        all_students_data = list(assignment_results) + list(not_finished_students)
+
+        
+
         leaderboard_entries = [
             {
-                'student': f"{result['student__first_name']} {result['student__last_name']}",
-                'gender': result['student__gender'],
-                'points': result['total_points'] or 0
+                'student': f"{result['student__first_name']} {result['student__last_name']}" or f"{result['first_name']} {result['last_name']}",
+                'gender': result['student__gender'] or result['gender'],
+                'points': result['total_points'] or result['points']
             }
-            for result in assignment_results
+            for result in all_students_data
         ]
-        leaderboard_entries.sort(key=lambda x: x['points'], reverse=True)
+        # leaderboard_entries.sort(key=lambda x: x['points'], reverse=True)
+        sorted_leaderboard = sorted(leaderboard_entries, key=lambda x: (-x['points'], x['student']))
         response_data = {
-            'leaderboard': leaderboard_entries,
+            'leaderboard': sorted_leaderboard,
             'class_title': class_title
         }
 
@@ -253,7 +334,6 @@ class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
             assignment__id=assignment_id,
             student__id=student_id
         ).select_related('question__homework').prefetch_related('question__option', 'question__questionoselect')
-
         return queryset
 
     def list(self, request, *args, **kwargs):
@@ -499,8 +579,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
             qtype=question.qtype
             points = question.points
             get_points = 0
-            answerOG = ''
-            answersUser = []
+            selected_options = []
             new = False
             try:
                 answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=request.user)
@@ -511,55 +590,50 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 new = True
                 
             if qtype == 1: #select
-                answerOG = QuestionCorrectOption.objects.get(question=question).option.id
-                option = Option.objects.get(pk=answerOG)
-                QuestionSelectedOption.objects.create(option = option, question = questionOG, student = request.user, assignment=assignment) #serializer TODO
+                # answerOG = QuestionCorrectOption.objects.get(question=question).option.id
+                selected_option = Option.objects.get(pk=answer)
+                QuestionSelectedOption.objects.create(option = selected_option, question = questionOG, student = request.user, assignment=assignment)
+                 #serializer TODO
+                correct_option = QuestionCorrectOption.objects.get(question=question)
+                if correct_option == selected_option:
+                    print("correct one option single select")
+                    get_points+=question.points
+
             elif qtype == 2: #write
-                answerOG = question.answer
+                if question.answer.lower() == answer.lower():
+                    get_points += question.points
 
 
             elif qtype ==3:
                 answer=''
-                options = Option.objects.filter(question=question)
-                options =list(options)
-                correctOptions = QuestionCorrectOption.objects.filter(question=question)
-                correctOptions=list(correctOptions)
+                correct_options = Option.objects.filter(question=question)
+                # options =list(options)
+                # correctOptions = QuestionCorrectOption.objects.filter(question=question)
+                # correctOptions=list(correctOptions)
 
-                originIndexes = []
+                # originIndexes = []
 
-                for  j, option in enumerate(options):
-                    for y, correctOp in enumerate(correctOptions):
-                        if option==correctOp.option:
-                            originIndexes.append(j)
+                # for  j, option in enumerate(options):
+                #     for y, correctOp in enumerate(correctOptions):
+                #         if option==correctOp.option:
+                #             originIndexes.append(j)
 
-                points /= len(originIndexes) if originIndexes else 1   
+                # points /= len(originIndexes) if originIndexes else 1   
+
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):
-                    optionIndex = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
-                    answersUser.append(optionIndex)
+                    optionId = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
+                    selected_option = Option.objects.get(pk=optionId)
+                    selected_options.append(selected_option)
 
-                    option = Option.objects.get(pk=optionIndex) 
-                    QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=option)   
+                    # option = Option.objects.get(pk=optionIndex) 
+                    QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=selected_option)   
 
-                for optionIndex in answersUser:
-                    if optionIndex in originIndexes:
-                        get_points+=points
+                    get_points = calculate_points_for_one_question_multiple_select(question, correct_options, selected_options)
+         
 
-                #jei per daug pasirenka
-                if len(answersUser)>len(originIndexes):
-                    wrongC = len(answersUser)-len(originIndexes)
-                    minusPoints = question.points/len(options)
-                    for w in range(wrongC):
-                        get_points-=minusPoints 
-
-                #arba jei nei vieno teisingo nepasirinko: 0 automatiskai               
-
-                total_points+=get_points   
+                # total_points+=get_points   
                 
-
-            if qtype==2 or qtype == 1:
-                if str(answerOG) == str(answer):
-                    get_points=points
 
             total_points+=get_points  
 
@@ -568,6 +642,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
 
             QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=request.user, answer=answer, points=get_points)
             get_points=0
+
         elapsed_timedelta = timedelta(seconds=elapsed)
 
         # Extract hours, minutes, and seconds from the timedelta
@@ -581,98 +656,9 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         return Response(status=201)
 
 
-
-#ADMIN TODO??
-@csrf_exempt
-def handle_classes(request):
-    token = request.headers.get('Authorization')   
-    if not token:
-        return JsonResponse({'success': False, 'error': 'Unauthorized'}, status=401)
-    try:
-        # Verify and decode the token
-        payload = jwt.decode(token, settings.SECRET_KEY_FOR_JWT, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return JsonResponse({'success': False, 'error': 'Token has expired'}, status=401)
-    except jwt.InvalidTokenError:
-        return JsonResponse({'success': False, 'error': 'Invalid token'}, status=401)
-
-    # Check if the user is an admin
-    role = payload.get('role')
-    email = payload.get('email')
-    teacher = CustomUser.objects.get(email=email)
-    school = teacher.school
-    if request.method=="POST":
-        #if(role=="2" or role=="3"):
-        data = json.loads(request.body.decode('utf-8'))
-        title = data.get("title")
-        classs = Class(title=title, school=school)
-        classs.save()
-        return JsonResponse({'success' : True, 'message': 'Operacija sėkminga!'})
-    elif request.method == 'GET':
-        try:
-            #TODO: tik mokytojo klasės
-            #classes = Class.objects.all().values('id', 'title')
-            classes = Class.objects.filter(school=school).values('id', 'title')
-            classes_list = list(classes)
-            return JsonResponse(classes_list, safe=False, status=200)
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
-    else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)
-
-
-    
-
 ################
 ######GAME#####
 ################
-
-#NEREIKIA?
-# @csrf_exempt
-# def start_game(request):
-
-#     if request.method == 'POST':
-#         data = json.loads(request.body)
-#         student_email = data['student_email']
-#         aid = data['assignment_id']
-
-#         sid = CustomUser.objects.get(email=student_email).pk
-
-#         game_path = "C:\\Users\\Namai\\Desktop\\fps\\Bakalauras2.exe"
-
-#         # Command to start the game executable with parameters
-#         command = [game_path, str(aid), str(sid)]
-
-#         try:
-#             # Execute the game using subprocess.Popen()
-#             subprocess.Popen(command)
-
-#             # Return success response
-#             return JsonResponse({'message': 'Game started successfully'})
-#         except Exception as e:
-#             print(str(e))
-#             # Return error response if execution fails
-#             return JsonResponse({'message': f'Failed to start game. Error: {str(e)}'}, status=500)
-
-#     # Return error response for non-POST requests
-#     return JsonResponse({'message': 'Invalid request method'}, status=400)
-
-#NEREIKIA?? - I ASSIGNMENTKVIEW ar kita
-#handle_homework_id
-@csrf_exempt
-def get_questions(request,assignment_id):
-     if request.method == 'GET':
-        homework_id = Assignment.objects.get(pk=assignment_id).homework.pk
-        try:
-            homework = Homework.objects.get(pk=homework_id)
-            pairs = QuestionAnswerPair.objects.filter(homework=homework).values('id','question', 'answer', 'points')           
-            homework_data = {
-                'title': homework.title,
-                'pairs': list(pairs)
-            }
-            return JsonResponse({'success': True, 'homework': homework_data})
-        except Homework.DoesNotExist:
-            return JsonResponse({'message': 'Homework not found'}, status=404)
 
 class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
     # permission_classes = [IsAuthenticated, IsStudent]
@@ -695,16 +681,16 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
         question_id = request.POST.get('question_id', None)
         player_answer = request.POST.get('answer', '')
         student_id = request.POST.get('student_id', None)
-        points = request.POST.get('points', None)
         selected = request.POST.get('selected', None) #string options ids
 
-        if assignment_id is not None and question_id is not None and student_id is not None and points is not None:
+        if assignment_id is not None and question_id is not None and student_id is not None:
 
           
             question = QuestionAnswerPair.objects.get(pk=question_id)
             qtype = question.qtype
             assignment = Assignment.objects.get(pk=assignment_id)
             student = CustomUser.objects.get(pk=student_id)
+            total_points = 0
 
             try:
                 previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
@@ -731,6 +717,8 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                         options = Option.objects.filter(question=question)
                         selected_options = [options[index] for index in indexes]
 
+                        total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
+
                         QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
                         for option in selected_options:
                             QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
@@ -744,14 +732,24 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                     option_text = player_answer
                     option = Option.objects.get(question=question, text=option_text)
                     print("old type 1")
+                    correct_option = QuestionCorrectOption.objects.get(question=question)
+                    if correct_option == option:
+                        print("correct one option single select")
+                        total_points=question.points
+
                     QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
                     QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
-                #TODO: CALCULATE POINTS
-                else:
+                elif qtype==2:
                     previous_answer.answer = player_answer
+                    if question.answer.lower() == player_answer.lower():
+                        total_points=question.points
+                            
 
-                previous_answer.points = points
+                #TODO: CALCULATE POINTS
+                #points - 20 by default
+
+                previous_answer.points = total_points
                 previous_answer.save()
             # Create a new answer if it doesn't exist
             except ObjectDoesNotExist:
@@ -761,6 +759,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                     indexes = [int(element) for element in selected_elements]
                     options = Option.objects.filter(question=question)
                     selected_options = [options[index] for index in indexes]
+                    total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
 
                     for option in selected_options:
                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
@@ -768,12 +767,19 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                 elif qtype==1:
                     option_text = player_answer
                     option = Option.objects.get(question=question, text=option_text)
+                    correct_option = QuestionCorrectOption.objects.get(question=question)
+                    if correct_option == option:
+                        print("correct one option single select new")
+                        total_points=question.points
                     print("naujas qtype 1")
                     QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
                 #TODO: CALCULATE POINTS
+                elif player_answer.lower() == question.answer.lower():
+                        total_points=question.points
+                        
                 
-                previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
+                previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=total_points)
                 print("po creation naujo")
 
            
@@ -781,96 +787,6 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
             
         return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)       
 
-#csrf dar, bet zodziu, turetu is react kreiptis i cia, bet paskui is cia i game nezinau ar gerai kreiptis, nes i react vel reiketu, bet reikia i game tiesiai..
-# def sendTokens(request):
-#     token = request.headers.get('Authorization')
-#     if token and token.startswith('Token '):
-#         return token.split(' ')[1]
-
-# @csrf_exempt
-# def post_answer(request):
-#     if request.method == 'POST':
-#         assignment_id = request.POST.get('assignment_id', None)
-#         question_id = request.POST.get('question_id', None)
-#         player_answer = request.POST.get('answer', None)
-#         student_id = request.POST.get('student_id', None)
-#         points = request.POST.get('points', None)
-#         selected = request.POST.get('selected', None) #string options ids
-
-#         if assignment_id is not None and question_id is not None and player_answer is not None and student_id is not None and points is not None:
-
-          
-#             question = QuestionAnswerPair.objects.get(pk=question_id)
-#             qtype = question.qtype
-#             assignment = Assignment.objects.get(pk=assignment_id)
-#             student = CustomUser.objects.get(pk=student_id)
-
-#             try:
-#                 previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
-    
-#             # Update the answer if it exists
-#             # if not created:
-#                 if qtype == 3:
-#                     selected_elements = selected.split(',')
-#                     if len(selected_elements) > 0:
-#                         if len(selected_elements) == 1:
-#                             # Handle single number case
-#                             numbers = [int(selected_elements[0])]
-#                             print(f"One element selected: {numbers[0]}")
-#                         else:
-#                             # Handle array case
-#                             numbers = [int(element) for element in selected_elements]
-#                             print("Multiple elements selected:", numbers)
-
-#                             #ids ir tada options pagal ids
-#                         indexes = [int(element) for element in selected_elements]
-#                         options = Option.objects.filter(question=question)
-#                         selected_options = [options[index] for index in indexes]
-
-#                         QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
-#                         for option in selected_options:
-#                             QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-#                     else:
-#                         print("nieko nepasirinko")
-                    
-                
-                
-#                 previous_answer.answer = player_answer
-#                 previous_answer.points = points
-#                 previous_answer.save()
-#             # Create a new answer if it doesn't exist
-#             except ObjectDoesNotExist:
-#                 if qtype == 3:
-#                     selected_elements = selected.split(',')
-#                     ids = [int(element) for element in selected_elements]
-#                     selected_options = Option.objects.filter(id__in=ids)
-
-#                     for option in selected_options:
-#                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
-
-#                 previous_answer = QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=points)
-
-           
-#             return JsonResponse({'success': True, 'id': previous_answer.pk})
-            
-#         return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)    
-
-#NEREIKIA??
-# @csrf_exempt
-# def check_summary(request,aid,sid):
-#     assignment = Assignment.objects.get(pk=aid)
-#     student = CustomUser.objects.get(pk=sid)
-#     exists = True
-#     try:
-#         AssignmentResult.objects.get(assignment = assignment, student=student)
-#     except ObjectDoesNotExist:
-#         exists=False
-
-#     return JsonResponse({'success': True, 'exists': exists})
-
-
-# @csrf_exempt
-# def post_summary(request):
 
 class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):    
     # serializer_class = AssignmentResultSerializer
@@ -885,10 +801,15 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
         points = request.POST.get('points', None)
         date = datetime.now()
 
+        #TODO: CALCULATE POINTS IS JAU ATSAKYTU KLAUSIMU OBJ IR + CIA GAUTI POINTS IR TADA IRASYT
+
         if assignment_id is not None and time is not None and student_id is not None and points is not None:
             assignment = Assignment.objects.get(pk=assignment_id)
             student = CustomUser.objects.get(pk=student_id)
-            assignmentResult= AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=points, time=time)
+
+            points_from_questions = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student).aggregate(scored_points=Sum('points'))
+            total_points = points_from_questions.get('scored_points', 0) + points
+            AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=time)
 
     #     return JsonResponse({'success': True, 'id': assignmentResult.pk})
         return Response(status=status.HTTP_201_CREATED)     

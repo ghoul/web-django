@@ -594,7 +594,9 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 selected_option = Option.objects.get(pk=answer)
                 QuestionSelectedOption.objects.create(option = selected_option, question = questionOG, student = request.user, assignment=assignment)
                  #serializer TODO
-                correct_option = QuestionCorrectOption.objects.get(question=question)
+                correct_option = QuestionCorrectOption.objects.get(question=question).option
+                print(correct_option)
+                print(selected_option)
                 if correct_option == selected_option:
                     print("correct one option single select")
                     get_points+=question.points
@@ -606,7 +608,8 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
 
             elif qtype ==3:
                 answer=''
-                correct_options = Option.objects.filter(question=question)
+                all_options = Option.objects.filter(question=question)
+                # print(correct_options)
                 # options =list(options)
                 # correctOptions = QuestionCorrectOption.objects.filter(question=question)
                 # correctOptions=list(correctOptions)
@@ -624,12 +627,15 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 for y in range(num_mult):
                     optionId = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
                     selected_option = Option.objects.get(pk=optionId)
+                    
                     selected_options.append(selected_option)
 
                     # option = Option.objects.get(pk=optionIndex) 
                     QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=selected_option)   
-
-                    get_points = calculate_points_for_one_question_multiple_select(question, correct_options, selected_options)
+                print("selected options: ")
+                print(selected_options)
+                get_points = calculate_points_for_one_question_multiple_select(question, all_options, selected_options)
+                
          
 
                 # total_points+=get_points   

@@ -199,15 +199,23 @@ def login_file(login_data, school):
 
 def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
     total_points=0
-    if selected_options.count() > 0:
-        points_per_option = (question.points/all_options.count())
-        correct_options = QuestionCorrectOption.objects.filter(question=question)
+    if len(selected_options) > 0:
+        print("viduj if")
+        points_per_option = (question.points/len(all_options))
+        print("points per q: " + str(points_per_option))
+        correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
+        correct_option_ids = correct_options_temp.values_list('option', flat=True)
+        correct_options = Option.objects.filter(id__in=correct_option_ids)
+        # correct_options = Option.objects.filter(questiono__question=question)
+
+        print(correct_options)
 
         for optioni in selected_options:
             if optioni in correct_options:
-                correct_count += 1
                 total_points += points_per_option
+                print("gera option")
             else:
+                print("bloga option")
                 total_points -= points_per_option
 
         if total_points<0:

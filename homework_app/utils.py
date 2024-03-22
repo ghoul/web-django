@@ -9,29 +9,21 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.datastructures import MultiValueDict
 from django.middleware.csrf import get_token
-from io import BytesIO
+from django.contrib.auth.models import Group
+from io import TextIOWrapper,BytesIO
 from django.http import FileResponse
-
+from django.core.files.base import ContentFile
+import csv
+from datetime import datetime
 
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
         return request.user.groups.filter(name='teacher').exists()
 
+
 class IsStudent(BasePermission):
     def has_permission(self, request, view):
         return request.user.groups.filter(name='student').exists()
-
-class LeaderboardEntry:
-    def __init__(self, student, points, gender):
-        self.student = student
-        self.points = points
-        self.gender = gender
-
-class LeaderboardEntryEncoder(DjangoJSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, LeaderboardEntry):
-            return obj.__dict__
-        return super().default(obj)
 
 
 def generate_csrf_token(request):
@@ -51,13 +43,15 @@ def generate_email_password(first_name, last_name):
     password =  CustomUser.objects.make_random_password()
     return email, password
 
+
 def get_completed_students_count(assignment):
     assignment_results = AssignmentResult.objects.filter(assignment=assignment)
     return assignment_results.values('student').distinct().count()
 
+
 def get_assignment_status(assignment):
     completed_students_count = get_completed_students_count(assignment)
-    total_students_count = StudentClass.objects.filter(classs=assignment.classs).count()
+    total_students_count = CustomUser.objects.filter(classs=assignment.classs).count()
     if total_students_count == 0:
         return 'Bad'
     completion_percentage = (completed_students_count / total_students_count) * 100
@@ -68,6 +62,7 @@ def get_assignment_status(assignment):
     else:
         return 'Bad' 
 
+
 def has_answered_all_questions(student, assignment):
     assignment_questions_count = QuestionAnswerPair.objects.filter(homework=assignment.homework).count()
     student_answers_count = QuestionAnswerPairResult.objects.filter(
@@ -77,12 +72,14 @@ def has_answered_all_questions(student, assignment):
     ).count()
     return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count        
 
+
 def calculate_score(student, assignment):
     try:
         question_results = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student)
         return sum(question_result.points for question_result in question_results)
     except QuestionAnswerPairResult.DoesNotExist:
         return 0
+
 
 def calculate_assignment_points(assignment):
     try:
@@ -91,58 +88,40 @@ def calculate_assignment_points(assignment):
     except QuestionAnswerPair.DoesNotExist:
         return 0
 
+
 def calculate_grade(score, assignment):  
     total_points = calculate_assignment_points(assignment)
     if total_points > 0:
         return min(math.ceil(score / total_points * 10), 10)
     return 0
 
-# def sort_students(student):
-#     if student['points'] == '' or student['time'] == '':
-#         return (float('inf'), float('inf'))
-#     else:
-#         return (-int(student['points']) if student['points'] else 0, student['time'] if student['time'] else '99:99:99')    
-
-# def sort_students(student):
-#     if student['points'] == '' or student['time'] == '':
-#         # Prioritize students who haven't finished their assignments
-#         return (float('inf'), student['first_name'])
-#     else:
-#         # Prioritize students who finished their assignments
-#         return (-int(student['points']), student['time'], student['first_name'])
 
 def sort_students(student):
     if student['points'] == 0 and student['time'] == '00:00:00.000000':
         return (float('inf'), student.get('first_name', student.get('student_first_name', '')))
     else:
         print("yra points or time")
-        # Prioritize students who finished their assignments
         return (-int(student['points']), student['time'], student.get('first_name', student.get('student_first_name', '')))
 
 def get_current_school_year():
     today = datetime.now().date()
 
-    # Calculate the start date for the school year
-    if today.month >= 9:  # If it's September or later in the current year
-        start_date = datetime(today.year, 9, 1).date()  # This year's September 1st
+    if today.month >= 9:  
+        start_date = datetime(today.year, 9, 1).date()
     else:
-        start_date = datetime(today.year - 1, 9, 1).date()  # Last years ago September 1st
+        start_date = datetime(today.year - 1, 9, 1).date()
 
-    # Calculate the end date for the school year
-    if today.month >= 9:  # If it's September or later in the current year
-        end_date = datetime(today.year+1, 8, 31).date()  # Next year's August 31st
+    if today.month >= 9:
+        end_date = datetime(today.year+1, 8, 31).date() 
     else:
-        end_date = datetime(today.year, 8, 31).date()  # This year's August 31st
-        print(start_date)
-        print(end_date)
+        end_date = datetime(today.year, 8, 31).date()
+
     return start_date, end_date        
 
 
 def create_correct_option(question_answer_pair, option):
         try:
-            print("Before correct option crete")
             QuestionCorrectOption.objects.create(question=question_answer_pair, option=option)
-            print("After correct option crete")
         except ObjectDoesNotExist:
             return {'success': False, 'error': 'Failed to create correct option'}, status.HTTP_500_INTERNAL_SERVER_ERROR   
 
@@ -182,14 +161,13 @@ def login_file(login_data, school):
                 str(user['email']),
                 str(user['password'])
             ).encode('utf-8'))
-    # Seek to the beginning of the buffer before creating the FileResponse
+
     content.write("{:<101}\n".format('-'*101).encode('utf-8'))
     content.seek(0)
 
     date_string = datetime.now().strftime("%Y-%m-%d")
     filename = f"login_credentials_{school.title}_{date_string}.txt"
 
-    # Create a response with the file as an attachment
     response = FileResponse(content, content_type='text/plain; charset=utf-8')
     # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
     response['Content-Disposition'] = f'attachment; filename="{filename}"'
@@ -200,22 +178,16 @@ def login_file(login_data, school):
 def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
     total_points=0
     if len(selected_options) > 0:
-        print("viduj if")
         points_per_option = (question.points/len(all_options))
         print("points per q: " + str(points_per_option))
         correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
         correct_option_ids = correct_options_temp.values_list('option', flat=True)
         correct_options = Option.objects.filter(id__in=correct_option_ids)
-        # correct_options = Option.objects.filter(questiono__question=question)
-
-        print(correct_options)
 
         for optioni in selected_options:
             if optioni in correct_options:
                 total_points += points_per_option
-                print("gera option")
             else:
-                print("bloga option")
                 total_points -= points_per_option
 
         if total_points<0:
@@ -228,22 +200,97 @@ def calculate_points_for_one_question_multiple_select(question, all_options, sel
 
     return total_points    
 
+def process_answer(question, selected):
+    selected_elements = selected.split(',')
+    if len(selected_elements) > 0:
+        if len(selected_elements) == 1 :
+            indexes = [int(selected_elements[0])]
+        else:
+            indexes = [int(element) for element in selected_elements]
 
-def classes_year_changes():
-    classes = Class.objects.all()
-    for classs in classes:
-        old_title = classs.title
-        match = re.match(r'(\d+)(\D*)', old_title)
+        options = Option.objects.filter(question=question)
+        selected_options = [options[index] for index in indexes]
+        total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
+
+    return total_points, selected_options        
+
+def get_login_user(first_name, last_name, class_name, school, role):
+    existing_class = Class.objects.filter(school=school, title=class_name).first()
+    email, password = generate_email_password(first_name, last_name)
+    classs = ''
+
+    if not existing_class and class_name:
+        classs = Class.objects.create(school=school, title=class_name)
+    else:
+        classs = existing_class
     
-        if match:
-            numeric_part, non_numeric_part = match.groups()
+    login_user ={
+        'name': first_name,
+        'surname': last_name,
+        'classs' : class_name,
+        'email': email,
+        'password' : password,
+        'role' : role
+    }    
 
-            new_numeric_part = str(int(numeric_part) + 1)
-            if numeric_part>12:
-                classs.delete()
-            else:               
-                new_title = new_numeric_part + non_numeric_part
-                classs.title=new_title
-                classs.save()
+    return login_user, email, password, classs
+
+def update_or_create_members(file, school):
+    processed_users = set()
+    students_group = Group.objects.get_or_create(name='student')
+    teachers_group = Group.objects.get_or_create(name='teacher')
+
+    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
+    reader = csv.reader(csv_file, delimiter=';')
+
+    login_data =[]
+    for row in reader:
+        first_name = row[0]
+        last_name = row[1]
+        class_name = row[2]
+        gender = row[3]
+        gender = 1 if gender=='vyras' else 2    
+        role = 2 if class_name == '' else 1
+
+        login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
+        try:    
+            user = CustomUser.objects.get(
+                first_name=first_name,
+                last_name=last_name,
+                role=role,
+                classs = classs
+            )
+            processed_users.add(user.id)
+
+        except ObjectDoesNotExist:
+            email, password = generate_email_password(first_name, last_name)
+            new_user = CustomUser.objects.create_user(
+                first_name=first_name,
+                last_name=last_name, 
+                gender=gender,
+                classs=classs if classs else None,
+                school=school,
+                password= password, 
+                email = email,
+                role=role,
+                username=email
+            )
+            processed_users.add(new_user.id)
+            login_data.append(login_user)
+            
+            if class_name:
+                new_user.groups.add(students_group)
+            else:
+                new_user.groups.add(teachers_group)   
+
+    response = login_file(login_data, school)
+
+    # Delete users who are not in file (they finished school for example)
+    all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
+    users_to_delete = all_users.exclude(id__in=processed_users)
+    users_to_delete.delete()
+
+    return response
+
 
      

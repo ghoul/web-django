@@ -10,7 +10,6 @@ class Class(models.Model):
     school = models.ForeignKey(School, related_name='classs', on_delete=models.CASCADE)
 
 class CustomUser(AbstractUser):
-    # school = models.ForeignKey(School, related_name='school', on_delete=models.CASCADE)
     role = models.IntegerField() #1-student 2-teacher 3-admin
     gender = models.IntegerField() #1-man 2-woman
     classs = models.ForeignKey(Class, related_name='user_classs', on_delete=models.CASCADE, null = True)
@@ -61,9 +60,3 @@ class AssignmentResult(models.Model):
     date = models.DateTimeField()
     points = models.IntegerField()
     time = models.TimeField()
-
-# class StudentClass(models.Model):
-#     student = models.ForeignKey(CustomUser,related_name='student', on_delete=models.CASCADE)
-#     classs = models.ForeignKey(Class,related_name='classs', on_delete=models.CASCADE)
-    
-

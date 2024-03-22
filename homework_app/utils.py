@@ -1,20 +1,15 @@
 import math
-import re
 from .models import *
 from rest_framework.permissions import BasePermission
-from django.db.models import Q, F, Exists,Subquery,Sum
-from django.core.serializers.json import DjangoJSONEncoder
 from rest_framework import status
-from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.datastructures import MultiValueDict
 from django.middleware.csrf import get_token
 from django.contrib.auth.models import Group
 from io import TextIOWrapper,BytesIO
 from django.http import FileResponse
-from django.core.files.base import ContentFile
-import csv
 from datetime import datetime
+import csv
+
 
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):

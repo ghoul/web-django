@@ -475,7 +475,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         questions = QuestionAnswerPair.objects.filter(homework=homework)
         total_points = 0
        
-        for i in enumerate(questions):
+        for i, questionOG in enumerate(questions):
             qid = request.POST.get(f'pairs[{i}][questionId]')
             answer = request.POST.get(f'pairs[{i}][answer]')   
             question = questions.get(pk=qid)
@@ -494,7 +494,6 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
             if qtype == 1: #select one
                 selected_option = Option.objects.get(pk=answer)
                 QuestionSelectedOption.objects.create(option = selected_option, question = question, student = request.user, assignment=assignment)
-                 #serializer TODO
                 correct_option = QuestionCorrectOption.objects.get(question=question).option
                 if correct_option == selected_option:
                     get_points=question.points
@@ -504,7 +503,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                     get_points = question.points
 
             elif qtype ==3: #multiple select
-                # answer=''
+                # answer='' TODO?
                 all_options = Option.objects.filter(question=question)
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):

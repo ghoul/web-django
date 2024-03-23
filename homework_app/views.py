@@ -3,21 +3,13 @@ from .serializers import *
 from .utils import *
 
 from datetime import datetime, timedelta, date
-from django.shortcuts import get_object_or_404, redirect, render
-from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
-from django.db import IntegrityError
-from django.db.models import Q, Subquery,Sum, Value, IntegerField, Subquery, OuterRef,Count, F, Exists
+from django.http import JsonResponse
+from django.db.models import Q, Subquery,Sum, Value, IntegerField, Subquery
 from django.db.models.functions import Concat
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import Group
-from django.core.exceptions import ObjectDoesNotExist,ValidationError
-from django.core.serializers.json import DjangoJSONEncoder
-
-from io import TextIOWrapper,StringIO,BytesIO
-from django.http import FileResponse
-from django.core.files.base import ContentFile
-import csv
+from django.core.exceptions import ObjectDoesNotExist
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -30,10 +22,14 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import mixins
 from rest_framework import viewsets
 
+from io import TextIOWrapper
+import csv
+
 import logging
 logger = logging.getLogger(__name__)
 
 
+# viewset for logging user in
 class LoginViewUser(viewsets.GenericViewSet):
     serializer_class = UserSerializer
 
@@ -54,6 +50,7 @@ class LoginViewUser(viewsets.GenericViewSet):
             return Response({"error": "Neteisingas el. paštas arba slaptažodis"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+# viewset for changing user's password
 class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = PasswordSerializer
@@ -71,6 +68,7 @@ class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
             return Response({"error" : "Neužpildyti privalomi laukai"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+# viewset for returning all active assignments created by teacher
 class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
 
@@ -81,6 +79,8 @@ class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin,
         )
     serializer_class = AssignmentSerializer
 
+
+# viewset for returning all active and not finished assignments for student
 class AssignmentListViewStudent(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsStudent]         
     serializer_class = AssignmentSerializer
@@ -93,7 +93,9 @@ class AssignmentListViewStudent(mixins.ListModelMixin, viewsets.GenericViewSet):
             from_date__lte=date.today(), 
             to_date__gte=date.today()  
         ).exclude(id__in=Subquery(finished_assignments))
-    
+
+
+# viewset for returning all finished assignments created by teacher    
 class AssignmentListViewTeacherFinished(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
 
@@ -104,6 +106,8 @@ class AssignmentListViewTeacherFinished(mixins.ListModelMixin, viewsets.GenericV
     )
     serializer_class = AssignmentSerializer
 
+
+# viewset for returning all finished assignments by student
 class AssignmentListViewStudentFinished(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsStudent]         
     serializer_class = AssignmentSerializer
@@ -116,6 +120,8 @@ class AssignmentListViewStudentFinished(mixins.ListModelMixin, viewsets.GenericV
             (Q(to_date__lt=date.today()) | Q(id__in=finished_assignments))  #past or finished assignments
         )
 
+
+# viewset for assigning homework to class and editing assignment
 class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = AssignmentSerializer
@@ -125,7 +131,7 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         if serializer.is_valid():
             self.perform_update(serializer)
-            return Response({"error" : "somehig", "serializer" : serializer.data})
+            return Response(serializer.data)
         else:
             return Response({"error" : "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -140,12 +146,16 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
     def get_queryset(self):
         return Assignment.objects.all()
 
+
+# viewset for returning all classes in teacher's school
 class ClassesListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = ClassSerializer
     def get_queryset(self):
         return Class.objects.filter(school = self.request.user.school)
 
+
+# viewset for viewing and updating user's profile information (email)
 class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated] 
     serializer_class = UserSerializer     
@@ -162,6 +172,8 @@ class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewse
         else:
             return Response({"error": "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)    
 
+
+# viewset for viewing statistics of selected assignment - returns all students of class with their scores, times and grades
 class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = AssignmentResultSerializer
@@ -170,11 +182,11 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
         assignment_id = self.kwargs.get('pk')
         assignment = Assignment.objects.get(pk=assignment_id)
 
-        # Retrieve finished students assignment results
+        # retrieve finished students assignment results
         queryset = AssignmentResult.objects.filter(assignment=assignment)
         serializer = self.get_serializer(queryset, many=True)
         finished_students_data = serializer.data
-
+        # retrieve not finished students with zero values
         students = CustomUser.objects.filter(classs=assignment.classs)
         not_finished_students = CustomUser.objects.filter(id__in=students.values('id')).exclude(
             results__in=queryset
@@ -190,7 +202,8 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
 
         # Combine finished and not finished students data
         all_students_data = finished_students_data + list(not_finished_students)
-
+        
+        #sort firstly by points, then by time, then by name
         sorted_students = sorted(all_students_data, key=sort_students)
 
         response_data = {
@@ -203,7 +216,7 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
 
         return Response(response_data)
 
-
+# viewset for returning list of one class students for the podium with their points
 class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
 
@@ -239,6 +252,7 @@ class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response(response_data)
 
 
+# viewset for viewing one student's finished assignment, shows answers, scored points, grade
 class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = [IsAuthenticated]
     serializer_class = QuestionAnswerPairResultSerializer
@@ -273,6 +287,7 @@ class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
         return Response(response_data)
 
 
+# viewset for creating, updating, retrieving, deleting homework
 class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
                                                                      mixins.CreateModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]
@@ -304,6 +319,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
 
         return Response(serialized_data)    
 
+    # function for creating question with answers, deals with three types of questions and creates options if needed
     def create_question_answer_pairs(self, request, homework):
         data = []
         num_pairs = sum('question' in key for key in request.POST.keys())
@@ -336,7 +352,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                                 option = option_serializer.save()
                                 options.append(option)
 
-                                if qtype == 3:  # multiple select question   
+                                if qtype == 3:  # select multiple options question   
                                     num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())
                                     if num_mult>0:                                                      
                                         for y in range(num_mult):  
@@ -351,7 +367,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                             else:
                                 return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"
 
-                        if qtype == 1:
+                        if qtype == 1: #select one option question
                             if request.POST.get(f'pairs[{i}][correctOptionIndex]') != 'null':                      
                                 correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
                                 if 0 <= correct_option_index < len(options):
@@ -359,7 +375,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                                 else:
                                     return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"    
                                            
-                    elif qtype == 2:
+                    elif qtype == 2: #writable answer
                         continue 
                     else:
                         return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"    
@@ -382,6 +398,8 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
         else:
             return Response({'error': "Namų darbų forma užpildyta neteisingai"}, status=status.HTTP_400_BAD_REQUEST)    
 
+    # function for updating homework - if question is changed, all related information is deleted (options, correct options), 
+    # and question is updated, creates completely new questions and deletes deleted questions
     def update(self, request,*args, **kwargs):
         try:
             homework = self.get_object()
@@ -409,6 +427,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
 
             received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
 
+            # deletes deleted questions by teacher
             for existing_pair in existing_pairs:
                 if existing_pair.id not in received_pair_ids:
                     existing_pair.delete()
@@ -431,6 +450,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                     }
                 )
 
+                # updating old question with new information
                 if not created:
                     if pair_obj.qtype != qtype:
                         Option.objects.filter(question=pair_obj).delete()
@@ -444,6 +464,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
 
                 options = pair.get('options')
 
+                #deleting old options and creating new 
                 if (qtype == 1 or qtype == 3): 
                     if len(options) > 0:
                         try:
@@ -461,7 +482,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                         for option_text in options:
                             Option.objects.create(text=option_text, question=pair_obj)
 
-                        if qtype == 1:
+                        if qtype == 1: #select one option question
                             if correct[index] != -1:
                                 correct_option_index = correct[index] 
                                 if 0 <= correct_option_index < len(options):
@@ -472,7 +493,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                             else:
                                 return Response({'error': "Namų darbų forma užpildyta neteisingai: nepasirinkti teisingi atsakymai"}, status=status.HTTP_400_BAD_REQUEST)                   
 
-                        elif qtype == 3:
+                        elif qtype == 3: #select multiple options question
                             correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
                             if len(correct_option_indexes) > 0:
                                 for correct_option_index in correct_option_indexes:
@@ -489,7 +510,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
             return Response({"error" : "Namų darbe privalo būti bent vienas klausimas"}, status=status.HTTP_400_BAD_REQUEST)    
 
 
-
+# viewset for retrieving test and saving answers by student
 class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsStudent]
     serializer_class = TestSerializer
@@ -500,6 +521,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         questions = QuestionAnswerPair.objects.filter(homework=homework)
         return questions
 
+    # function for posting test answers by student
     def post_answers(self, request, *args, **kwargs): 
         assignment_id = self.kwargs.get('assignment_id')
         elapsed = float(request.POST.get('time'))/1000      
@@ -517,6 +539,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
             get_points = 0
             selected_options = []
 
+            #checks if question was not answered before (could happen if started test in a game and finished in website)
             try:
                 answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=request.user)
                 answered_before.delete()
@@ -528,18 +551,18 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
             except ObjectDoesNotExist:
                 print("")
                
-            if qtype == 1: #select one
+            if qtype == 1: # select one option question
                 selected_option = Option.objects.get(pk=answer)
                 QuestionSelectedOption.objects.create(option = selected_option, question = question, student = request.user, assignment=assignment)
                 correct_option = QuestionCorrectOption.objects.get(question=question).option
                 if correct_option == selected_option:
                     get_points=question.points
 
-            elif qtype == 2: #write
+            elif qtype == 2: # writable answer
                 if question.answer.lower() == answer.lower():
                     get_points = question.points
 
-            elif qtype == 3: #multiple select
+            elif qtype == 3: # select multiple options question
                 all_options = Option.objects.filter(question=question)
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):
@@ -559,6 +582,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         minutes, seconds = divmod(remainder, 60)
         formatted_time = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
 
+        # saves summary of all test - time, points, date
         AssignmentResult.objects.create(assignment=assignment, student=request.user, date=date, points=total_points, time=formatted_time)
 
         return Response(status = status.HTTP_201_CREATED)
@@ -568,6 +592,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
 ######GAME#####
 ################
 
+# viewset for retrieving questions in a game and saving answers for separate questions
 class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
     serializer_class = TestSerializer
 
@@ -582,6 +607,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
         serialized_questions = self.serializer_class(queryset, many=True)
         return Response({"questions": serialized_questions.data})
 
+    # function for saving answer of one question
     def post_answer(self, request,*args, **kwargs ):
         assignment_id = request.POST.get('assignment_id', None)
         question_id = request.POST.get('question_id', None)
@@ -596,17 +622,18 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
             student = CustomUser.objects.get(pk=student_id)
             total_points = 0
 
-            try: #user plays game again and old submition must be updated
+            # checks if user plays game again, if yes - old submition of an answer must be updated
+            try: 
                 previous_answer = QuestionAnswerPairResult.objects.get(assignment=assignment, student=student, question=question)
 
-                if qtype == 3:                    
+                if qtype == 3: # select multiple options question                    
                     total_points, selected_options = process_answer(question, selected)
 
                     QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
                     for option in selected_options:
                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
-                elif qtype == 1:
+                elif qtype == 1: # select one option question
                     option = Option.objects.get(question=question, text=player_answer)
                     correct_option = QuestionCorrectOption.objects.get(question=question)
 
@@ -616,7 +643,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                     QuestionSelectedOption.objects.filter(question=question, student=student, assignment=assignment).delete()
                     QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
-                elif qtype == 2:
+                elif qtype == 2: # writable answer
                     previous_answer.answer = player_answer
 
                     if question.answer.lower() == player_answer.lower():
@@ -625,15 +652,15 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                 previous_answer.points = total_points
                 previous_answer.save()
 
-            #user plays first time and all answers are new
+            # user plays first time and all answers are new
             except ObjectDoesNotExist:
-                if qtype == 3:
+                if qtype == 3: # seelct multiple options question
                     total_points, selected_options = process_answer(question, selected)
 
                     for option in selected_options:
                         QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
                 
-                elif qtype==1:
+                elif qtype==1: # select one option question
                     option = Option.objects.get(question=question, text=player_answer)
                     correct_option = QuestionCorrectOption.objects.get(question=question)
                     if correct_option == option:
@@ -641,7 +668,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
 
                     QuestionSelectedOption.objects.create(question=question, student=student, assignment=assignment, option=option)
 
-                elif player_answer.lower() == question.answer.lower():
+                elif player_answer.lower() == question.answer.lower(): # writable answer
                         total_points=question.points                      
                 
                 QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=total_points)
@@ -651,7 +678,9 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
         return JsonResponse({'error': 'Nepavyko įrašyti atsakymo'}, status=status.HTTP_400_BAD_REQUEST)       
 
 
+# viewset for saving summary of finished game - time, date, points
 class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):    
+    serializer_class = AssignmentResultSerializer
     def get_queryset(self):
         queryset = AssignmentResult.objects.all()
         return queryset
@@ -661,17 +690,23 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
         time = request.POST.get('time', None) 
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)
-        date = datetime.now()
 
         if assignment_id is not None and time is not None and student_id is not None and points is not None:
             assignment = Assignment.objects.get(pk=assignment_id)
             student = CustomUser.objects.get(pk=student_id)
-
+            # calculates scored points from answers and adds to points scored in a game
             points_from_questions = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student).aggregate(scored_points=Sum('points'))
             total_points = points_from_questions.get('scored_points', 0) + points
-            AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=time)
+            serializer = AssignmentResultSerializer(data={'assignment': assignment, 'student': student,'date': datetime.now(),'points': total_points,'time': time})
+            if serializer.is_valid():
+                serializer.save()
+                return JsonResponse(status=status.HTTP_201_CREATED)
+            else:
+                return JsonResponse({"error" : "Klaida! Neteisingi duomenys"}, status=status.HTTP_400_BAD_REQUEST)
+                
+            # AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=time)
 
-            return Response(status=status.HTTP_201_CREATED) 
+            # return Response(status=status.HTTP_201_CREATED) 
 
         return JsonResponse({'error': 'Nepavyko įrašyti atsakymų'}, status=status.HTTP_400_BAD_REQUEST)  
 
@@ -679,6 +714,8 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
 #####################
 #### ADMIN SCHOOL ####
 #####################  
+
+# viewset for creating and deleteing schools by admin
 class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
     serializer_class = SchoolSerializer
@@ -705,6 +742,7 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
 
         csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
 
+        # admin uploads file, which is read and from each row new user is created, returns login credentials for each of them
         reader = csv.reader(csv_file, delimiter=';')
         login_data =[]
         if len(reader) > 0:
@@ -720,6 +758,7 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
                     login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
                     login_data.append(login_user)
 
+                    # creates new user
                     user = CustomUser.objects.create_user(
                         first_name=first_name,
                         last_name=last_name, 
@@ -732,6 +771,7 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
                         username=email
                     )
 
+                    # adds created user to either student or teacher group for permissions
                     if class_name:
                         user.groups.add(students_group)
                     else:
@@ -740,6 +780,7 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
                 else:
                     return Response({"error": "Neteisingai užpildytas duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)           
 
+            # login text file with names, generated emails and passwords
             response = login_file(login_data)
 
             return response
@@ -747,7 +788,8 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
         else:
             return Response({"error": "Tuščias duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)    
 
-   
+
+# viewset for updating school by admin   
 class UpdateViewSchool(APIView):
     def post(self, request, school_id):
         try:
@@ -765,6 +807,7 @@ class UpdateViewSchool(APIView):
             school.license_end = new_license_expire_date
         school.save()
 
+        # if admin uploads file - each row is processed and either users are created, updated or deleted
         if csv_file:
             response = update_or_create_members(csv_file, school)
             return response

@@ -12,21 +12,25 @@ from datetime import datetime
 import csv
 
 
+# class to check if logged in user is a teacher
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
         return request.user.groups.filter(name='teacher').exists()
 
 
+# class to check if logged in user is a student
 class IsStudent(BasePermission):
     def has_permission(self, request, view):
         return request.user.groups.filter(name='student').exists()
 
 
+# function for generating csrf token
 def generate_csrf_token(request):
     csrf_token = get_token(request)
     return csrf_token
 
 
+# function for generating initial email and password for user
 def generate_email_password(first_name, last_name):
     email_base = first_name.lower() + "." + last_name.lower()
     email = email_base + "@goose.lt"
@@ -39,6 +43,8 @@ def generate_email_password(first_name, last_name):
     password =  CustomUser.objects.make_random_password()
     return email, password
 
+
+# function for retrieving current school year's start and end date
 def get_current_school_year():
     today = datetime.now().date()
 
@@ -55,11 +61,13 @@ def get_current_school_year():
     return start_date, end_date  
 
 
+# function for counting how many students of one class finished assignment
 def get_completed_students_count(assignment):
     assignment_results = AssignmentResult.objects.filter(assignment=assignment)
     return assignment_results.values('student').distinct().count()
 
 
+# function for calculating assignment status based on how many students have finished it
 def get_assignment_status(assignment):
     completed_students_count = get_completed_students_count(assignment)
     total_students_count = CustomUser.objects.filter(classs=assignment.classs).count()
@@ -74,6 +82,7 @@ def get_assignment_status(assignment):
         return 'Bad' 
 
 
+# function for checking if student answered all questions
 def has_answered_all_questions(student, assignment):
     assignment_questions_count = QuestionAnswerPair.objects.filter(homework=assignment.homework).count()
     student_answers_count = QuestionAnswerPairResult.objects.filter(
@@ -84,6 +93,7 @@ def has_answered_all_questions(student, assignment):
     return assignment_questions_count == student_answers_count, assignment_questions_count, student_answers_count        
 
 
+# function for calculating how many points student scored just from answers
 def calculate_score(student, assignment):
     try:
         question_results = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student)
@@ -92,6 +102,7 @@ def calculate_score(student, assignment):
         return 0
 
 
+# function for calculating how many points assignment has in total
 def calculate_assignment_points(assignment):
     try:
         questions = QuestionAnswerPair.objects.filter(homework=assignment.homework)
@@ -100,6 +111,7 @@ def calculate_assignment_points(assignment):
         return 0
 
 
+# function for calculating student's grade based on scored points and total points of assignment
 def calculate_grade(score, assignment):  
     total_points = calculate_assignment_points(assignment)
     if total_points > 0:
@@ -107,6 +119,7 @@ def calculate_grade(score, assignment):
     return 0
 
 
+# function for sorting students in leaderboard by points, time and name
 def sort_students(student):
     if student['points'] == 0 and student['time'] == '00:00:00.000000':
         return (float('inf'), student.get('first_name', student.get('student_first_name', '')))
@@ -114,6 +127,7 @@ def sort_students(student):
         return (-int(student['points']), student['time'], student.get('first_name', student.get('student_first_name', '')))      
 
 
+# function for creating new option for a question
 def create_correct_option(question_answer_pair, option):
         try:
             QuestionCorrectOption.objects.create(question=question_answer_pair, option=option)
@@ -121,11 +135,11 @@ def create_correct_option(question_answer_pair, option):
             return "", status.status.HTTP_500_INTERNAL_SERVER_ERROR, 'Nepavyko sukurti atsakymo pasirinkimo'
 
 
+# function for calculating how many points did student scored from select multiple options question
 def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
     total_points=0
     if len(selected_options) > 0:
         points_per_option = int(question.points/len(all_options))
-        print("points per q: " + str(points_per_option))
         correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
         correct_option_ids = correct_options_temp.values_list('option', flat=True)
         correct_options = Option.objects.filter(id__in=correct_option_ids)
@@ -133,6 +147,7 @@ def calculate_points_for_one_question_multiple_select(question, all_options, sel
         correct_count_original = len(correct_options)
         correct_count_student = 0
 
+        # checks all selected options and calculates points based on them
         for optioni in selected_options:
             if optioni in correct_options:
                 total_points += points_per_option
@@ -141,6 +156,7 @@ def calculate_points_for_one_question_multiple_select(question, all_options, sel
                 correct_count_student-=1
                 total_points -= points_per_option
 
+        # fixes if any irregularities came during calculation
         if total_points<0:
             total_points=0     
         elif total_points>question.points:
@@ -154,6 +170,8 @@ def calculate_points_for_one_question_multiple_select(question, all_options, sel
 
     return total_points    
 
+
+# function for calculating how many points student scored in select multiple options question
 def process_answer(question, selected):
     selected_elements = selected.split(',')
     if len(selected_elements) > 0:
@@ -169,6 +187,7 @@ def process_answer(question, selected):
     return total_points, selected_options        
 
 
+# function for creating or updating students and teachers by admin uploaded file
 def update_or_create_members(file, school):
     processed_users = set()
     students_group, created = Group.objects.get_or_create(name='student')
@@ -178,6 +197,7 @@ def update_or_create_members(file, school):
     reader = csv.reader(csv_file, delimiter=';')
 
     login_data =[]
+    # reads each line and creates or updates user based on provided information
     if len(reader) > 0:
             for row in reader:
                 if len(row) == 4 :
@@ -190,6 +210,7 @@ def update_or_create_members(file, school):
 
                     login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
                     try:    
+                        # old user is not changed
                         user = CustomUser.objects.get(
                             first_name=first_name,
                             last_name=last_name,
@@ -198,6 +219,7 @@ def update_or_create_members(file, school):
                         )
                         processed_users.add(user.id)
 
+                    # creates new user
                     except ObjectDoesNotExist:
                         new_user = CustomUser.objects.create_user(
                             first_name=first_name,
@@ -213,6 +235,7 @@ def update_or_create_members(file, school):
                         processed_users.add(new_user.id)
                         login_data.append(login_user)
                         
+                        # adds created user to student or teacher group for permissions
                         if class_name:
                             new_user.groups.add(students_group)
                         else:
@@ -223,7 +246,7 @@ def update_or_create_members(file, school):
 
             response = login_file(login_data)
 
-            # Delete users who are not in file (they finished school for example)
+            # deletes users who are not in file (they finished or transfered school for example)
             all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
             users_to_delete = all_users.exclude(id__in=processed_users)
             users_to_delete.delete()
@@ -233,6 +256,7 @@ def update_or_create_members(file, school):
         return Response({"error": "Tuščias duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)         
 
 
+# function for creating login credentials for user
 def get_login_user(first_name, last_name, class_name, school, role):
     existing_class = Class.objects.filter(school=school, title=class_name).first()
     email, password = generate_email_password(first_name, last_name)
@@ -255,6 +279,7 @@ def get_login_user(first_name, last_name, class_name, school, role):
     return login_user, email, password, classs
 
 
+# function for creating response file with login credentials for each user
 def login_file(login_data):
     headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
     headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]

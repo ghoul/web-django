@@ -7,10 +7,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse,HttpResponseNotFound, HttpResponseBadRequest,HttpResponseServerError
 from django.db import IntegrityError
 from django.db.models import Q, Subquery,Sum, Value, IntegerField, Subquery, OuterRef,Count, F, Exists
+from django.db.models.functions import Concat
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import Group
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist,ValidationError
 from django.core.serializers.json import DjangoJSONEncoder
 
 from io import TextIOWrapper,StringIO,BytesIO
@@ -41,7 +42,7 @@ class LoginViewUser(viewsets.GenericViewSet):
         if user.check_password(request.data.get('password')):
             license_end = user.school.license_end
             if license_end and license_end < datetime.today().date():
-                return Response({"error": "Your license has expired. Please contact your administrator."}, status=403)
+                return Response({"error": "Jūsų licenzija nebegalioja"}, status=status.HTTP_403_FORBIDDEN)
 
             login(request, user)
             serializer = self.get_serializer(user)
@@ -50,7 +51,7 @@ class LoginViewUser(viewsets.GenericViewSet):
 
             return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
         else:
-            return Response({"error": "Invalid credentials"}, status=400)
+            return Response({"error": "Neteisingas el. paštas arba slaptažodis"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
@@ -64,10 +65,10 @@ class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             if str(request.user.id) != kwargs['pk']:
-                return Response({"error": "You can only update your own password."}, status=status.HTTP_403_FORBIDDEN)
+                return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)
             return super().update(request, *args, **kwargs)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error" : "Neužpildyti privalomi laukai"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AssignmentListViewTeacher(mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
@@ -122,9 +123,11 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
     def update(self, request, *args, **kwargs):
         instance = self.get_object() 
         serializer = self.get_serializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(serializer.data)
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            return Response({"error" : "somehig", "serializer" : serializer.data})
+        else:
+            return Response({"error" : "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -132,8 +135,7 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            print(serializer.errors)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error" : "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
         return Assignment.objects.all()
@@ -142,7 +144,7 @@ class ClassesListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsTeacher]         
     serializer_class = ClassSerializer
     def get_queryset(self):
-        return Class.objects.filter(school = self.request.user.classs.school)
+        return Class.objects.filter(school = self.request.user.school)
 
 class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated] 
@@ -156,9 +158,9 @@ class ProfileViewUser(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewse
                 self.perform_update(serializer)
                 return Response(serializer.data)
             else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error" : "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response({"error": "You can only update the email field."}, status=status.HTTP_400_BAD_REQUEST)    
+            return Response({"error": "Netinkamai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)    
 
 class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated]
@@ -179,8 +181,12 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
         ).annotate(
             points=Value(0, output_field=IntegerField()),
             time=Value('00:00:00', output_field=models.TimeField()),
-            status = Value('Bad', output_field = models.CharField())
-        ).values('first_name', 'last_name', 'gender', 'points', 'time', 'status')
+            status = Value('Bad', output_field = models.CharField()),
+            grade=Value(0, output_field=IntegerField())
+        ).annotate(
+            student_first_name=Concat('first_name', Value(''), output_field=models.CharField()),
+            student_last_name=Concat('last_name', Value(''), output_field=models.CharField())
+        ).values('student_first_name', 'student_last_name', 'gender', 'points', 'time', 'status', 'grade')
 
         # Combine finished and not finished students data
         all_students_data = finished_students_data + list(not_finished_students)
@@ -301,52 +307,67 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
     def create_question_answer_pairs(self, request, homework):
         data = []
         num_pairs = sum('question' in key for key in request.POST.keys())
-        qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
+        if num_pairs > 0:
+            qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
 
-        for i in range(num_pairs):
-            qtype = request.POST.get(f'pairs[{i}][qtype]')
-            qtype = qtype_mapping.get(qtype, None)
-            question = request.POST.get(f'pairs[{i}][question]')
-            answer = request.POST.get(f'pairs[{i}][answer]')
-            #TODO
-            if len(answer) == 0:
-                answer = "none"
-            points = request.POST.get(f'pairs[{i}][points]')
+            for i in range(num_pairs):
+                qtype = request.POST.get(f'pairs[{i}][qtype]')
+                qtype = qtype_mapping.get(qtype, None)
+                question = request.POST.get(f'pairs[{i}][question]')
+                answer = request.POST.get(f'pairs[{i}][answer]')
+                points = request.POST.get(f'pairs[{i}][points]')
 
-            qapair_serializer = QuestionAnswerPairSerializer(data={'homework': homework.id, 'qtype': qtype, 'question': question, 'answer' : answer, 'points': points}, context={'request': request})
-            if qapair_serializer.is_valid():
-                qapair = qapair_serializer.save()
-                data.append(qapair_serializer.data)
+                if len(answer) == 0:
+                    answer = None              
 
-                num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
+                qapair_serializer = QuestionAnswerPairSerializer(data={'homework': homework.id, 'qtype': qtype, 'question': question, 'answer' : answer, 'points': points}, context={'request': request})
+                if qapair_serializer.is_valid():
+                    qapair = qapair_serializer.save()
+                    data.append(qapair_serializer.data)
 
-                options = []
-                for option_i in range(num_options):
-                    option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
-                    option_serializer = OptionSerializer(data={'text': option_text, 'question': qapair.id}, context={'request': request})
-                    if option_serializer.is_valid():
-                        option = option_serializer.save()
-                        options.append(option)
+                    num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
+                    if (qtype == 1 or qtype == 3) and num_options > 0: 
+                        options = []
 
-                        if qtype == 3:  # multiple select question      
-                            num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())                                                      
-                            for y in range(num_mult):                                
-                                correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
-                                if correct==option_i:
-                                    create_correct_option(qapair, option)   
+                        for option_i in range(num_options):
+                            option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
+                            option_serializer = OptionSerializer(data={'text': option_text, 'question': qapair.id}, context={'request': request})
+                            if option_serializer.is_valid():
+                                option = option_serializer.save()
+                                options.append(option)
 
+                                if qtype == 3:  # multiple select question   
+                                    num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())
+                                    if num_mult>0:                                                      
+                                        for y in range(num_mult):  
+                                            if request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]') is not None:                              
+                                                correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
+                                                if correct==option_i:
+                                                    create_correct_option(qapair, option)  
+                                            else:
+                                                return "", status.HTTP_400_BAD_REQUEST,"Namų darbų forma užpildyta neteisingai: nepasirinkti teisingi atsakymai"         
+                                    else:
+                                        return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"                
+                            else:
+                                return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"
+
+                        if qtype == 1:
+                            if request.POST.get(f'pairs[{i}][correctOptionIndex]') != 'null':                      
+                                correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
+                                if 0 <= correct_option_index < len(options):
+                                    create_correct_option(qapair, options[correct_option_index])  
+                                else:
+                                    return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"    
+                                           
+                    elif qtype == 2:
+                        continue 
                     else:
-                        return {'success': False, 'error': option_serializer.errors}, status.HTTP_400_BAD_REQUEST   
-
-                if qtype == 1:                      
-                            correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
-                            if 0 <= correct_option_index < len(options):
-                                create_correct_option(qapair, options[correct_option_index])     
-
-            else:
-                return {'success': False, 'error': option_serializer.errors}, status.HTTP_400_BAD_REQUEST                          
-
-        return data, status.HTTP_201_CREATED
+                        return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"    
+                else:
+                    return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"                        
+            return data, status.HTTP_201_CREATED, ""
+        else:
+            return "", status.HTTP_400_BAD_REQUEST, "Namų darbe privalo būti bent vienas klausimas"   
 
     def create(self, request):
         mutable_data = request.data.copy()
@@ -356,104 +377,117 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
         serializer = self.serializer_class(data=mutable_data)
         if serializer.is_valid():
             homework = serializer.save() 
-            data = self.create_question_answer_pairs(request, homework)
-            return Response(data, status=status.HTTP_201_CREATED)
+            data, status, error = self.create_question_answer_pairs(request, homework)
+            return Response({"data" : data, "error" : error}, status)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+            return Response({'error': "Namų darbų forma užpildyta neteisingai"}, status=status.HTTP_400_BAD_REQUEST)    
 
     def update(self, request,*args, **kwargs):
         try:
             homework = self.get_object()
         except Homework.DoesNotExist:
-            return JsonResponse({'message': 'Homework not found'}, status=404)
+            return Response({'error': 'Namų darbas nerastas'}, status=status.HTTP_404_NOT_FOUND)
 
         homework_name = request.data.get('title')
+        multiple = request.data.get('multiple')
         correct = request.data.get('correct')
-        multiple = request.data.get('multiple') 
+        correct = [-1 if item is None else item for item in correct]
+        options = [] 
 
         if not homework_name:
-            return JsonResponse({'message': 'Homework name is required'}, status=400)
+            return Response({'error': 'Nenurodytas namų darbo pavadinimas'}, status=status.HTTP_400_BAD_REQUEST)
 
         homework.title = homework_name
         homework.save()    
 
         received_pairs = request.data.get('pairs', [])
-        existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
-        qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
 
-        received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
+        if len(received_pairs) > 0:
 
-        for existing_pair in existing_pairs:
-            if existing_pair.id not in received_pair_ids:
-                existing_pair.delete()
+            existing_pairs = QuestionAnswerPair.objects.filter(homework=homework)
+            qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
 
-        for index, pair in enumerate(received_pairs):
-            question = pair.get('question')
-            answer = pair.get('answer')
-            points = pair.get('points')
-            qtype = pair.get('qtype')
-            qtype = qtype_mapping.get(qtype, None) 
-          
-            pair_obj, created = QuestionAnswerPair.objects.get_or_create(
-                homework=homework,
-                id=pair.get('id'),
-                defaults={
-                    'qtype': qtype,
-                    'question': question,
-                    'points': points,
-                    'answer': answer
-                }
-            )
+            received_pair_ids = set(pair.get('id') for pair in received_pairs if pair.get('qid'))
 
-            if not created:
-                if pair_obj.qtype != qtype:
-                    Option.objects.filter(question=pair_obj).delete()
-                    QuestionCorrectOption.objects.filter(question=pair_obj).delete()
+            for existing_pair in existing_pairs:
+                if existing_pair.id not in received_pair_ids:
+                    existing_pair.delete()
 
-                pair_obj.qtype = qtype                   
-                pair_obj.question = question
-                pair_obj.answer = answer
-                pair_obj.points = points
-                pair_obj.save()
+            for index, pair in enumerate(received_pairs):
+                question = pair.get('question')
+                answer = pair.get('answer')
+                points = pair.get('points')
+                qtype = pair.get('qtype')
+                qtype = qtype_mapping.get(qtype, None) 
             
-            if qtype == 1:
-                options = pair.get('options', [])
-                correct_option_index = correct[index]
+                pair_obj, created = QuestionAnswerPair.objects.get_or_create(
+                    homework=homework,
+                    id=pair.get('id'),
+                    defaults={
+                        'qtype': qtype,
+                        'question': question,
+                        'points': points,
+                        'answer': answer
+                    }
+                )
 
-                try:
-                    options_old = Option.objects.filter(question=pair_obj)
-                    options_old.delete()
-                    correct_old = QuestionCorrectOption.objects.get(question = pair_obj)
-                    correct_old.delete()
-                except:
-                    print("nera")    
+                if not created:
+                    if pair_obj.qtype != qtype:
+                        Option.objects.filter(question=pair_obj).delete()
+                        QuestionCorrectOption.objects.filter(question=pair_obj).delete()
 
-                for option_text in options:
-                    Option.objects.create(text=option_text, question=pair_obj)
+                    pair_obj.qtype = qtype                   
+                    pair_obj.question = question
+                    pair_obj.answer = answer
+                    pair_obj.points = points
+                    pair_obj.save()
 
-                if 0 <= correct_option_index < len(options):
-                    correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
-                    QuestionCorrectOption.objects.create(option = correct, question = pair_obj)
+                options = pair.get('options')
 
-            elif qtype == 3:
-                options = pair.get('options', [])
-                correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
+                if (qtype == 1 or qtype == 3): 
+                    if len(options) > 0:
+                        try:
+                            options_old = Option.objects.filter(question=pair_obj)
+                            options_old.delete()
+                        except ObjectDoesNotExist:
+                            print("")    
+                            
+                        try:    
+                            correct_old = QuestionCorrectOption.objects.filter(question=pair_obj)
+                            correct_old.delete()    
+                        except ObjectDoesNotExist:
+                            print("")       
 
-                try:
-                    options_old = Option.objects.filter(question=pair_obj)
-                    options_old.delete()
-                    correct_options_old = QuestionCorrectOption.objects.filter(question=pair_obj)
-                    correct_options_old.delete()
-                except:
-                    print("nera mult")    
+                        for option_text in options:
+                            Option.objects.create(text=option_text, question=pair_obj)
 
-                for option_text in options:
-                    Option.objects.create(text=option_text, question=pair_obj)
+                        if qtype == 1:
+                            if correct[index] != -1:
+                                correct_option_index = correct[index] 
+                                if 0 <= correct_option_index < len(options):
+                                    correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
+                                    QuestionCorrectOption.objects.create(option = correct, question = pair_obj)
+                                else:
+                                    return Response({'error': "Namų darbų forma užpildyta neteisingai"}, status=status.HTTP_400_BAD_REQUEST)                       
+                            else:
+                                return Response({'error': "Namų darbų forma užpildyta neteisingai: nepasirinkti teisingi atsakymai"}, status=status.HTTP_400_BAD_REQUEST)                   
 
-                for correct_option_index in correct_option_indexes:
-                    QuestionCorrectOption.objects.create(question=pair_obj, option=Option.objects.get(text=options[correct_option_index], question=pair_obj))      
+                        elif qtype == 3:
+                            correct_option_indexes = [item['oid'] for item in multiple if item.get('qid') == index]
+                            if len(correct_option_indexes) > 0:
+                                for correct_option_index in correct_option_indexes:
+                                    QuestionCorrectOption.objects.create(question=pair_obj, option=Option.objects.get(text=options[correct_option_index], question=pair_obj)) 
+                            else:
+                                return Response({'error': "Namų darbų forma užpildyta neteisingai: nepasirinkti teisingi atsakymai"}, status=status.HTTP_400_BAD_REQUEST)               
+                    else:
+                        return Response({'error': "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"}, status=status.HTTP_400_BAD_REQUEST)  
+                else:
+                    continue
+                
+            return Response(status=status.HTTP_201_CREATED)     
+        else:
+            return Response({"error" : "Namų darbe privalo būti bent vienas klausimas"}, status=status.HTTP_400_BAD_REQUEST)    
 
-        return Response(status=status.HTTP_201_CREATED)            
 
 
 class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
@@ -482,15 +516,18 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
             qtype=question.qtype
             get_points = 0
             selected_options = []
-            new = False
+
             try:
                 answered_before = QuestionAnswerPairResult.objects.get(question=question, assignment=assignment, student=request.user)
                 answered_before.delete()
+            except ObjectDoesNotExist:
+                print("")
+            try:    
                 selected = QuestionSelectedOption.objects.filter(assignment=assignment, student=request.user, question=question)
                 selected.delete()
             except ObjectDoesNotExist:
-                new = True
-                
+                print("")
+               
             if qtype == 1: #select one
                 selected_option = Option.objects.get(pk=answer)
                 QuestionSelectedOption.objects.create(option = selected_option, question = question, student = request.user, assignment=assignment)
@@ -502,8 +539,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                 if question.answer.lower() == answer.lower():
                     get_points = question.points
 
-            elif qtype ==3: #multiple select
-                # answer='' TODO?
+            elif qtype == 3: #multiple select
                 all_options = Option.objects.filter(question=question)
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):
@@ -525,7 +561,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
 
         AssignmentResult.objects.create(assignment=assignment, student=request.user, date=date, points=total_points, time=formatted_time)
 
-        return Response(status=201)
+        return Response(status = status.HTTP_201_CREATED)
 
 
 ################
@@ -610,9 +646,9 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                 
                 QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=student, answer=player_answer, points=total_points)
            
-            return JsonResponse({'success': True})
+            return JsonResponse({'success': True}, status=status.HTTP_201_CREATED)
             
-        return JsonResponse({'message': 'Failed to receive answer or missing data'}, status=400)       
+        return JsonResponse({'error': 'Nepavyko įrašyti atsakymo'}, status=status.HTTP_400_BAD_REQUEST)       
 
 
 class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):    
@@ -637,12 +673,12 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
             return Response(status=status.HTTP_201_CREATED) 
 
-        return JsonResponse({'message': 'Failed to receive summary or missing data'}, status=400) 
+        return JsonResponse({'error': 'Nepavyko įrašyti atsakymų'}, status=status.HTTP_400_BAD_REQUEST)  
 
 
 #####################
 #### ADMIN SCHOOL ####
-#####################    UPDATEMIXIN BUVO
+#####################  
 class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
     serializer_class = SchoolSerializer
@@ -654,50 +690,62 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
         csv_file = request.FILES.get("file")
         title = request.POST.get("title")
         license = request.POST.get("license")
-        students_group = Group.objects.get_or_create(name='student')
-        teachers_group = Group.objects.get_or_create(name='teacher')
+        students_group, created = Group.objects.get_or_create(name='student')
+        teachers_group, created = Group.objects.get_or_create(name='teacher')
 
         try:
-            school_exist = School.objects.get(title=title)
-            school = school_exist
+            School.objects.get(title=title)
+            return Response({"error": "Mokykla jau užregistruota anksčiau"}, status=status.HTTP_400_BAD_REQUEST)
         except ObjectDoesNotExist:
-            school = School.objects.create(title=title, license_end=license)
+            serializer = SchoolSerializer(data={'title': title, 'license_end': license})
+            if serializer.is_valid():
+                school = serializer.save()
+            else:
+                return Response({"error" : "Neteisingai užpildyta forma"}, status=status.HTTP_400_BAD_REQUEST)
 
         csv_file = TextIOWrapper(csv_file, encoding='utf-8', errors='replace')
 
         reader = csv.reader(csv_file, delimiter=';')
         login_data =[]
-        for row in reader:
-            first_name = row[0]
-            last_name = row[1]
-            class_name = row[2]
-            gender = row[3]
-            gender = 1 if gender == 'vyras' else 2
-            role = 2 if class_name == '' else 1 
+        if len(reader) > 0:
+            for row in reader:
+                if len(row) == 4 :
+                    first_name = row[0]
+                    last_name = row[1]
+                    class_name = row[2]
+                    gender = row[3]
+                    gender = 1 if gender == 'vyras' else 2
+                    role = 2 if class_name == '' else 1 
 
-            login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
-            login_data.append(login_user)
+                    login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
+                    login_data.append(login_user)
 
-            user = CustomUser.objects.create_user(
-                first_name=first_name,
-                last_name=last_name, 
-                gender=gender,
-                classs=classs if classs else None,
-                school=school,
-                password= password, 
-                email = email,
-                role=role,
-                username=email
-            )
+                    user = CustomUser.objects.create_user(
+                        first_name=first_name,
+                        last_name=last_name, 
+                        gender=gender,
+                        classs=classs if classs else None,
+                        school=school,
+                        password= password, 
+                        email = email,
+                        role=role,
+                        username=email
+                    )
 
-            if class_name:
-                user.groups.add(students_group)
-            else:
-                user.groups.add(teachers_group)   
+                    if class_name:
+                        user.groups.add(students_group)
+                    else:
+                        user.groups.add(teachers_group) 
 
-        response = login_file(login_data, school)
+                else:
+                    return Response({"error": "Neteisingai užpildytas duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)           
 
-        return response
+            response = login_file(login_data)
+
+            return response
+             
+        else:
+            return Response({"error": "Tuščias duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)    
 
    
 class UpdateViewSchool(APIView):
@@ -705,7 +753,7 @@ class UpdateViewSchool(APIView):
         try:
             school = School.objects.get(id=school_id)
         except School.DoesNotExist:
-            return Response({'error': 'School not found.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Mokykla nerasta'}, status=status.HTTP_404_NOT_FOUND)
 
         csv_file = request.FILES.get("file")
         new_school_title = request.POST.get("title")
@@ -721,4 +769,5 @@ class UpdateViewSchool(APIView):
             response = update_or_create_members(csv_file, school)
             return response
 
-        return Response({'success': True})
+        else:
+            return Response({'success': True, 'id' : school_id})

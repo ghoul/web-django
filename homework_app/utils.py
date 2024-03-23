@@ -2,6 +2,7 @@ import math
 from .models import *
 from rest_framework.permissions import BasePermission
 from rest_framework import status
+from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from django.middleware.csrf import get_token
 from django.contrib.auth.models import Group
@@ -37,6 +38,21 @@ def generate_email_password(first_name, last_name):
 
     password =  CustomUser.objects.make_random_password()
     return email, password
+
+def get_current_school_year():
+    today = datetime.now().date()
+
+    if today.month >= 9:  
+        start_date = datetime(today.year, 9, 1).date()
+    else:
+        start_date = datetime(today.year - 1, 9, 1).date()
+
+    if today.month >= 9:
+        end_date = datetime(today.year+1, 8, 31).date() 
+    else:
+        end_date = datetime(today.year, 8, 31).date()
+
+    return start_date, end_date  
 
 
 def get_completed_students_count(assignment):
@@ -95,32 +111,151 @@ def sort_students(student):
     if student['points'] == 0 and student['time'] == '00:00:00.000000':
         return (float('inf'), student.get('first_name', student.get('student_first_name', '')))
     else:
-        print("yra points or time")
-        return (-int(student['points']), student['time'], student.get('first_name', student.get('student_first_name', '')))
-
-def get_current_school_year():
-    today = datetime.now().date()
-
-    if today.month >= 9:  
-        start_date = datetime(today.year, 9, 1).date()
-    else:
-        start_date = datetime(today.year - 1, 9, 1).date()
-
-    if today.month >= 9:
-        end_date = datetime(today.year+1, 8, 31).date() 
-    else:
-        end_date = datetime(today.year, 8, 31).date()
-
-    return start_date, end_date        
+        return (-int(student['points']), student['time'], student.get('first_name', student.get('student_first_name', '')))      
 
 
 def create_correct_option(question_answer_pair, option):
         try:
             QuestionCorrectOption.objects.create(question=question_answer_pair, option=option)
         except ObjectDoesNotExist:
-            return {'success': False, 'error': 'Failed to create correct option'}, status.HTTP_500_INTERNAL_SERVER_ERROR   
+            return "", status.status.HTTP_500_INTERNAL_SERVER_ERROR, 'Nepavyko sukurti atsakymo pasirinkimo'
 
-def login_file(login_data, school):
+
+def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
+    total_points=0
+    if len(selected_options) > 0:
+        points_per_option = int(question.points/len(all_options))
+        print("points per q: " + str(points_per_option))
+        correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
+        correct_option_ids = correct_options_temp.values_list('option', flat=True)
+        correct_options = Option.objects.filter(id__in=correct_option_ids)
+
+        correct_count_original = len(correct_options)
+        correct_count_student = 0
+
+        for optioni in selected_options:
+            if optioni in correct_options:
+                total_points += points_per_option
+                correct_count_student+=1
+            else:
+                correct_count_student-=1
+                total_points -= points_per_option
+
+        if total_points<0:
+            total_points=0     
+        elif total_points>question.points:
+            total_points=question.points  
+
+        if correct_count_student == correct_count_original:
+            total_points = question.points    
+
+    else:
+        total_points = 0   
+
+    return total_points    
+
+def process_answer(question, selected):
+    selected_elements = selected.split(',')
+    if len(selected_elements) > 0:
+        if len(selected_elements) == 1 :
+            indexes = [int(selected_elements[0])]
+        else:
+            indexes = [int(element) for element in selected_elements]
+
+        options = Option.objects.filter(question=question)
+        selected_options = [options[index] for index in indexes]
+        total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
+
+    return total_points, selected_options        
+
+
+def update_or_create_members(file, school):
+    processed_users = set()
+    students_group, created = Group.objects.get_or_create(name='student')
+    teachers_group, created = Group.objects.get_or_create(name='teacher')
+
+    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
+    reader = csv.reader(csv_file, delimiter=';')
+
+    login_data =[]
+    if len(reader) > 0:
+            for row in reader:
+                if len(row) == 4 :
+                    first_name = row[0]
+                    last_name = row[1]
+                    class_name = row[2]
+                    gender = row[3]
+                    gender = 1 if gender=='vyras' else 2    
+                    role = 2 if class_name == '' else 1
+
+                    login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
+                    try:    
+                        user = CustomUser.objects.get(
+                            first_name=first_name,
+                            last_name=last_name,
+                            role=role,
+                            classs = classs
+                        )
+                        processed_users.add(user.id)
+
+                    except ObjectDoesNotExist:
+                        new_user = CustomUser.objects.create_user(
+                            first_name=first_name,
+                            last_name=last_name, 
+                            gender=gender,
+                            classs=classs if classs else None,
+                            school=school,
+                            password= password, 
+                            email = email,
+                            role=role,
+                            username=email
+                        )
+                        processed_users.add(new_user.id)
+                        login_data.append(login_user)
+                        
+                        if class_name:
+                            new_user.groups.add(students_group)
+                        else:
+                            new_user.groups.add(teachers_group)   
+
+                else:
+                    return Response({"error": "Neteisingai užpildytas duomenų failas"}, status=status.HTTP_400_BAD_REQUEST) 
+
+            response = login_file(login_data)
+
+            # Delete users who are not in file (they finished school for example)
+            all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
+            users_to_delete = all_users.exclude(id__in=processed_users)
+            users_to_delete.delete()
+
+            return response
+    else:
+        return Response({"error": "Tuščias duomenų failas"}, status=status.HTTP_400_BAD_REQUEST)         
+
+
+def get_login_user(first_name, last_name, class_name, school, role):
+    existing_class = Class.objects.filter(school=school, title=class_name).first()
+    email, password = generate_email_password(first_name, last_name)
+    classs = ''
+
+    if not existing_class and class_name:
+        classs = Class.objects.create(school=school, title=class_name)
+    else:
+        classs = existing_class
+    
+    login_user ={
+        'name': first_name,
+        'surname': last_name,
+        'classs' : class_name,
+        'email': email,
+        'password' : password,
+        'role' : role
+    }    
+
+    return login_user, email, password, classs
+
+
+def login_file(login_data):
     headersS = ["Vardas", "Pavardė", "Klasė", "El.Paštas", "Slaptažodis"]
     headersM = ["Vardas", "Pavardė", "El.Paštas", "Slaptažodis"]
 
@@ -160,132 +295,7 @@ def login_file(login_data, school):
     content.write("{:<101}\n".format('-'*101).encode('utf-8'))
     content.seek(0)
 
-    date_string = datetime.now().strftime("%Y-%m-%d")
-    filename = f"login_credentials_{school.title}_{date_string}.txt"
-
     response = FileResponse(content, content_type='text/plain; charset=utf-8')
-    # response['Content-Disposition'] = 'attachment; filename="login_credentials_{school.title}_{date}.txt"'
-    response['Content-Disposition'] = f'attachment; filename="{filename}"'
-    # response['FormattedTitle'] = filename
+    response['Content-Disposition'] = f'attachment"'
 
     return response
-
-def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
-    total_points=0
-    if len(selected_options) > 0:
-        points_per_option = (question.points/len(all_options))
-        print("points per q: " + str(points_per_option))
-        correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
-        correct_option_ids = correct_options_temp.values_list('option', flat=True)
-        correct_options = Option.objects.filter(id__in=correct_option_ids)
-
-        for optioni in selected_options:
-            if optioni in correct_options:
-                total_points += points_per_option
-            else:
-                total_points -= points_per_option
-
-        if total_points<0:
-            total_points=0     
-        elif total_points>question.points:
-            total_points=question.points  
-
-    else:
-        total_points = 0   
-
-    return total_points    
-
-def process_answer(question, selected):
-    selected_elements = selected.split(',')
-    if len(selected_elements) > 0:
-        if len(selected_elements) == 1 :
-            indexes = [int(selected_elements[0])]
-        else:
-            indexes = [int(element) for element in selected_elements]
-
-        options = Option.objects.filter(question=question)
-        selected_options = [options[index] for index in indexes]
-        total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
-
-    return total_points, selected_options        
-
-def get_login_user(first_name, last_name, class_name, school, role):
-    existing_class = Class.objects.filter(school=school, title=class_name).first()
-    email, password = generate_email_password(first_name, last_name)
-    classs = ''
-
-    if not existing_class and class_name:
-        classs = Class.objects.create(school=school, title=class_name)
-    else:
-        classs = existing_class
-    
-    login_user ={
-        'name': first_name,
-        'surname': last_name,
-        'classs' : class_name,
-        'email': email,
-        'password' : password,
-        'role' : role
-    }    
-
-    return login_user, email, password, classs
-
-def update_or_create_members(file, school):
-    processed_users = set()
-    students_group = Group.objects.get_or_create(name='student')
-    teachers_group = Group.objects.get_or_create(name='teacher')
-
-    csv_file = TextIOWrapper(file, encoding='utf-8', errors='replace')
-    reader = csv.reader(csv_file, delimiter=';')
-
-    login_data =[]
-    for row in reader:
-        first_name = row[0]
-        last_name = row[1]
-        class_name = row[2]
-        gender = row[3]
-        gender = 1 if gender=='vyras' else 2    
-        role = 2 if class_name == '' else 1
-
-        login_user, email, password, classs = get_login_user(first_name, last_name, class_name, school, role)
-        try:    
-            user = CustomUser.objects.get(
-                first_name=first_name,
-                last_name=last_name,
-                role=role,
-                classs = classs
-            )
-            processed_users.add(user.id)
-
-        except ObjectDoesNotExist:
-            email, password = generate_email_password(first_name, last_name)
-            new_user = CustomUser.objects.create_user(
-                first_name=first_name,
-                last_name=last_name, 
-                gender=gender,
-                classs=classs if classs else None,
-                school=school,
-                password= password, 
-                email = email,
-                role=role,
-                username=email
-            )
-            processed_users.add(new_user.id)
-            login_data.append(login_user)
-            
-            if class_name:
-                new_user.groups.add(students_group)
-            else:
-                new_user.groups.add(teachers_group)   
-
-    response = login_file(login_data, school)
-
-    # Delete users who are not in file (they finished school for example)
-    all_users = CustomUser.objects.filter(role__in=[1, 2], school=school)
-    users_to_delete = all_users.exclude(id__in=processed_users)
-    users_to_delete.delete()
-
-    return response
-
-
-     

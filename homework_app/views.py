@@ -29,6 +29,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+################
+#### WEBSITE ###
+################
+
 # viewset for logging user in
 class LoginViewUser(viewsets.GenericViewSet):
     serializer_class = UserSerializer
@@ -410,6 +414,7 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
         multiple = request.data.get('multiple')
         correct = request.data.get('correct')
         correct = [-1 if item is None else item for item in correct]
+        print(correct)
         options = [] 
 
         if not homework_name:
@@ -486,8 +491,8 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                             if correct[index] != -1:
                                 correct_option_index = correct[index] 
                                 if 0 <= correct_option_index < len(options):
-                                    correct = Option.objects.get(text=options[correct_option_index], question=pair_obj)
-                                    QuestionCorrectOption.objects.create(option = correct, question = pair_obj)
+                                    correct_option = Option.objects.get(text=options[correct_option_index], question=pair_obj)
+                                    QuestionCorrectOption.objects.create(option = correct_option, question = pair_obj)
                                 else:
                                     return Response({'error': "Namų darbų forma užpildyta neteisingai"}, status=status.HTTP_400_BAD_REQUEST)                       
                             else:
@@ -588,9 +593,9 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
         return Response(status = status.HTTP_201_CREATED)
 
 
-################
-######GAME#####
-################
+#################
+###### GAME #####
+#################
 
 # viewset for retrieving questions in a game and saving answers for separate questions
 class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericViewSet):
@@ -635,7 +640,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
 
                 elif qtype == 1: # select one option question
                     option = Option.objects.get(question=question, text=player_answer)
-                    correct_option = QuestionCorrectOption.objects.get(question=question)
+                    correct_option = QuestionCorrectOption.objects.get(question=question).option
 
                     if correct_option == option:
                         total_points=question.points
@@ -662,7 +667,8 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
                 
                 elif qtype==1: # select one option question
                     option = Option.objects.get(question=question, text=player_answer)
-                    correct_option = QuestionCorrectOption.objects.get(question=question)
+                    correct_option = QuestionCorrectOption.objects.get(question=question).option
+                    player_answer = ''
                     if correct_option == option:
                         total_points=question.points
 
@@ -675,7 +681,7 @@ class QuestionsViewGame(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.
            
             return JsonResponse({'success': True}, status=status.HTTP_201_CREATED)
             
-        return JsonResponse({'error': 'Nepavyko įrašyti atsakymo'}, status=status.HTTP_400_BAD_REQUEST)       
+        return JsonResponse({"success" : False}, status=status.HTTP_400_BAD_REQUEST)       
 
 
 # viewset for saving summary of finished game - time, date, points
@@ -696,23 +702,19 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             student = CustomUser.objects.get(pk=student_id)
             # calculates scored points from answers and adds to points scored in a game
             points_from_questions = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student).aggregate(scored_points=Sum('points'))
-            total_points = points_from_questions.get('scored_points', 0) + points
-            serializer = AssignmentResultSerializer(data={'assignment': assignment, 'student': student,'date': datetime.now(),'points': total_points,'time': time})
+            total_points = points_from_questions.get('scored_points', 0) + int(points)
+            serializer = AssignmentResultSerializer(data={'assignment': assignment_id, 'student': student_id,'date': datetime.now(),'points': total_points,'time': time})
             if serializer.is_valid():
                 serializer.save()
-                return JsonResponse(status=status.HTTP_201_CREATED)
+                return JsonResponse({"success" : True}, status=status.HTTP_201_CREATED)
             else:
-                return JsonResponse({"error" : "Klaida! Neteisingi duomenys"}, status=status.HTTP_400_BAD_REQUEST)
-                
-            # AssignmentResult.objects.create(assignment=assignment, student=student, date=date, points=total_points, time=time)
+                return JsonResponse({"success" : False}, status=status.HTTP_400_BAD_REQUEST)
 
-            # return Response(status=status.HTTP_201_CREATED) 
-
-        return JsonResponse({'error': 'Nepavyko įrašyti atsakymų'}, status=status.HTTP_400_BAD_REQUEST)  
+        return JsonResponse({"success" : False}, status=status.HTTP_400_BAD_REQUEST)  
 
 
 #####################
-#### ADMIN SCHOOL ####
+#### ADMIN SCHOOL ###
 #####################  
 
 # viewset for creating and deleteing schools by admin
@@ -745,8 +747,9 @@ class SchoolViewAdmin(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Des
         # admin uploads file, which is read and from each row new user is created, returns login credentials for each of them
         reader = csv.reader(csv_file, delimiter=';')
         login_data =[]
-        if len(reader) > 0:
-            for row in reader:
+        reader_list = list(reader)
+        if len(reader_list) > 0:
+            for row in reader_list:
                 if len(row) == 4 :
                     first_name = row[0]
                     last_name = row[1]

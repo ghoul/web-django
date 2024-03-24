@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'homework_app',
-
 ]
 
 MIDDLEWARE = [

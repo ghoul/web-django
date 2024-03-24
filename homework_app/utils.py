@@ -139,10 +139,10 @@ def create_correct_option(question_answer_pair, option):
 def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
     total_points=0
     if len(selected_options) > 0:
-        points_per_option = int(question.points/len(all_options))
         correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
         correct_option_ids = correct_options_temp.values_list('option', flat=True)
         correct_options = Option.objects.filter(id__in=correct_option_ids)
+        points_per_option = int(question.points/len(correct_options))
 
         correct_count_original = len(correct_options)
         correct_count_student = 0
@@ -197,9 +197,10 @@ def update_or_create_members(file, school):
     reader = csv.reader(csv_file, delimiter=';')
 
     login_data =[]
+    reader_list = list(reader)
     # reads each line and creates or updates user based on provided information
-    if len(reader) > 0:
-            for row in reader:
+    if len(reader_list) > 0:
+            for row in reader_list:
                 if len(row) == 4 :
                     first_name = row[0]
                     last_name = row[1]

@@ -14,31 +14,49 @@ class SchoolFactory(factory.django.DjangoModelFactory):
     license_end = fake.future_date(end_date='+10y')
 
 
+class CustomUserFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = CustomUser
+
+    username = factory.Faker("name")
+    password = factory.Faker("password")
+    email = factory.Faker("email")
+    role = 1
+    gender = 1
+    school = factory.SubFactory(SchoolFactory) 
 
 
-# class ClassFactory(factory.django.DjangoModelFactory):
-#     class Meta:
-#         model = Class
+class ClassFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Class
 
-#     title = factory.Faker("8C")
-#     school = CustomUser.objects.get_or_create(email="agne@gmail.com")[0] 
-
-
-# class CustomUserFactory(factory.django.DjangoModelFactory):
-#     class Meta:
-#         model = CustomUser
-
-#     #TODO: NAMES, EMAIL, PASS?
-#     role = 1
-#     gender = 1
-#     classs = Class.objects.get_or_create(title="8C")
-#     school = School.objects.get_or_create(title = "Kauno jėzuitų gimnazija")
+    title = factory.Faker("sentence")
+    school = factory.SubFactory(SchoolFactory) 
 
 
-# class HomeworkFactory(factory.django.DjangoModelFactory):
-#     class Meta:
-#         model = Homework
+class HomeworkFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Homework
 
-#     title = "Matematika. Daugyba"
-#     date = datetime.now()
-#     teacher = CustomUser.objects.get_or_create() #TODO??        
+    title = factory.Faker("sentence")
+    date = datetime.now().date()
+    teacher = factory.SubFactory(CustomUserFactory)        
+
+class AssignmentFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Assignment
+
+    homework = factory.SubFactory(HomeworkFactory) 
+    classs = factory.SubFactory(ClassFactory)
+    from_date = datetime.now().date()
+    to_date = fake.future_date(end_date='+10d')  
+
+class AssignmentResultFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = AssignmentResult
+
+    assignment = factory.SubFactory(AssignmentFactory) 
+    student = factory.SubFactory(CustomUserFactory)
+    date = factory.Faker("date")
+    points = factory.Faker("random_int", min=0, max=100) 
+    time = factory.Faker("time")

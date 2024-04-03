@@ -42,6 +42,7 @@ class HomeworkFactory(factory.django.DjangoModelFactory):
     date = datetime.now().date()
     teacher = factory.SubFactory(CustomUserFactory)        
 
+
 class AssignmentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Assignment
@@ -50,6 +51,7 @@ class AssignmentFactory(factory.django.DjangoModelFactory):
     classs = factory.SubFactory(ClassFactory)
     from_date = datetime.now().date()
     to_date = fake.future_date(end_date='+10d')  
+
 
 class AssignmentResultFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -60,3 +62,51 @@ class AssignmentResultFactory(factory.django.DjangoModelFactory):
     date = factory.Faker("date")
     points = factory.Faker("random_int", min=0, max=100) 
     time = factory.Faker("time")
+
+
+class QuestionAnswerPairFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = QuestionAnswerPair
+
+    homework = factory.SubFactory(HomeworkFactory)  
+    qtype = factory.Faker("random_int", min=1, max=3) 
+    question = factory.Faker("sentence")
+    answer = factory.Faker("sentence")
+    points = factory.Faker("random_int", min=10, max=30)      
+
+
+class OptionFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Option
+
+    text = factory.Faker("sentence")
+    question = factory.SubFactory(QuestionAnswerPairFactory)  
+
+
+class QuestionCorrectOptionFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = QuestionCorrectOption
+
+    option = factory.SubFactory(OptionFactory) 
+    question = factory.SubFactory(QuestionAnswerPairFactory)  
+
+
+class QuestionSelectedOptionFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = QuestionSelectedOption
+
+    option = factory.SubFactory(OptionFactory) 
+    question = factory.SubFactory(QuestionAnswerPairFactory)  
+    student = factory.SubFactory(CustomUserFactory)
+    assignment = factory.SubFactory(AssignmentFactory) 
+
+
+class QuestionAnswerPairResultFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = QuestionAnswerPairResult
+
+    question = factory.SubFactory(QuestionAnswerPairFactory)  
+    student = factory.SubFactory(CustomUserFactory)
+    assignment = factory.SubFactory(AssignmentFactory)
+    answer = factory.Faker("sentence")
+    points = factory.Faker("random_int", min=10, max=30)    

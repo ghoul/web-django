@@ -136,7 +136,7 @@ def create_correct_option(question_answer_pair, option):
 
 
 # function for calculating how many points did student scored from select multiple options question
-def calculate_points_for_one_question_multiple_select(question, all_options, selected_options):
+def calculate_points_for_one_question_multiple_select(question, selected_options):
     total_points=0
     if len(selected_options) > 0:
         correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
@@ -173,8 +173,10 @@ def calculate_points_for_one_question_multiple_select(question, all_options, sel
 
 # function for calculating how many points student scored in select multiple options question
 def process_answer(question, selected):
-    selected_elements = selected.split(',')
-    if len(selected_elements) > 0:
+    total_points = 0
+    selected_options = []
+    if len(selected) > 0:
+        selected_elements = selected.split(',')
         if len(selected_elements) == 1 :
             indexes = [int(selected_elements[0])]
         else:
@@ -182,7 +184,7 @@ def process_answer(question, selected):
 
         options = Option.objects.filter(question=question)
         selected_options = [options[index] for index in indexes]
-        total_points = calculate_points_for_one_question_multiple_select(question, options, selected_options)
+        total_points = calculate_points_for_one_question_multiple_select(question, selected_options)
 
     return total_points, selected_options        
 

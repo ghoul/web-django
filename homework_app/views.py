@@ -131,7 +131,10 @@ class AssignmentView(mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.Re
     serializer_class = AssignmentSerializer
 
     def update(self, request, *args, **kwargs):
-        instance = self.get_object() 
+        instance = self.get_object()
+        if not request.user == instance.homework.teacher:
+            return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)
+
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         if serializer.is_valid():
             self.perform_update(serializer)
@@ -183,42 +186,46 @@ class AssignmentViewStatistics(mixins.RetrieveModelMixin,viewsets.GenericViewSet
     serializer_class = AssignmentResultSerializer
 
     def retrieve(self, request, *args, **kwargs):
-        assignment_id = self.kwargs.get('pk')
-        assignment = Assignment.objects.get(pk=assignment_id)
+        try:
+            assignment_id = self.kwargs.get('pk')
+            assignment = Assignment.objects.get(pk=assignment_id)
 
-        # retrieve finished students assignment results
-        queryset = AssignmentResult.objects.filter(assignment=assignment)
-        serializer = self.get_serializer(queryset, many=True)
-        finished_students_data = serializer.data
-        # retrieve not finished students with zero values
-        students = CustomUser.objects.filter(classs=assignment.classs)
-        not_finished_students = CustomUser.objects.filter(id__in=students.values('id')).exclude(
-            results__in=queryset
-        ).annotate(
-            points=Value(0, output_field=IntegerField()),
-            time=Value('00:00:00', output_field=models.TimeField()),
-            status = Value('Bad', output_field = models.CharField()),
-            grade=Value(0, output_field=IntegerField())
-        ).annotate(
-            student_first_name=Concat('first_name', Value(''), output_field=models.CharField()),
-            student_last_name=Concat('last_name', Value(''), output_field=models.CharField())
-        ).values('student_first_name', 'student_last_name', 'gender', 'points', 'time', 'status', 'grade')
+            # retrieve finished students assignment results
+            queryset = AssignmentResult.objects.filter(assignment=assignment)
+            serializer = self.get_serializer(queryset, many=True)
+            finished_students_data = serializer.data
+            # retrieve not finished students with zero values
+            students = CustomUser.objects.filter(classs=assignment.classs)
+            not_finished_students = CustomUser.objects.filter(id__in=students.values('id')).exclude(
+                results__in=queryset
+            ).annotate(
+                points=Value(0, output_field=IntegerField()),
+                time=Value('00:00:00', output_field=models.TimeField()),
+                status = Value('Bad', output_field = models.CharField()),
+                grade=Value(0, output_field=IntegerField())
+            ).annotate(
+                student_first_name=Concat('first_name', Value(''), output_field=models.CharField()),
+                student_last_name=Concat('last_name', Value(''), output_field=models.CharField())
+            ).values('student_first_name', 'student_last_name', 'gender', 'points', 'time', 'status', 'grade')
 
-        # Combine finished and not finished students data
-        all_students_data = finished_students_data + list(not_finished_students)
-        
-        #sort firstly by points, then by time, then by name
-        sorted_students = sorted(all_students_data, key=sort_students)
+            # Combine finished and not finished students data
+            all_students_data = finished_students_data + list(not_finished_students)
+            
+            #sort firstly by points, then by time, then by name
+            sorted_students = sorted(all_students_data, key=sort_students)
 
-        response_data = {
-            'assignment': {
-                'title': assignment.homework.title,
-                'class_title': assignment.classs.title
-            },
-            'assignment_results': sorted_students
-        }
+            response_data = {
+                'assignment': {
+                    'title': assignment.homework.title,
+                    'class_title': assignment.classs.title
+                },
+                'assignment_results': sorted_students
+            }
 
-        return Response(response_data)
+            return Response(response_data)
+        except Assignment.DoesNotExist: 
+            return Response({"error": "Namų darbas nerastas"}, status=status.HTTP_404_NOT_FOUND)   
+
 
 # viewset for returning list of one class students for the podium with their points
 class ClassViewStatistics(mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -274,6 +281,10 @@ class OneStudentViewStatistics(viewsets.GenericViewSet, mixins.ListModelMixin):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
+        if not queryset.exists():
+            return Response({"error": "Statistika nerasta"}, status=status.HTTP_404_NOT_FOUND)   
+
         assignment = queryset.first().assignment
         student = queryset.first().student
 
@@ -568,7 +579,6 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                     get_points = question.points
 
             elif qtype == 3: # select multiple options question
-                all_options = Option.objects.filter(question=question)
                 num_mult = sum(key.startswith(f'pairs[{i}][multipleIndex]') for key in request.POST.keys())
                 for y in range(num_mult):
                     optionId = int(request.POST.get(f'pairs[{i}][multipleIndex][{y}]'))
@@ -576,7 +586,7 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
                     selected_options.append(selected_option)
                     QuestionSelectedOption.objects.create(assignment=assignment, student=request.user, question=question, option=selected_option)   
 
-                get_points = calculate_points_for_one_question_multiple_select(question, all_options, selected_options)
+                get_points = calculate_points_for_one_question_multiple_select(question, selected_options)
               
             QuestionAnswerPairResult.objects.create(question=question, assignment=assignment, student=request.user, answer=answer, points=get_points)
             total_points+=get_points

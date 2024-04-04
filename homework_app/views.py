@@ -424,8 +424,8 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
         homework_name = request.data.get('title')
         multiple = request.data.get('multiple')
         correct = request.data.get('correct')
-        correct = [-1 if item is None else item for item in correct]
-        print(correct)
+        if(correct):
+            correct = [-1 if item is None else item for item in correct]
         options = [] 
 
         if not homework_name:
@@ -539,11 +539,19 @@ class TestView(mixins.ListModelMixin, mixins.CreateModelMixin,viewsets.GenericVi
 
     # function for posting test answers by student
     def post_answers(self, request, *args, **kwargs): 
-        assignment_id = self.kwargs.get('assignment_id')
-        elapsed = float(request.POST.get('time'))/1000      
-        date = datetime.now()
-        assignment = Assignment.objects.get(pk=assignment_id)
+        try:
+            assignment_id = self.kwargs.get('assignment_id')
+            elapsed = float(request.POST.get('time'))/1000      
+        except:
+            return Response(status = status.HTTP_400_BAD_REQUEST)  
+        
+        try:
+            assignment = Assignment.objects.get(pk=assignment_id)
+        except ObjectDoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)  
+
         homework=assignment.homework
+        date = datetime.now()
         questions = QuestionAnswerPair.objects.filter(homework=homework)
         total_points = 0
        
@@ -719,7 +727,6 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 return JsonResponse({"success" : True}, status=status.HTTP_201_CREATED)
             else:
                 return JsonResponse({"success" : False}, status=status.HTTP_400_BAD_REQUEST)
-
         return JsonResponse({"success" : False}, status=status.HTTP_400_BAD_REQUEST)  
 
 

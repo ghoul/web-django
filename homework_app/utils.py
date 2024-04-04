@@ -1,4 +1,5 @@
 import math
+from tkinter.tix import Select
 from .models import *
 from rest_framework.permissions import BasePermission
 from rest_framework import status
@@ -142,7 +143,10 @@ def calculate_points_for_one_question_multiple_select(question, selected_options
         correct_options_temp = QuestionCorrectOption.objects.filter(question=question).values('option')
         correct_option_ids = correct_options_temp.values_list('option', flat=True)
         correct_options = Option.objects.filter(id__in=correct_option_ids)
-        points_per_option = int(question.points/len(correct_options))
+        if len(correct_options)>0:
+            points_per_option = int(question.points/len(correct_options))
+        else:
+            points_per_option = 0    
 
         correct_count_original = len(correct_options)
         correct_count_student = 0

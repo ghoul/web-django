@@ -39,20 +39,23 @@ class LoginViewUser(viewsets.GenericViewSet):
     serializer_class = UserSerializer
 
     def post(self, request):
-        user = CustomUser.objects.get(email=request.data.get('email'))
-        if user.check_password(request.data.get('password')):
-            license_end = user.school.license_end
-            if license_end and license_end < datetime.today().date():
-                return Response({"error": "Jūsų licenzija nebegalioja"}, status=status.HTTP_403_FORBIDDEN)
+        try:
+            user = CustomUser.objects.get(email=request.data.get('email'))
+            if user.check_password(request.data.get('password')):
+                license_end = user.school.license_end
+                if license_end and license_end < datetime.today().date():
+                    return Response({"error": "Jūsų licenzija nebegalioja"}, status=status.HTTP_403_FORBIDDEN)
 
-            login(request, user)
-            serializer = self.get_serializer(user)
-            token, created = Token.objects.get_or_create(user=user)
-            csrf_token = generate_csrf_token(request)
+                login(request, user)
+                serializer = self.get_serializer(user)
+                token, created = Token.objects.get_or_create(user=user)
+                csrf_token = generate_csrf_token(request)
 
-            return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
-        else:
-            return Response({"error": "Neteisingas el. paštas arba slaptažodis"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"token": token.key, "user": serializer.data, "csrf_token": csrf_token})
+            else:
+                return Response({"error": "Neteisingas el. paštas arba slaptažodis"}, status=status.HTTP_400_BAD_REQUEST)
+        except CustomUser.ObjectDoesNotExist:
+            return Response({"error": "Neteisingas el. paštas arba slaptažodis"}, status=status.HTTP_400_BAD_REQUEST)       
 
 
 # viewset for changing user's password
@@ -64,13 +67,14 @@ class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
         return self.request.user
 
     def update(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid():
-            if str(request.user.id) != kwargs['pk']:
-                return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)
-            return super().update(request, *args, **kwargs)
-        else:
-            return Response({"error" : "Neužpildyti privalomi laukai"}, status=status.HTTP_400_BAD_REQUEST)
+        if str(request.user.id) != kwargs['pk']:
+            serializer = self.get_serializer(data=request.data)
+            if serializer.is_valid():
+                return super().update(request, *args, **kwargs)
+            else:
+                return Response({"error" : "Neužpildyti privalomi laukai"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)    
+
 
 
 # viewset for returning all active assignments created by teacher
@@ -406,91 +410,14 @@ class HomeworkView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Upda
                             raise ValueError("Namų darbų forma užpildyta neteisingai")                        
 
                 except ValueError as e:
-                    # Rollback the transaction
+                    # deletes recently created objects from database
                     transaction.set_rollback(True)
                     return "", status.HTTP_400_BAD_REQUEST, str(e)
                 
-                # If everything is successful, commit the transaction
                 return data, status.HTTP_201_CREATED, ""
         else:
             return "", status.HTTP_400_BAD_REQUEST, "Namų darbe privalo būti bent vienas klausimas"
 
-    # def create_question_answer_pairs(self, request, homework):
-    #     data = []
-    #     num_pairs = sum('question' in key for key in request.POST.keys())
-    #     if num_pairs > 0:
-    #         qtype_mapping = {'select': 1, 'write': 2, 'multiple': 3}
-
-    #         for i in range(num_pairs):
-    #             qtype = request.POST.get(f'pairs[{i}][qtype]')
-    #             qtype = qtype_mapping.get(qtype, None)
-    #             question = request.POST.get(f'pairs[{i}][question]')
-    #             answer = request.POST.get(f'pairs[{i}][answer]')
-    #             points = request.POST.get(f'pairs[{i}][points]')
-    #             correct_option_chosen = False
-
-    #             if len(answer) == 0:
-    #                 answer = None              
-
-    #             qapair_serializer = QuestionAnswerPairSerializer(data={'homework': homework.id, 'qtype': qtype, 'question': question, 'answer' : answer, 'points': points}, context={'request': request})
-    #             if qapair_serializer.is_valid():
-    #                 qapair = qapair_serializer.save()
-    #                 data.append(qapair_serializer.data)
-
-    #                 num_options = sum(key.startswith(f'pairs[{i}][options]') for key in request.POST.keys())
-    #                 print("num_options: " + str(num_options))
-    #                 if (qtype == 1 or qtype == 3) and num_options > 0: 
-    #                     options = []
-
-    #                     for option_i in range(num_options):
-    #                         option_text = request.POST.get(f'pairs[{i}][options][{option_i}]')
-    #                         option_serializer = OptionSerializer(data={'text': option_text, 'question': qapair.id}, context={'request': request})
-    #                         if option_serializer.is_valid():
-    #                             option = option_serializer.save()
-    #                             options.append(option)
-
-    #                             if qtype == 3:  # select multiple options question   
-                                    
-    #                                 num_mult = sum(key.startswith(f'pairs[{i}][multipleOptionIndex]') for key in request.POST.keys())
-    #                                 print("num_mult: " + str(num_mult))
-    #                                 if num_mult>0:                                                      
-    #                                     for y in range(num_options): 
-    #                                         print("y: " + str(y))
-                                            
-    #                                         if request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]') is not None:                              
-    #                                             correct = int(request.POST.get(f'pairs[{i}][multipleOptionIndex][{y}]'))
-    #                                             if correct==option_i:
-    #                                                 create_correct_option(qapair, option)  
-    #                                                 correct_option_chosen = True
-    #                                                 print("created")
-    #                                         elif y==num_pairs and not correct_option_chosen:
-    #                                             return "", status.HTTP_400_BAD_REQUEST,"Namų darbų forma užpildyta neteisingai: nepasirinkti teisingi atsakymai"        
-    #                                         else:
-    #                                             print("continue")
-    #                                             continue
-                                                         
-    #                                 else:
-    #                                     return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"                
-    #                         else:
-    #                             return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"
-
-    #                     if qtype == 1: #select one option question
-    #                         if request.POST.get(f'pairs[{i}][correctOptionIndex]') != 'null':                      
-    #                             correct_option_index = int(request.POST.get(f'pairs[{i}][correctOptionIndex]'))
-    #                             if 0 <= correct_option_index < len(options):
-    #                                 create_correct_option(qapair, options[correct_option_index])  
-    #                             else:
-    #                                 return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"    
-                                           
-    #                 elif qtype == 2: #writable answer
-    #                     continue 
-    #                 else:
-    #                     return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai: nėra atsakymo pasirinkimų"    
-    #             else:
-    #                 return "", status.HTTP_400_BAD_REQUEST, "Namų darbų forma užpildyta neteisingai"                        
-    #         return data, status.HTTP_201_CREATED, ""
-    #     else:
-    #         return "", status.HTTP_400_BAD_REQUEST, "Namų darbe privalo būti bent vienas klausimas"   
 
     def create(self, request):
         mutable_data = request.data.copy()
@@ -814,7 +741,10 @@ class SummaryView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             student = CustomUser.objects.get(pk=student_id)
             # calculates scored points from answers and adds to points scored in a game
             points_from_questions = QuestionAnswerPairResult.objects.filter(assignment=assignment, student=student).aggregate(scored_points=Sum('points'))
-            total_points = points_from_questions.get('scored_points', 0) + int(points)
+            total_points = points_from_questions.get('scored_points', 0)
+            if total_points is None:
+                total_points = 0
+            total_points += int(points)
             serializer = AssignmentResultSerializer(data={'assignment': assignment_id, 'student': student_id,'date': datetime.now(),'points': total_points,'time': time})
             if serializer.is_valid():
                 serializer.save()

@@ -67,13 +67,15 @@ class PasswordView(mixins.UpdateModelMixin, viewsets.GenericViewSet):
         return self.request.user
 
     def update(self, request, *args, **kwargs):
-        if str(request.user.id) != kwargs['pk']:
-            serializer = self.get_serializer(data=request.data)
-            if serializer.is_valid():
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            if str(request.user.pk) == kwargs['pk']:
                 return super().update(request, *args, **kwargs)
             else:
+                return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)     
+        else:
                 return Response({"error" : "Neužpildyti privalomi laukai"}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({"error": "Prieiga uždrausta"}, status=status.HTTP_403_FORBIDDEN)    
+                   
 
 
 
